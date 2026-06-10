@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Darna Immo – دارنا إيمو</title>
+<link rel="icon" type="image/png" href="assets/logo.PNG">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#0D3B2E;
+  --green-mid:#1A5C45;
+  --green-light:#2E8B6A;
+  --gold:#C9A84C;
+  --gold-bright:#F0C855;
+  --gold-pale:#FFF8E7;
+  --red:#CE1126;
+  --red-pale:#FFF0F0;
+  --white:#FFFFFF;
+  --bg:#F6FAF8;
+  --text:#1A1A1A;
+  --text-sub:#556;
+  --border:#D8EAE1;
+  --radius:14px;
+  --shadow:0 2px 16px rgba(0,0,0,.09);
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── HEADER ── */
+header{
+  background:var(--green);
+  height:66px;padding:0 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 14px rgba(0,0,0,.3);
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-badge{
+  width:60px;
+  height:60px;
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  flex-shrink:0;
+}
+.logo-badge img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.logo-text{line-height:1}
+.logo-text .d1{font-size:18px;font-weight:900;color:var(--gold-bright);letter-spacing:.5px}
+.logo-text .d2{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase}
+
+/* Algeria flag strip */
+.flag-strip{
+  height:4px;
+  background:linear-gradient(to left, var(--red) 0%, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green-mid) 66%);
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(150deg,var(--green) 0%,var(--green-mid) 55%,var(--green-light) 100%);
+  padding:48px 20px 36px;text-align:center;color:var(--white);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'دارنا';
+  position:absolute;font-size:200px;font-weight:900;
+  color:rgba(255,255,255,.04);top:-20px;left:50%;
+  transform:translateX(-50%);white-space:nowrap;pointer-events:none;
+}
+.hero-crescent{font-size:32px;margin-bottom:8px}
+.hero-title{font-size:clamp(26px,6vw,42px);font-weight:900;line-height:1.25;margin-bottom:6px}
+.hero-title span{color:var(--gold-bright)}
+.hero-sub{font-size:15px;opacity:.8;margin-bottom:28px}
+
+/* tag row */
+.tag-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tag{
+  padding:5px 14px;border-radius:50px;font-size:12px;font-weight:700;
+  border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);
+  backdrop-filter:blur(4px);
+}
+.tag.aadl{border-color:#6CA0DC;color:#A8CFFF}
+.tag.social{border-color:#C89EE8;color:#E0BFFF}
+.tag.lpp{border-color:#F5A97A;color:#FFD0B0}
+
+/* search */
+.search-wrap{max-width:660px;margin:0 auto;display:flex;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.search-wrap input{
+  flex:1;border:none;outline:none;
+  font-family:'Cairo',sans-serif;font-size:15px;
+  padding:15px 18px;color:var(--text);
+}
+.search-wrap button{
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+  border:none;padding:0 26px;
+  font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
+  color:var(--green);cursor:pointer;transition:.2s;
+}
+.search-wrap button:hover{filter:brightness(1.08)}
+
+/* ── STATS ── */
+.stats{
+  display:flex;justify-content:center;gap:0;
+  background:var(--white);border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.stat{
+  flex:1;min-width:120px;text-align:center;
+  padding:14px 10px;border-left:1px solid var(--border);
+}
+.stat:last-child{border-left:none}
+.stat-n{font-size:24px;font-weight:900;color:var(--green-mid)}
+.stat-l{font-size:12px;color:var(--text-sub)}
+
+/* ── LAYOUT ── */
+.main{display:flex;gap:22px;max-width:1300px;margin:0 auto;padding:26px 18px}
+@media(max-width:860px){.sidebar{display:none!important}}
+
+/* ── SIDEBAR ── */
+.sidebar{width:272px;flex-shrink:0}
+.fcard{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+.ftitle{
+  font-size:13px;font-weight:700;color:var(--green);
+  border-bottom:2px solid #E8F5EE;padding-bottom:9px;margin-bottom:13px;
+  display:flex;align-items:center;gap:6px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  padding:6px 13px;border-radius:50px;
+  border:1.5px solid var(--border);
+  font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
+  cursor:pointer;background:var(--white);color:var(--text);transition:.18s;
+}
+.chip:hover{background:var(--green);border-color:var(--green);color:var(--white)}
+.chip.on{background:var(--green);border-color:var(--green);color:var(--white)}
+.chip.aadl.on{background:#1C5FAD;border-color:#1C5FAD}
+.chip.social.on{background:#6B21A8;border-color:#6B21A8}
+.chip.lpp.on{background:#C2410C;border-color:#C2410C}
+.chip.kira.on{background:var(--gold);border-color:var(--gold);color:var(--green)}
+.chip.bay3.on{background:var(--red);border-color:var(--red);color:#fff}
+.chip.tanaz.on{background:#374151;border-color:#374151;color:#fff}
+
+.fsel{
+  width:100%;padding:10px 12px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);
+  background:var(--white);outline:none;cursor:pointer;margin-bottom:9px;
+}
+.fsel:focus{border-color:var(--green-light)}
+.prange{display:flex;gap:7px;align-items:center;margin-bottom:10px}
+.prange input{
+  flex:1;padding:9px 11px;
+  border:1.5px solid var(--border);border-radius:9px;
+  font-family:'Cairo',sans-serif;font-size:13px;outline:none;
+}
+.prange input:focus{border-color:var(--green-light)}
+.prange span{color:var(--text-sub);font-size:13px}
+.btn-apply{
+  width:100%;padding:12px;background:var(--green);color:var(--white);
+  border:none;border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;transition:.2s;
+}
+.btn-apply:hover{background:var(--green-mid)}
+
+/* ── CONTENT ── */
+.content{flex:1;min-width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.rcount{font-size:13px;color:var(--text-sub)}
+.rcount strong{color:var(--text);font-size:16px}
+.sortsel{
+  padding:8px 13px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:14px;outline:none;background:var(--white);
+}
+
+/* mobile filter strip */
+.mob-strip{display:none;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;-webkit-overflow-scrolling:touch}
+@media(max-width:860px){.mob-strip{display:flex}}
+.mob-strip .chip{white-space:nowrap;flex-shrink:0}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:16px}
+
+/* ── CARD ── */
+.card{
+  background:var(--white);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+  cursor:pointer;transition:.2s;position:relative;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
+.cimg{position:relative;height:188px;overflow:hidden}
+.cimg-ph{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:56px;
+}
+.bt{position:absolute;top:10px;right:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700;color:#fff}
+.bt.aadl{background:#1C5FAD}
+.bt.social{background:#6B21A8}
+.bt.lpp{background:#C2410C}
+.bo{position:absolute;top:10px;left:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700}
+.bo.kira{background:var(--gold);color:var(--green)}
+.bo.bay3{background:var(--red);color:#fff}
+.bo.tanaz{background:#374151;color:#fff}
+.fav{
+  position:absolute;bottom:10px;left:10px;
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.9);border:none;
+  font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:.15s;
+}
+.fav:hover{transform:scale(1.2)}
+.feat-badge{
+  position:absolute;bottom:10px;right:10px;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+  color:var(--green);font-size:11px;font-weight:700;
+  padding:4px 10px;border-radius:50px;
+}
+.cbody{padding:14px}
+.ctitle{font-size:14px;font-weight:700;margin-bottom:4px}
+.cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:11px}
+.cspecs{
+  display:flex;gap:12px;font-size:12px;color:var(--text-sub);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:9px 0;margin-bottom:11px;
+}
+.cfoot{display:flex;align-items:center;justify-content:space-between}
+.price{font-size:16px;font-weight:900;color:var(--green)}
+.price small{font-size:11px;font-weight:600;color:var(--text-sub)}
+.btn-call{
+  padding:7px 16px;background:var(--green);color:#fff;
+  border:none;border-radius:8px;
+  font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;
+}
+.btn-call:hover{background:var(--green-mid)}
+
+/* ── FAB ── */
+.fab{
+  position:fixed;bottom:24px;left:24px;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+  color:var(--green);border:none;font-size:26px;
+  box-shadow:0 6px 24px rgba(201,168,76,.55);
+  cursor:pointer;z-index:90;transition:.2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.fab:hover{transform:scale(1.1)}
+.fab-label{
+  position:fixed;bottom:31px;left:90px;
+  background:var(--green);color:#fff;
+  font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;
+  padding:8px 16px;border-radius:10px;
+  box-shadow:var(--shadow);z-index:90;
+  white-space:nowrap;
+}
+
+/* ── MODAL OVERLAY ── */
+.overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.6);z-index:200;
+  align-items:center;justify-content:center;padding:14px;
+}
+.overlay.open{display:flex}
+.modal{
+  background:var(--white);border-radius:18px;
+  max-width:560px;width:100%;max-height:90vh;overflow-y:auto;
+  box-shadow:0 24px 64px rgba(0,0,0,.35);
+}
+.modal-top{position:relative}
+.mimg{height:220px;overflow:hidden}
+.mimg-ph{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:80px;
+}
+.mclose{
+  position:absolute;top:12px;left:12px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(0,0,0,.45);color:#fff;border:none;
+  font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.mbody{padding:22px}
+.mtitle{font-size:20px;font-weight:900;margin-bottom:10px}
+.mbadges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.mdesc{font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:18px}
+.mspecs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.mspec{background:#F0FAF4;border-radius:10px;padding:10px 13px;font-size:13px}
+.mspec strong{display:block;font-size:15px;color:var(--green)}
+.macts{display:flex;gap:10px}
+.mact{
+  flex:1;padding:13px;border:none;border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;
+  transition:.2s;
+}
+.mact.green{background:var(--green);color:#fff}
+.mact.green:hover{background:var(--green-mid)}
+.mact.gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green)}
+.mact.gold:hover{filter:brightness(1.07)}
+.mact.red{background:var(--red);color:#fff}
+.mact.red:hover{filter:brightness(1.1)}
+
+/* ── POST MODAL ── */
+.pmodal{max-width:510px}
+.pmhead{
+  background:linear-gradient(135deg,var(--green),var(--green-mid));
+  padding:22px 22px 18px;border-radius:18px 18px 0 0;
+  color:#fff;
+}
+.pmhead-title{font-size:19px;font-weight:900;margin-bottom:2px}
+.pmhead-sub{font-size:13px;opacity:.75}
+.pmclose{
+  position:absolute;top:16px;left:16px;
+  background:rgba(255,255,255,.2);border:none;color:#fff;
+  width:34px;height:34px;border-radius:50%;font-size:18px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.pmbody{padding:20px}
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:10px 13px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);outline:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green-light)}
+.fg textarea{resize:vertical;min-height:80px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{
+  width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--green-mid),var(--green));
+  color:#fff;border:none;border-radius:10px;
+  font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;
+  cursor:pointer;margin-top:6px;transition:.2s;
+}
+.btn-submit:hover{filter:brightness(1.1)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:22px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--green);color:#fff;
+  padding:11px 24px;border-radius:50px;
+  font-size:14px;font-weight:600;z-index:999;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 6px 24px rgba(0,0,0,.25);white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.red{background:var(--red)}
+.toast.gold{background:var(--gold);color:var(--green)}
+
+/* ── EMPTY ── */
+.empty{
+  text-align:center;padding:60px 20px;color:var(--text-sub);
+}
+.empty-icon{font-size:64px;margin-bottom:14px}
+.empty h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--green);color:rgba(255,255,255,.6);
+  text-align:center;font-size:13px;padding:18px;margin-top:36px;
+}
+footer strong{color:var(--gold-bright)}
+.footer-flag{
+  width:40px;height:4px;border-radius:4px;margin:8px auto 0;
+  background:linear-gradient(to left,var(--red) 33%,#fff 33%,#fff 66%,var(--green-mid) 66%);
+}
+
+.del-btn{position:absolute;bottom:8px;left:8px;background:rgba(206,17,38,0.85);border:none;border-radius:6px;color:white;font-size:14px;padding:4px 8px;cursor:pointer;z-index:5;}
+.del-btn:hover{background:var(--red);}
+</style>
+</head>
+<body>
+
+<div class="flag-strip"></div>
+
+<header>
+  <a class="logo" href="#">
+    <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
+    <div class="logo-text">
+      <div class="d1">DARNA IMMOBILIER</div>
+      <div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div>
+    </div>
+  </a>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+      ＋ نشر إعلان
+    </button>
+    <button id="adminBtn" onclick="adminLogin()" style="padding:9px 14px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.2);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;cursor:pointer">
+      🔐 دخول المشرف
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-crescent">🌙⭐</div>
+  <h1 class="hero-title">ابحث عن <span>دارك</span> هنا</h1>
+  <p class="hero-sub">كل إعلانات AADL · Social · LPP في الجزائر العاصمة</p>
+  <div class="tag-row">
+    <span class="tag aadl">🔵 AADL</span>
+    <span class="tag social">🟣 Social</span>
+    <span class="tag lpp">🟠 LPP</span>
+    <span class="tag" style="border-color:rgba(206,17,38,.6);color:#FFB3B3">🔴 كراء · بيع · تنازل</span>
+  </div>
+  <div class="search-wrap">
+    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية... (سيدي عبد الله، الرغاية...)" onkeyup="if(event.key==='Enter')doSearch()"/>
+    <button onclick="doSearch()">🔍 بحث</button>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-n" id="sc1">247</div><div class="stat-l">إعلان نشط</div></div>
+  <div class="stat"><div class="stat-n">31</div><div class="stat-l">بلدية</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l">حي AADL</div></div>
+  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l">الجزائر العاصمة</div></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="fcard">
+      <div class="ftitle">🏷️ نوع السكن</div>
+      <div class="chips">
+        <button class="chip aadl on" data-g="t" data-v="aadl" onclick="tog(this)">AADL</button>
+        <button class="chip social on" data-g="t" data-v="social" onclick="tog(this)">Social</button>
+        <button class="chip lpp on" data-g="t" data-v="lpp" onclick="tog(this)">LPP</button>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ftitle">🤝 نوع المعاملة</div>
+      <div class="chips">
+        <button class="chip on" data-g="o" data-v="all" onclick="radio(this,'o')">الكل</button>
+        <button class="chip kira" data-g="o" data-v="kira" onclick="radio(this,'o')">كراء</button>
+        <button class="chip bay3" data-g="o" data-v="bay3" onclick="radio(this,'o')">بيع</button>
+        <button class="chip tanaz" data-g="o" data-v="tanaz" onclick="radio(this,'o')">تنازل</button>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ftitle">📍 البلدية</div>
+      <select class="fsel" id="fcm" onchange="af()">
+        <option value="">كل البلديات</option>
+        <option>سيدي عبد الله</option><option>الرغاية</option>
+        <option>أولاد فايت</option><option>الدار البيضاء</option>
+        <option>حسين داي</option><option>باب الزوار</option>
+        <option>برج البحري</option><option>القبة</option>
+        <option>بئر مراد رايس</option><option>الحراش</option>
+        <option>بوزريعة</option><option>شراقة</option>
+        <option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option>
+      </select>
+    </div>
+    <div class="fcard">
+      <div class="ftitle">🛏️ عدد الغرف</div>
+      <div class="chips">
+        <button class="chip on" data-g="r" data-v="all" onclick="radio(this,'r')">الكل</button>
+        <button class="chip" data-g="r" data-v="f2" onclick="radio(this,'r')">F2</button>
+        <button class="chip" data-g="r" data-v="f3" onclick="radio(this,'r')">F3</button>
+        <button class="chip" data-g="r" data-v="f4" onclick="radio(this,'r')">F4</button>
+        <button class="chip" data-g="r" data-v="f5" onclick="radio(this,'r')">F5+</button>
+      </div>
+    </div>
+    <div class="fcard">
+      <div class="ftitle">💰 نطاق السعر (دج)</div>
+      <div class="prange">
+        <input id="pmin" type="number" placeholder="من"/>
+        <span>–</span>
+        <input id="pmax" type="number" placeholder="إلى"/>
+      </div>
+      <button class="btn-apply" onclick="af()">✅ تطبيق الفلاتر</button>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <!-- mobile strip -->
+    <div class="mob-strip" id="mobStrip">
+      <button class="chip on" onclick="mf(this,'all','all')">الكل</button>
+      <button class="chip aadl" onclick="mf(this,'aadl','all')">AADL</button>
+      <button class="chip social" onclick="mf(this,'social','all')">Social</button>
+      <button class="chip lpp" onclick="mf(this,'lpp','all')">LPP</button>
+      <button class="chip kira" onclick="mf(this,'all','kira')">كراء</button>
+      <button class="chip bay3" onclick="mf(this,'all','bay3')">بيع</button>
+      <button class="chip tanaz" onclick="mf(this,'all','tanaz')">تنازل</button>
+    </div>
+
+    <div class="topbar">
+      <div class="rcount">عرض <strong id="rn">12</strong> إعلان</div>
+      <select class="sortsel" id="srt" onchange="sl()">
+        <option value="new">الأحدث أولاً</option>
+        <option value="pa">الأرخص أولاً</option>
+        <option value="pd">الأغلى أولاً</option>
+      </select>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- FAB -->
+<button class="fab" onclick="openPost()" title="نشر إعلان">＋</button>
+
+<!-- DETAIL MODAL -->
+<div class="overlay" id="dm" onclick="cov(event,'dm')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="mimg" id="mimg"></div>
+      <button class="mclose" onclick="cm('dm')">✕</button>
+    </div>
+    <div class="mbody">
+      <div class="mtitle" id="mtt"></div>
+      <div class="mbadges" id="mbg"></div>
+      <p class="mdesc" id="mds"></p>
+      <div class="mspecs" id="msp"></div>
+      <div class="macts">
+        <button class="mact green" id="mcall">📞 اتصل الآن</button>
+        <button class="mact gold" onclick="toast('💬 ميزة الدردشة قريباً!','gold')">💬 رسالة</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POST MODAL -->
+<div class="overlay" id="pm" onclick="cov(event,'pm')">
+  <div class="modal pmodal">
+    <div class="pmhead" style="position:relative">
+      <div class="pmhead-title">📣 نشر إعلان جديد</div>
+      <div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div>
+      <button class="pmclose" onclick="cm('pm')">✕</button>
+    </div>
+    <div class="pmbody">
+      <div class="fg-row">
+        <div class="fg">
+          <label>نوع السكن</label>
+          <select id="pt"><option value="aadl">AADL</option><option value="social">Social</option><option value="lpp">LPP</option></select>
+        </div>
+        <div class="fg">
+          <label>المعاملة</label>
+          <select id="po"><option value="kira">كراء</option><option value="bay3">بيع</option><option value="tanaz">تنازل</option></select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>البلدية والحي <span style="color:var(--red)">*</span></label>
+        <input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/>
+      </div>
+      <div class="fg-row">
+        <div class="fg">
+          <label>الغرف</label>
+          <select id="pr"><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5+</option></select>
+        </div>
+        <div class="fg">
+          <label>المساحة (م²)</label>
+          <input id="pa" type="number" placeholder="مثال: 85"/>
+        </div>
+      </div>
+      <div class="fg-row">
+        <div class="fg">
+          <label>السعر (دج) <span style="color:var(--red)">*</span></label>
+          <input id="pp" type="number" placeholder="مثال: 40000"/>
+        </div>
+        <div class="fg">
+          <label>رقم الهاتف <span style="color:var(--red)">*</span></label>
+          <input id="ph" type="tel" placeholder="07XX XX XX XX"/>
+        </div>
+      </div>
+      <div class="fg">
+        <label>وصف الشقة</label>
+        <textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="tst"></div>
+
+<footer>
+  <strong>DARNA IMMO</strong> · دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي
+  <div class="footer-flag"></div>
+</footer>
+
+<!-- ── FIREBASE ── -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+// ── FIREBASE CONFIG (من مشروع blimmo) ──
+const firebaseConfig = {
+  apiKey: "AIzaSyDgoARkUtqmeg4JDpLLpr1mzS8f0VDMFE0",
+  authDomain: "blimmo.firebaseapp.com",
+  projectId: "blimmo",
+  storageBucket: "blimmo.firebasestorage.app",
+  messagingSenderId: "566587628949",
+  appId: "1:566587628949:web:78c8e8c154f903f159aa9c"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const adsCol = collection(db, "clients");
+
+// ── LOOKUP TABLES ──
+const TM={aadl:{l:'AADL',c:'aadl'},social:{l:'Social',c:'social'},lpp:{l:'LPP',c:'lpp'}};
+const OM={kira:{l:'كراء',c:'kira'},bay3:{l:'بيع',c:'bay3'},tanaz:{l:'تنازل',c:'tanaz'}};
+const RL={f2:'F2',f3:'F3',f4:'F4',f5:'F5+'};
+const PH=['🏠','🏢','🏡','🌇','🏘️','🏗️'];
+const GR=['#C8E6C9','#BBDEFB','#E1BEE7','#FFE0B2','#B2EBF2','#F8BBD9'];
+
+// ── STATE ──
+let DATA=[];
+let fTypes=new Set(['aadl','social','lpp']),fOp='all',fRooms='all',fSearch='',disp=[];
+let favs=new Set();
+let currentUser=null;
+
+// ── AUTH ──
+onAuthStateChanged(auth, (user) => {
+  currentUser = user;
+  updateAdminUI();
+});
+
+function updateAdminUI(){
+  const btn = document.getElementById('adminBtn');
+  if(!btn) return;
+  if(currentUser){
+    btn.innerHTML='🔓 خروج';
+    btn.onclick=()=>signOut(auth).then(()=>toast('تم تسجيل الخروج',''));
+  } else {
+    btn.innerHTML='🔐 دخول المشرف';
+    btn.onclick=()=>adminLogin();
+  }
+}
+
+async function adminLogin(){
+  const email=window.prompt('البريد الإلكتروني:');
+  const pass=window.prompt('كلمة السر:');
+  if(email&&pass){
+    try{
+      await signInWithEmailAndPassword(auth, email.trim().toLowerCase(), pass.trim());
+      toast('✅ مرحباً بك يا مشرف!','');
+    }catch(e){ toast('❌ فشل الدخول: تأكد من البيانات','red'); }
+  }
+}
+
+// ── FIRESTORE LISTENER ──
+const q = query(adsCol, orderBy("date","desc"));
+onSnapshot(q, (snapshot) => {
+  DATA = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+  disp = [...DATA];
+  af();
+  showLoading(false);
+});
+
+function showLoading(show){
+  const g=document.getElementById('grid');
+  if(show) g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">⏳</div><h3>جارٍ التحميل...</h3></div>`;
+}
+
+// ── RENDER ──
+function render(d){
+  const g=document.getElementById('grid');
+  document.getElementById('rn').textContent=d.length;
+  if(!d.length){
+    g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>لا توجد إعلانات</h3><p>جرّب تغيير معايير البحث</p></div>`;
+    return;
+  }
+  const colorIdx=(id)=>{const h=id.split('').reduce((a,c)=>a+c.charCodeAt(0),0);return h%GR.length;};
+  const phIdx=(id)=>{const h=id.split('').reduce((a,c)=>a+c.charCodeAt(0),0);return h%PH.length;};
+  g.innerHTML=d.map(l=>`
+    <div class="card" onclick="openD('${l.id}')">
+      <div class="cimg" style="background:linear-gradient(135deg,${GR[colorIdx(l.id)]},${GR[(colorIdx(l.id)+2)%GR.length]})">
+        <div class="cimg-ph">${PH[phIdx(l.id)]}</div>
+        <span class="bt ${l.type}">${TM[l.type].l}</span>
+        <span class="bo ${l.op}">${OM[l.op].l}</span>
+        <button class="fav" id="fv${l.id}" onclick="tfav(event,'${l.id}')">${favs.has(l.id)?'❤️':'🤍'}</button>
+        ${l.feat?'<div class="feat-badge">⭐ مميز</div>':''}
+        ${currentUser?`<button class="del-btn" onclick="delAd(event,'${l.id}')">🗑️</button>`:''}
+      </div>
+      <div class="cbody">
+        <div class="ctitle">${l.title}</div>
+        <div class="cloc">📍 ${l.commune}</div>
+        <div class="cspecs">
+          <span>🛏️ ${RL[l.rooms]||l.rooms}</span>
+          <span>📐 ${l.area} م²</span>
+          <span>📅 ${(l.date||'').toString().slice(0,10).slice(5).replace('-','/')}</span>
+        </div>
+        <div class="cfoot">
+          <div class="price">${Number(l.price).toLocaleString('ar-DZ')} <small>دج${l.op==='kira'?'/شهر':''}</small></div>
+          <button class="btn-call" onclick="event.stopPropagation();dial('${l.phone}')">📞 اتصال</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── FILTER ──
+function af(){
+  const cm=document.getElementById('fcm').value;
+  const mn=parseFloat(document.getElementById('pmin').value)||0;
+  const mx=parseFloat(document.getElementById('pmax').value)||Infinity;
+  const q=fSearch.trim().toLowerCase();
+  disp=DATA.filter(l=>{
+    if(!fTypes.has(l.type))return false;
+    if(fOp!=='all'&&l.op!==fOp)return false;
+    if(fRooms!=='all'&&l.rooms!==fRooms)return false;
+    if(cm&&l.commune!==cm)return false;
+    if(l.price<mn||l.price>mx)return false;
+    if(q&&!l.title.includes(q)&&!l.commune.includes(q))return false;
+    return true;
+  });
+  sd(document.getElementById('srt').value);
+}
+function sd(v){
+  if(v==='pa')disp.sort((a,b)=>a.price-b.price);
+  else if(v==='pd')disp.sort((a,b)=>b.price-a.price);
+  else disp.sort((a,b)=>((b.date||'') > (a.date||''))?1:-1);
+  render(disp);
+}
+function sl(){sd(document.getElementById('srt').value)}
+function doSearch(){fSearch=document.getElementById('searchQ').value;af();}
+
+function tog(el){
+  const v=el.dataset.v;
+  el.classList.toggle('on');
+  if(el.classList.contains('on'))fTypes.add(v);else fTypes.delete(v);
+  af();
+}
+function radio(el,g){
+  document.querySelectorAll(`[data-g="${g}"]`).forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  if(g==='o')fOp=el.dataset.v;
+  else if(g==='r')fRooms=el.dataset.v;
+  af();
+}
+function mf(el,t,o){
+  document.querySelectorAll('#mobStrip .chip').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  fTypes=t==='all'?new Set(['aadl','social','lpp']):new Set([t]);
+  fOp=o; af();
+}
+
+// ── DETAIL ──
+function openD(id){
+  const l=DATA.find(x=>x.id===id);
+  if(!l) return;
+  const colorIdx=l.id.split('').reduce((a,c)=>a+c.charCodeAt(0),0)%GR.length;
+  const phIdx=l.id.split('').reduce((a,c)=>a+c.charCodeAt(0),0)%PH.length;
+  document.getElementById('mtt').textContent=l.title;
+  document.getElementById('mimg').innerHTML=`<div class="mimg-ph" style="background:linear-gradient(135deg,${GR[colorIdx]},${GR[(colorIdx+2)%GR.length]})">${PH[phIdx]}</div>`;
+  document.getElementById('mbg').innerHTML=`
+    <span class="bt ${l.type}" style="position:static;font-size:13px;padding:5px 13px">${TM[l.type].l}</span>
+    <span class="bo ${l.op}" style="position:static;font-size:13px;padding:5px 13px">${OM[l.op].l}</span>
+    ${l.feat?'<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ مميز</span>':''}
+  `;
+  document.getElementById('mds').textContent=l.desc;
+  document.getElementById('msp').innerHTML=`
+    <div class="mspec"><strong>📍 ${l.commune}</strong>البلدية</div>
+    <div class="mspec"><strong>🛏️ ${RL[l.rooms]||l.rooms}</strong>الغرف</div>
+    <div class="mspec"><strong>📐 ${l.area} م²</strong>المساحة</div>
+    <div class="mspec"><strong>💰 ${Number(l.price).toLocaleString('ar-DZ')} دج</strong>السعر${l.op==='kira'?' / شهر':''}</div>
+  `;
+  document.getElementById('mcall').onclick=()=>dial(l.phone);
+  document.getElementById('dm').classList.add('open');
+}
+
+// ── POST → FIRESTORE ──
+function openPost(){document.getElementById('pm').classList.add('open')}
+async function sub(){
+  const loc=document.getElementById('pl').value.trim();
+  const ph=document.getElementById('ph').value.trim();
+  const pr=document.getElementById('pp').value.trim();
+  if(!loc||!ph||!pr){toast('⚠️ يرجى ملء الحقول الضرورية','red');return;}
+  const btn=document.querySelector('.btn-submit');
+  btn.disabled=true; btn.textContent='⏳ جارٍ النشر...';
+  try{
+    await addDoc(adsCol,{
+      type:document.getElementById('pt').value,
+      op:document.getElementById('po').value,
+      title:`شقة ${document.getElementById('pr').value.toUpperCase()} – ${loc}`,
+      commune:loc.split(/[-–]/)[0].trim(),
+      rooms:document.getElementById('pr').value,
+      area:parseInt(document.getElementById('pa').value)||0,
+      price:parseInt(pr)||0,
+      desc:document.getElementById('pd').value||'لا يوجد وصف إضافي.',
+      phone:ph,
+      feat:false,
+      date:new Date().toISOString().slice(0,10)
+    });
+    cm('pm');
+    ['pt','po','pl','pa','pp','ph','pd'].forEach(x=>document.getElementById(x).value='');
+    document.getElementById('pr').selectedIndex=0;
+    toast('✅ تم نشر إعلانك بنجاح في Firebase!','');
+  }catch(e){
+    toast('❌ فشل النشر: تحقق من اتصالك','red');
+    console.error(e);
+  }
+  btn.disabled=false; btn.textContent='🚀 نشر الإعلان مجاناً';
+}
+
+// ── DELETE (admin only) ──
+async function delAd(e, id){
+  e.stopPropagation();
+  if(!currentUser){toast('❌ يجب تسجيل الدخول كمشرف','red');return;}
+  if(confirm('حذف هذا الإعلان نهائياً؟')){
+    try{
+      await deleteDoc(doc(db,'clients',id));
+      toast('🗑️ تم حذف الإعلان','');
+    }catch(err){toast('❌ فشل الحذف','red');}
+  }
+}
+
+// ── HELPERS ──
+function dial(n){toast(`📞 جارٍ الاتصال بـ ${n}`,'');setTimeout(()=>window.location.href=`tel:${n}`,900);}
+function tfav(e,id){
+  e.stopPropagation();
+  if(favs.has(id)){favs.delete(id);toast('تمت الإزالة من المفضلة','');}
+  else{favs.add(id);toast('❤️ تمت الإضافة للمفضلة','gold');}
+  const b=document.getElementById(`fv${id}`);if(b)b.textContent=favs.has(id)?'❤️':'🤍';
+}
+function cm(id){document.getElementById(id).classList.remove('open');}
+function cov(e,id){if(e.target.id===id)cm(id);}
+
+let tt;
+function toast(msg,cls){
+  const t=document.getElementById('tst');
+  t.textContent=msg;
+  t.className='toast'+(cls?' '+cls:'');
+  t.classList.add('show');
+  clearTimeout(tt);
+  tt=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ── EXPOSE TO HTML onclick ──
+window.af=af; window.sl=sl; window.doSearch=doSearch;
+window.tog=tog; window.radio=radio; window.mf=mf;
+window.openD=openD; window.openPost=openPost; window.sub=sub;
+window.delAd=delAd; window.dial=dial; window.tfav=tfav;
+window.cm=cm; window.cov=cov; window.toast=toast;
+window.adminLogin=adminLogin;
+
+// ── INIT ──
+showLoading(true);
+</script>
+
+</body>
+</html>
