@@ -663,22 +663,25 @@ async function adminLogin(){
 }
 
 // ── FIRESTORE LISTENER ──
-const q = query(adsCol, orderBy("date","desc"));
 onSnapshot(q, (snapshot) => {
+
+  DATA = snapshot.docs.map(d => ({
+    id: d.id,
+    ...d.data()
+  }));
+
   document.getElementById('sc1').textContent = DATA.length;
 
-const communes = [...new Set(DATA.map(x => x.commune).filter(Boolean))];
-document.getElementById('scCommunes').textContent = communes.length;
+  const communes = [...new Set(
+    DATA.map(x => x.commune).filter(Boolean)
+  )];
+
+  document.getElementById('scCommunes').textContent = communes.length;
+
   disp = [...DATA];
   af();
   showLoading(false);
 });
-
-function showLoading(show){
-  const g=document.getElementById('grid');
-  if(show) g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">⏳</div><h3>جارٍ التحميل...</h3></div>`;
-}
-
 // ── RENDER ──
 function render(d){
   const g=document.getElementById('grid');
