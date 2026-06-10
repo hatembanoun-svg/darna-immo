@@ -416,12 +416,26 @@ footer strong{color:var(--gold-bright)}
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-n" id="sc1">247</div><div class="stat-l">إعلان نشط</div></div>
-  <div class="stat"><div class="stat-n">31</div><div class="stat-l">بلدية</div></div>
-  <div class="stat"><div class="stat-n">12</div><div class="stat-l">حي AADL</div></div>
-  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l">الجزائر العاصمة</div></div>
-</div>
+  <div class="stat">
+    <div class="stat-n" id="sc1">0</div>
+    <div class="stat-l">إعلان نشط</div>
+  </div>
 
+  <div class="stat">
+    <div class="stat-n" id="scCommunes">0</div>
+    <div class="stat-l">بلدية</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-n" id="scTypes">3</div>
+    <div class="stat-l">أنواع السكن</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-n">🇩🇿</div>
+    <div class="stat-l">الجزائر العاصمة</div>
+  </div>
+</div>
 <!-- MAIN -->
 <div class="main">
   <!-- SIDEBAR -->
@@ -651,7 +665,10 @@ async function adminLogin(){
 // ── FIRESTORE LISTENER ──
 const q = query(adsCol, orderBy("date","desc"));
 onSnapshot(q, (snapshot) => {
-  DATA = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+  document.getElementById('sc1').textContent = DATA.length;
+
+const communes = [...new Set(DATA.map(x => x.commune).filter(Boolean))];
+document.getElementById('scCommunes').textContent = communes.length;
   disp = [...DATA];
   af();
   showLoading(false);
