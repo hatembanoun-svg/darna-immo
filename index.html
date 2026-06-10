@@ -27,7 +27,7 @@
 }
 body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* ── HEADER ── */
+/* HEADER */
 header{
   background:var(--green);
   height:66px;padding:0 20px;
@@ -63,7 +63,7 @@ header{
   background:linear-gradient(to left, var(--red) 0%, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green-mid) 66%);
 }
 
-/* ── HERO ── */
+/* HERO */
 .hero{
   background:linear-gradient(150deg,var(--green) 0%,var(--green-mid) 55%,var(--green-light) 100%);
   padding:48px 20px 36px;text-align:center;color:var(--white);
@@ -106,7 +106,7 @@ header{
 }
 .search-wrap button:hover{filter:brightness(1.08)}
 
-/* ── STATS ── */
+/* STATS - ديناميكية */
 .stats{
   display:flex;justify-content:center;gap:0;
   background:var(--white);border-bottom:1px solid var(--border);
@@ -120,11 +120,11 @@ header{
 .stat-n{font-size:24px;font-weight:900;color:var(--green-mid)}
 .stat-l{font-size:12px;color:var(--text-sub)}
 
-/* ── LAYOUT ── */
+/* LAYOUT */
 .main{display:flex;gap:22px;max-width:1300px;margin:0 auto;padding:26px 18px}
 @media(max-width:860px){.sidebar{display:none!important}}
 
-/* ── SIDEBAR ── */
+/* SIDEBAR */
 .sidebar{width:272px;flex-shrink:0}
 .fcard{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
 .ftitle{
@@ -171,7 +171,7 @@ header{
 }
 .btn-apply:hover{background:var(--green-mid)}
 
-/* ── CONTENT ── */
+/* CONTENT */
 .content{flex:1;min-width:0}
 .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
 .rcount{font-size:13px;color:var(--text-sub)}
@@ -186,10 +186,10 @@ header{
 @media(max-width:860px){.mob-strip{display:flex}}
 .mob-strip .chip{white-space:nowrap;flex-shrink:0}
 
-/* ── GRID ── */
+/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:16px}
 
-/* ── CARD ── */
+/* CARD */
 .card{
   background:var(--white);border-radius:var(--radius);
   box-shadow:var(--shadow);overflow:hidden;
@@ -242,7 +242,7 @@ header{
 }
 .btn-call:hover{background:var(--green-mid)}
 
-/* ── FAB ── */
+/* FAB */
 .fab{
   position:fixed;bottom:24px;left:24px;
   width:58px;height:58px;border-radius:50%;
@@ -262,7 +262,7 @@ header{
   white-space:nowrap;
 }
 
-/* ── MODAL OVERLAY ── */
+/* MODAL OVERLAY */
 .overlay{
   display:none;position:fixed;inset:0;
   background:rgba(0,0,0,.6);z-index:200;
@@ -304,10 +304,8 @@ header{
 .mact.green:hover{background:var(--green-mid)}
 .mact.gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green)}
 .mact.gold:hover{filter:brightness(1.07)}
-.mact.red{background:var(--red);color:#fff}
-.mact.red:hover{filter:brightness(1.1)}
 
-/* ── POST MODAL ── */
+/* POST MODAL */
 .pmodal{max-width:510px}
 .pmhead{
   background:linear-gradient(135deg,var(--green),var(--green-mid));
@@ -342,7 +340,7 @@ header{
 }
 .btn-submit:hover{filter:brightness(1.1)}
 
-/* ── TOAST ── */
+/* TOAST */
 .toast{
   position:fixed;bottom:22px;left:50%;
   transform:translateX(-50%) translateY(80px);
@@ -356,14 +354,14 @@ header{
 .toast.red{background:var(--red)}
 .toast.gold{background:var(--gold);color:var(--green)}
 
-/* ── EMPTY ── */
+/* EMPTY */
 .empty{
   text-align:center;padding:60px 20px;color:var(--text-sub);
 }
 .empty-icon{font-size:64px;margin-bottom:14px}
 .empty h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px}
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer{
   background:var(--green);color:rgba(255,255,255,.6);
   text-align:center;font-size:13px;padding:18px;margin-top:36px;
@@ -373,9 +371,6 @@ footer strong{color:var(--gold-bright)}
   width:40px;height:4px;border-radius:4px;margin:8px auto 0;
   background:linear-gradient(to left,var(--red) 33%,#fff 33%,#fff 66%,var(--green-mid) 66%);
 }
-
-.del-btn{position:absolute;bottom:8px;left:8px;background:rgba(206,17,38,0.85);border:none;border-radius:6px;color:white;font-size:14px;padding:4px 8px;cursor:pointer;z-index:5;}
-.del-btn:hover{background:var(--red);}
 </style>
 </head>
 <body>
@@ -414,28 +409,14 @@ footer strong{color:var(--gold-bright)}
   </div>
 </section>
 
-<!-- STATS -->
+<!-- STATS - سيتم تحديث العدد تلقائياً من Firebase -->
 <div class="stats">
-  <div class="stat">
-    <div class="stat-n" id="sc1">0</div>
-    <div class="stat-l">إعلان نشط</div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-n" id="scCommunes">0</div>
-    <div class="stat-l">بلدية</div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-n" id="scTypes">3</div>
-    <div class="stat-l">أنواع السكن</div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-n">🇩🇿</div>
-    <div class="stat-l">الجزائر العاصمة</div>
-  </div>
+  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l">إعلان نشط</div></div>
+  <div class="stat"><div class="stat-n">31</div><div class="stat-l">بلدية</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l">حي AADL</div></div>
+  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l">الجزائر العاصمة</div></div>
 </div>
+
 <!-- MAIN -->
 <div class="main">
   <!-- SIDEBAR -->
@@ -505,7 +486,7 @@ footer strong{color:var(--gold-bright)}
     </div>
 
     <div class="topbar">
-      <div class="rcount">عرض <strong id="rn">12</strong> إعلان</div>
+      <div class="rcount">عرض <strong id="rn">0</strong> إعلان</div>
       <select class="sortsel" id="srt" onchange="sl()">
         <option value="new">الأحدث أولاً</option>
         <option value="pa">الأرخص أولاً</option>
@@ -599,13 +580,12 @@ footer strong{color:var(--gold-bright)}
   <div class="footer-flag"></div>
 </footer>
 
-<!-- ── FIREBASE ── -->
+<!-- ── FIREBASE (إصدار حديث مع تعامل صحيح مع Firebase) ── -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// ── FIREBASE CONFIG (من مشروع blimmo) ──
+// تكوين Firebase (نفس مشروعك blimmo)
 const firebaseConfig = {
   apiKey: "AIzaSyDgoARkUtqmeg4JDpLLpr1mzS8f0VDMFE0",
   authDomain: "blimmo.firebaseapp.com",
@@ -617,256 +597,349 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
 const adsCol = collection(db, "clients");
 
-// ── LOOKUP TABLES ──
+// جداول الترجمة (عرض وتنسيق)
 const TM={aadl:{l:'AADL',c:'aadl'},social:{l:'Social',c:'social'},lpp:{l:'LPP',c:'lpp'}};
 const OM={kira:{l:'كراء',c:'kira'},bay3:{l:'بيع',c:'bay3'},tanaz:{l:'تنازل',c:'tanaz'}};
 const RL={f2:'F2',f3:'F3',f4:'F4',f5:'F5+'};
 const PH=['🏠','🏢','🏡','🌇','🏘️','🏗️'];
 const GR=['#C8E6C9','#BBDEFB','#E1BEE7','#FFE0B2','#B2EBF2','#F8BBD9'];
 
-// ── STATE ──
-let DATA=[];
-let fTypes=new Set(['aadl','social','lpp']),fOp='all',fRooms='all',fSearch='',disp=[];
-let favs=new Set();
-let currentUser=null;
+// --- الحالة العامة (State) ---
+let DATA = [];        // البيانات الخام من Firebase
+let fTypes = new Set(['aadl','social','lpp']); // الفلاتر النشطة
+let fOp = 'all';
+let fRooms = 'all';
+let fSearch = '';
+let fCommune = '';   // البلدية المختارة
+let priceMin = 0;
+let priceMax = Infinity;
+let displayList = [];
 
-// ── AUTH ──
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-  updateAdminUI();
-});
-
-function updateAdminUI(){
-  const btn = document.getElementById('adminBtn');
-  if(!btn) return;
-  if(currentUser){
-    btn.innerHTML='🔓 خروج';
-    btn.onclick=()=>signOut(auth).then(()=>toast('تم تسجيل الخروج',''));
-  } else {
-    btn.innerHTML='🔐 دخول المشرف';
-    btn.onclick=()=>adminLogin();
-  }
-}
-
-async function adminLogin(){
-  const email=window.prompt('البريد الإلكتروني:');
-  const pass=window.prompt('كلمة السر:');
-  if(email&&pass){
-    try{
-      await signInWithEmailAndPassword(auth, email.trim().toLowerCase(), pass.trim());
-      toast('✅ مرحباً بك يا مشرف!','');
-    }catch(e){ toast('❌ فشل الدخول: تأكد من البيانات','red'); }
-  }
-}
-
-// ── FIRESTORE LISTENER ──
-onSnapshot(q, (snapshot) => {
-
-  DATA = snapshot.docs.map(d => ({
-    id: d.id,
-    ...d.data()
-  }));
-
-  document.getElementById('sc1').textContent = DATA.length;
-
-  const communes = [...new Set(
-    DATA.map(x => x.commune).filter(Boolean)
-  )];
-
-  document.getElementById('scCommunes').textContent = communes.length;
-
-  disp = [...DATA];
-  af();
-  showLoading(false);
-});
-// ── RENDER ──
-function render(d){
-  const g=document.getElementById('grid');
-  document.getElementById('rn').textContent=d.length;
-  if(!d.length){
-    g.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>لا توجد إعلانات</h3><p>جرّب تغيير معايير البحث</p></div>`;
+// --- تحديث الواجهة بناءً على القائمة المُرشحة (displayList) ---
+function renderAds(list) {
+  const grid = document.getElementById('grid');
+  const rnSpan = document.getElementById('rn');
+  if (!grid) return;
+  
+  // تحديث العداد
+  if (rnSpan) rnSpan.innerText = list.length;
+  // تحديث العداد الكلي في الـ Stats
+  const totalCountSpan = document.getElementById('liveAdCount');
+  if (totalCountSpan) totalCountSpan.innerText = DATA.length;
+  
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>لا توجد إعلانات</h3><p>جرّب تغيير معايير البحث</p></div>`;
     return;
   }
-  const colorIdx=(id)=>{const h=id.split('').reduce((a,c)=>a+c.charCodeAt(0),0);return h%GR.length;};
-  const phIdx=(id)=>{const h=id.split('').reduce((a,c)=>a+c.charCodeAt(0),0);return h%PH.length;};
-  g.innerHTML=d.map(l=>`
-    <div class="card" onclick="openD('${l.id}')">
-      <div class="cimg" style="background:linear-gradient(135deg,${GR[colorIdx(l.id)]},${GR[(colorIdx(l.id)+2)%GR.length]})">
-        <div class="cimg-ph">${PH[phIdx(l.id)]}</div>
-        <span class="bt ${l.type}">${TM[l.type].l}</span>
-        <span class="bo ${l.op}">${OM[l.op].l}</span>
-        <button class="fav" id="fv${l.id}" onclick="tfav(event,'${l.id}')">${favs.has(l.id)?'❤️':'🤍'}</button>
-        ${l.feat?'<div class="feat-badge">⭐ مميز</div>':''}
-        ${currentUser?`<button class="del-btn" onclick="delAd(event,'${l.id}')">🗑️</button>`:''}
+  
+  const colorIdx = (id) => {
+    let hash = 0;
+    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
+    return hash % GR.length;
+  };
+  const phIdx = (id) => {
+    let hash = 0;
+    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
+    return hash % PH.length;
+  };
+  
+  grid.innerHTML = list.map(ad => `
+    <div class="card" onclick="openD('${ad.id}')">
+      <div class="cimg" style="background:linear-gradient(135deg,${GR[colorIdx(ad.id)]},${GR[(colorIdx(ad.id)+2)%GR.length]})">
+        <div class="cimg-ph">${PH[phIdx(ad.id)]}</div>
+        <span class="bt ${ad.type}">${TM[ad.type]?.l || ad.type}</span>
+        <span class="bo ${ad.op}">${OM[ad.op]?.l || ad.op}</span>
+        <button class="fav" id="fv${ad.id}" onclick="tfav(event,'${ad.id}')">🤍</button>
+        ${ad.feat ? '<div class="feat-badge">⭐ مميز</div>' : ''}
       </div>
       <div class="cbody">
-        <div class="ctitle">${l.title}</div>
-        <div class="cloc">📍 ${l.commune}</div>
+        <div class="ctitle">${ad.title || `شقة ${RL[ad.rooms] || ad.rooms}`}</div>
+        <div class="cloc">📍 ${ad.commune || 'الجزائر'}</div>
         <div class="cspecs">
-          <span>🛏️ ${RL[l.rooms]||l.rooms}</span>
-          <span>📐 ${l.area} م²</span>
-          <span>📅 ${(l.date||'').toString().slice(0,10).slice(5).replace('-','/')}</span>
+          <span>🛏️ ${RL[ad.rooms] || ad.rooms}</span>
+          <span>📐 ${ad.area || '?'} م²</span>
+          <span>📅 ${ad.date ? ad.date.slice(5,10).replace('-','/') : 'جديد'}</span>
         </div>
         <div class="cfoot">
-          <div class="price">${Number(l.price).toLocaleString('ar-DZ')} <small>دج${l.op==='kira'?'/شهر':''}</small></div>
-          <button class="btn-call" onclick="event.stopPropagation();dial('${l.phone}')">📞 اتصال</button>
+          <div class="price">${Number(ad.price).toLocaleString('ar-DZ')} <small>دج${ad.op === 'kira' ? '/شهر' : ''}</small></div>
+          <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone}')">📞 اتصال</button>
         </div>
       </div>
     </div>
   `).join('');
 }
 
-// ── FILTER ──
-function af(){
-  const cm=document.getElementById('fcm').value;
-  const mn=parseFloat(document.getElementById('pmin').value)||0;
-  const mx=parseFloat(document.getElementById('pmax').value)||Infinity;
-  const q=fSearch.trim().toLowerCase();
-  disp=DATA.filter(l=>{
-    if(!fTypes.has(l.type))return false;
-    if(fOp!=='all'&&l.op!==fOp)return false;
-    if(fRooms!=='all'&&l.rooms!==fRooms)return false;
-    if(cm&&l.commune!==cm)return false;
-    if(l.price<mn||l.price>mx)return false;
-    if(q&&!l.title.includes(q)&&!l.commune.includes(q))return false;
+// --- دالة التصفية (تطبق جميع الشروط) ---
+function applyFilters() {
+  const searchLower = fSearch.trim().toLowerCase();
+  displayList = DATA.filter(ad => {
+    // 1. نوع السكن
+    if (!fTypes.has(ad.type)) return false;
+    // 2. المعاملة
+    if (fOp !== 'all' && ad.op !== fOp) return false;
+    // 3. الغرف
+    if (fRooms !== 'all' && ad.rooms !== fRooms) return false;
+    // 4. البلدية
+    if (fCommune && ad.commune !== fCommune) return false;
+    // 5. السعر
+    const price = Number(ad.price) || 0;
+    if (price < priceMin || price > priceMax) return false;
+    // 6. البحث النصي (في العنوان أو البلدية)
+    if (searchLower && !(ad.title?.toLowerCase().includes(searchLower) || ad.commune?.toLowerCase().includes(searchLower))) return false;
+    
     return true;
   });
-  sd(document.getElementById('srt').value);
-}
-function sd(v){
-  if(v==='pa')disp.sort((a,b)=>a.price-b.price);
-  else if(v==='pd')disp.sort((a,b)=>b.price-a.price);
-  else disp.sort((a,b)=>((b.date||'') > (a.date||''))?1:-1);
-  render(disp);
-}
-function sl(){sd(document.getElementById('srt').value)}
-function doSearch(){fSearch=document.getElementById('searchQ').value;af();}
-
-function tog(el){
-  const v=el.dataset.v;
-  el.classList.toggle('on');
-  if(el.classList.contains('on'))fTypes.add(v);else fTypes.delete(v);
-  af();
-}
-function radio(el,g){
-  document.querySelectorAll(`[data-g="${g}"]`).forEach(x=>x.classList.remove('on'));
-  el.classList.add('on');
-  if(g==='o')fOp=el.dataset.v;
-  else if(g==='r')fRooms=el.dataset.v;
-  af();
-}
-function mf(el,t,o){
-  document.querySelectorAll('#mobStrip .chip').forEach(x=>x.classList.remove('on'));
-  el.classList.add('on');
-  fTypes=t==='all'?new Set(['aadl','social','lpp']):new Set([t]);
-  fOp=o; af();
+  
+  // تطبيق الترتيب بعد التصفية
+  sortAndRender();
 }
 
-// ── DETAIL ──
-function openD(id){
-  const l=DATA.find(x=>x.id===id);
-  if(!l) return;
-  const colorIdx=l.id.split('').reduce((a,c)=>a+c.charCodeAt(0),0)%GR.length;
-  const phIdx=l.id.split('').reduce((a,c)=>a+c.charCodeAt(0),0)%PH.length;
-  document.getElementById('mtt').textContent=l.title;
-  document.getElementById('mimg').innerHTML=`<div class="mimg-ph" style="background:linear-gradient(135deg,${GR[colorIdx]},${GR[(colorIdx+2)%GR.length]})">${PH[phIdx]}</div>`;
-  document.getElementById('mbg').innerHTML=`
-    <span class="bt ${l.type}" style="position:static;font-size:13px;padding:5px 13px">${TM[l.type].l}</span>
-    <span class="bo ${l.op}" style="position:static;font-size:13px;padding:5px 13px">${OM[l.op].l}</span>
-    ${l.feat?'<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ مميز</span>':''}
+// --- الترتيب والعرض (يستخدم displayList الحالي) ---
+function sortAndRender() {
+  const sortVal = document.getElementById('srt')?.value || 'new';
+  if (sortVal === 'pa') {
+    displayList.sort((a,b) => (a.price||0) - (b.price||0));
+  } else if (sortVal === 'pd') {
+    displayList.sort((a,b) => (b.price||0) - (a.price||0));
+  } else {
+    displayList.sort((a,b) => (b.date || '') > (a.date || '') ? 1 : -1);
+  }
+  renderAds(displayList);
+}
+
+// --- دوال التحديث من عناصر الواجهة ---
+function updateFiltersFromUI() {
+  // البلدية
+  const cmSelect = document.getElementById('fcm');
+  fCommune = cmSelect ? cmSelect.value : '';
+  
+  // نطاق السعر
+  const minInp = document.getElementById('pmin');
+  const maxInp = document.getElementById('pmax');
+  priceMin = minInp && minInp.value ? parseFloat(minInp.value) : 0;
+  priceMax = maxInp && maxInp.value ? parseFloat(maxInp.value) : Infinity;
+  
+  applyFilters();
+}
+
+// --- ربط دوال التصفية العامة ---
+function af() {
+  updateFiltersFromUI();
+}
+function sl() {
+  sortAndRender();
+}
+function doSearch() {
+  const searchInput = document.getElementById('searchQ');
+  fSearch = searchInput ? searchInput.value : '';
+  applyFilters();
+}
+
+// --- دوال الفلاتر (النوع، المعاملة، الغرف) ---
+function tog(el) {
+  const v = el.dataset.v;
+  if (el.classList.contains('on')) {
+    el.classList.remove('on');
+    fTypes.delete(v);
+  } else {
+    el.classList.add('on');
+    fTypes.add(v);
+  }
+  applyFilters();
+}
+
+function radio(el, group) {
+  document.querySelectorAll(`[data-g="${group}"]`).forEach(btn => btn.classList.remove('on'));
+  el.classList.add('on');
+  const val = el.dataset.v;
+  if (group === 'o') {
+    fOp = val;
+  } else if (group === 'r') {
+    fRooms = val;
+  }
+  applyFilters();
+}
+
+function mf(el, typeVal, opVal) {
+  document.querySelectorAll('#mobStrip .chip').forEach(btn => btn.classList.remove('on'));
+  el.classList.add('on');
+  if (typeVal === 'all') {
+    fTypes = new Set(['aadl','social','lpp']);
+  } else {
+    fTypes = new Set([typeVal]);
+  }
+  fOp = opVal;
+  applyFilters();
+  // مزامنة الواجهة الجانبية (اختياري)
+  document.querySelectorAll('.sidebar .chip').forEach(btn => {
+    if (btn.dataset.g === 't') {
+      if (fTypes.has(btn.dataset.v)) btn.classList.add('on');
+      else btn.classList.remove('on');
+    }
+    if (btn.dataset.g === 'o') {
+      if (fOp === btn.dataset.v) btn.classList.add('on');
+      else if (btn.dataset.v === 'all' && fOp === 'all') btn.classList.add('on');
+      else btn.classList.remove('on');
+    }
+  });
+}
+
+// --- فتح التفاصيل ---
+function openD(id) {
+  const ad = DATA.find(x => x.id === id);
+  if (!ad) return;
+  const colorIdx = (id) => {
+    let hash = 0;
+    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
+    return hash % GR.length;
+  };
+  const phIdx = (id) => {
+    let hash = 0;
+    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
+    return hash % PH.length;
+  };
+  document.getElementById('mtt').innerHTML = ad.title || `شقة ${RL[ad.rooms] || ad.rooms}`;
+  document.getElementById('mimg').innerHTML = `<div class="mimg-ph" style="background:linear-gradient(135deg,${GR[colorIdx(ad.id)]},${GR[(colorIdx(ad.id)+2)%GR.length]})">${PH[phIdx(ad.id)]}</div>`;
+  document.getElementById('mbg').innerHTML = `
+    <span class="bt ${ad.type}" style="position:static;font-size:13px;padding:5px 13px">${TM[ad.type]?.l || ad.type}</span>
+    <span class="bo ${ad.op}" style="position:static;font-size:13px;padding:5px 13px">${OM[ad.op]?.l || ad.op}</span>
+    ${ad.feat ? '<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ مميز</span>' : ''}
   `;
-  document.getElementById('mds').textContent=l.desc;
-  document.getElementById('msp').innerHTML=`
-    <div class="mspec"><strong>📍 ${l.commune}</strong>البلدية</div>
-    <div class="mspec"><strong>🛏️ ${RL[l.rooms]||l.rooms}</strong>الغرف</div>
-    <div class="mspec"><strong>📐 ${l.area} م²</strong>المساحة</div>
-    <div class="mspec"><strong>💰 ${Number(l.price).toLocaleString('ar-DZ')} دج</strong>السعر${l.op==='kira'?' / شهر':''}</div>
+  document.getElementById('mds').innerHTML = ad.desc || 'لا يوجد وصف إضافي.';
+  document.getElementById('msp').innerHTML = `
+    <div class="mspec"><strong>📍 ${ad.commune || 'الجزائر'}</strong>البلدية</div>
+    <div class="mspec"><strong>🛏️ ${RL[ad.rooms] || ad.rooms}</strong>الغرف</div>
+    <div class="mspec"><strong>📐 ${ad.area || '?'} م²</strong>المساحة</div>
+    <div class="mspec"><strong>💰 ${Number(ad.price).toLocaleString('ar-DZ')} دج</strong>السعر${ad.op === 'kira' ? ' / شهر' : ''}</div>
   `;
-  document.getElementById('mcall').onclick=()=>dial(l.phone);
+  const callBtn = document.getElementById('mcall');
+  callBtn.onclick = () => dial(ad.phone);
   document.getElementById('dm').classList.add('open');
 }
 
-// ── POST → FIRESTORE ──
-function openPost(){document.getElementById('pm').classList.add('open')}
-async function sub(){
-  const loc=document.getElementById('pl').value.trim();
-  const ph=document.getElementById('ph').value.trim();
-  const pr=document.getElementById('pp').value.trim();
-  if(!loc||!ph||!pr){toast('⚠️ يرجى ملء الحقول الضرورية','red');return;}
-  const btn=document.querySelector('.btn-submit');
-  btn.disabled=true; btn.textContent='⏳ جارٍ النشر...';
-  try{
-    await addDoc(adsCol,{
-      type:document.getElementById('pt').value,
-      op:document.getElementById('po').value,
-      title:`شقة ${document.getElementById('pr').value.toUpperCase()} – ${loc}`,
-      commune:loc.split(/[-–]/)[0].trim(),
-      rooms:document.getElementById('pr').value,
-      area:parseInt(document.getElementById('pa').value)||0,
-      price:parseInt(pr)||0,
-      desc:document.getElementById('pd').value||'لا يوجد وصف إضافي.',
-      phone:ph,
-      feat:false,
-      date:new Date().toISOString().slice(0,10)
-    });
+// --- دوال الإضافة (نشر الإعلان) ---
+function openPost() {
+  document.getElementById('pm').classList.add('open');
+}
+
+async function sub() {
+  const loc = document.getElementById('pl').value.trim();
+  const phone = document.getElementById('ph').value.trim();
+  const priceRaw = document.getElementById('pp').value.trim();
+  if (!loc || !phone || !priceRaw) {
+    toast('⚠️ يرجى ملء الحقول الضرورية (البلدية، السعر، رقم الهاتف)', 'red');
+    return;
+  }
+  
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.textContent = '⏳ جارٍ النشر...';
+  
+  try {
+    const newAd = {
+      type: document.getElementById('pt').value,
+      op: document.getElementById('po').value,
+      title: `شقة ${document.getElementById('pr').value.toUpperCase()} – ${loc}`,
+      commune: loc.split(/[-–]/)[0].trim(),
+      rooms: document.getElementById('pr').value,
+      area: parseInt(document.getElementById('pa').value) || 0,
+      price: parseInt(priceRaw) || 0,
+      desc: document.getElementById('pd').value || 'لا يوجد وصف إضافي.',
+      phone: phone,
+      feat: false,
+      date: new Date().toISOString().slice(0,10)
+    };
+    await addDoc(adsCol, newAd);
+    // إغلاق النافذة وتفريغ الحقول
     cm('pm');
-    ['pt','po','pl','pa','pp','ph','pd'].forEach(x=>document.getElementById(x).value='');
-    document.getElementById('pr').selectedIndex=0;
-    toast('✅ تم نشر إعلانك بنجاح في Firebase!','');
-  }catch(e){
-    toast('❌ فشل النشر: تحقق من اتصالك','red');
+    document.getElementById('pl').value = '';
+    document.getElementById('ph').value = '';
+    document.getElementById('pp').value = '';
+    document.getElementById('pa').value = '';
+    document.getElementById('pd').value = '';
+    toast('✅ تم نشر إعلانك بنجاح!', '');
+  } catch(e) {
     console.error(e);
+    toast('❌ فشل النشر: تحقق من اتصالك بالإنترنت', 'red');
   }
-  btn.disabled=false; btn.textContent='🚀 نشر الإعلان مجاناً';
+  btn.disabled = false;
+  btn.textContent = '🚀 نشر الإعلان مجاناً';
 }
 
-// ── DELETE (admin only) ──
-async function delAd(e, id){
+// --- دوال مساعدة عامة ---
+function dial(num) {
+  toast(`📞 جارٍ الاتصال بـ ${num}`, '');
+  setTimeout(() => {
+    window.location.href = `tel:${num}`;
+  }, 800);
+}
+
+function tfav(e, id) {
   e.stopPropagation();
-  if(!currentUser){toast('❌ يجب تسجيل الدخول كمشرف','red');return;}
-  if(confirm('حذف هذا الإعلان نهائياً؟')){
-    try{
-      await deleteDoc(doc(db,'clients',id));
-      toast('🗑️ تم حذف الإعلان','');
-    }catch(err){toast('❌ فشل الحذف','red');}
+  const btn = document.getElementById(`fv${id}`);
+  if (btn) {
+    if (btn.innerText === '❤️') {
+      btn.innerText = '🤍';
+      toast('تمت الإزالة من المفضلة', '');
+    } else {
+      btn.innerText = '❤️';
+      toast('❤️ تمت الإضافة للمفضلة', 'gold');
+    }
   }
 }
 
-// ── HELPERS ──
-function dial(n){toast(`📞 جارٍ الاتصال بـ ${n}`,'');setTimeout(()=>window.location.href=`tel:${n}`,900);}
-function tfav(e,id){
-  e.stopPropagation();
-  if(favs.has(id)){favs.delete(id);toast('تمت الإزالة من المفضلة','');}
-  else{favs.add(id);toast('❤️ تمت الإضافة للمفضلة','gold');}
-  const b=document.getElementById(`fv${id}`);if(b)b.textContent=favs.has(id)?'❤️':'🤍';
-}
-function cm(id){document.getElementById(id).classList.remove('open');}
-function cov(e,id){if(e.target.id===id)cm(id);}
-
-let tt;
-function toast(msg,cls){
-  const t=document.getElementById('tst');
-  t.textContent=msg;
-  t.className='toast'+(cls?' '+cls:'');
-  t.classList.add('show');
-  clearTimeout(tt);
-  tt=setTimeout(()=>t.classList.remove('show'),2800);
+function cm(modalId) {
+  document.getElementById(modalId).classList.remove('open');
 }
 
-// ── EXPOSE TO HTML onclick ──
-window.af=af; window.sl=sl; window.doSearch=doSearch;
-window.tog=tog; window.radio=radio; window.mf=mf;
-window.openD=openD; window.openPost=openPost; window.sub=sub;
-window.delAd=delAd; window.dial=dial; window.tfav=tfav;
-window.cm=cm; window.cov=cov; window.toast=toast;
-window.adminLogin=adminLogin;
+function cov(e, modalId) {
+  if (e.target.id === modalId) cm(modalId);
+}
 
-// ── INIT ──
-showLoading(true);
+function toast(msg, cls) {
+  const tst = document.getElementById('tst');
+  tst.textContent = msg;
+  tst.className = 'toast' + (cls ? ' ' + cls : '');
+  tst.classList.add('show');
+  setTimeout(() => tst.classList.remove('show'), 2800);
+}
+
+// --- ربط الدوال بالنطاق العام (للاستدعاء من HTML) ---
+window.af = af;
+window.sl = sl;
+window.doSearch = doSearch;
+window.tog = tog;
+window.radio = radio;
+window.mf = mf;
+window.openD = openD;
+window.openPost = openPost;
+window.sub = sub;
+window.dial = dial;
+window.tfav = tfav;
+window.cm = cm;
+window.cov = cov;
+window.toast = toast;
+
+// --- الاستماع للتغييرات المباشرة من Firebase (Real-time) ---
+function startFirebaseListener() {
+  const q = query(adsCol, orderBy("date", "desc"));
+  onSnapshot(q, (snapshot) => {
+    DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    // تطبيق الفلاتر الحالية بعد تحديث البيانات
+    applyFilters();
+    // تحديث عدد الإعلانات الكلي في stats
+    const totalSpan = document.getElementById('liveAdCount');
+    if (totalSpan) totalSpan.innerText = DATA.length;
+  }, (error) => {
+    console.error("Firebase error:", error);
+    toast("⚠️ مشكلة في الاتصال بقاعدة البيانات", "red");
+  });
+}
+
+// بدء تشغيل التطبيق
+startFirebaseListener();
 </script>
-
 </body>
 </html>
