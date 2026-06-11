@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -361,6 +362,17 @@ header{
 .empty-icon{font-size:64px;margin-bottom:14px}
 .empty h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px}
 
+/* LANG SWITCHER */
+.lang-btn{
+  padding:7px 14px;
+  background:rgba(255,255,255,.15);
+  color:#fff;border:1.5px solid rgba(255,255,255,.35);
+  border-radius:9px;
+  font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;
+  cursor:pointer;transition:.2s;letter-spacing:.5px;
+}
+.lang-btn:hover{background:rgba(255,255,255,.28)}
+
 /* FOOTER */
 footer{
   background:var(--green);color:rgba(255,255,255,.6);
@@ -386,8 +398,9 @@ footer strong{color:var(--gold-bright)}
     </div>
   </a>
   <div style="display:flex;gap:8px;align-items:center">
-    <button onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-      ＋ نشر إعلان
+    <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
+    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
+      ＋ <span data-k="postAd">نشر إعلان</span>
     </button>
   </div>
 </header>
@@ -395,26 +408,26 @@ footer strong{color:var(--gold-bright)}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-crescent">🌙⭐</div>
-  <h1 class="hero-title">ابحث عن <span>دارك</span> هنا</h1>
-  <p class="hero-sub">كل إعلانات AADL · Social · LPP في الجزائر العاصمة</p>
+  <h1 class="hero-title" data-k="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
+  <p class="hero-sub" data-k="heroSub">كل إعلانات AADL · Social · LPP في الجزائر العاصمة</p>
   <div class="tag-row">
     <span class="tag aadl">🔵 AADL</span>
     <span class="tag social">🟣 Social</span>
     <span class="tag lpp">🟠 LPP</span>
-    <span class="tag" style="border-color:rgba(206,17,38,.6);color:#FFB3B3">🔴 كراء · بيع · تنازل</span>
+    <span class="tag" style="border-color:rgba(206,17,38,.6);color:#FFB3B3">🔴 <span data-k="tagOps">كراء · بيع · تنازل</span></span>
   </div>
   <div class="search-wrap">
     <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية... (سيدي عبد الله، الرغاية...)" onkeyup="if(event.key==='Enter')doSearch()"/>
-    <button onclick="doSearch()">🔍 بحث</button>
+    <button onclick="doSearch()">🔍 <span data-k="search">بحث</span></button>
   </div>
 </section>
 
 <!-- STATS - سيتم تحديث العدد تلقائياً من Firebase -->
 <div class="stats">
-  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l">إعلان نشط</div></div>
-  <div class="stat"><div class="stat-n">31</div><div class="stat-l">بلدية</div></div>
-  <div class="stat"><div class="stat-n">12</div><div class="stat-l">حي AADL</div></div>
-  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l">الجزائر العاصمة</div></div>
+  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l" data-k="statAds">إعلان نشط</div></div>
+  <div class="stat"><div class="stat-n">31</div><div class="stat-l" data-k="statCommunes">بلدية</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l" data-k="statAadl">حي AADL</div></div>
+  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l" data-k="statCity">الجزائر العاصمة</div></div>
 </div>
 
 <!-- MAIN -->
@@ -422,7 +435,7 @@ footer strong{color:var(--gold-bright)}
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="fcard">
-      <div class="ftitle">🏷️ نوع السكن</div>
+      <div class="ftitle">🏷️ <span data-k="filterType">نوع السكن</span></div>
       <div class="chips">
         <button class="chip aadl on" data-g="t" data-v="aadl" onclick="tog(this)">AADL</button>
         <button class="chip social on" data-g="t" data-v="social" onclick="tog(this)">Social</button>
@@ -430,18 +443,18 @@ footer strong{color:var(--gold-bright)}
       </div>
     </div>
     <div class="fcard">
-      <div class="ftitle">🤝 نوع المعاملة</div>
+      <div class="ftitle">🤝 <span data-k="filterOp">نوع المعاملة</span></div>
       <div class="chips">
-        <button class="chip on" data-g="o" data-v="all" onclick="radio(this,'o')">الكل</button>
-        <button class="chip kira" data-g="o" data-v="kira" onclick="radio(this,'o')">كراء</button>
-        <button class="chip bay3" data-g="o" data-v="bay3" onclick="radio(this,'o')">بيع</button>
-        <button class="chip tanaz" data-g="o" data-v="tanaz" onclick="radio(this,'o')">تنازل</button>
+        <button class="chip on" data-g="o" data-v="all" onclick="radio(this,'o')" data-k="all">الكل</button>
+        <button class="chip kira" data-g="o" data-v="kira" onclick="radio(this,'o')" data-k="kira">كراء</button>
+        <button class="chip bay3" data-g="o" data-v="bay3" onclick="radio(this,'o')" data-k="bay3">بيع</button>
+        <button class="chip tanaz" data-g="o" data-v="tanaz" onclick="radio(this,'o')" data-k="tanaz">تنازل</button>
       </div>
     </div>
     <div class="fcard">
-      <div class="ftitle">📍 البلدية</div>
+      <div class="ftitle">📍 <span data-k="filterCommune">البلدية</span></div>
       <select class="fsel" id="fcm" onchange="af()">
-        <option value="">كل البلديات</option>
+        <option value="" data-k="allCommunes">كل البلديات</option>
         <option>سيدي عبد الله</option><option>الرغاية</option>
         <option>أولاد فايت</option><option>الدار البيضاء</option>
         <option>حسين داي</option><option>باب الزوار</option>
@@ -452,9 +465,9 @@ footer strong{color:var(--gold-bright)}
       </select>
     </div>
     <div class="fcard">
-      <div class="ftitle">🛏️ عدد الغرف</div>
+      <div class="ftitle">🛏️ <span data-k="filterRooms">عدد الغرف</span></div>
       <div class="chips">
-        <button class="chip on" data-g="r" data-v="all" onclick="radio(this,'r')">الكل</button>
+        <button class="chip on" data-g="r" data-v="all" onclick="radio(this,'r')" data-k="all">الكل</button>
         <button class="chip" data-g="r" data-v="f2" onclick="radio(this,'r')">F2</button>
         <button class="chip" data-g="r" data-v="f3" onclick="radio(this,'r')">F3</button>
         <button class="chip" data-g="r" data-v="f4" onclick="radio(this,'r')">F4</button>
@@ -462,13 +475,13 @@ footer strong{color:var(--gold-bright)}
       </div>
     </div>
     <div class="fcard">
-      <div class="ftitle">💰 نطاق السعر (دج)</div>
+      <div class="ftitle">💰 <span data-k="filterPrice">نطاق السعر (دج)</span></div>
       <div class="prange">
-        <input id="pmin" type="number" placeholder="من"/>
+        <input id="pmin" type="number" placeholder="من" data-k-ph="from"/>
         <span>–</span>
-        <input id="pmax" type="number" placeholder="إلى"/>
+        <input id="pmax" type="number" placeholder="إلى" data-k-ph="to"/>
       </div>
-      <button class="btn-apply" onclick="af()">✅ تطبيق الفلاتر</button>
+      <button class="btn-apply" onclick="af()" data-k="applyFilters">✅ تطبيق الفلاتر</button>
     </div>
   </aside>
 
@@ -476,21 +489,21 @@ footer strong{color:var(--gold-bright)}
   <div class="content">
     <!-- mobile strip -->
     <div class="mob-strip" id="mobStrip">
-      <button class="chip on" onclick="mf(this,'all','all')">الكل</button>
+      <button class="chip on" onclick="mf(this,'all','all')" data-k="all">الكل</button>
       <button class="chip aadl" onclick="mf(this,'aadl','all')">AADL</button>
       <button class="chip social" onclick="mf(this,'social','all')">Social</button>
       <button class="chip lpp" onclick="mf(this,'lpp','all')">LPP</button>
-      <button class="chip kira" onclick="mf(this,'all','kira')">كراء</button>
-      <button class="chip bay3" onclick="mf(this,'all','bay3')">بيع</button>
-      <button class="chip tanaz" onclick="mf(this,'all','tanaz')">تنازل</button>
+      <button class="chip kira" onclick="mf(this,'all','kira')" data-k="kira">كراء</button>
+      <button class="chip bay3" onclick="mf(this,'all','bay3')" data-k="bay3">بيع</button>
+      <button class="chip tanaz" onclick="mf(this,'all','tanaz')" data-k="tanaz">تنازل</button>
     </div>
 
     <div class="topbar">
-      <div class="rcount">عرض <strong id="rn">0</strong> إعلان</div>
+      <div class="rcount"><span data-k="showing">عرض</span> <strong id="rn">0</strong> <span data-k="adWord">إعلان</span></div>
       <select class="sortsel" id="srt" onchange="sl()">
-        <option value="new">الأحدث أولاً</option>
-        <option value="pa">الأرخص أولاً</option>
-        <option value="pd">الأغلى أولاً</option>
+        <option value="new" data-k="sortNew">الأحدث أولاً</option>
+        <option value="pa" data-k="sortPa">الأرخص أولاً</option>
+        <option value="pd" data-k="sortPd">الأغلى أولاً</option>
       </select>
     </div>
 
@@ -514,8 +527,14 @@ footer strong{color:var(--gold-bright)}
       <p class="mdesc" id="mds"></p>
       <div class="mspecs" id="msp"></div>
       <div class="macts">
-        <button class="mact green" id="mcall">📞 اتصل الآن</button>
-        <button class="mact gold" onclick="toast('💬 ميزة الدردشة قريباً!','gold')">💬 رسالة</button>
+        <button class="mact green" id="mcall">📞 <span data-k="callNow">اتصل الآن</span></button>
+        <button class="mact gold" id="mwa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.497-5.203-1.367l-.374-.217-3.875 1.024 1.024-3.742-.234-.386A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </button>
+        <button class="mact" id="mshare" style="background:#E8F5EE;color:var(--green);flex:0.6">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -525,50 +544,54 @@ footer strong{color:var(--gold-bright)}
 <div class="overlay" id="pm" onclick="cov(event,'pm')">
   <div class="modal pmodal">
     <div class="pmhead" style="position:relative">
-      <div class="pmhead-title">📣 نشر إعلان جديد</div>
-      <div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div>
+      <div class="pmhead-title">📣 <span data-k="postTitle">نشر إعلان جديد</span></div>
+      <div class="pmhead-sub" data-k="postSub">مجاني – بدون تسجيل – فوري</div>
       <button class="pmclose" onclick="cm('pm')">✕</button>
     </div>
     <div class="pmbody">
       <div class="fg-row">
         <div class="fg">
-          <label>نوع السكن</label>
+          <label data-k="labelType">نوع السكن</label>
           <select id="pt"><option value="aadl">AADL</option><option value="social">Social</option><option value="lpp">LPP</option></select>
         </div>
         <div class="fg">
-          <label>المعاملة</label>
-          <select id="po"><option value="kira">كراء</option><option value="bay3">بيع</option><option value="tanaz">تنازل</option></select>
+          <label data-k="labelOp">المعاملة</label>
+          <select id="po">
+            <option value="kira" data-k="kira">كراء</option>
+            <option value="bay3" data-k="bay3">بيع</option>
+            <option value="tanaz" data-k="tanaz">تنازل</option>
+          </select>
         </div>
       </div>
       <div class="fg">
-        <label>البلدية والحي <span style="color:var(--red)">*</span></label>
-        <input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/>
+        <label data-k="labelCommune">البلدية والحي <span style="color:var(--red)">*</span></label>
+        <input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن" data-k-ph="communePlaceholder"/>
       </div>
       <div class="fg-row">
         <div class="fg">
-          <label>الغرف</label>
+          <label data-k="labelRooms">الغرف</label>
           <select id="pr"><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5+</option></select>
         </div>
         <div class="fg">
-          <label>المساحة (م²)</label>
-          <input id="pa" type="number" placeholder="مثال: 85"/>
+          <label data-k="labelArea">المساحة (م²)</label>
+          <input id="pa" type="number" placeholder="مثال: 85" data-k-ph="areaPlaceholder"/>
         </div>
       </div>
       <div class="fg-row">
         <div class="fg">
-          <label>السعر (دج) <span style="color:var(--red)">*</span></label>
-          <input id="pp" type="number" placeholder="مثال: 40000"/>
+          <label data-k="labelPrice">السعر (دج) <span style="color:var(--red)">*</span></label>
+          <input id="pp" type="number" placeholder="مثال: 40000" data-k-ph="pricePlaceholder"/>
         </div>
         <div class="fg">
-          <label>رقم الهاتف <span style="color:var(--red)">*</span></label>
+          <label data-k="labelPhone">رقم الهاتف <span style="color:var(--red)">*</span></label>
           <input id="ph" type="tel" placeholder="07XX XX XX XX"/>
         </div>
       </div>
       <div class="fg">
-        <label>وصف الشقة</label>
-        <textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
+        <label data-k="labelDesc">وصف الشقة</label>
+        <textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..." data-k-ph="descPlaceholder"></textarea>
       </div>
-      <button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button>
+      <button class="btn-submit" onclick="sub()" data-k="submitBtn">🚀 نشر الإعلان مجاناً</button>
     </div>
   </div>
 </div>
@@ -576,9 +599,168 @@ footer strong{color:var(--gold-bright)}
 <div class="toast" id="tst"></div>
 
 <footer>
-  <strong>DARNA IMMO</strong> · دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي
+  <strong>DARNA IMMO</strong> · <span data-k="footerText">دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي</span>
   <div class="footer-flag"></div>
 </footer>
+
+<!-- LANGUAGE SYSTEM -->
+<script>
+const LANGS = {
+  ar: {
+    dir: 'rtl', langLabel: 'FR',
+    heroTitle: 'ابحث عن <span>دارك</span> هنا',
+    heroSub: 'كل إعلانات AADL · Social · LPP في الجزائر العاصمة',
+    tagOps: 'كراء · بيع · تنازل',
+    search: 'بحث',
+    postAd: 'نشر إعلان',
+    statAds: 'إعلان نشط',
+    statCommunes: 'بلدية',
+    statAadl: 'حي AADL',
+    statCity: 'الجزائر العاصمة',
+    filterType: 'نوع السكن',
+    filterOp: 'نوع المعاملة',
+    filterCommune: 'البلدية',
+    allCommunes: 'كل البلديات',
+    filterRooms: 'عدد الغرف',
+    filterPrice: 'نطاق السعر (دج)',
+    applyFilters: '✅ تطبيق الفلاتر',
+    all: 'الكل',
+    kira: 'كراء',
+    bay3: 'بيع',
+    tanaz: 'تنازل',
+    showing: 'عرض',
+    adWord: 'إعلان',
+    sortNew: 'الأحدث أولاً',
+    sortPa: 'الأرخص أولاً',
+    sortPd: 'الأغلى أولاً',
+    callNow: 'اتصل الآن',
+    message: 'رسالة',
+    postTitle: 'نشر إعلان جديد',
+    postSub: 'مجاني – بدون تسجيل – فوري',
+    labelType: 'نوع السكن',
+    labelOp: 'المعاملة',
+    labelCommune: 'البلدية والحي',
+    labelRooms: 'الغرف',
+    labelArea: 'المساحة (م²)',
+    labelPrice: 'السعر (دج)',
+    labelPhone: 'رقم الهاتف',
+    labelDesc: 'وصف الشقة',
+    submitBtn: '🚀 نشر الإعلان مجاناً',
+    footerText: 'دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي',
+    searchPlaceholder: 'ابحث بالحي أو البلدية... (سيدي عبد الله، الرغاية...)',
+    communePlaceholder: 'مثال: سيدي عبد الله – حي 3000 مسكن',
+    areaPlaceholder: 'مثال: 85',
+    pricePlaceholder: 'مثال: 40000',
+    descPlaceholder: 'الطابق، التوجيه، المرافق، ملاحظات...',
+    from: 'من',
+    to: 'إلى',
+  },
+  fr: {
+    dir: 'ltr', langLabel: 'عربي',
+    heroTitle: 'Trouvez votre <span>logement</span> ici',
+    heroSub: 'Toutes les annonces AADL · Social · LPP à Alger',
+    tagOps: 'Location · Vente · Cession',
+    search: 'Rechercher',
+    postAd: 'Publier',
+    statAds: 'Annonce active',
+    statCommunes: 'Communes',
+    statAadl: 'Quartiers AADL',
+    statCity: 'Alger',
+    filterType: 'Type de logement',
+    filterOp: 'Type d\'opération',
+    filterCommune: 'Commune',
+    allCommunes: 'Toutes les communes',
+    filterRooms: 'Nombre de pièces',
+    filterPrice: 'Fourchette de prix (DA)',
+    applyFilters: '✅ Appliquer les filtres',
+    all: 'Tout',
+    kira: 'Location',
+    bay3: 'Vente',
+    tanaz: 'Cession',
+    showing: 'Affichage de',
+    adWord: 'annonce(s)',
+    sortNew: 'Plus récent',
+    sortPa: 'Prix croissant',
+    sortPd: 'Prix décroissant',
+    callNow: 'Appeler',
+    message: 'Message',
+    postTitle: 'Publier une annonce',
+    postSub: 'Gratuit – Sans inscription – Instantané',
+    labelType: 'Type de logement',
+    labelOp: 'Opération',
+    labelCommune: 'Commune & Quartier',
+    labelRooms: 'Pièces',
+    labelArea: 'Surface (m²)',
+    labelPrice: 'Prix (DA)',
+    labelPhone: 'Téléphone',
+    labelDesc: 'Description',
+    submitBtn: '🚀 Publier gratuitement',
+    footerText: 'Darna Immo – Plateforme immobilière sociale d\'Alger',
+    searchPlaceholder: 'Rechercher par quartier ou commune...',
+    communePlaceholder: 'Ex: Sidi Abdellah – Cité 3000 logements',
+    areaPlaceholder: 'Ex: 85',
+    pricePlaceholder: 'Ex: 40000',
+    descPlaceholder: 'Étage, orientation, équipements, notes...',
+    from: 'De',
+    to: 'À',
+  }
+};
+
+window.currentLang = 'ar';
+
+function toggleLang() {
+  window.currentLang = window.currentLang === 'ar' ? 'fr' : 'ar';
+  applyLang();
+}
+
+function applyLang() {
+  const L = LANGS[window.currentLang];
+  const html = document.documentElement;
+  html.setAttribute('lang', window.currentLang);
+  html.setAttribute('dir', L.dir);
+
+  // Update lang button
+  document.getElementById('langBtn').textContent = L.langLabel;
+
+  // Update all [data-k] elements
+  document.querySelectorAll('[data-k]').forEach(el => {
+    const key = el.getAttribute('data-k');
+    if (L[key] !== undefined) {
+      if (el.tagName === 'OPTION') {
+        el.textContent = L[key];
+      } else {
+        el.innerHTML = L[key];
+      }
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-k-ph]').forEach(el => {
+    const key = el.getAttribute('data-k-ph');
+    if (L[key] !== undefined) el.placeholder = L[key];
+  });
+
+  // Update search input placeholder
+  const sq = document.getElementById('searchQ');
+  if (sq) sq.placeholder = L.searchPlaceholder;
+
+  // Update pmin/pmax placeholders
+  const pmin = document.getElementById('pmin');
+  const pmax = document.getElementById('pmax');
+  if (pmin) pmin.placeholder = L.from;
+  if (pmax) pmax.placeholder = L.to;
+
+  // Update select options for po (operation in post modal)
+  const poSel = document.getElementById('po');
+  if (poSel) {
+    poSel.options[0].text = L.kira;
+    poSel.options[1].text = L.bay3;
+    poSel.options[2].text = L.tanaz;
+  }
+}
+
+window.toggleLang = toggleLang;
+</script>
 
 <!-- ── FIREBASE (إصدار حديث مع تعامل صحيح مع Firebase) ── -->
 <script type="module">
@@ -601,10 +783,18 @@ const adsCol = collection(db, "clients");
 
 // جداول الترجمة (عرض وتنسيق)
 const TM={aadl:{l:'AADL',c:'aadl'},social:{l:'Social',c:'social'},lpp:{l:'LPP',c:'lpp'}};
-const OM={kira:{l:'كراء',c:'kira'},bay3:{l:'بيع',c:'bay3'},tanaz:{l:'تنازل',c:'tanaz'}};
+const OM={
+  kira:{ar:'كراء',fr:'Location',c:'kira'},
+  bay3:{ar:'بيع',fr:'Vente',c:'bay3'},
+  tanaz:{ar:'تنازل',fr:'Cession',c:'tanaz'}
+};
 const RL={f2:'F2',f3:'F3',f4:'F4',f5:'F5+'};
 const PH=['🏠','🏢','🏡','🌇','🏘️','🏗️'];
 const GR=['#C8E6C9','#BBDEFB','#E1BEE7','#FFE0B2','#B2EBF2','#F8BBD9'];
+
+function omLabel(op) {
+  return OM[op] ? OM[op][window.currentLang] || OM[op].ar : op;
+}
 
 // --- الحالة العامة (State) ---
 let DATA = [];        // البيانات الخام من Firebase
@@ -630,7 +820,7 @@ function renderAds(list) {
   if (totalCountSpan) totalCountSpan.innerText = DATA.length;
   
   if (list.length === 0) {
-    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>لا توجد إعلانات</h3><p>جرّب تغيير معايير البحث</p></div>`;
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>${window.currentLang==='fr'?'Aucune annonce trouvée':'لا توجد إعلانات'}</h3><p>${window.currentLang==='fr'?'Essayez de modifier vos critères de recherche':'جرّب تغيير معايير البحث'}</p></div>`;
     return;
   }
   
@@ -650,21 +840,29 @@ function renderAds(list) {
       <div class="cimg" style="background:linear-gradient(135deg,${GR[colorIdx(ad.id)]},${GR[(colorIdx(ad.id)+2)%GR.length]})">
         <div class="cimg-ph">${PH[phIdx(ad.id)]}</div>
         <span class="bt ${ad.type}">${TM[ad.type]?.l || ad.type}</span>
-        <span class="bo ${ad.op}">${OM[ad.op]?.l || ad.op}</span>
+        <span class="bo ${ad.op}">${omLabel(ad.op)}</span>
         <button class="fav" id="fv${ad.id}" onclick="tfav(event,'${ad.id}')">🤍</button>
         ${ad.feat ? '<div class="feat-badge">⭐ مميز</div>' : ''}
       </div>
       <div class="cbody">
         <div class="ctitle">${ad.title || `شقة ${RL[ad.rooms] || ad.rooms}`}</div>
-        <div class="cloc">📍 ${ad.commune || 'الجزائر'}</div>
+        <div class="cloc">📍 ${ad.commune || (window.currentLang==='fr'?'Alger':'الجزائر')}</div>
         <div class="cspecs">
           <span>🛏️ ${RL[ad.rooms] || ad.rooms}</span>
-          <span>📐 ${ad.area || '?'} م²</span>
-          <span>📅 ${ad.date ? ad.date.slice(5,10).replace('-','/') : 'جديد'}</span>
+          <span>📐 ${ad.area || '?'} m²</span>
+          <span>📅 ${ad.date ? ad.date.slice(5,10).replace('-','/') : (window.currentLang==='fr'?'Nouveau':'جديد')}</span>
         </div>
         <div class="cfoot">
-          <div class="price">${Number(ad.price).toLocaleString('ar-DZ')} <small>دج${ad.op === 'kira' ? '/شهر' : ''}</small></div>
-          <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone}')">📞 اتصال</button>
+          <div class="price">${Number(ad.price).toLocaleString('fr-DZ')} <small>DA${ad.op === 'kira' ? (window.currentLang==='fr'?'/mois':'/شهر') : ''}</small></div>
+          <div style="display:flex;gap:6px">
+            <button class="btn-call" style="background:#25D366;padding:7px 11px" onclick="event.stopPropagation();openWA('${ad.phone}','${(ad.title||'').replace(/'/g,'')}')" title="WhatsApp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.497-5.203-1.367l-.374-.217-3.875 1.024 1.024-3.742-.234-.386A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            </button>
+            <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone}')">📞 ${window.currentLang==='fr'?'Appeler':'اتصال'}</button>
+            <button class="btn-call" style="background:var(--green-mid);padding:7px 11px" onclick="event.stopPropagation();shareAd('${ad.id}')" title="${window.currentLang==='fr'?'Partager':'مشاركة'}">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -804,18 +1002,22 @@ function openD(id) {
   document.getElementById('mimg').innerHTML = `<div class="mimg-ph" style="background:linear-gradient(135deg,${GR[colorIdx(ad.id)]},${GR[(colorIdx(ad.id)+2)%GR.length]})">${PH[phIdx(ad.id)]}</div>`;
   document.getElementById('mbg').innerHTML = `
     <span class="bt ${ad.type}" style="position:static;font-size:13px;padding:5px 13px">${TM[ad.type]?.l || ad.type}</span>
-    <span class="bo ${ad.op}" style="position:static;font-size:13px;padding:5px 13px">${OM[ad.op]?.l || ad.op}</span>
-    ${ad.feat ? '<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ مميز</span>' : ''}
+    <span class="bo ${ad.op}" style="position:static;font-size:13px;padding:5px 13px">${omLabel(ad.op)}</span>
+    ${ad.feat ? `<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ ${window.currentLang==='fr'?'En vedette':'مميز'}</span>` : ''}
   `;
-  document.getElementById('mds').innerHTML = ad.desc || 'لا يوجد وصف إضافي.';
+  document.getElementById('mds').innerHTML = ad.desc || (window.currentLang==='fr'?'Pas de description.':'لا يوجد وصف إضافي.');
   document.getElementById('msp').innerHTML = `
-    <div class="mspec"><strong>📍 ${ad.commune || 'الجزائر'}</strong>البلدية</div>
-    <div class="mspec"><strong>🛏️ ${RL[ad.rooms] || ad.rooms}</strong>الغرف</div>
-    <div class="mspec"><strong>📐 ${ad.area || '?'} م²</strong>المساحة</div>
-    <div class="mspec"><strong>💰 ${Number(ad.price).toLocaleString('ar-DZ')} دج</strong>السعر${ad.op === 'kira' ? ' / شهر' : ''}</div>
+    <div class="mspec"><strong>📍 ${ad.commune || (window.currentLang==='fr'?'Alger':'الجزائر')}</strong>${window.currentLang==='fr'?'Commune':'البلدية'}</div>
+    <div class="mspec"><strong>🛏️ ${RL[ad.rooms] || ad.rooms}</strong>${window.currentLang==='fr'?'Pièces':'الغرف'}</div>
+    <div class="mspec"><strong>📐 ${ad.area || '?'} m²</strong>${window.currentLang==='fr'?'Surface':'المساحة'}</div>
+    <div class="mspec"><strong>💰 ${Number(ad.price).toLocaleString('fr-DZ')} DA</strong>${window.currentLang==='fr'?'Prix':'السعر'}${ad.op === 'kira' ? (window.currentLang==='fr'?' / mois':' / شهر') : ''}</div>
   `;
   const callBtn = document.getElementById('mcall');
   callBtn.onclick = () => dial(ad.phone);
+  const waBtn = document.getElementById('mwa');
+  waBtn.onclick = () => openWA(ad.phone, ad.title || '');
+  const shareBtn = document.getElementById('mshare');
+  shareBtn.onclick = () => shareAd(ad.id);
   document.getElementById('dm').classList.add('open');
 }
 
@@ -829,13 +1031,13 @@ async function sub() {
   const phone = document.getElementById('ph').value.trim();
   const priceRaw = document.getElementById('pp').value.trim();
   if (!loc || !phone || !priceRaw) {
-    toast('⚠️ يرجى ملء الحقول الضرورية (البلدية، السعر، رقم الهاتف)', 'red');
+    toast(window.currentLang==='fr'?'⚠️ Veuillez remplir les champs obligatoires':'⚠️ يرجى ملء الحقول الضرورية (البلدية، السعر، رقم الهاتف)', 'red');
     return;
   }
   
   const btn = document.querySelector('.btn-submit');
   btn.disabled = true;
-  btn.textContent = '⏳ جارٍ النشر...';
+  btn.textContent = window.currentLang==='fr'?'⏳ Publication...':'⏳ جارٍ النشر...';
   
   try {
     const newAd = {
@@ -859,18 +1061,49 @@ async function sub() {
     document.getElementById('pp').value = '';
     document.getElementById('pa').value = '';
     document.getElementById('pd').value = '';
-    toast('✅ تم نشر إعلانك بنجاح!', '');
+    toast(window.currentLang==='fr'?'✅ Annonce publiée avec succès!':'✅ تم نشر إعلانك بنجاح!', '');
   } catch(e) {
     console.error(e);
-    toast('❌ فشل النشر: تحقق من اتصالك بالإنترنت', 'red');
+    toast(window.currentLang==='fr'?'❌ Échec de la publication: vérifiez votre connexion':'❌ فشل النشر: تحقق من اتصالك بالإنترنت', 'red');
   }
   btn.disabled = false;
-  btn.textContent = '🚀 نشر الإعلان مجاناً';
+  btn.textContent = window.currentLang==='fr'?'🚀 Publier gratuitement':'🚀 نشر الإعلان مجاناً';
 }
 
 // --- دوال مساعدة عامة ---
+function openWA(phone, title) {
+  // تنظيف رقم الهاتف وإضافة مفتاح الجزائر
+  let clean = phone.replace(/\D/g,'');
+  if (clean.startsWith('0')) clean = '213' + clean.slice(1);
+  const msg = encodeURIComponent(
+    window.currentLang === 'fr'
+      ? `Bonjour, je suis intéressé(e) par votre annonce "${title}" sur Darna Immo.`
+      : `السلام عليكم، أنا مهتم بإعلانك "${title}" على دارنا إيمو.`
+  );
+  window.open(`https://wa.me/${clean}?text=${msg}`, '_blank');
+}
+
+function shareAd(id) {
+  const ad = DATA.find(x => x.id === id);
+  const text = ad
+    ? (window.currentLang === 'fr'
+        ? `🏠 ${ad.title || 'Logement'} – ${ad.commune || 'Alger'}\n💰 ${Number(ad.price).toLocaleString()} DA\n📲 Darna Immo`
+        : `🏠 ${ad.title || 'شقة'} – ${ad.commune || 'الجزائر'}\n💰 ${Number(ad.price).toLocaleString()} دج\n📲 دارنا إيمو`)
+    : 'Darna Immo';
+  if (navigator.share) {
+    navigator.share({ title: 'Darna Immo', text });
+  } else {
+    navigator.clipboard.writeText(text).then(() =>
+      toast(window.currentLang === 'fr' ? '📋 Copié !' : '📋 تم النسخ!', '')
+    );
+  }
+}
+
+window.openWA = openWA;
+window.shareAd = shareAd;
+
 function dial(num) {
-  toast(`📞 جارٍ الاتصال بـ ${num}`, '');
+  toast(`📞 ${window.currentLang==='fr'?'Appel en cours':'جارٍ الاتصال بـ'} ${num}`, '');
   setTimeout(() => {
     window.location.href = `tel:${num}`;
   }, 800);
@@ -882,10 +1115,10 @@ function tfav(e, id) {
   if (btn) {
     if (btn.innerText === '❤️') {
       btn.innerText = '🤍';
-      toast('تمت الإزالة من المفضلة', '');
+      toast(window.currentLang==='fr'?'Retiré des favoris':'تمت الإزالة من المفضلة', '');
     } else {
       btn.innerText = '❤️';
-      toast('❤️ تمت الإضافة للمفضلة', 'gold');
+      toast(window.currentLang==='fr'?'❤️ Ajouté aux favoris':'❤️ تمت الإضافة للمفضلة', 'gold');
     }
   }
 }
@@ -934,7 +1167,7 @@ function startFirebaseListener() {
     if (totalSpan) totalSpan.innerText = DATA.length;
   }, (error) => {
     console.error("Firebase error:", error);
-    toast("⚠️ مشكلة في الاتصال بقاعدة البيانات", "red");
+    toast(window.currentLang==='fr'?"⚠️ Problème de connexion à la base de données":"⚠️ مشكلة في الاتصال بقاعدة البيانات", "red");
   });
 }
 
