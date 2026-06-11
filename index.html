@@ -4,18 +4,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Darna Immo – دارنا إيمو | إعلانات AADL · LPP · سكن اجتماعي</title>
-<meta name="description" content="دارنا إيمو – منصة عقارية جزائرية متخصصة في إعلانات AADL وLPP والسكن الاجتماعي للبيع والكراء والتنازل في الجزائر العاصمة."/>
-<meta name="keywords" content="AADL,LPP,كراء شقة,بيع شقة,تنازل AADL,عقار الجزائر,سكن اجتماعي,دارنا إيمو"/>
+<title>Darna Immo – دارنا إيمو | إعلانات عقارية شاملة</title>
+<meta name="description" content="دارنا إيمو – منصة عقارية جزائرية متخصصة في إعلانات AADL، LPP، السكن الاجتماعي، الفيلات، المنازل، المحلات"/>
+<meta name="keywords" content="AADL, LPP, كراء شقة, بيع شقة, شراء عقار, تبادل عقار, فيلا للبيع, منزل, ريزيدنس, محل تجاري, عقار الجزائر"/>
 <meta name="robots" content="index, follow"/>
-<meta property="og:title" content="Darna Immo – دارنا إيمو"/>
-<meta property="og:description" content="منصة عقارية جزائرية متخصصة في AADL وLPP والسكن الاجتماعي – بيع، كراء، تنازل في الجزائر العاصمة."/>
-<meta property="og:image" content="assets/logo.png"/>
-<meta property="og:type" content="website"/>
-<meta property="og:locale" content="ar_DZ"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Darna Immo – دارنا إيمو"/>
-<meta name="twitter:description" content="إعلانات AADL · LPP · سكن اجتماعي في الجزائر العاصمة"/>
 <link rel="icon" type="image/png" href="assets/logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
 <style>
@@ -26,9 +18,7 @@
   --green-light:#2E8B6A;
   --gold:#C9A84C;
   --gold-bright:#F0C855;
-  --gold-pale:#FFF8E7;
   --red:#CE1126;
-  --red-pale:#FFF0F0;
   --white:#FFFFFF;
   --bg:#F6FAF8;
   --text:#1A1A1A;
@@ -39,7 +29,6 @@
 }
 body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* HEADER */
 header{
   background:var(--green);
   height:66px;padding:0 20px;
@@ -49,255 +38,97 @@ header{
 }
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo-badge{
-  width:60px;
-  height:60px;
-  border-radius:12px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:transparent;
-  flex-shrink:0;
+  width:60px;height:60px;border-radius:12px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;flex-shrink:0;
 }
-.logo-badge img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
+.logo-badge img{width:100%;height:100%;object-fit:contain;display:block;}
 .logo-text{line-height:1}
 .logo-text .d1{font-size:18px;font-weight:900;color:var(--gold-bright);letter-spacing:.5px}
 .logo-text .d2{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase}
 
-/* Algeria flag strip */
-.flag-strip{
-  height:4px;
-  background:linear-gradient(to left, var(--red) 0%, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green-mid) 66%);
-}
+.flag-strip{height:4px;background:linear-gradient(to left, var(--red) 0%, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green-mid) 66%);}
 
-/* HERO */
 .hero{
   background:linear-gradient(150deg,var(--green) 0%,var(--green-mid) 55%,var(--green-light) 100%);
   padding:48px 20px 36px;text-align:center;color:var(--white);
   position:relative;overflow:hidden;
 }
-.hero::before{
-  content:'دارنا';
-  position:absolute;font-size:200px;font-weight:900;
-  color:rgba(255,255,255,.04);top:-20px;left:50%;
-  transform:translateX(-50%);white-space:nowrap;pointer-events:none;
-}
+.hero::before{content:'دارنا';position:absolute;font-size:200px;font-weight:900;color:rgba(255,255,255,.04);top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none;}
 .hero-crescent{font-size:32px;margin-bottom:8px}
 .hero-title{font-size:clamp(26px,6vw,42px);font-weight:900;line-height:1.25;margin-bottom:6px}
 .hero-title span{color:var(--gold-bright)}
 .hero-sub{font-size:15px;opacity:.8;margin-bottom:28px}
 
-/* tag row */
 .tag-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.tag{
-  padding:5px 14px;border-radius:50px;font-size:12px;font-weight:700;
-  border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);
-  backdrop-filter:blur(4px);
-}
-.tag.aadl{border-color:#6CA0DC;color:#A8CFFF}
-.tag.social{border-color:#C89EE8;color:#E0BFFF}
-.tag.lpp{border-color:#F5A97A;color:#FFD0B0}
+.tag{padding:5px 14px;border-radius:50px;font-size:12px;font-weight:700;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);}
 
-/* search */
 .search-wrap{max-width:660px;margin:0 auto;display:flex;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.search-wrap input{
-  flex:1;border:none;outline:none;
-  font-family:'Cairo',sans-serif;font-size:15px;
-  padding:15px 18px;color:var(--text);
-}
-.search-wrap button{
-  background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-  border:none;padding:0 26px;
-  font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
-  color:var(--green);cursor:pointer;transition:.2s;
-}
+.search-wrap input{flex:1;border:none;outline:none;font-family:'Cairo',sans-serif;font-size:15px;padding:15px 18px;color:var(--text);}
+.search-wrap button{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border:none;padding:0 26px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;color:var(--green);cursor:pointer;transition:.2s;}
 .search-wrap button:hover{filter:brightness(1.08)}
 
-/* STATS - ديناميكية */
-.stats{
-  display:flex;justify-content:center;gap:0;
-  background:var(--white);border-bottom:1px solid var(--border);
-  flex-wrap:wrap;
-}
-.stat{
-  flex:1;min-width:120px;text-align:center;
-  padding:14px 10px;border-left:1px solid var(--border);
-}
+.stats{display:flex;justify-content:center;gap:0;background:var(--white);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat{flex:1;min-width:120px;text-align:center;padding:14px 10px;border-left:1px solid var(--border);}
 .stat:last-child{border-left:none}
 .stat-n{font-size:24px;font-weight:900;color:var(--green-mid)}
 .stat-l{font-size:12px;color:var(--text-sub)}
 
-/* LAYOUT */
 .main{display:flex;gap:22px;max-width:1300px;margin:0 auto;padding:26px 18px}
 @media(max-width:860px){.sidebar{display:none!important}}
 
-/* SIDEBAR */
-.sidebar{width:272px;flex-shrink:0}
+.sidebar{width:310px;flex-shrink:0}
 .fcard{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
-.ftitle{
-  font-size:13px;font-weight:700;color:var(--green);
-  border-bottom:2px solid #E8F5EE;padding-bottom:9px;margin-bottom:13px;
-  display:flex;align-items:center;gap:6px;
-}
+.ftitle{font-size:13px;font-weight:700;color:var(--green);border-bottom:2px solid #E8F5EE;padding-bottom:9px;margin-bottom:13px;display:flex;align-items:center;gap:6px;}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
-.chip{
-  padding:6px 13px;border-radius:50px;
-  border:1.5px solid var(--border);
-  font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;
-  cursor:pointer;background:var(--white);color:var(--text);transition:.18s;
-}
+.chip{padding:6px 13px;border-radius:50px;border:1.5px solid var(--border);font-family:'Cairo',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:var(--white);color:var(--text);transition:.18s;}
 .chip:hover{background:var(--green);border-color:var(--green);color:var(--white)}
 .chip.on{background:var(--green);border-color:var(--green);color:var(--white)}
-.chip.aadl.on{background:#1C5FAD;border-color:#1C5FAD}
-.chip.social.on{background:#6B21A8;border-color:#6B21A8}
-.chip.lpp.on{background:#C2410C;border-color:#C2410C}
-.chip.kira.on{background:var(--gold);border-color:var(--gold);color:var(--green)}
-.chip.bay3.on{background:var(--red);border-color:var(--red);color:#fff}
-.chip.tanaz.on{background:#374151;border-color:#374151;color:#fff}
 
-.fsel{
-  width:100%;padding:10px 12px;
-  border:1.5px solid var(--border);border-radius:10px;
-  font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);
-  background:var(--white);outline:none;cursor:pointer;margin-bottom:9px;
-}
-.fsel:focus{border-color:var(--green-light)}
+.fsel{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);background:var(--white);outline:none;cursor:pointer;margin-bottom:9px;}
 .prange{display:flex;gap:7px;align-items:center;margin-bottom:10px}
-.prange input{
-  flex:1;padding:9px 11px;
-  border:1.5px solid var(--border);border-radius:9px;
-  font-family:'Cairo',sans-serif;font-size:13px;outline:none;
-}
-.prange input:focus{border-color:var(--green-light)}
-.prange span{color:var(--text-sub);font-size:13px}
-.btn-apply{
-  width:100%;padding:12px;background:var(--green);color:var(--white);
-  border:none;border-radius:10px;
-  font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
-  cursor:pointer;transition:.2s;
-}
-.btn-apply:hover{background:var(--green-mid)}
+.prange input{flex:1;padding:9px 11px;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;outline:none;}
+.btn-apply{width:100%;padding:12px;background:var(--green);color:var(--white);border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;}
 
-/* CONTENT */
 .content{flex:1;min-width:0}
 .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
 .rcount{font-size:13px;color:var(--text-sub)}
-.rcount strong{color:var(--text);font-size:16px}
-.sortsel{
-  padding:8px 13px;border:1.5px solid var(--border);border-radius:10px;
-  font-family:'Cairo',sans-serif;font-size:14px;outline:none;background:var(--white);
-}
+.sortsel{padding:8px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;outline:none;background:var(--white);}
 
-/* mobile filter strip */
 .mob-strip{display:none;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;-webkit-overflow-scrolling:touch}
 @media(max-width:860px){.mob-strip{display:flex}}
 .mob-strip .chip{white-space:nowrap;flex-shrink:0}
 
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
 
-/* CARD */
-.card{
-  background:var(--white);border-radius:var(--radius);
-  box-shadow:var(--shadow);overflow:hidden;
-  cursor:pointer;transition:.2s;position:relative;
-}
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:.2s;position:relative;}
 .card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
 .cimg{position:relative;height:188px;overflow:hidden}
-.cimg-ph{
-  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  font-size:56px;
-}
+.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
 .bt{position:absolute;top:10px;right:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700;color:#fff}
-.bt.aadl{background:#1C5FAD}
-.bt.social{background:#6B21A8}
-.bt.lpp{background:#C2410C}
-.bo{position:absolute;top:10px;left:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700}
-.bo.kira{background:var(--gold);color:var(--green)}
-.bo.bay3{background:var(--red);color:#fff}
-.bo.tanaz{background:#374151;color:#fff}
-.fav{
-  position:absolute;bottom:10px;left:10px;
-  width:32px;height:32px;border-radius:50%;
-  background:rgba(255,255,255,.9);border:none;
-  font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:.15s;
-}
-.fav:hover{transform:scale(1.2)}
-.feat-badge{
-  position:absolute;bottom:10px;right:10px;
-  background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-  color:var(--green);font-size:11px;font-weight:700;
-  padding:4px 10px;border-radius:50px;
-}
+.bo{position:absolute;top:10px;left:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700;color:#fff}
+.fav{position:absolute;bottom:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.fav:hover{transform:scale(1.15)}
+.status-badge{position:absolute;bottom:10px;left:10px;padding:4px 10px;border-radius:50px;font-size:10px;font-weight:700;color:white}
 .cbody{padding:14px}
 .ctitle{font-size:14px;font-weight:700;margin-bottom:4px}
 .cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:11px}
-.cspecs{
-  display:flex;gap:12px;font-size:12px;color:var(--text-sub);
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:9px 0;margin-bottom:11px;
-}
-.cfoot{display:flex;align-items:center;justify-content:space-between}
+.cspecs{display:flex;gap:12px;font-size:12px;color:var(--text-sub);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:9px 0;margin-bottom:11px;flex-wrap:wrap;}
+.cfoot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .price{font-size:16px;font-weight:900;color:var(--green)}
 .price small{font-size:11px;font-weight:600;color:var(--text-sub)}
-.btn-call{
-  padding:7px 16px;background:var(--green);color:#fff;
-  border:none;border-radius:8px;
-  font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;
-  cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;
-}
+.btn-call{padding:7px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;}
 .btn-call:hover{background:var(--green-mid)}
 
-/* FAB */
-.fab{
-  position:fixed;bottom:24px;left:24px;
-  width:58px;height:58px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gold-bright),var(--gold));
-  color:var(--green);border:none;font-size:26px;
-  box-shadow:0 6px 24px rgba(201,168,76,.55);
-  cursor:pointer;z-index:90;transition:.2s;
-  display:flex;align-items:center;justify-content:center;
-}
-.fab:hover{transform:scale(1.1)}
-.fab-label{
-  position:fixed;bottom:31px;left:90px;
-  background:var(--green);color:#fff;
-  font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;
-  padding:8px 16px;border-radius:10px;
-  box-shadow:var(--shadow);z-index:90;
-  white-space:nowrap;
-}
+.fab{position:fixed;bottom:24px;left:24px;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:26px;box-shadow:0 6px 24px rgba(201,168,76,.55);cursor:pointer;z-index:90;transition:.2s;display:flex;align-items:center;justify-content:center;}
 
-/* MODAL OVERLAY */
-.overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.6);z-index:200;
-  align-items:center;justify-content:center;padding:14px;
-}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:14px;}
 .overlay.open{display:flex}
-.modal{
-  background:var(--white);border-radius:18px;
-  max-width:560px;width:100%;max-height:90vh;overflow-y:auto;
-  box-shadow:0 24px 64px rgba(0,0,0,.35);
-}
+.modal{background:var(--white);border-radius:18px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.35);}
 .modal-top{position:relative}
 .mimg{height:220px;overflow:hidden}
-.mimg-ph{
-  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  font-size:80px;
-}
-.mclose{
-  position:absolute;top:12px;left:12px;
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(0,0,0,.45);color:#fff;border:none;
-  font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-}
+.mimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
+.mclose{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;border:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .mbody{padding:22px}
 .mtitle{font-size:20px;font-weight:900;margin-bottom:10px}
 .mbadges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
@@ -305,497 +136,106 @@ header{
 .mspecs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
 .mspec{background:#F0FAF4;border-radius:10px;padding:10px 13px;font-size:13px}
 .mspec strong{display:block;font-size:15px;color:var(--green)}
-.macts{display:flex;gap:10px}
-.mact{
-  flex:1;padding:13px;border:none;border-radius:10px;
-  font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;
-  transition:.2s;
-}
+.social-buttons{display:flex;gap:12px;justify-content:center;margin:15px 0;flex-wrap:wrap}
+.social-icon{padding:8px 18px;border-radius:50px;display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;transition:0.2s;border:none;font-family:'Cairo',sans-serif;}
+.social-icon.fb{background:#1877F2;color:white}
+.social-icon.messenger{background:#0084FF;color:white}
+.social-icon.whatsapp{background:#25D366;color:white}
+.macts{display:flex;gap:10px;margin-top:12px}
+.mact{flex:1;padding:13px;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:.2s;}
 .mact.green{background:var(--green);color:#fff}
-.mact.green:hover{background:var(--green-mid)}
 .mact.gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green)}
-.mact.gold:hover{filter:brightness(1.07)}
 
-/* POST MODAL */
 .pmodal{max-width:510px}
-.pmhead{
-  background:linear-gradient(135deg,var(--green),var(--green-mid));
-  padding:22px 22px 18px;border-radius:18px 18px 0 0;
-  color:#fff;
-}
+.pmhead{background:linear-gradient(135deg,var(--green),var(--green-mid));padding:22px 22px 18px;border-radius:18px 18px 0 0;color:#fff;position:relative}
 .pmhead-title{font-size:19px;font-weight:900;margin-bottom:2px}
 .pmhead-sub{font-size:13px;opacity:.75}
-.pmclose{
-  position:absolute;top:16px;left:16px;
-  background:rgba(255,255,255,.2);border:none;color:#fff;
-  width:34px;height:34px;border-radius:50%;font-size:18px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-}
+.pmclose{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .pmbody{padding:20px}
 .fg{margin-bottom:12px}
 .fg label{display:block;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text)}
-.fg input,.fg select,.fg textarea{
-  width:100%;padding:10px 13px;
-  border:1.5px solid var(--border);border-radius:10px;
-  font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);outline:none;
-}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green-light)}
-.fg textarea{resize:vertical;min-height:80px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);outline:none;}
 .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-submit{
-  width:100%;padding:13px;
-  background:linear-gradient(135deg,var(--green-mid),var(--green));
-  color:#fff;border:none;border-radius:10px;
-  font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;
-  cursor:pointer;margin-top:6px;transition:.2s;
-}
-.btn-submit:hover{filter:brightness(1.1)}
+.btn-submit{width:100%;padding:13px;background:linear-gradient(135deg,var(--green-mid),var(--green));color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;cursor:pointer;margin-top:6px;transition:.2s;}
 
-/* TOAST */
-.toast{
-  position:fixed;bottom:22px;left:50%;
-  transform:translateX(-50%) translateY(80px);
-  background:var(--green);color:#fff;
-  padding:11px 24px;border-radius:50px;
-  font-size:14px;font-weight:600;z-index:999;
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:0 6px 24px rgba(0,0,0,.25);white-space:nowrap;
-}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:#fff;padding:11px 24px;border-radius:50px;font-size:14px;font-weight:600;z-index:999;transition:transform .35s;box-shadow:0 6px 24px rgba(0,0,0,.25);white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0)}
-.toast.red{background:var(--red)}
-.toast.gold{background:var(--gold);color:var(--green)}
+.empty{text-align:center;padding:60px 20px;color:var(--text-sub);}
 
-/* EMPTY */
-.empty{
-  text-align:center;padding:60px 20px;color:var(--text-sub);
-}
-.empty-icon{font-size:64px;margin-bottom:14px}
-.empty h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px}
+.lang-btn{padding:7px 14px;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;}
 
-/* LANG SWITCHER */
-.lang-btn{
-  padding:7px 14px;
-  background:rgba(255,255,255,.15);
-  color:#fff;border:1.5px solid rgba(255,255,255,.35);
-  border-radius:9px;
-  font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;
-  cursor:pointer;transition:.2s;letter-spacing:.5px;
-}
-.lang-btn:hover{background:rgba(255,255,255,.28)}
-
-/* FOOTER */
-footer{
-  background:var(--green);color:rgba(255,255,255,.6);
-  text-align:center;font-size:13px;padding:18px;margin-top:36px;
-}
-footer strong{color:var(--gold-bright)}
-.footer-flag{
-  width:40px;height:4px;border-radius:4px;margin:8px auto 0;
-  background:linear-gradient(to left,var(--red) 33%,#fff 33%,#fff 66%,var(--green-mid) 66%);
-}
+footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font-size:13px;padding:18px;margin-top:36px;}
+.footer-flag{width:40px;height:4px;border-radius:4px;margin:8px auto 0;background:linear-gradient(to left,var(--red) 33%,#fff 33%,#fff 66%,var(--green-mid) 66%);}
 </style>
 </head>
 <body>
-
 <div class="flag-strip"></div>
-
 <header>
   <a class="logo" href="#">
     <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
-    <div class="logo-text">
-      <div class="d1">DARNA IMMOBILIER</div>
-      <div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div>
-    </div>
+    <div class="logo-text"><div class="d1">DARNA IMMOBILIER</div><div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div></div>
   </a>
   <div style="display:flex;gap:8px;align-items:center">
     <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
-    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">
-      ＋ <span data-k="postAd">نشر إعلان</span>
-    </button>
+    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span id="postBtnText">نشر إعلان</span></button>
   </div>
 </header>
-
-<!-- HERO -->
 <section class="hero">
   <div class="hero-crescent">🌙⭐</div>
-  <h1 class="hero-title" data-k="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
-  <p class="hero-sub" data-k="heroSub">كل إعلانات AADL · Social · LPP في الجزائر العاصمة</p>
+  <h1 class="hero-title" id="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
+  <p class="hero-sub" id="heroSub">جميع إعلانات العقارات في الجزائر العاصمة</p>
   <div class="tag-row">
-    <span class="tag aadl">🔵 AADL</span>
-    <span class="tag social">🟣 Social</span>
-    <span class="tag lpp">🟠 LPP</span>
-    <span class="tag" style="border-color:rgba(206,17,38,.6);color:#FFB3B3">🔴 <span data-k="tagOps">كراء · بيع · تنازل</span></span>
+    <span class="tag" id="tag1">🏠 AADL</span>
+    <span class="tag" id="tag2">🏘️ Social</span>
+    <span class="tag" id="tag3">🏢 LPP</span>
+    <span class="tag" id="tag4">🏡 فيلا · منزل</span>
+    <span class="tag" id="tag5">🛍️ محل · ريزيدنس</span>
   </div>
   <div class="search-wrap">
-    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية... (سيدي عبد الله، الرغاية...)" onkeyup="if(event.key==='Enter')doSearch()"/>
-    <button onclick="doSearch()">🔍 <span data-k="search">بحث</span></button>
+    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية..." onkeyup="if(event.key==='Enter')doSearch()"/>
+    <button onclick="doSearch()" id="searchBtn">🔍 بحث</button>
   </div>
 </section>
-
-<!-- STATS - سيتم تحديث العدد تلقائياً من Firebase -->
 <div class="stats">
-  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l" data-k="statAds">إعلان نشط</div></div>
-  <div class="stat"><div class="stat-n">31</div><div class="stat-l" data-k="statCommunes">بلدية</div></div>
-  <div class="stat"><div class="stat-n">12</div><div class="stat-l" data-k="statAadl">حي AADL</div></div>
-  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l" data-k="statCity">الجزائر العاصمة</div></div>
+  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l" id="statAdsLabel">إعلان نشط</div></div>
+  <div class="stat"><div class="stat-n">31</div><div class="stat-l" id="statCommLabel">بلدية</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l" id="statAadlLabel">حي AADL</div></div>
+  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l" id="statCityLabel">الجزائر العاصمة</div></div>
 </div>
-
-<!-- MAIN -->
 <div class="main">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="fcard">
-      <div class="ftitle">🏷️ <span data-k="filterType">نوع السكن</span></div>
-      <div class="chips">
-        <button class="chip aadl on" data-g="t" data-v="aadl" onclick="tog(this)">AADL</button>
-        <button class="chip social on" data-g="t" data-v="social" onclick="tog(this)">Social</button>
-        <button class="chip lpp on" data-g="t" data-v="lpp" onclick="tog(this)">LPP</button>
-      </div>
-    </div>
-    <div class="fcard">
-      <div class="ftitle">🤝 <span data-k="filterOp">نوع المعاملة</span></div>
-      <div class="chips">
-        <button class="chip on" data-g="o" data-v="all" onclick="radio(this,'o')" data-k="all">الكل</button>
-        <button class="chip kira" data-g="o" data-v="kira" onclick="radio(this,'o')" data-k="kira">كراء</button>
-        <button class="chip bay3" data-g="o" data-v="bay3" onclick="radio(this,'o')" data-k="bay3">بيع</button>
-        <button class="chip tanaz" data-g="o" data-v="tanaz" onclick="radio(this,'o')" data-k="tanaz">تنازل</button>
-      </div>
-    </div>
-    <div class="fcard">
-      <div class="ftitle">📍 <span data-k="filterCommune">البلدية</span></div>
-      <select class="fsel" id="fcm" onchange="af()">
-        <option value="" data-k="allCommunes">كل البلديات</option>
-        <option>سيدي عبد الله</option><option>الرغاية</option>
-        <option>أولاد فايت</option><option>الدار البيضاء</option>
-        <option>حسين داي</option><option>باب الزوار</option>
-        <option>برج البحري</option><option>القبة</option>
-        <option>بئر مراد رايس</option><option>الحراش</option>
-        <option>بوزريعة</option><option>شراقة</option>
-        <option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option>
-      </select>
-    </div>
-    <div class="fcard">
-      <div class="ftitle">🛏️ <span data-k="filterRooms">عدد الغرف</span></div>
-      <div class="chips">
-        <button class="chip on" data-g="r" data-v="all" onclick="radio(this,'r')" data-k="all">الكل</button>
-        <button class="chip" data-g="r" data-v="f2" onclick="radio(this,'r')">F2</button>
-        <button class="chip" data-g="r" data-v="f3" onclick="radio(this,'r')">F3</button>
-        <button class="chip" data-g="r" data-v="f4" onclick="radio(this,'r')">F4</button>
-        <button class="chip" data-g="r" data-v="f5" onclick="radio(this,'r')">F5+</button>
-      </div>
-    </div>
-    <div class="fcard">
-      <div class="ftitle">💰 <span data-k="filterPrice">نطاق السعر (دج)</span></div>
-      <div class="prange">
-        <input id="pmin" type="number" placeholder="من" data-k-ph="from"/>
-        <span>–</span>
-        <input id="pmax" type="number" placeholder="إلى" data-k-ph="to"/>
-      </div>
-      <button class="btn-apply" onclick="af()" data-k="applyFilters">✅ تطبيق الفلاتر</button>
-    </div>
+    <div class="fcard"><div class="ftitle" id="ftitleType">🏷️ نوع العقار</div><div class="chips" id="typeChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="ftitleOp">🤝 نوع المعاملة</div><div class="chips" id="opChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="ftitleRooms">🛏️ عدد الغرف</div><div class="chips" id="roomChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="ftitleCond">🔧 حالة العقار</div><div class="chips" id="conditionChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="ftitleStatus">📢 حالة الإعلان</div><div class="chips" id="statusChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="ftitleComm">📍 البلدية</div><select class="fsel" id="fcm" onchange="af()"><option value="" id="allCommOption">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
+    <div class="fcard"><div class="ftitle" id="ftitlePrice">💰 نطاق السعر (دج)</div><div class="prange"><input id="pmin" type="number" placeholder="من"/><span>–</span><input id="pmax" type="number" placeholder="إلى"/></div><button class="btn-apply" id="applyBtn" onclick="af()">✅ تطبيق الفلاتر</button></div>
   </aside>
-
-  <!-- CONTENT -->
   <div class="content">
-    <!-- mobile strip -->
-    <div class="mob-strip" id="mobStrip">
-      <button class="chip on" onclick="mf(this,'all','all')" data-k="all">الكل</button>
-      <button class="chip aadl" onclick="mf(this,'aadl','all')">AADL</button>
-      <button class="chip social" onclick="mf(this,'social','all')">Social</button>
-      <button class="chip lpp" onclick="mf(this,'lpp','all')">LPP</button>
-      <button class="chip kira" onclick="mf(this,'all','kira')" data-k="kira">كراء</button>
-      <button class="chip bay3" onclick="mf(this,'all','bay3')" data-k="bay3">بيع</button>
-      <button class="chip tanaz" onclick="mf(this,'all','tanaz')" data-k="tanaz">تنازل</button>
-    </div>
-
-    <div class="topbar">
-      <div class="rcount"><span data-k="showing">عرض</span> <strong id="rn">0</strong> <span data-k="adWord">إعلان</span></div>
-      <select class="sortsel" id="srt" onchange="sl()">
-        <option value="new" data-k="sortNew">الأحدث أولاً</option>
-        <option value="pa" data-k="sortPa">الأرخص أولاً</option>
-        <option value="pd" data-k="sortPd">الأغلى أولاً</option>
-      </select>
-    </div>
-
+    <div class="mob-strip" id="mobStrip"></div>
+    <div class="topbar"><div class="rcount" id="rcountText">عرض <strong id="rn">0</strong> إعلان</div><select class="sortsel" id="srt" onchange="sl()"><option value="new" id="sortNew">الأحدث أولاً</option><option value="pa" id="sortPa">الأرخص أولاً</option><option value="pd" id="sortPd">الأغلى أولاً</option></select></div>
     <div class="grid" id="grid"></div>
   </div>
 </div>
+<button class="fab" onclick="openPost()">＋</button>
 
-<!-- FAB -->
-<button class="fab" onclick="openPost()" title="نشر إعلان">＋</button>
+<!-- Detail Modal -->
+<div class="overlay" id="dm" onclick="cov(event,'dm')"><div class="modal"><div class="modal-top"><div class="mimg" id="mimg"></div><button class="mclose" onclick="cm('dm')">✕</button></div><div class="mbody"><div class="mtitle" id="mtt"></div><div class="mbadges" id="mbg"></div><p class="mdesc" id="mds"></p><div class="mspecs" id="msp"></div><div class="social-buttons" id="socialBtns"></div><div class="macts"><button class="mact green" id="mcall">📞 اتصل الآن</button><button class="mact gold" id="mwa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg> WhatsApp</button><button class="mact" id="mshare" style="background:#E8F5EE;color:var(--green);flex:0.6"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button></div></div></div></div>
 
-<!-- DETAIL MODAL -->
-<div class="overlay" id="dm" onclick="cov(event,'dm')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="mimg" id="mimg"></div>
-      <button class="mclose" onclick="cm('dm')">✕</button>
-    </div>
-    <div class="mbody">
-      <div class="mtitle" id="mtt"></div>
-      <div class="mbadges" id="mbg"></div>
-      <p class="mdesc" id="mds"></p>
-      <div class="mspecs" id="msp"></div>
-      <div class="macts">
-        <button class="mact green" id="mcall">📞 <span data-k="callNow">اتصل الآن</span></button>
-        <button class="mact gold" id="mwa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.497-5.203-1.367l-.374-.217-3.875 1.024 1.024-3.742-.234-.386A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          WhatsApp
-        </button>
-        <button class="mact" id="mshare" style="background:#E8F5EE;color:var(--green);flex:0.6">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- POST MODAL -->
-<div class="overlay" id="pm" onclick="cov(event,'pm')">
-  <div class="modal pmodal">
-    <div class="pmhead" style="position:relative">
-      <div class="pmhead-title">📣 <span data-k="postTitle">نشر إعلان جديد</span></div>
-      <div class="pmhead-sub" data-k="postSub">مجاني – بدون تسجيل – فوري</div>
-      <button class="pmclose" onclick="cm('pm')">✕</button>
-    </div>
-    <div class="pmbody">
-      <div class="fg-row">
-        <div class="fg">
-          <label data-k="labelType">نوع السكن</label>
-          <select id="pt"><option value="aadl">AADL</option><option value="social">Social</option><option value="lpp">LPP</option></select>
-        </div>
-        <div class="fg">
-          <label data-k="labelOp">المعاملة</label>
-          <select id="po">
-            <option value="kira" data-k="kira">كراء</option>
-            <option value="bay3" data-k="bay3">بيع</option>
-            <option value="tanaz" data-k="tanaz">تنازل</option>
-          </select>
-        </div>
-      </div>
-      <div class="fg">
-        <label data-k="labelCommune">البلدية والحي <span style="color:var(--red)">*</span></label>
-        <input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن" data-k-ph="communePlaceholder"/>
-      </div>
-      <div class="fg-row">
-        <div class="fg">
-          <label data-k="labelRooms">الغرف</label>
-          <select id="pr"><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5+</option></select>
-        </div>
-        <div class="fg">
-          <label data-k="labelArea">المساحة (م²)</label>
-          <input id="pa" type="number" placeholder="مثال: 85" data-k-ph="areaPlaceholder"/>
-        </div>
-      </div>
-      <div class="fg-row">
-        <div class="fg">
-          <label data-k="labelPrice">السعر (دج) <span style="color:var(--red)">*</span></label>
-          <input id="pp" type="number" placeholder="مثال: 40000" data-k-ph="pricePlaceholder"/>
-        </div>
-        <div class="fg">
-          <label data-k="labelPhone">رقم الهاتف <span style="color:var(--red)">*</span></label>
-          <input id="ph" type="tel" placeholder="07XX XX XX XX"/>
-        </div>
-      </div>
-      <div class="fg">
-        <label data-k="labelDesc">وصف الشقة</label>
-        <textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..." data-k-ph="descPlaceholder"></textarea>
-      </div>
-      <button class="btn-submit" onclick="sub()" data-k="submitBtn">🚀 نشر الإعلان مجاناً</button>
-    </div>
-  </div>
-</div>
+<!-- Post Modal -->
+<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title" id="postTitle">📣 نشر إعلان جديد</div><div class="pmhead-sub" id="postSub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label id="labelType">نوع العقار</label><select id="pt"></select></div><div class="fg"><label id="labelOp">المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label id="labelRooms">الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label id="labelArea">المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label id="labelCondition">حالة العقار</label><select id="pcond"><option value="neuf" id="condNeufOpt">جديد</option><option value="utilise" id="condUsedOpt">مستعمل</option></select></div><div class="fg"><label id="labelStatus">حالة الإعلان</label><select id="pstat"><option value="dispo" id="statDispoOpt">متوفر</option><option value="reserved" id="statReservedOpt">محجوز</option><option value="sold" id="statSoldOpt">تم البيع</option><option value="rented" id="statRentedOpt">تم الكراء</option></select></div></div><div class="fg"><label id="labelCommune">البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label id="labelPrice">السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label id="labelPhone">رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label id="labelDesc">وصف العقار</label><textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea></div><button class="btn-submit" id="submitBtn" onclick="sub()">🚀 نشر الإعلان مجاناً</button></div></div></div>
 
 <div class="toast" id="tst"></div>
+<footer><strong>DARNA IMMO</strong> · <span id="footerText">منصة الجزائر العاصمة للعقارات والسكن الاجتماعي</span><div style="margin-top:10px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap"><a href="#" onclick="openPage('privacy')" id="privacyLink" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">🔒 سياسة الخصوصية</a><a href="#" onclick="openPage('terms')" id="termsLink" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">📋 شروط الاستخدام</a><a href="#" onclick="openPage('contact')" id="contactLink" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">📬 اتصل بنا</a><a href="#" onclick="openPage('about')" id="aboutLink" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">ℹ️ حول الموقع</a></div><div class="footer-flag"></div></footer>
 
-<footer>
-  <strong>DARNA IMMO</strong> · <span data-k="footerText">دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي</span>
-  <div style="margin-top:10px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
-    <a href="#" onclick="openPage('privacy')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🔒 سياسة الخصوصية</a>
-    <a href="#" onclick="openPage('terms')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📋 شروط الاستخدام</a>
-    <a href="#" onclick="openPage('contact')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📬 اتصل بنا</a>
-    <a href="#" onclick="openPage('about')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">ℹ️ حول الموقع</a>
-  </div>
-  <div class="footer-flag"></div>
-</footer>
+<!-- Page Modal -->
+<div class="overlay" id="pageModal" onclick="if(event.target===this)closePage()" style="align-items:flex-start;padding:14px;overflow-y:auto"><div style="background:#fff;border-radius:18px;max-width:620px;width:100%;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.3)"><div style="background:linear-gradient(135deg,var(--green),var(--green-mid));padding:20px 22px;border-radius:18px 18px 0 0;display:flex;justify-content:space-between;align-items:center"><div id="pageTitle" style="font-size:17px;font-weight:900;color:#fff"></div><button onclick="closePage()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:17px;cursor:pointer">✕</button></div><div id="pageContent" style="padding:24px;line-height:2;font-size:14px;color:#333"></div></div></div>
 
-<!-- ══ نافذة الصفحات القانونية ══ -->
-<div class="overlay" id="pageModal" onclick="if(event.target===this)closePage()" style="align-items:flex-start;padding:14px;overflow-y:auto">
-  <div style="background:#fff;border-radius:18px;max-width:620px;width:100%;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.3)">
-    <div style="background:linear-gradient(135deg,var(--green),var(--green-mid));padding:20px 22px;border-radius:18px 18px 0 0;display:flex;justify-content:space-between;align-items:center">
-      <div id="pageTitle" style="font-size:17px;font-weight:900;color:#fff"></div>
-      <button onclick="closePage()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:17px;cursor:pointer">✕</button>
-    </div>
-    <div id="pageContent" style="padding:24px;line-height:2;font-size:14px;color:#333"></div>
-  </div>
-</div>
-
-<!-- LANGUAGE SYSTEM -->
-<script>
-const LANGS = {
-  ar: {
-    dir: 'rtl', langLabel: 'FR',
-    heroTitle: 'ابحث عن <span>دارك</span> هنا',
-    heroSub: 'كل إعلانات AADL · Social · LPP في الجزائر العاصمة',
-    tagOps: 'كراء · بيع · تنازل',
-    search: 'بحث',
-    postAd: 'نشر إعلان',
-    statAds: 'إعلان نشط',
-    statCommunes: 'بلدية',
-    statAadl: 'حي AADL',
-    statCity: 'الجزائر العاصمة',
-    filterType: 'نوع السكن',
-    filterOp: 'نوع المعاملة',
-    filterCommune: 'البلدية',
-    allCommunes: 'كل البلديات',
-    filterRooms: 'عدد الغرف',
-    filterPrice: 'نطاق السعر (دج)',
-    applyFilters: '✅ تطبيق الفلاتر',
-    all: 'الكل',
-    kira: 'كراء',
-    bay3: 'بيع',
-    tanaz: 'تنازل',
-    showing: 'عرض',
-    adWord: 'إعلان',
-    sortNew: 'الأحدث أولاً',
-    sortPa: 'الأرخص أولاً',
-    sortPd: 'الأغلى أولاً',
-    callNow: 'اتصل الآن',
-    message: 'رسالة',
-    postTitle: 'نشر إعلان جديد',
-    postSub: 'مجاني – بدون تسجيل – فوري',
-    labelType: 'نوع السكن',
-    labelOp: 'المعاملة',
-    labelCommune: 'البلدية والحي',
-    labelRooms: 'الغرف',
-    labelArea: 'المساحة (م²)',
-    labelPrice: 'السعر (دج)',
-    labelPhone: 'رقم الهاتف',
-    labelDesc: 'وصف الشقة',
-    submitBtn: '🚀 نشر الإعلان مجاناً',
-    footerText: 'دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي',
-    searchPlaceholder: 'ابحث بالحي أو البلدية... (سيدي عبد الله، الرغاية...)',
-    communePlaceholder: 'مثال: سيدي عبد الله – حي 3000 مسكن',
-    areaPlaceholder: 'مثال: 85',
-    pricePlaceholder: 'مثال: 40000',
-    descPlaceholder: 'الطابق، التوجيه، المرافق، ملاحظات...',
-    from: 'من',
-    to: 'إلى',
-  },
-  fr: {
-    dir: 'ltr', langLabel: 'عربي',
-    heroTitle: 'Trouvez votre <span>logement</span> ici',
-    heroSub: 'Toutes les annonces AADL · Social · LPP à Alger',
-    tagOps: 'Location · Vente · Cession',
-    search: 'Rechercher',
-    postAd: 'Publier',
-    statAds: 'Annonce active',
-    statCommunes: 'Communes',
-    statAadl: 'Quartiers AADL',
-    statCity: 'Alger',
-    filterType: 'Type de logement',
-    filterOp: 'Type d\'opération',
-    filterCommune: 'Commune',
-    allCommunes: 'Toutes les communes',
-    filterRooms: 'Nombre de pièces',
-    filterPrice: 'Fourchette de prix (DA)',
-    applyFilters: '✅ Appliquer les filtres',
-    all: 'Tout',
-    kira: 'Location',
-    bay3: 'Vente',
-    tanaz: 'Cession',
-    showing: 'Affichage de',
-    adWord: 'annonce(s)',
-    sortNew: 'Plus récent',
-    sortPa: 'Prix croissant',
-    sortPd: 'Prix décroissant',
-    callNow: 'Appeler',
-    message: 'Message',
-    postTitle: 'Publier une annonce',
-    postSub: 'Gratuit – Sans inscription – Instantané',
-    labelType: 'Type de logement',
-    labelOp: 'Opération',
-    labelCommune: 'Commune & Quartier',
-    labelRooms: 'Pièces',
-    labelArea: 'Surface (m²)',
-    labelPrice: 'Prix (DA)',
-    labelPhone: 'Téléphone',
-    labelDesc: 'Description',
-    submitBtn: '🚀 Publier gratuitement',
-    footerText: 'Darna Immo – Plateforme immobilière sociale d\'Alger',
-    searchPlaceholder: 'Rechercher par quartier ou commune...',
-    communePlaceholder: 'Ex: Sidi Abdellah – Cité 3000 logements',
-    areaPlaceholder: 'Ex: 85',
-    pricePlaceholder: 'Ex: 40000',
-    descPlaceholder: 'Étage, orientation, équipements, notes...',
-    from: 'De',
-    to: 'À',
-  }
-};
-
-window.currentLang = 'ar';
-
-function toggleLang() {
-  window.currentLang = window.currentLang === 'ar' ? 'fr' : 'ar';
-  applyLang();
-}
-
-function applyLang() {
-  const L = LANGS[window.currentLang];
-  const html = document.documentElement;
-  html.setAttribute('lang', window.currentLang);
-  html.setAttribute('dir', L.dir);
-
-  // Update lang button
-  document.getElementById('langBtn').textContent = L.langLabel;
-
-  // Update all [data-k] elements
-  document.querySelectorAll('[data-k]').forEach(el => {
-    const key = el.getAttribute('data-k');
-    if (L[key] !== undefined) {
-      if (el.tagName === 'OPTION') {
-        el.textContent = L[key];
-      } else {
-        el.innerHTML = L[key];
-      }
-    }
-  });
-
-  // Update placeholders
-  document.querySelectorAll('[data-k-ph]').forEach(el => {
-    const key = el.getAttribute('data-k-ph');
-    if (L[key] !== undefined) el.placeholder = L[key];
-  });
-
-  // Update search input placeholder
-  const sq = document.getElementById('searchQ');
-  if (sq) sq.placeholder = L.searchPlaceholder;
-
-  // Update pmin/pmax placeholders
-  const pmin = document.getElementById('pmin');
-  const pmax = document.getElementById('pmax');
-  if (pmin) pmin.placeholder = L.from;
-  if (pmax) pmax.placeholder = L.to;
-
-  // Update select options for po (operation in post modal)
-  const poSel = document.getElementById('po');
-  if (poSel) {
-    poSel.options[0].text = L.kira;
-    poSel.options[1].text = L.bay3;
-    poSel.options[2].text = L.tanaz;
-  }
-}
-
-window.toggleLang = toggleLang;
-</script>
-
-<!-- ── FIREBASE (إصدار حديث مع تعامل صحيح مع Firebase) ── -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// تكوين Firebase (نفس مشروعك blimmo)
 const firebaseConfig = {
   apiKey: "AIzaSyDgoARkUtqmeg4JDpLLpr1mzS8f0VDMFE0",
   authDomain: "blimmo.firebaseapp.com",
@@ -809,88 +249,175 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const adsCol = collection(db, "clients");
 
-// جداول الترجمة (عرض وتنسيق)
-const TM={aadl:{l:'AADL',c:'aadl'},social:{l:'Social',c:'social'},lpp:{l:'LPP',c:'lpp'}};
-const OM={
-  kira:{ar:'كراء',fr:'Location',c:'kira'},
-  bay3:{ar:'بيع',fr:'Vente',c:'bay3'},
-  tanaz:{ar:'تنازل',fr:'Cession',c:'tanaz'}
-};
-const RL={f2:'F2',f3:'F3',f4:'F4',f5:'F5+'};
-const PH=['🏠','🏢','🏡','🌇','🏘️','🏗️'];
-const GR=['#C8E6C9','#BBDEFB','#E1BEE7','#FFE0B2','#B2EBF2','#F8BBD9'];
+// Data mappings
+const PT = { aadl:"AADL", social:"Social", lpp:"LPP", villa:"فيلا", maison:"منزل", appart:"شقة", residence:"ريزيدنس", local:"محل" };
+const OP = { kira:"كراء", bay3:"بيع", achat:"شراء", tbadol:"تبادل" };
+const ROOMS = { f1:"F1", f2:"F2", f3:"F3", f4:"F4", f5:"F5", f6:"F6+" };
+const COND = { neuf:"جديد", utilise:"مستعمل" };
+const STATUS = { dispo:"متوفر", reserved:"محجوز", sold:"تم البيع", rented:"تم الكراء" };
+const STATUS_COLORS = { dispo:"#15803D", reserved:"#B45309", sold:"#B91C1C", rented:"#9E6D3E" };
+const TYPE_COLORS = { aadl:"#1C5FAD", social:"#6B21A8", lpp:"#C2410C", villa:"#8B5A2B", maison:"#2F6B47", appart:"#1C5FAD", residence:"#6A1B9A", local:"#C2410C" };
+const OP_COLORS = { kira:"#C9A84C", bay3:"#CE1126", achat:"#0E6B56", tbadol:"#374151" };
 
-function omLabel(op) {
-  return OM[op] ? OM[op][window.currentLang] || OM[op].ar : op;
-}
-
-// --- الحالة العامة (State) ---
-let DATA = [];        // البيانات الخام من Firebase
-let fTypes = new Set(['aadl','social','lpp']); // الفلاتر النشطة
+// State
+let DATA = [];
+let fTypes = new Set(['aadl','social','lpp','villa','maison','appart','residence','local']);
 let fOp = 'all';
 let fRooms = 'all';
+let fCondition = 'all';
+let fStatus = 'all';
 let fSearch = '';
-let fCommune = '';   // البلدية المختارة
+let fCommune = '';
 let priceMin = 0;
 let priceMax = Infinity;
 let displayList = [];
+let currentLang = 'ar';
 
-// --- تحديث الواجهة بناءً على القائمة المُرشحة (displayList) ---
+// ── Bilingual translations (all texts) ──────────────────────────────────────
+const LANG = {
+  ar: {
+    heroTitle: 'ابحث عن <span>دارك</span> هنا', heroSub: 'جميع إعلانات العقارات في الجزائر العاصمة',
+    searchPlaceholder: 'ابحث بالحي أو البلدية...', searchBtn: '🔍 بحث',
+    tag1: '🏠 AADL', tag2: '🏘️ Social', tag3: '🏢 LPP', tag4: '🏡 فيلا · منزل', tag5: '🛍️ محل · ريزيدنس',
+    statAds: 'إعلان نشط', statComm: 'بلدية', statAadl: 'حي AADL', statCity: 'الجزائر العاصمة',
+    ftitleType: '🏷️ نوع العقار', ftitleOp: '🤝 نوع المعاملة', ftitleRooms: '🛏️ عدد الغرف',
+    ftitleCond: '🔧 حالة العقار', ftitleStatus: '📢 حالة الإعلان', ftitleComm: '📍 البلدية', ftitlePrice: '💰 نطاق السعر (دج)',
+    allComm: 'كل البلديات', priceFrom: 'من', priceTo: 'إلى', applyBtn: '✅ تطبيق الفلاتر',
+    showing: 'عرض', adWord: 'إعلان',
+    sortNew: 'الأحدث أولاً', sortPa: 'الأرخص أولاً', sortPd: 'الأغلى أولاً',
+    postTitle: '📣 نشر إعلان جديد', postSub: 'مجاني – بدون تسجيل – فوري', postBtn: 'نشر إعلان',
+    labelType: 'نوع العقار', labelOp: 'المعاملة', labelRooms: 'الغرف',
+    labelArea: 'المساحة (م²)', areaPlaceholder: 'مثال: 85',
+    labelCondition: 'حالة العقار', labelStatus: 'حالة الإعلان',
+    labelCommune: 'البلدية والحي', communePlaceholder: 'مثال: سيدي عبد الله – حي 3000 مسكن',
+    labelPrice: 'السعر (دج)', pricePlaceholder: 'مثال: 40000',
+    labelPhone: 'رقم الهاتف', phonePlaceholder: '07XX XX XX XX',
+    labelDesc: 'وصف العقار', descPlaceholder: 'الطابق، التوجيه، المرافق، ملاحظات...',
+    submitBtn: '🚀 نشر الإعلان مجاناً',
+    condNeuf: 'جديد', condUsed: 'مستعمل',
+    statDispo: 'متوفر', statReserved: 'محجوز', statSold: 'تم البيع', statRented: 'تم الكراء',
+    callBtn: '📞 اتصل الآن',
+    specComm: 'البلدية', specRooms: 'الغرف', specArea: 'المساحة', specPrice: 'السعر', specCond: 'الحالة', specDate: 'تاريخ النشر',
+    footerText: 'منصة الجزائر العاصمة للعقارات والسكن الاجتماعي',
+    privacy: 'سياسة الخصوصية', terms: 'شروط الاستخدام', contact: 'اتصل بنا', about: 'حول الموقع',
+    toastPosted: '✅ تم نشر إعلانك بنجاح!', toastFavAdd: '❤️ أضيفت للمفضلة', toastFavRem: 'تمت الإزالة',
+    toastCopied: '📋 تم النسخ!', toastCalling: '📞 جارٍ الاتصال بـ ',
+    toastFillAll: '⚠️ يرجى ملء الحقول الضرورية', toastBadPhone: '⚠️ رقم الهاتف غير صحيح',
+    toastPosting: '⏳ جارٍ النشر...', toastFailed: '❌ فشل النشر', toastDbErr: '⚠️ مشكلة في الاتصال بقاعدة البيانات',
+    noAds: 'لا توجد إعلانات', noAdsSub: 'جرّب تغيير معايير البحث',
+    pages: {
+      privacy: { title: '🔒 سياسة الخصوصية', content: `<h3 style="color:var(--green);margin:0 0 10px 0">جمع البيانات واستخدامها</h3><p>في دارنا إيمو، نحن ملتزمون بحماية خصوصيتك. يتم جمع المعلومات التي تقدمها طواعية فقط عند نشر إعلان (نوع العقار، الموقع، السعر، رقم الهاتف، والوصف).</p><p>تُستخدم هذه البيانات حصريًا لعرض إعلانك على المنصة ولتسهيل التواصل بين البائعين والمشترين. نحن لا نبيع أو نشارك بياناتك الشخصية مع أي طرف ثالث.</p><h3 style="color:var(--green);margin:15px 0 10px 0">ملفات تعريف الارتباط (Cookies)</h3><p>نحن نستخدم Firebase وخدمات Google لتخزين البيانات، وقد يتم تخزين بعض المعلومات محليًا في متصفحك لتحسين أداء الموقع وسرعته. لا نستخدم الكوكيز للتتبع الإعلاني.</p><h3 style="color:var(--green);margin:15px 0 10px 0">حذف البيانات</h3><p>يمكنك طلب حذف إعلانك في أي وقت. للقيام بذلك، يرجى التواصل معنا عبر صفحة "اتصل بنا" وتزويدنا برابط الإعلان. سيتم الحذف خلال 24 ساعة كحد أقصى.</p><h3 style="color:var(--green);margin:15px 0 10px 0">الأمان</h3><p>نحن نتخذ إجراءات أمنية معقولة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الكشف. ومع ذلك، يرجى العلم بأنه لا توجد طريقة نقل عبر الإنترنت آمنة بنسبة 100%.</p><p style="margin-top:20px;color:#888;font-size:12px">آخر تحديث: 11 يونيو 2026</p>` },
+      terms: { title: '📋 شروط الاستخدام', content: `<h3 style="color:var(--green);margin:0 0 10px 0">قبول الشروط</h3><p>باستخدامك لموقع دارنا إيمو، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى عدم استخدام الموقع.</p><h3 style="color:var(--green);margin:15px 0 10px 0">نشر الإعلانات</h3><p>يُسمح فقط بنشر إعلانات عقارية حقيقية تتعلق بولاية الجزائر العاصمة. يجب أن تكون جميع المعلومات المقدمة (النوع، السعر، الموقع، رقم الهاتف) دقيقة وصادقة.</p><p>أنت وحدك المسؤول عن محتوى إعلانك. يحظر نشر إعلانات وهمية أو مضللة أو تحتوي على أرقام هواتف غير صحيحة.</p><h3 style="color:var(--green);margin:15px 0 10px 0">المحتوى المحظور</h3><p>يمنع منعا باتا نشر أي محتوى:<br>- يخالف القوانين واللوائح الجزائرية.<br>- يتعلق بعقارات خارج الجزائر العاصمة.<br>- يحتوي على خطاب كراهية أو تمييز أو تحرش.<br>- ينتهك حقوق الملكية الفكرية للغير.</p><h3 style="color:var(--green);margin:15px 0 10px 0">المسؤولية</h3><p>دارنا إيمو هي منصة وسيطة فقط. نحن لسنا طرفًا في أي معاملة تتم بين البائع والمشتري. لذلك، لا نتحمل أي مسؤولية عن دقة الإعلانات، أو جودة العقارات، أو أي نزاع ينشأ بين المستخدمين.</p><h3 style="color:var(--green);margin:15px 0 10px 0">إزالة الإعلانات</h3><p>نحتفظ بالحق في إزالة أو تعديل أي إعلان يخالف شروط الاستخدام هذه، دون إشعار مسبق أو تحمل أي مسؤولية تجاه الناشر.</p><p style="margin-top:20px;color:#888;font-size:12px">آخر تحديث: 11 يونيو 2026</p>` },
+      contact: { title: '📬 اتصل بنا', content: `<p style="margin-bottom:15px">نحن سعداء بتواصلك! يمكنك مراسلتنا عبر إحدى الطرق التالية، وسنرد عليك في أقرب وقت ممكن.</p><div style="background:#F0FAF4;border-radius:12px;padding:15px;margin-bottom:15px"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-size:22px">📧</span><div><div style="font-weight:700;color:var(--green)">البريد الإلكتروني</div><div style="direction:ltr;text-align:left">contact@darnaimmo.dz</div></div></div><div style="display:flex;align-items:center;gap:12px"><span style="font-size:22px">⏰</span><div><div style="font-weight:700;color:var(--green)">ساعات العمل</div><div>الأحد – الخميس: 09:00 – 17:00<br>(الجمعة والسبت: عطلة)</div></div></div></div><div style="background:#E8F0FE;border-radius:12px;padding:15px"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-size:22px">📘</span><div><div style="font-weight:700;color:#1877F2">فيسبوك</div><div><a href="https://www.facebook.com/100090394402814/" target="_blank" style="color:#1877F2;text-decoration:none">Darna Immo على فيسبوك</a></div></div></div><div style="display:flex;align-items:center;gap:12px"><span style="font-size:22px">💬</span><div><div style="font-weight:700;color:#0084FF">Messenger</div><div><a href="https://m.me/100090394402814" target="_blank" style="color:#0084FF;text-decoration:none">راسلنا عبر Messenger</a></div></div></div></div><p style="margin-top:15px;color:#888;font-size:13px">للإبلاغ عن إعلان مخالف أو لطلب حذف إعلانك، يرجى إرسال رابط الإعلان عبر البريد الإلكتروني.</p>` },
+      about: { title: 'ℹ️ حول الموقع', content: `<div style="text-align:center;margin-bottom:15px"><div style="font-size:48px">🏠</div><h2 style="color:var(--green);margin:5px 0">دارنا إيمو</h2><p style="color:#888">منصة عقارية جزائرية مجانية</p></div><p>دارنا إيمو هي منصة إلكترونية جزائرية متخصصة في إعلانات العقارات في <strong>الجزائر العاصمة</strong>. تم إنشاؤها بهدف تسهيل التواصل بين أصحاب العقارات والباحثين عن سكن أو محل، بعيدًا عن التعقيد والعمولات الباهظة.</p><h3 style="color:var(--green);margin:15px 0 10px 0">✨ ماذا نقدم؟</h3><ul style="list-style:none;padding-right:0"><li style="margin-bottom:8px">✅ <strong>مجاني تمامًا</strong> – لا توجد رسوم للنشر أو التصفح.</li><li style="margin-bottom:8px">✅ <strong>بدون تسجيل</strong> – انشر إعلانك في ثوانٍ دون الحاجة لإنشاء حساب.</li><li style="margin-bottom:8px">✅ <strong>تحديث فوري</strong> – الإعلانات تظهر مباشرة بعد النشر.</li><li style="margin-bottom:8px">✅ <strong>فلترة متقدمة</strong> – ابحث حسب نوع العقار، المعاملة، الغرف، السعر، والبلدية.</li><li style="margin-bottom:8px">✅ <strong>تواصل مباشر</strong> – اتصل بالبائع مباشرة عبر الهاتف أو WhatsApp.</li><li style="margin-bottom:8px">✅ <strong>ثنائي اللغة</strong> – واجهة عربية وفرنسية بالكامل.</li></ul><h3 style="color:var(--green);margin:15px 0 10px 0">📊 إحصائيات سريعة</h3><p>نغطي أكثر من <strong>31 بلدية</strong> في الجزائر العاصمة، مع آلاف الإعلانات المنشورة شهريًا. هدفنا هو أن نكون الوجهة الأولى للعقار في الجزائر.</p><p style="margin-top:15px;color:#888;font-size:12px">دارنا إيمو © 2025 - 2026 · جميع الحقوق محفوظة</p>` }
+    }
+  },
+  fr: {
+    heroTitle: 'Trouvez votre <span>bien</span> ici', heroSub: 'Toutes les annonces immobilières à Alger',
+    searchPlaceholder: 'Rechercher par quartier ou commune...', searchBtn: '🔍 Chercher',
+    tag1: '🏠 AADL', tag2: '🏘️ Social', tag3: '🏢 LPP', tag4: '🏡 Villa · Maison', tag5: '🛍️ Local · Résidence',
+    statAds: 'Annonce active', statComm: 'Commune', statAadl: 'Quartier AADL', statCity: 'Alger',
+    ftitleType: '🏷️ Type de bien', ftitleOp: '🤝 Type d\'opération', ftitleRooms: '🛏️ Nb. pièces',
+    ftitleCond: '🔧 État du bien', ftitleStatus: '📢 Statut', ftitleComm: '📍 Commune', ftitlePrice: '💰 Fourchette de prix (DA)',
+    allComm: 'Toutes les communes', priceFrom: 'De', priceTo: 'À', applyBtn: '✅ Appliquer',
+    showing: 'Affichage de', adWord: 'annonce(s)',
+    sortNew: 'Plus récents', sortPa: 'Moins chers', sortPd: 'Plus chers',
+    postTitle: '📣 Publier une annonce', postSub: 'Gratuit – Sans inscription – Immédiat', postBtn: 'Publier',
+    labelType: 'Type de bien', labelOp: 'Opération', labelRooms: 'Pièces',
+    labelArea: 'Surface (m²)', areaPlaceholder: 'Ex: 85',
+    labelCondition: 'État du bien', labelStatus: 'Statut',
+    labelCommune: 'Commune & quartier', communePlaceholder: 'Ex: Sidi Abdallah – Cité 3000 logements',
+    labelPrice: 'Prix (DA)', pricePlaceholder: 'Ex: 40000',
+    labelPhone: 'Téléphone', phonePlaceholder: '07XX XX XX XX',
+    labelDesc: 'Description', descPlaceholder: 'Étage, orientation, équipements...',
+    submitBtn: '🚀 Publier gratuitement',
+    condNeuf: 'Neuf', condUsed: 'Occasion',
+    statDispo: 'Disponible', statReserved: 'Réservé', statSold: 'Vendu', statRented: 'Loué',
+    callBtn: '📞 Appeler',
+    specComm: 'Commune', specRooms: 'Pièces', specArea: 'Surface', specPrice: 'Prix', specCond: 'État', specDate: 'Date',
+    footerText: 'Plateforme immobilière d\'Alger',
+    privacy: 'Confidentialité', terms: 'Conditions', contact: 'Contact', about: 'À propos',
+    toastPosted: '✅ Annonce publiée avec succès!', toastFavAdd: '❤️ Ajouté aux favoris', toastFavRem: 'Retiré des favoris',
+    toastCopied: '📋 Copié!', toastCalling: '📞 Appel en cours vers ',
+    toastFillAll: '⚠️ Veuillez remplir les champs obligatoires', toastBadPhone: '⚠️ Numéro invalide',
+    toastPosting: '⏳ Publication...', toastFailed: '❌ Échec de publication', toastDbErr: '⚠️ Problème de connexion',
+    noAds: 'Aucune annonce', noAdsSub: 'Modifiez vos critères',
+    pages: {
+      privacy: { title: '🔒 Politique de confidentialité', content: `<h3 style="color:var(--green);margin:0 0 10px 0">Collecte et utilisation des données</h3><p>Chez Darna Immo, nous nous engageons à protéger votre vie privée. Seules les informations que vous fournissez volontairement lors de la publication d'une annonce sont collectées (type de bien, localisation, prix, numéro de téléphone, description).</p><p>Ces données sont utilisées exclusivement pour afficher votre annonce sur la plateforme et faciliter la communication entre vendeurs et acheteurs. Nous ne vendons ni ne partageons vos données personnelles avec des tiers.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Cookies</h3><p>Nous utilisons Firebase et les services Google pour stocker les données. Certaines informations peuvent être stockées localement dans votre navigateur pour améliorer les performances du site. Nous n'utilisons pas de cookies à des fins de publicité ciblée.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Suppression des données</h3><p>Vous pouvez demander la suppression de votre annonce à tout moment. Pour ce faire, veuillez nous contacter via la page "Nous contacter" et nous fournir le lien de l'annonce. La suppression sera effectuée dans les 24 heures.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Sécurité</h3><p>Nous prenons des mesures de sécurité raisonnables pour protéger vos données contre tout accès non autorisé ou divulgation. Cependant, aucune méthode de transmission sur Internet n'est sécurisée à 100%.</p><p style="margin-top:20px;color:#888;font-size:12px">Dernière mise à jour : 11 juin 2026</p>` },
+      terms: { title: '📋 Conditions d\'utilisation', content: `<h3 style="color:var(--green);margin:0 0 10px 0">Acceptation des conditions</h3><p>En utilisant le site Darna Immo, vous acceptez de vous conformer aux présentes conditions générales. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Publication d'annonces</h3><p>Seules les annonces immobilières réelles concernant la wilaya d'Alger sont autorisées. Toutes les informations fournies (type, prix, localisation, numéro de téléphone) doivent être exactes et honnêtes.</p><p>Vous êtes seul responsable du contenu de votre annonce. Il est interdit de publier des annonces frauduleuses ou contenant de faux numéros de téléphone.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Contenu interdit</h3><p>Il est strictement interdit de publier tout contenu :<br>- Violant les lois algériennes.<br>- Concernant des biens en dehors d'Alger.<br>- Contenant des discours de haine ou du harcèlement.<br>- Violant les droits de propriété intellectuelle.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Responsabilité</h3><p>Darna Immo est une plateforme intermédiaire. Nous ne sommes pas partie prenante aux transactions entre vendeurs et acheteurs. Nous ne pouvons donc être tenus responsables de l'exactitude des annonces, de la qualité des biens, ou de tout litige entre utilisateurs.</p><h3 style="color:var(--green);margin:15px 0 10px 0">Suppression d'annonces</h3><p>Nous nous réservons le droit de supprimer ou modifier toute annonce violant ces conditions d'utilisation, sans préavis et sans responsabilité envers l'éditeur.</p><p style="margin-top:20px;color:#888;font-size:12px">Dernière mise à jour : 11 juin 2026</p>` },
+      contact: { title: '📬 Nous contacter', content: `<p style="margin-bottom:15px">Nous sommes ravis de vous entendre! Vous pouvez nous joindre par l'un des moyens suivants, et nous vous répondrons dans les plus brefs délais.</p><div style="background:#F0FAF4;border-radius:12px;padding:15px;margin-bottom:15px"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-size:22px">📧</span><div><div style="font-weight:700;color:var(--green)">Email</div><div style="direction:ltr;text-align:left">contact@darnaimmo.dz</div></div></div><div style="display:flex;align-items:center;gap:12px"><span style="font-size:22px">⏰</span><div><div style="font-weight:700;color:var(--green)">Horaires</div><div>Dimanche – Jeudi : 09:00 – 17:00<br>(Vendredi & Samedi : fermé)</div></div></div></div><div style="background:#E8F0FE;border-radius:12px;padding:15px"><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-size:22px">📘</span><div><div style="font-weight:700;color:#1877F2">Facebook</div><div><a href="https://www.facebook.com/100090394402814/" target="_blank" style="color:#1877F2;text-decoration:none">Darna Immo sur Facebook</a></div></div></div><div style="display:flex;align-items:center;gap:12px"><span style="font-size:22px">💬</span><div><div style="font-weight:700;color:#0084FF">Messenger</div><div><a href="https://m.me/100090394402814" target="_blank" style="color:#0084FF;text-decoration:none">Contactez-nous sur Messenger</a></div></div></div></div><p style="margin-top:15px;color:#888;font-size:13px">Pour signaler une annonce abusive ou demander la suppression de la vôtre, veuillez envoyer le lien de l'annonce par email.</p>` },
+      about: { title: 'ℹ️ À propos', content: `<div style="text-align:center;margin-bottom:15px"><div style="font-size:48px">🏠</div><h2 style="color:var(--green);margin:5px 0">Darna Immo</h2><p style="color:#888">Plateforme immobilière algérienne gratuite</p></div><p>Darna Immo est une plateforme immobilière algérienne spécialisée dans les annonces immobilières de la <strong>wilaya d'Alger</strong>. Elle a été créée pour faciliter la mise en relation entre les propriétaires et les chercheurs de biens, loin des complexités et des commissions élevées.</p><h3 style="color:var(--green);margin:15px 0 10px 0">✨ Ce que nous offrons</h3><ul style="list-style:none;padding-right:0"><li style="margin-bottom:8px">✅ <strong>100% Gratuit</strong> – Pas de frais de publication ou de consultation.</li><li style="margin-bottom:8px">✅ <strong>Sans inscription</strong> – Publiez votre annonce en quelques secondes.</li><li style="margin-bottom:8px">✅ <strong>Mise à jour instantanée</strong> – Les annonces apparaissent immédiatement.</li><li style="margin-bottom:8px">✅ <strong>Filtres avancés</strong> – Recherche par type, opération, pièces, prix, commune.</li><li style="margin-bottom:8px">✅ <strong>Contact direct</strong> – Appelez ou WhatsApp le vendeur directement.</li><li style="margin-bottom:8px">✅ <strong>Bilingue</strong> – Interface complète en arabe et français.</li></ul><h3 style="color:var(--green);margin:15px 0 10px 0">📊 Chiffres clés</h3><p>Nous couvrons plus de <strong>31 communes</strong> dans Alger, avec des milliers d'annonces publiées chaque mois. Notre objectif est de devenir la référence immobilière en Algérie.</p><p style="margin-top:15px;color:#888;font-size:12px">Darna Immo © 2025 - 2026 · Tous droits réservés</p>` }
+    }
+  }
+};
+
+// Helper functions
+function getTypeColor(type) { return TYPE_COLORS[type] || '#0D3B2E'; }
+function getOpColor(op) { return OP_COLORS[op] || '#0D3B2E'; }
+function getStatusColor(status) { return STATUS_COLORS[status] || '#555'; }
+
+function applyFilters() {
+  const searchLower = fSearch.trim().toLowerCase();
+  displayList = DATA.filter(ad => {
+    if (!fTypes.has(ad.type)) return false;
+    if (fOp !== 'all' && ad.op !== fOp) return false;
+    if (fRooms !== 'all' && ad.rooms !== fRooms) return false;
+    if (fCondition !== 'all' && ad.condition !== fCondition) return false;
+    if (fStatus !== 'all' && ad.status !== fStatus) return false;
+    if (fCommune && !(ad.commune || '').toLowerCase().includes(fCommune.toLowerCase())) return false;
+    const price = Number(ad.price) || 0;
+    if (price < priceMin || price > priceMax) return false;
+    if (searchLower && !((ad.title || '').toLowerCase().includes(searchLower) || (ad.commune || '').toLowerCase().includes(searchLower))) return false;
+    return true;
+  });
+  sortAndRender();
+}
+
+function sortAndRender() {
+  const sortVal = document.getElementById('srt')?.value || 'new';
+  if (sortVal === 'pa') displayList.sort((a, b) => (a.price || 0) - (b.price || 0));
+  else if (sortVal === 'pd') displayList.sort((a, b) => (b.price || 0) - (a.price || 0));
+  else displayList.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  renderAds(displayList);
+}
+
 function renderAds(list) {
   const grid = document.getElementById('grid');
   const rnSpan = document.getElementById('rn');
   if (!grid) return;
-  
-  // تحديث العداد
-  if (rnSpan) rnSpan.innerText = list.length;
-  // تحديث العداد الكلي في الـ Stats
-  const totalCountSpan = document.getElementById('liveAdCount');
-  if (totalCountSpan) totalCountSpan.innerText = DATA.length;
-  
+  const T = LANG[currentLang];
+  rnSpan.innerText = list.length;
+  document.getElementById('liveAdCount').innerText = DATA.length;
+  document.getElementById('rcountText').innerHTML = `${T.showing} <strong id="rn">${list.length}</strong> ${T.adWord}`;
+
   if (list.length === 0) {
-    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🔍</div><h3>${window.currentLang==='fr'?'Aucune annonce trouvée':'لا توجد إعلانات'}</h3><p>${window.currentLang==='fr'?'Essayez de modifier vos critères de recherche':'جرّب تغيير معايير البحث'}</p></div>`;
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div style="font-size:48px;margin-bottom:12px">🔍</div><h3>${T.noAds}</h3><p>${T.noAdsSub}</p></div>`;
     return;
   }
-  
-  const colorIdx = (id) => {
-    let hash = 0;
-    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
-    return hash % GR.length;
-  };
-  const phIdx = (id) => {
-    let hash = 0;
-    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
-    return hash % PH.length;
-  };
-  
+
   grid.innerHTML = list.map(ad => `
     <div class="card" onclick="openD('${ad.id}')">
-      <div class="cimg" style="background:linear-gradient(135deg,${GR[colorIdx(ad.id)]},${GR[(colorIdx(ad.id)+2)%GR.length]})">
-        <div class="cimg-ph">${PH[phIdx(ad.id)]}</div>
-        <span class="bt ${ad.type}">${TM[ad.type]?.l || ad.type}</span>
-        <span class="bo ${ad.op}">${omLabel(ad.op)}</span>
+      <div class="cimg">
+        <div class="cimg-ph">${ad.type === 'villa' ? '🏡' : ad.type === 'maison' ? '🏠' : ad.type === 'local' ? '🛍️' : ad.type === 'residence' ? '🏢' : '🏘️'}</div>
+        <span class="bt" style="background:${getTypeColor(ad.type)}">${PT[ad.type] || ad.type}</span>
+        <span class="bo" style="background:${getOpColor(ad.op)};color:#fff">${OP[ad.op] || ad.op}</span>
         <button class="fav" id="fv${ad.id}" onclick="tfav(event,'${ad.id}')">🤍</button>
-        ${ad.feat ? '<div class="feat-badge">⭐ مميز</div>' : ''}
+        <div class="status-badge" style="background:${getStatusColor(ad.status)}">${STATUS[ad.status] || ad.status || ''}</div>
       </div>
       <div class="cbody">
-        <div class="ctitle">${ad.title || `شقة ${RL[ad.rooms] || ad.rooms}`}</div>
-        <div class="cloc">📍 ${ad.commune || (window.currentLang==='fr'?'Alger':'الجزائر')}</div>
+        <div class="ctitle">${ad.title || `${PT[ad.type]} - ${OP[ad.op]}`}</div>
+        <div class="cloc">📍 ${ad.commune || 'Alger'}</div>
         <div class="cspecs">
-          <span>🛏️ ${RL[ad.rooms] || ad.rooms}</span>
+          <span>🛏️ ${ROOMS[ad.rooms] || ad.rooms || '?'}</span>
           <span>📐 ${ad.area || '?'} m²</span>
-          <span>📅 ${ad.date ? ad.date.slice(5,10).replace('-','/') : (window.currentLang==='fr'?'Nouveau':'جديد')}</span>
-          <span style="color:#aaa">👁️ ${ad.views || 0}</span>
+          <span>📅 ${ad.date ? ad.date.slice(5,10) : '—'}</span>
+          <span>🔧 ${ad.condition === 'neuf' ? T.condNeuf : ad.condition === 'utilise' ? T.condUsed : (ad.condition || '?')}</span>
         </div>
         <div class="cfoot">
-          <div class="price">${Number(ad.price).toLocaleString('fr-DZ')} <small>DA${ad.op === 'kira' ? (window.currentLang==='fr'?'/mois':'/شهر') : ''}</small></div>
+          <div class="price">${Number(ad.price).toLocaleString('fr-DZ')} <small>DA</small></div>
           <div style="display:flex;gap:6px">
-            <button class="btn-call" style="background:#25D366;padding:7px 11px" onclick="event.stopPropagation();openWA('${ad.phone}','${(ad.title||'').replace(/'/g,'')}')" title="WhatsApp">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.497-5.203-1.367l-.374-.217-3.875 1.024 1.024-3.742-.234-.386A9.945 9.945 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            </button>
-            <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone}')">📞 ${window.currentLang==='fr'?'Appeler':'اتصال'}</button>
-            <button class="btn-call" style="background:var(--green-mid);padding:7px 11px" onclick="event.stopPropagation();shareAd('${ad.id}')" title="${window.currentLang==='fr'?'Partager':'مشاركة'}">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            </button>
+            <button class="btn-call" style="background:#25D366;padding:7px 11px" onclick="event.stopPropagation();openWA('${(ad.phone||'').replace(/'/g,'')}','${(ad.title||'').replace(/'/g,'').replace(/"/g,'')}')">💚</button>
+            <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone||''}')">📞</button>
           </div>
         </div>
       </div>
@@ -898,438 +425,442 @@ function renderAds(list) {
   `).join('');
 }
 
-// --- دالة التصفية (تطبق جميع الشروط) ---
-function applyFilters() {
-  const searchLower = fSearch.trim().toLowerCase();
-  displayList = DATA.filter(ad => {
-    // 1. نوع السكن
-    if (!fTypes.has(ad.type)) return false;
-    // 2. المعاملة
-    if (fOp !== 'all' && ad.op !== fOp) return false;
-    // 3. الغرف
-    if (fRooms !== 'all' && ad.rooms !== fRooms) return false;
-    // 4. البلدية
-    if (fCommune && ad.commune !== fCommune) return false;
-    // 5. السعر
-    const price = Number(ad.price) || 0;
-    if (price < priceMin || price > priceMax) return false;
-    // 6. البحث النصي (في العنوان أو البلدية)
-    if (searchLower && !(ad.title?.toLowerCase().includes(searchLower) || ad.commune?.toLowerCase().includes(searchLower))) return false;
-    
-    return true;
-  });
+// Apply translation to all static HTML elements
+function applyTranslation(lang) {
+  currentLang = lang;
+  const T = LANG[lang];
   
-  // تطبيق الترتيب بعد التصفية
+  // Hero
+  document.getElementById('heroTitle').innerHTML = T.heroTitle;
+  document.getElementById('heroSub').innerText = T.heroSub;
+  document.getElementById('searchQ').placeholder = T.searchPlaceholder;
+  document.getElementById('searchBtn').innerHTML = T.searchBtn;
+  document.getElementById('tag1').innerHTML = T.tag1;
+  document.getElementById('tag2').innerHTML = T.tag2;
+  document.getElementById('tag3').innerHTML = T.tag3;
+  document.getElementById('tag4').innerHTML = T.tag4;
+  document.getElementById('tag5').innerHTML = T.tag5;
+  
+  // Stats
+  document.getElementById('statAdsLabel').innerText = T.statAds;
+  document.getElementById('statCommLabel').innerText = T.statComm;
+  document.getElementById('statAadlLabel').innerText = T.statAadl;
+  document.getElementById('statCityLabel').innerText = T.statCity;
+  
+  // Filter titles
+  document.getElementById('ftitleType').innerHTML = T.ftitleType;
+  document.getElementById('ftitleOp').innerHTML = T.ftitleOp;
+  document.getElementById('ftitleRooms').innerHTML = T.ftitleRooms;
+  document.getElementById('ftitleCond').innerHTML = T.ftitleCond;
+  document.getElementById('ftitleStatus').innerHTML = T.ftitleStatus;
+  document.getElementById('ftitleComm').innerHTML = T.ftitleComm;
+  document.getElementById('ftitlePrice').innerHTML = T.ftitlePrice;
+  
+  // Commune select
+  const allCommOption = document.getElementById('allCommOption');
+  if (allCommOption) allCommOption.innerText = T.allComm;
+  
+  // Price range
+  const pmin = document.getElementById('pmin');
+  const pmax = document.getElementById('pmax');
+  if (pmin) pmin.placeholder = T.priceFrom;
+  if (pmax) pmax.placeholder = T.priceTo;
+  
+  // Apply button
+  document.getElementById('applyBtn').innerHTML = T.applyBtn;
+  
+  // Sort options
+  document.getElementById('sortNew').innerText = T.sortNew;
+  document.getElementById('sortPa').innerText = T.sortPa;
+  document.getElementById('sortPd').innerText = T.sortPd;
+  
+  // Post modal
+  document.getElementById('postTitle').innerHTML = T.postTitle;
+  document.getElementById('postSub').innerHTML = T.postSub;
+  document.getElementById('postBtnText').innerText = T.postBtn;
+  document.getElementById('labelType').innerText = T.labelType;
+  document.getElementById('labelOp').innerText = T.labelOp;
+  document.getElementById('labelRooms').innerText = T.labelRooms;
+  document.getElementById('labelArea').innerText = T.labelArea;
+  document.getElementById('labelCondition').innerText = T.labelCondition;
+  document.getElementById('labelStatus').innerText = T.labelStatus;
+  document.getElementById('labelCommune').innerText = T.labelCommune;
+  document.getElementById('labelPrice').innerText = T.labelPrice;
+  document.getElementById('labelPhone').innerText = T.labelPhone;
+  document.getElementById('labelDesc').innerText = T.labelDesc;
+  
+  const areaInput = document.getElementById('pa');
+  const communeInput = document.getElementById('pl');
+  const priceInput = document.getElementById('pp');
+  const phoneInput = document.getElementById('ph');
+  const descInput = document.getElementById('pd');
+  if (areaInput) areaInput.placeholder = T.areaPlaceholder;
+  if (communeInput) communeInput.placeholder = T.communePlaceholder;
+  if (priceInput) priceInput.placeholder = T.pricePlaceholder;
+  if (phoneInput) phoneInput.placeholder = T.phonePlaceholder;
+  if (descInput) descInput.placeholder = T.descPlaceholder;
+  
+  document.getElementById('condNeufOpt').innerText = T.condNeuf;
+  document.getElementById('condUsedOpt').innerText = T.condUsed;
+  document.getElementById('statDispoOpt').innerText = T.statDispo;
+  document.getElementById('statReservedOpt').innerText = T.statReserved;
+  document.getElementById('statSoldOpt').innerText = T.statSold;
+  document.getElementById('statRentedOpt').innerText = T.statRented;
+  document.getElementById('submitBtn').innerHTML = T.submitBtn;
+  
+  // Detail modal (will update when opened)
+  document.getElementById('mcall').innerHTML = T.callBtn;
+  
+  // Footer
+  document.getElementById('footerText').innerText = T.footerText;
+  document.getElementById('privacyLink').innerHTML = `🔒 ${T.privacy}`;
+  document.getElementById('termsLink').innerHTML = `📋 ${T.terms}`;
+  document.getElementById('contactLink').innerHTML = `📬 ${T.contact}`;
+  document.getElementById('aboutLink').innerHTML = `ℹ️ ${T.about}`;
+  
+  // Re-render ads to update displayed texts
   sortAndRender();
-}
-
-// --- الترتيب والعرض (يستخدم displayList الحالي) ---
-function sortAndRender() {
-  const sortVal = document.getElementById('srt')?.value || 'new';
-  if (sortVal === 'pa') {
-    displayList.sort((a,b) => (a.price||0) - (b.price||0));
-  } else if (sortVal === 'pd') {
-    displayList.sort((a,b) => (b.price||0) - (a.price||0));
-  } else {
-    displayList.sort((a,b) => (b.date || '') > (a.date || '') ? 1 : -1);
-  }
-  renderAds(displayList);
-}
-
-// --- دوال التحديث من عناصر الواجهة ---
-function updateFiltersFromUI() {
-  // البلدية
-  const cmSelect = document.getElementById('fcm');
-  fCommune = cmSelect ? cmSelect.value : '';
   
-  // نطاق السعر
-  const minInp = document.getElementById('pmin');
-  const maxInp = document.getElementById('pmax');
-  priceMin = minInp && minInp.value ? parseFloat(minInp.value) : 0;
-  priceMax = maxInp && maxInp.value ? parseFloat(maxInp.value) : Infinity;
-  
-  applyFilters();
+  // Lang button text
+  document.getElementById('langBtn').innerText = lang === 'ar' ? 'FR' : 'عربي';
 }
 
-// --- ربط دوال التصفية العامة ---
-function af() {
-  updateFiltersFromUI();
-}
-function sl() {
-  sortAndRender();
-}
-function doSearch() {
-  const searchInput = document.getElementById('searchQ');
-  fSearch = searchInput ? searchInput.value : '';
-  applyFilters();
-}
-
-// --- دوال الفلاتر (النوع، المعاملة، الغرف) ---
-function tog(el) {
-  const v = el.dataset.v;
-  if (el.classList.contains('on')) {
-    el.classList.remove('on');
-    fTypes.delete(v);
-  } else {
-    el.classList.add('on');
-    fTypes.add(v);
+// Page modals
+window.openPage = function(page) {
+  const T = LANG[currentLang];
+  const p = T.pages[page];
+  if (p) {
+    document.getElementById('pageTitle').innerHTML = p.title;
+    document.getElementById('pageContent').innerHTML = p.content;
+    document.getElementById('pageModal').classList.add('open');
   }
-  applyFilters();
-}
+};
 
-function radio(el, group) {
-  document.querySelectorAll(`[data-g="${group}"]`).forEach(btn => btn.classList.remove('on'));
-  el.classList.add('on');
-  const val = el.dataset.v;
-  if (group === 'o') {
-    fOp = val;
-  } else if (group === 'r') {
-    fRooms = val;
-  }
-  applyFilters();
-}
+window.closePage = function() { document.getElementById('pageModal').classList.remove('open'); };
+window.toggleLang = function() { applyTranslation(currentLang === 'ar' ? 'fr' : 'ar'); };
 
-function mf(el, typeVal, opVal) {
-  document.querySelectorAll('#mobStrip .chip').forEach(btn => btn.classList.remove('on'));
-  el.classList.add('on');
-  if (typeVal === 'all') {
-    fTypes = new Set(['aadl','social','lpp']);
-  } else {
-    fTypes = new Set([typeVal]);
-  }
-  fOp = opVal;
-  applyFilters();
-  // مزامنة الواجهة الجانبية (اختياري)
-  document.querySelectorAll('.sidebar .chip').forEach(btn => {
-    if (btn.dataset.g === 't') {
-      if (fTypes.has(btn.dataset.v)) btn.classList.add('on');
-      else btn.classList.remove('on');
-    }
-    if (btn.dataset.g === 'o') {
-      if (fOp === btn.dataset.v) btn.classList.add('on');
-      else if (btn.dataset.v === 'all' && fOp === 'all') btn.classList.add('on');
-      else btn.classList.remove('on');
-    }
-  });
-}
-
-// --- فتح التفاصيل ---
-function openD(id) {
+// Global functions for HTML calls
+window.openD = function(id) {
   const ad = DATA.find(x => x.id === id);
   if (!ad) return;
-  const colorIdx = (id) => {
-    let hash = 0;
-    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
-    return hash % GR.length;
-  };
-  const phIdx = (id) => {
-    let hash = 0;
-    for (let i = 0; i < id.length; i++) hash += id.charCodeAt(i);
-    return hash % PH.length;
-  };
-  document.getElementById('mtt').innerHTML = ad.title || `شقة ${RL[ad.rooms] || ad.rooms}`;
-  document.getElementById('mimg').innerHTML = `<div class="mimg-ph" style="background:linear-gradient(135deg,${GR[colorIdx(ad.id)]},${GR[(colorIdx(ad.id)+2)%GR.length]})">${PH[phIdx(ad.id)]}</div>`;
+  const T = LANG[currentLang];
+  document.getElementById('mtt').innerHTML = ad.title || `${PT[ad.type]} - ${OP[ad.op]}`;
+  document.getElementById('mimg').innerHTML = `<div class="mimg-ph">${ad.type === 'villa' ? '🏡' : ad.type === 'maison' ? '🏠' : ad.type === 'local' ? '🛍️' : ad.type === 'residence' ? '🏢' : '🏘️'}</div>`;
   document.getElementById('mbg').innerHTML = `
-    <span class="bt ${ad.type}" style="position:static;font-size:13px;padding:5px 13px">${TM[ad.type]?.l || ad.type}</span>
-    <span class="bo ${ad.op}" style="position:static;font-size:13px;padding:5px 13px">${omLabel(ad.op)}</span>
-    ${ad.feat ? `<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ ${window.currentLang==='fr'?'En vedette':'مميز'}</span>` : ''}
-    <span style="font-size:12px;color:#888;padding:5px 10px;background:#f5f5f5;border-radius:50px">👁️ ${(ad.views||0)+1} ${window.currentLang==='fr'?'vue(s)':'مشاهدة'}</span>
+    <span class="bt" style="background:${getTypeColor(ad.type)};position:static">${PT[ad.type] || ad.type}</span>
+    <span class="bo" style="background:${getOpColor(ad.op)};position:static;color:#fff">${OP[ad.op] || ad.op}</span>
+    <span style="background:${getStatusColor(ad.status)};color:white;padding:5px 13px;border-radius:50px">${STATUS[ad.status] || ad.status || ''}</span>
   `;
-  // زيادة عداد المشاهدات
-  updateDoc(doc(db,'clients',ad.id), { views: (ad.views||0)+1 }).catch(()=>{});
-  document.getElementById('mds').innerHTML = ad.desc || (window.currentLang==='fr'?'Pas de description.':'لا يوجد وصف إضافي.');
+  document.getElementById('mds').innerHTML = ad.desc || (currentLang === 'fr' ? 'Aucune description.' : 'لا يوجد وصف إضافي.');
   document.getElementById('msp').innerHTML = `
-    <div class="mspec"><strong>📍 ${ad.commune || (window.currentLang==='fr'?'Alger':'الجزائر')}</strong>${window.currentLang==='fr'?'Commune':'البلدية'}</div>
-    <div class="mspec"><strong>🛏️ ${RL[ad.rooms] || ad.rooms}</strong>${window.currentLang==='fr'?'Pièces':'الغرف'}</div>
-    <div class="mspec"><strong>📐 ${ad.area || '?'} m²</strong>${window.currentLang==='fr'?'Surface':'المساحة'}</div>
-    <div class="mspec"><strong>💰 ${Number(ad.price).toLocaleString('fr-DZ')} DA</strong>${window.currentLang==='fr'?'Prix':'السعر'}${ad.op === 'kira' ? (window.currentLang==='fr'?' / mois':' / شهر') : ''}</div>
+    <div class="mspec"><strong>📍 ${ad.commune || '—'}</strong>${T.specComm}</div>
+    <div class="mspec"><strong>🛏️ ${ROOMS[ad.rooms] || ad.rooms || '?'}</strong>${T.specRooms}</div>
+    <div class="mspec"><strong>📐 ${ad.area || '?'} m²</strong>${T.specArea}</div>
+    <div class="mspec"><strong>💰 ${Number(ad.price).toLocaleString('fr-DZ')} DA</strong>${T.specPrice}</div>
+    <div class="mspec"><strong>🔧 ${ad.condition === 'neuf' ? T.condNeuf : ad.condition === 'utilise' ? T.condUsed : (ad.condition || '?')}</strong>${T.specCond}</div>
+    <div class="mspec"><strong>📅 ${ad.date || '—'}</strong>${T.specDate}</div>
   `;
-  const callBtn = document.getElementById('mcall');
-  callBtn.onclick = () => dial(ad.phone);
-  const waBtn = document.getElementById('mwa');
-  waBtn.onclick = () => openWA(ad.phone, ad.title || '');
-  const shareBtn = document.getElementById('mshare');
-  shareBtn.onclick = () => shareAd(ad.id);
+  const safePhone = (ad.phone || '').replace(/'/g, '');
+  const safeTitle = (ad.title || '').replace(/'/g, '').replace(/"/g, '');
+  document.getElementById('socialBtns').innerHTML = `
+    <button class="social-icon fb" onclick="openFB()">📘 Facebook</button>
+    <button class="social-icon messenger" onclick="openMessenger()">💬 Messenger</button>
+    <button class="social-icon whatsapp" onclick="openWA('${safePhone}','${safeTitle}')">💚 WhatsApp</button>
+  `;
+  document.getElementById('mcall').innerHTML = T.callBtn;
+  document.getElementById('mcall').onclick = () => dial(ad.phone);
+  document.getElementById('mwa').onclick = () => openWA(ad.phone || '', ad.title || '');
+  document.getElementById('mshare').onclick = () => shareAd(ad.id);
+  updateDoc(doc(db, 'clients', ad.id), { views: (ad.views || 0) + 1 }).catch(() => {});
   document.getElementById('dm').classList.add('open');
-}
+};
 
-// --- دوال الإضافة (نشر الإعلان) ---
-function openPost() {
-  document.getElementById('pm').classList.add('open');
-}
-
-async function sub() {
-  const loc = document.getElementById('pl').value.trim();
-  const phone = document.getElementById('ph').value.trim();
-  const priceRaw = document.getElementById('pp').value.trim();
-  if (!loc || !phone || !priceRaw) {
-    toast(window.currentLang==='fr'?'⚠️ Veuillez remplir les champs obligatoires':'⚠️ يرجى ملء الحقول الضرورية (البلدية، السعر، رقم الهاتف)', 'red');
-    return;
-  }
-  const cleanPhone = phone.replace(/\D/g,'');
-  if (cleanPhone.length < 9 || cleanPhone.length > 13) {
-    toast(window.currentLang==='fr'?'⚠️ Numéro de téléphone invalide':'⚠️ رقم الهاتف غير صحيح (9 إلى 13 رقم)', 'red');
-    return;
-  }
-  
-  const btn = document.querySelector('.btn-submit');
-  btn.disabled = true;
-  btn.textContent = window.currentLang==='fr'?'⏳ Publication...':'⏳ جارٍ النشر...';
-  
-  try {
-    const newAd = {
-      type: document.getElementById('pt').value,
-      op: document.getElementById('po').value,
-      title: `شقة ${document.getElementById('pr').value.toUpperCase()} – ${loc}`,
-      commune: loc.split(/[-–]/)[0].trim(),
-      rooms: document.getElementById('pr').value,
-      area: parseInt(document.getElementById('pa').value) || 0,
-      price: parseInt(priceRaw) || 0,
-      desc: document.getElementById('pd').value || 'لا يوجد وصف إضافي.',
-      phone: phone,
-      feat: false,
-      date: new Date().toISOString().slice(0,10),
-      createdAt: Date.now(),
-      views: 0
-    };
-    await addDoc(adsCol, newAd);
-    // إغلاق النافذة وتفريغ الحقول
-    cm('pm');
-    document.getElementById('pl').value = '';
-    document.getElementById('ph').value = '';
-    document.getElementById('pp').value = '';
-    document.getElementById('pa').value = '';
-    document.getElementById('pd').value = '';
-    toast(window.currentLang==='fr'?'✅ Annonce publiée avec succès!':'✅ تم نشر إعلانك بنجاح!', '');
-  } catch(e) {
-    console.error(e);
-    toast(window.currentLang==='fr'?'❌ Échec de la publication: vérifiez votre connexion':'❌ فشل النشر: تحقق من اتصالك بالإنترنت', 'red');
-  }
-  btn.disabled = false;
-  btn.textContent = window.currentLang==='fr'?'🚀 Publier gratuitement':'🚀 نشر الإعلان مجاناً';
-}
-
-// --- دوال مساعدة عامة ---
-function openWA(phone, title) {
-  // تنظيف رقم الهاتف وإضافة مفتاح الجزائر
-  let clean = phone.replace(/\D/g,'');
+window.openFB = () => window.open('https://www.facebook.com/100090394402814/', '_blank');
+window.openMessenger = () => window.open('https://m.me/100090394402814', '_blank');
+window.openWA = function(phone, title) {
+  let clean = phone.replace(/\D/g, '');
   if (clean.startsWith('0')) clean = '213' + clean.slice(1);
-  const msg = encodeURIComponent(
-    window.currentLang === 'fr'
-      ? `Bonjour, je suis intéressé(e) par votre annonce "${title}" sur Darna Immo.`
-      : `السلام عليكم، أنا مهتم بإعلانك "${title}" على دارنا إيمو.`
-  );
+  const msg = encodeURIComponent(`السلام عليكم، أنا مهتم بإعلانك "${title}" على دارنا إيمو.`);
   window.open(`https://wa.me/${clean}?text=${msg}`, '_blank');
-}
-
-function shareAd(id) {
+};
+window.shareAd = function(id) {
+  const T = LANG[currentLang];
   const ad = DATA.find(x => x.id === id);
-  const text = ad
-    ? (window.currentLang === 'fr'
-        ? `🏠 ${ad.title || 'Logement'} – ${ad.commune || 'Alger'}\n💰 ${Number(ad.price).toLocaleString()} DA\n📲 Darna Immo`
-        : `🏠 ${ad.title || 'شقة'} – ${ad.commune || 'الجزائر'}\n💰 ${Number(ad.price).toLocaleString()} دج\n📲 دارنا إيمو`)
-    : 'Darna Immo';
-  if (navigator.share) {
-    navigator.share({ title: 'Darna Immo', text });
-  } else {
-    navigator.clipboard.writeText(text).then(() =>
-      toast(window.currentLang === 'fr' ? '📋 Copié !' : '📋 تم النسخ!', '')
-    );
-  }
-}
-
-window.openWA = openWA;
-window.shareAd = shareAd;
-
-const PAGES = {
-  privacy: {
-    title: '🔒 سياسة الخصوصية',
-    content: `
-      <h3 style="color:var(--green);margin-bottom:8px">1. جمع البيانات</h3>
-      <p>عند نشر إعلان على دارنا إيمو، نجمع المعلومات التي تُدخلها طوعاً: البلدية، نوع السكن، السعر، ورقم الهاتف. لا نجمع أي بيانات شخصية دون موافقتك.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">2. استخدام البيانات</h3>
-      <p>تُستخدم البيانات حصراً لعرض إعلانك للزوار المهتمين. لا نبيع بياناتك لأي طرف ثالث ولا نستخدمها لأغراض تجارية أخرى.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">3. حذف البيانات</h3>
-      <p>يمكنك طلب حذف إعلانك في أي وقت بالتواصل معنا عبر صفحة "اتصل بنا". سيتم الحذف خلال 24 ساعة.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">4. الأمان</h3>
-      <p>نستخدم خدمة Firebase من Google لتخزين البيانات، وهي محمية بمعايير أمان عالية. رقم هاتفك يظهر فقط للزوار الراغبين في التواصل معك.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">5. ملفات تعريف الارتباط</h3>
-      <p>لا يستخدم موقعنا ملفات تعريف الارتباط (Cookies) لتتبعك. نستخدم فقط التخزين المحلي للمفضلة.</p>
-      <p style="margin-top:16px;color:#999;font-size:12px">آخر تحديث: يونيو 2025</p>
-    `
-  },
-  terms: {
-    title: '📋 شروط الاستخدام',
-    content: `
-      <h3 style="color:var(--green);margin-bottom:8px">1. القبول بالشروط</h3>
-      <p>باستخدام موقع دارنا إيمو، فإنك توافق على هذه الشروط. إذا كنت لا توافق، يرجى التوقف عن استخدام الموقع.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">2. نشر الإعلانات</h3>
-      <p>يلتزم المستخدم بأن تكون إعلاناته حقيقية ودقيقة. يُمنع نشر إعلانات مكررة أو معلومات مضللة أو محتوى مخالف للقانون الجزائري.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">3. المحتوى المحظور</h3>
-      <p>يُحظر نشر أي محتوى يتعلق بعقارات غير مرخصة، أو محتوى مسيء، أو إعلانات لا علاقة لها بالسكن الاجتماعي (AADL/LPP/Social).</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">4. المسؤولية</h3>
-      <p>دارنا إيمو منصة وساطة فقط. لا نتحمل أي مسؤولية عن المعاملات التي تتم بين البائعين والمشترين خارج الموقع.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">5. الملكية الفكرية</h3>
-      <p>جميع حقوق تصميم الموقع وشعاره محفوظة لدارنا إيمو. لا يجوز نسخها أو استخدامها دون إذن كتابي.</p>
-      <h3 style="color:var(--green);margin:14px 0 8px">6. التعديلات</h3>
-      <p>نحتفظ بحق تعديل هذه الشروط في أي وقت. الاستمرار في استخدام الموقع يعني قبولك للشروط المحدّثة.</p>
-      <p style="margin-top:16px;color:#999;font-size:12px">آخر تحديث: يونيو 2025</p>
-    `
-  },
-  contact: {
-    title: '📬 اتصل بنا',
-    content: `
-      <p style="margin-bottom:18px">نحن هنا لمساعدتك! تواصل معنا عبر إحدى القنوات التالية:</p>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <a href="mailto:contact@darnaimmo.dz" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F0FAF4;border-radius:12px;text-decoration:none;color:#1A1A1A;border:1.5px solid var(--border)">
-          <span style="font-size:24px">📧</span>
-          <div>
-            <div style="font-weight:700;color:var(--green)">البريد الإلكتروني</div>
-            <div style="font-size:13px;color:#666">https://www.facebook.com/share/18yDkB5mj2/?mibextid=wwXIfr</div>
-          </div>
-        </a>
-        <a href="https://wa.me/213XXXXXXXXX" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F0FFF4;border-radius:12px;text-decoration:none;color:#1A1A1A;border:1.5px solid #B2F0C8">
-          <span style="font-size:24px">💬</span>
-          <div>
-            <div style="font-weight:700;color:#1A7A40">واتساب</div>
-            <div style="font-size:13px;color:#666">تواصل معنا مباشرة</div>
-          </div>
-        </a>
-        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#FFF8E7;border-radius:12px;border:1.5px solid #F0D890">
-          <span style="font-size:24px">⏰</span>
-          <div>
-            <div style="font-weight:700;color:#92650A">ساعات العمل</div>
-            <div style="font-size:13px;color:#666">الأحد – الخميس: 8:00 – 18:00</div>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F5F0FF;border-radius:12px;border:1.5px solid #D4B8F5">
-          <span style="font-size:24px">📍</span>
-          <div>
-            <div style="font-weight:700;color:#6B21A8">الموقع</div>
-            <div style="font-size:13px;color:#666">الجزائر العاصمة، الجزائر 🇩🇿</div>
-          </div>
-        </div>
-      </div>
-      <p style="margin-top:18px;font-size:13px;color:#888">للإبلاغ عن إعلان مخالف أو طلب حذف إعلانك، أرسل لنا رقم الإعلان عبر البريد الإلكتروني.</p>
-    `
-  },
-  about: {
-    title: 'ℹ️ حول دارنا إيمو',
-    content: `
-      <div style="text-align:center;padding:10px 0 20px">
-        <div style="font-size:56px">🏠</div>
-        <h2 style="color:var(--green);margin:8px 0 4px">Darna Immo</h2>
-        <p style="color:#888;font-size:13px">منصة عقارية جزائرية متخصصة</p>
-      </div>
-      <p>دارنا إيمو هي منصة إلكترونية جزائرية متخصصة في إعلانات السكن الاجتماعي، أُنشئت لتسهيل التواصل بين أصحاب الشقق والباحثين عن سكن في الجزائر العاصمة.</p>
-      <h3 style="color:var(--green);margin:16px 0 8px">🎯 مهمتنا</h3>
-      <p>توفير منصة مجانية وبسيطة وموثوقة لإعلانات AADL وLPP والسكن الاجتماعي، بعيداً عن التعقيد والرسوم.</p>
-      <h3 style="color:var(--green);margin:16px 0 8px">✨ ما يميزنا</h3>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
-        <li>✅ مجاني تماماً – بدون رسوم أو اشتراكات</li>
-        <li>✅ بدون تسجيل – انشر إعلانك في ثوانٍ</li>
-        <li>✅ تحديث فوري – الإعلانات تظهر لحظة نشرها</li>
-        <li>✅ دعم العربية والفرنسية</li>
-        <li>✅ متوافق مع الهاتف بالكامل</li>
-      </ul>
-      <h3 style="color:var(--green);margin:16px 0 8px">📊 بالأرقام</h3>
-      <p>نغطي <strong>31 بلدية</strong> في الجزائر العاصمة، مع إعلانات محدّثة يومياً.</p>
-      <p style="margin-top:16px;color:#999;font-size:12px">© 2025 Darna Immo – جميع الحقوق محفوظة 🇩🇿</p>
-    `
-  }
+  const text = ad ? `${PT[ad.type]} - ${ad.commune} - ${Number(ad.price).toLocaleString()} DA` : 'Darna Immo';
+  if (navigator.share) navigator.share({ title: 'Darna Immo', text });
+  else navigator.clipboard.writeText(text).then(() => toast(T.toastCopied));
 };
-
-window.openPage = function(page) {
-  const p = PAGES[page];
-  if (!p) return;
-  document.getElementById('pageTitle').innerHTML = p.title;
-  document.getElementById('pageContent').innerHTML = p.content;
-  document.getElementById('pageModal').classList.add('open');
-  return false;
+window.dial = function(num) {
+  const T = LANG[currentLang];
+  toast(`${T.toastCalling}${num}`);
+  setTimeout(() => window.location.href = `tel:${num}`, 800);
 };
-
-window.closePage = function() {
-  document.getElementById('pageModal').classList.remove('open');
-};
-
-function dial(num) {
-  toast(`📞 ${window.currentLang==='fr'?'Appel en cours':'جارٍ الاتصال بـ'} ${num}`, '');
-  setTimeout(() => {
-    window.location.href = `tel:${num}`;
-  }, 800);
-}
-
-function tfav(e, id) {
+window.tfav = function(e, id) {
   e.stopPropagation();
+  const T = LANG[currentLang];
   const btn = document.getElementById(`fv${id}`);
   if (btn) {
-    if (btn.innerText === '❤️') {
-      btn.innerText = '🤍';
-      toast(window.currentLang==='fr'?'Retiré des favoris':'تمت الإزالة من المفضلة', '');
-    } else {
-      btn.innerText = '❤️';
-      toast(window.currentLang==='fr'?'❤️ Ajouté aux favoris':'❤️ تمت الإضافة للمفضلة', 'gold');
-    }
+    const isNowFav = btn.innerText === '🤍';
+    btn.innerText = isNowFav ? '❤️' : '🤍';
+    toast(isNowFav ? T.toastFavAdd : T.toastFavRem);
   }
-}
-
-function cm(modalId) {
-  document.getElementById(modalId).classList.remove('open');
-}
-
-function cov(e, modalId) {
-  if (e.target.id === modalId) cm(modalId);
-}
-
-function toast(msg, cls) {
+};
+window.af = function() {
+  fCommune = document.getElementById('fcm').value;
+  priceMin = parseFloat(document.getElementById('pmin').value) || 0;
+  priceMax = parseFloat(document.getElementById('pmax').value) || Infinity;
+  applyFilters();
+};
+window.sl = function() { sortAndRender(); };
+window.doSearch = function() {
+  fSearch = document.getElementById('searchQ').value;
+  applyFilters();
+};
+window.cm = function(id) { document.getElementById(id).classList.remove('open'); };
+window.cov = function(e, id) { if (e.target.id === id) window.cm(id); };
+window.toast = function(msg, cls) {
   const tst = document.getElementById('tst');
   tst.textContent = msg;
   tst.className = 'toast' + (cls ? ' ' + cls : '');
   tst.classList.add('show');
   setTimeout(() => tst.classList.remove('show'), 2800);
+};
+window.openPost = function() { document.getElementById('pm').classList.add('open'); };
+window.sub = async function() {
+  const T = LANG[currentLang];
+  const loc = document.getElementById('pl').value.trim();
+  const phone = document.getElementById('ph').value.trim();
+  const priceRaw = document.getElementById('pp').value.trim();
+  if (!loc || !phone || !priceRaw) {
+    toast(T.toastFillAll, 'red');
+    return;
+  }
+  const cleanPhone = phone.replace(/\D/g, '');
+  if (cleanPhone.length < 9 || cleanPhone.length > 13) {
+    toast(T.toastBadPhone, 'red');
+    return;
+  }
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.textContent = T.toastPosting;
+  try {
+    await addDoc(adsCol, {
+      type: document.getElementById('pt').value,
+      op: document.getElementById('po').value,
+      rooms: document.getElementById('pr').value,
+      condition: document.getElementById('pcond').value,
+      status: document.getElementById('pstat').value,
+      title: `${PT[document.getElementById('pt').value]} - ${loc}`,
+      commune: loc.split(/[-–]/)[0].trim(),
+      area: parseInt(document.getElementById('pa').value) || 0,
+      price: parseInt(priceRaw) || 0,
+      desc: document.getElementById('pd').value || '',
+      phone: phone,
+      date: new Date().toISOString().slice(0, 10),
+      createdAt: Date.now(),
+      views: 0
+    });
+    window.cm('pm');
+    document.getElementById('pl').value = '';
+    document.getElementById('ph').value = '';
+    document.getElementById('pp').value = '';
+    document.getElementById('pa').value = '';
+    document.getElementById('pd').value = '';
+    toast(T.toastPosted);
+  } catch (e) {
+    toast(T.toastFailed, 'red');
+  }
+  btn.disabled = false;
+  btn.textContent = T.submitBtn;
+};
+
+// Initialize filter chips
+function initFilters() {
+  const typeDiv = document.getElementById('typeChips');
+  const opDiv = document.getElementById('opChips');
+  const roomDiv = document.getElementById('roomChips');
+  const condDiv = document.getElementById('conditionChips');
+  const statusDiv = document.getElementById('statusChips');
+  const mobStrip = document.getElementById('mobStrip');
+  
+  // Clear existing content
+  typeDiv.innerHTML = '';
+  opDiv.innerHTML = '';
+  roomDiv.innerHTML = '';
+  condDiv.innerHTML = '';
+  statusDiv.innerHTML = '';
+  mobStrip.innerHTML = '';
+  
+  Object.keys(PT).forEach(t => {
+    let btn = document.createElement('button');
+    btn.className = 'chip';
+    if (fTypes.has(t)) btn.classList.add('on');
+    btn.innerText = PT[t];
+    btn.onclick = () => {
+      if (fTypes.has(t)) { fTypes.delete(t); btn.classList.remove('on'); }
+      else { fTypes.add(t); btn.classList.add('on'); }
+      applyFilters();
+    };
+    typeDiv.appendChild(btn);
+  });
+  
+  const allOp = document.createElement('button');
+  allOp.className = 'chip on';
+  allOp.innerText = LANG[currentLang].allComm === 'كل البلديات' ? 'الكل' : 'Tout';
+  allOp.onclick = () => {
+    document.querySelectorAll('#opChips .chip').forEach(b => b.classList.remove('on'));
+    allOp.classList.add('on');
+    fOp = 'all';
+    applyFilters();
+  };
+  opDiv.appendChild(allOp);
+  Object.keys(OP).forEach(o => {
+    let btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.innerText = OP[o];
+    btn.onclick = () => {
+      document.querySelectorAll('#opChips .chip').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      fOp = o;
+      applyFilters();
+    };
+    opDiv.appendChild(btn);
+  });
+  
+  const allRoom = document.createElement('button');
+  allRoom.className = 'chip on';
+  allRoom.innerText = LANG[currentLang].allComm === 'كل البلديات' ? 'الكل' : 'Tout';
+  allRoom.onclick = () => {
+    document.querySelectorAll('#roomChips .chip').forEach(b => b.classList.remove('on'));
+    allRoom.classList.add('on');
+    fRooms = 'all';
+    applyFilters();
+  };
+  roomDiv.appendChild(allRoom);
+  Object.keys(ROOMS).forEach(r => {
+    let btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.innerText = ROOMS[r];
+    btn.onclick = () => {
+      document.querySelectorAll('#roomChips .chip').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      fRooms = r;
+      applyFilters();
+    };
+    roomDiv.appendChild(btn);
+  });
+  
+  const allCond = document.createElement('button');
+  allCond.className = 'chip on';
+  allCond.innerText = LANG[currentLang].allComm === 'كل البلديات' ? 'الكل' : 'Tout';
+  allCond.onclick = () => {
+    document.querySelectorAll('#conditionChips .chip').forEach(b => b.classList.remove('on'));
+    allCond.classList.add('on');
+    fCondition = 'all';
+    applyFilters();
+  };
+  condDiv.appendChild(allCond);
+  Object.keys(COND).forEach(c => {
+    let btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.innerText = COND[c];
+    btn.onclick = () => {
+      document.querySelectorAll('#conditionChips .chip').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      fCondition = c;
+      applyFilters();
+    };
+    condDiv.appendChild(btn);
+  });
+  
+  const allStatus = document.createElement('button');
+  allStatus.className = 'chip on';
+  allStatus.innerText = LANG[currentLang].allComm === 'كل البلديات' ? 'الكل' : 'Tout';
+  allStatus.onclick = () => {
+    document.querySelectorAll('#statusChips .chip').forEach(b => b.classList.remove('on'));
+    allStatus.classList.add('on');
+    fStatus = 'all';
+    applyFilters();
+  };
+  statusDiv.appendChild(allStatus);
+  Object.keys(STATUS).forEach(s => {
+    let btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.innerText = STATUS[s];
+    btn.onclick = () => {
+      document.querySelectorAll('#statusChips .chip').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      fStatus = s;
+      applyFilters();
+    };
+    statusDiv.appendChild(btn);
+  });
+  
+  const mobItems = LANG[currentLang].allComm === 'كل البلديات' 
+    ? ['الكل', 'AADL', 'Social', 'LPP', 'فيلا', 'منزل', 'شقة', 'كراء', 'بيع']
+    : ['Tout', 'AADL', 'Social', 'LPP', 'Villa', 'Maison', 'Appart', 'Location', 'Vente'];
+  mobItems.forEach(t => {
+    let btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.innerText = t;
+    btn.onclick = () => {
+      if (t === mobItems[0]) { fTypes = new Set(['aadl','social','lpp','villa','maison','appart','residence','local']); fOp = 'all'; }
+      else if (t === 'AADL' || t === 'Social' || t === 'LPP' || t === 'فيلا' || t === 'Villa') { 
+        const typeMap = { 'AADL':'aadl', 'Social':'social', 'LPP':'lpp', 'فيلا':'villa', 'Villa':'villa', 'منزل':'maison', 'Maison':'maison', 'شقة':'appart', 'Appart':'appart' };
+        if (typeMap[t]) fTypes = new Set([typeMap[t]]);
+      }
+      else if (t === 'كراء' || t === 'Location') fOp = 'kira';
+      else if (t === 'بيع' || t === 'Vente') fOp = 'bay3';
+      applyFilters();
+      // update UI buttons
+      document.querySelectorAll('#typeChips .chip').forEach(btn => {
+        if (fTypes.has(btn.innerText === 'AADL' ? 'aadl' : btn.innerText === 'Social' ? 'social' : btn.innerText === 'LPP' ? 'lpp' : btn.innerText === 'فيلا' ? 'villa' : btn.innerText === 'منزل' ? 'maison' : btn.innerText === 'شقة' ? 'appart' : null)) btn.classList.add('on');
+        else btn.classList.remove('on');
+      });
+      document.querySelectorAll('#opChips .chip').forEach(btn => {
+        if ((fOp === 'all' && btn.innerText === 'الكل') || (fOp !== 'all' && btn.innerText === (fOp === 'kira' ? 'كراء' : fOp === 'bay3' ? 'بيع' : fOp === 'achat' ? 'شراء' : 'تبادل'))) btn.classList.add('on');
+        else btn.classList.remove('on');
+      });
+    };
+    mobStrip.appendChild(btn);
+  });
 }
 
-// --- ربط الدوال بالنطاق العام (للاستدعاء من HTML) ---
-window.af = af;
-window.sl = sl;
-window.doSearch = doSearch;
-window.tog = tog;
-window.radio = radio;
-window.mf = mf;
-window.openD = openD;
-window.openPost = openPost;
-window.sub = sub;
-window.dial = dial;
-window.tfav = tfav;
-window.cm = cm;
-window.cov = cov;
-window.toast = toast;
+function initSelects() {
+  const ptSelect = document.getElementById('pt');
+  const poSelect = document.getElementById('po');
+  ptSelect.innerHTML = '';
+  poSelect.innerHTML = '';
+  Object.keys(PT).forEach(t => {
+    let opt = document.createElement('option');
+    opt.value = t;
+    opt.innerText = PT[t];
+    ptSelect.appendChild(opt);
+  });
+  Object.keys(OP).forEach(o => {
+    let opt = document.createElement('option');
+    opt.value = o;
+    opt.innerText = OP[o];
+    poSelect.appendChild(opt);
+  });
+}
 
-// --- الاستماع للتغييرات المباشرة من Firebase (Real-time) ---
 function startFirebaseListener() {
   const q = query(adsCol, orderBy("createdAt", "desc"));
   onSnapshot(q, (snapshot) => {
     DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     applyFilters();
-    const totalSpan = document.getElementById('liveAdCount');
-    if (totalSpan) totalSpan.innerText = DATA.length;
-  }, () => {
-    // fallback: ترتيب بالتاريخ النصي إذا لم يكن createdAt موجوداً بعد
-    const q2 = query(adsCol, orderBy("date", "desc"));
-    onSnapshot(q2, (snapshot) => {
-      DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      applyFilters();
-      const totalSpan = document.getElementById('liveAdCount');
-      if (totalSpan) totalSpan.innerText = DATA.length;
-    }, (error) => {
-      console.error("Firebase error:", error);
-      toast(window.currentLang==='fr'?"⚠️ Problème de connexion":"⚠️ مشكلة في الاتصال بقاعدة البيانات", "red");
-    });
+  }, (error) => {
+    console.error("Firebase error:", error);
+    toast(LANG[currentLang].toastDbErr, "red");
   });
 }
 
-// بدء تشغيل التطبيق
+// Start everything
+initSelects();
+initFilters();
 startFirebaseListener();
+applyTranslation('ar');
 </script>
 </body>
 </html>
