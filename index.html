@@ -4,8 +4,19 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Darna Immo – دارنا إيمو</title>
-<link rel="icon" type="image/png" href="assets/logo.PNG">
+<title>Darna Immo – دارنا إيمو | إعلانات AADL · LPP · سكن اجتماعي</title>
+<meta name="description" content="دارنا إيمو – منصة عقارية جزائرية متخصصة في إعلانات AADL وLPP والسكن الاجتماعي للبيع والكراء والتنازل في الجزائر العاصمة."/>
+<meta name="keywords" content="AADL,LPP,كراء شقة,بيع شقة,تنازل AADL,عقار الجزائر,سكن اجتماعي,دارنا إيمو"/>
+<meta name="robots" content="index, follow"/>
+<meta property="og:title" content="Darna Immo – دارنا إيمو"/>
+<meta property="og:description" content="منصة عقارية جزائرية متخصصة في AADL وLPP والسكن الاجتماعي – بيع، كراء، تنازل في الجزائر العاصمة."/>
+<meta property="og:image" content="assets/logo.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="ar_DZ"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Darna Immo – دارنا إيمو"/>
+<meta name="twitter:description" content="إعلانات AADL · LPP · سكن اجتماعي في الجزائر العاصمة"/>
+<link rel="icon" type="image/png" href="assets/logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -600,8 +611,25 @@ footer strong{color:var(--gold-bright)}
 
 <footer>
   <strong>DARNA IMMO</strong> · <span data-k="footerText">دارنا إيمو – منصة الجزائر العاصمة للسكن الاجتماعي</span>
+  <div style="margin-top:10px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
+    <a href="#" onclick="openPage('privacy')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">🔒 سياسة الخصوصية</a>
+    <a href="#" onclick="openPage('terms')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📋 شروط الاستخدام</a>
+    <a href="#" onclick="openPage('contact')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">📬 اتصل بنا</a>
+    <a href="#" onclick="openPage('about')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">ℹ️ حول الموقع</a>
+  </div>
   <div class="footer-flag"></div>
 </footer>
+
+<!-- ══ نافذة الصفحات القانونية ══ -->
+<div class="overlay" id="pageModal" onclick="if(event.target===this)closePage()" style="align-items:flex-start;padding:14px;overflow-y:auto">
+  <div style="background:#fff;border-radius:18px;max-width:620px;width:100%;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.3)">
+    <div style="background:linear-gradient(135deg,var(--green),var(--green-mid));padding:20px 22px;border-radius:18px 18px 0 0;display:flex;justify-content:space-between;align-items:center">
+      <div id="pageTitle" style="font-size:17px;font-weight:900;color:#fff"></div>
+      <button onclick="closePage()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:17px;cursor:pointer">✕</button>
+    </div>
+    <div id="pageContent" style="padding:24px;line-height:2;font-size:14px;color:#333"></div>
+  </div>
+</div>
 
 <!-- LANGUAGE SYSTEM -->
 <script>
@@ -765,7 +793,7 @@ window.toggleLang = toggleLang;
 <!-- ── FIREBASE (إصدار حديث مع تعامل صحيح مع Firebase) ── -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // تكوين Firebase (نفس مشروعك blimmo)
 const firebaseConfig = {
@@ -851,6 +879,7 @@ function renderAds(list) {
           <span>🛏️ ${RL[ad.rooms] || ad.rooms}</span>
           <span>📐 ${ad.area || '?'} m²</span>
           <span>📅 ${ad.date ? ad.date.slice(5,10).replace('-','/') : (window.currentLang==='fr'?'Nouveau':'جديد')}</span>
+          <span style="color:#aaa">👁️ ${ad.views || 0}</span>
         </div>
         <div class="cfoot">
           <div class="price">${Number(ad.price).toLocaleString('fr-DZ')} <small>DA${ad.op === 'kira' ? (window.currentLang==='fr'?'/mois':'/شهر') : ''}</small></div>
@@ -1004,7 +1033,10 @@ function openD(id) {
     <span class="bt ${ad.type}" style="position:static;font-size:13px;padding:5px 13px">${TM[ad.type]?.l || ad.type}</span>
     <span class="bo ${ad.op}" style="position:static;font-size:13px;padding:5px 13px">${omLabel(ad.op)}</span>
     ${ad.feat ? `<span style="background:var(--gold);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:50px">⭐ ${window.currentLang==='fr'?'En vedette':'مميز'}</span>` : ''}
+    <span style="font-size:12px;color:#888;padding:5px 10px;background:#f5f5f5;border-radius:50px">👁️ ${(ad.views||0)+1} ${window.currentLang==='fr'?'vue(s)':'مشاهدة'}</span>
   `;
+  // زيادة عداد المشاهدات
+  updateDoc(doc(db,'clients',ad.id), { views: (ad.views||0)+1 }).catch(()=>{});
   document.getElementById('mds').innerHTML = ad.desc || (window.currentLang==='fr'?'Pas de description.':'لا يوجد وصف إضافي.');
   document.getElementById('msp').innerHTML = `
     <div class="mspec"><strong>📍 ${ad.commune || (window.currentLang==='fr'?'Alger':'الجزائر')}</strong>${window.currentLang==='fr'?'Commune':'البلدية'}</div>
@@ -1034,6 +1066,11 @@ async function sub() {
     toast(window.currentLang==='fr'?'⚠️ Veuillez remplir les champs obligatoires':'⚠️ يرجى ملء الحقول الضرورية (البلدية، السعر، رقم الهاتف)', 'red');
     return;
   }
+  const cleanPhone = phone.replace(/\D/g,'');
+  if (cleanPhone.length < 9 || cleanPhone.length > 13) {
+    toast(window.currentLang==='fr'?'⚠️ Numéro de téléphone invalide':'⚠️ رقم الهاتف غير صحيح (9 إلى 13 رقم)', 'red');
+    return;
+  }
   
   const btn = document.querySelector('.btn-submit');
   btn.disabled = true;
@@ -1051,7 +1088,9 @@ async function sub() {
       desc: document.getElementById('pd').value || 'لا يوجد وصف إضافي.',
       phone: phone,
       feat: false,
-      date: new Date().toISOString().slice(0,10)
+      date: new Date().toISOString().slice(0,10),
+      createdAt: Date.now(),
+      views: 0
     };
     await addDoc(adsCol, newAd);
     // إغلاق النافذة وتفريغ الحقول
@@ -1101,6 +1140,117 @@ function shareAd(id) {
 
 window.openWA = openWA;
 window.shareAd = shareAd;
+
+const PAGES = {
+  privacy: {
+    title: '🔒 سياسة الخصوصية',
+    content: `
+      <h3 style="color:var(--green);margin-bottom:8px">1. جمع البيانات</h3>
+      <p>عند نشر إعلان على دارنا إيمو، نجمع المعلومات التي تُدخلها طوعاً: البلدية، نوع السكن، السعر، ورقم الهاتف. لا نجمع أي بيانات شخصية دون موافقتك.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">2. استخدام البيانات</h3>
+      <p>تُستخدم البيانات حصراً لعرض إعلانك للزوار المهتمين. لا نبيع بياناتك لأي طرف ثالث ولا نستخدمها لأغراض تجارية أخرى.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">3. حذف البيانات</h3>
+      <p>يمكنك طلب حذف إعلانك في أي وقت بالتواصل معنا عبر صفحة "اتصل بنا". سيتم الحذف خلال 24 ساعة.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">4. الأمان</h3>
+      <p>نستخدم خدمة Firebase من Google لتخزين البيانات، وهي محمية بمعايير أمان عالية. رقم هاتفك يظهر فقط للزوار الراغبين في التواصل معك.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">5. ملفات تعريف الارتباط</h3>
+      <p>لا يستخدم موقعنا ملفات تعريف الارتباط (Cookies) لتتبعك. نستخدم فقط التخزين المحلي للمفضلة.</p>
+      <p style="margin-top:16px;color:#999;font-size:12px">آخر تحديث: يونيو 2025</p>
+    `
+  },
+  terms: {
+    title: '📋 شروط الاستخدام',
+    content: `
+      <h3 style="color:var(--green);margin-bottom:8px">1. القبول بالشروط</h3>
+      <p>باستخدام موقع دارنا إيمو، فإنك توافق على هذه الشروط. إذا كنت لا توافق، يرجى التوقف عن استخدام الموقع.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">2. نشر الإعلانات</h3>
+      <p>يلتزم المستخدم بأن تكون إعلاناته حقيقية ودقيقة. يُمنع نشر إعلانات مكررة أو معلومات مضللة أو محتوى مخالف للقانون الجزائري.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">3. المحتوى المحظور</h3>
+      <p>يُحظر نشر أي محتوى يتعلق بعقارات غير مرخصة، أو محتوى مسيء، أو إعلانات لا علاقة لها بالسكن الاجتماعي (AADL/LPP/Social).</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">4. المسؤولية</h3>
+      <p>دارنا إيمو منصة وساطة فقط. لا نتحمل أي مسؤولية عن المعاملات التي تتم بين البائعين والمشترين خارج الموقع.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">5. الملكية الفكرية</h3>
+      <p>جميع حقوق تصميم الموقع وشعاره محفوظة لدارنا إيمو. لا يجوز نسخها أو استخدامها دون إذن كتابي.</p>
+      <h3 style="color:var(--green);margin:14px 0 8px">6. التعديلات</h3>
+      <p>نحتفظ بحق تعديل هذه الشروط في أي وقت. الاستمرار في استخدام الموقع يعني قبولك للشروط المحدّثة.</p>
+      <p style="margin-top:16px;color:#999;font-size:12px">آخر تحديث: يونيو 2025</p>
+    `
+  },
+  contact: {
+    title: '📬 اتصل بنا',
+    content: `
+      <p style="margin-bottom:18px">نحن هنا لمساعدتك! تواصل معنا عبر إحدى القنوات التالية:</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <a href="mailto:contact@darnaimmo.dz" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F0FAF4;border-radius:12px;text-decoration:none;color:#1A1A1A;border:1.5px solid var(--border)">
+          <span style="font-size:24px">📧</span>
+          <div>
+            <div style="font-weight:700;color:var(--green)">البريد الإلكتروني</div>
+            <div style="font-size:13px;color:#666">https://www.facebook.com/share/18yDkB5mj2/?mibextid=wwXIfr</div>
+          </div>
+        </a>
+        <a href="https://wa.me/213XXXXXXXXX" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F0FFF4;border-radius:12px;text-decoration:none;color:#1A1A1A;border:1.5px solid #B2F0C8">
+          <span style="font-size:24px">💬</span>
+          <div>
+            <div style="font-weight:700;color:#1A7A40">واتساب</div>
+            <div style="font-size:13px;color:#666">تواصل معنا مباشرة</div>
+          </div>
+        </a>
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#FFF8E7;border-radius:12px;border:1.5px solid #F0D890">
+          <span style="font-size:24px">⏰</span>
+          <div>
+            <div style="font-weight:700;color:#92650A">ساعات العمل</div>
+            <div style="font-size:13px;color:#666">الأحد – الخميس: 8:00 – 18:00</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#F5F0FF;border-radius:12px;border:1.5px solid #D4B8F5">
+          <span style="font-size:24px">📍</span>
+          <div>
+            <div style="font-weight:700;color:#6B21A8">الموقع</div>
+            <div style="font-size:13px;color:#666">الجزائر العاصمة، الجزائر 🇩🇿</div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:18px;font-size:13px;color:#888">للإبلاغ عن إعلان مخالف أو طلب حذف إعلانك، أرسل لنا رقم الإعلان عبر البريد الإلكتروني.</p>
+    `
+  },
+  about: {
+    title: 'ℹ️ حول دارنا إيمو',
+    content: `
+      <div style="text-align:center;padding:10px 0 20px">
+        <div style="font-size:56px">🏠</div>
+        <h2 style="color:var(--green);margin:8px 0 4px">Darna Immo</h2>
+        <p style="color:#888;font-size:13px">منصة عقارية جزائرية متخصصة</p>
+      </div>
+      <p>دارنا إيمو هي منصة إلكترونية جزائرية متخصصة في إعلانات السكن الاجتماعي، أُنشئت لتسهيل التواصل بين أصحاب الشقق والباحثين عن سكن في الجزائر العاصمة.</p>
+      <h3 style="color:var(--green);margin:16px 0 8px">🎯 مهمتنا</h3>
+      <p>توفير منصة مجانية وبسيطة وموثوقة لإعلانات AADL وLPP والسكن الاجتماعي، بعيداً عن التعقيد والرسوم.</p>
+      <h3 style="color:var(--green);margin:16px 0 8px">✨ ما يميزنا</h3>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li>✅ مجاني تماماً – بدون رسوم أو اشتراكات</li>
+        <li>✅ بدون تسجيل – انشر إعلانك في ثوانٍ</li>
+        <li>✅ تحديث فوري – الإعلانات تظهر لحظة نشرها</li>
+        <li>✅ دعم العربية والفرنسية</li>
+        <li>✅ متوافق مع الهاتف بالكامل</li>
+      </ul>
+      <h3 style="color:var(--green);margin:16px 0 8px">📊 بالأرقام</h3>
+      <p>نغطي <strong>31 بلدية</strong> في الجزائر العاصمة، مع إعلانات محدّثة يومياً.</p>
+      <p style="margin-top:16px;color:#999;font-size:12px">© 2025 Darna Immo – جميع الحقوق محفوظة 🇩🇿</p>
+    `
+  }
+};
+
+window.openPage = function(page) {
+  const p = PAGES[page];
+  if (!p) return;
+  document.getElementById('pageTitle').innerHTML = p.title;
+  document.getElementById('pageContent').innerHTML = p.content;
+  document.getElementById('pageModal').classList.add('open');
+  return false;
+};
+
+window.closePage = function() {
+  document.getElementById('pageModal').classList.remove('open');
+};
 
 function dial(num) {
   toast(`📞 ${window.currentLang==='fr'?'Appel en cours':'جارٍ الاتصال بـ'} ${num}`, '');
@@ -1157,17 +1307,24 @@ window.toast = toast;
 
 // --- الاستماع للتغييرات المباشرة من Firebase (Real-time) ---
 function startFirebaseListener() {
-  const q = query(adsCol, orderBy("date", "desc"));
+  const q = query(adsCol, orderBy("createdAt", "desc"));
   onSnapshot(q, (snapshot) => {
     DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    // تطبيق الفلاتر الحالية بعد تحديث البيانات
     applyFilters();
-    // تحديث عدد الإعلانات الكلي في stats
     const totalSpan = document.getElementById('liveAdCount');
     if (totalSpan) totalSpan.innerText = DATA.length;
-  }, (error) => {
-    console.error("Firebase error:", error);
-    toast(window.currentLang==='fr'?"⚠️ Problème de connexion à la base de données":"⚠️ مشكلة في الاتصال بقاعدة البيانات", "red");
+  }, () => {
+    // fallback: ترتيب بالتاريخ النصي إذا لم يكن createdAt موجوداً بعد
+    const q2 = query(adsCol, orderBy("date", "desc"));
+    onSnapshot(q2, (snapshot) => {
+      DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      applyFilters();
+      const totalSpan = document.getElementById('liveAdCount');
+      if (totalSpan) totalSpan.innerText = DATA.length;
+    }, (error) => {
+      console.error("Firebase error:", error);
+      toast(window.currentLang==='fr'?"⚠️ Problème de connexion":"⚠️ مشكلة في الاتصال بقاعدة البيانات", "red");
+    });
   });
 }
 
