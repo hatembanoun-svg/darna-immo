@@ -9,6 +9,13 @@
 <meta name="keywords" content="AADL, LPP, كراء شقة, بيع شقة, شراء عقار, تبادل عقار, فيلا للبيع, منزل, ريزيدنس, محل تجاري, عقار الجزائر"/>
 <meta name="robots" content="index, follow"/>
 <link rel="icon" type="image/png" href="assets/logo.png"/>
+<link rel="apple-touch-icon" href="assets/logo.png"/>
+<link rel="manifest" href="manifest.json"/>
+<meta name="theme-color" content="#0D3B2E"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="دارنا إيمو"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -31,51 +38,66 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-h
 
 header{
   background:var(--green);
-  height:66px;padding:0 20px;
+  height:52px;padding:0 16px;
   display:flex;align-items:center;justify-content:space-between;
   position:sticky;top:0;z-index:100;
   box-shadow:0 2px 14px rgba(0,0,0,.3);
 }
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
 .logo-badge{
-  width:60px;height:60px;border-radius:12px;overflow:hidden;
+  width:42px;height:42px;border-radius:10px;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   background:transparent;flex-shrink:0;
 }
 .logo-badge img{width:100%;height:100%;object-fit:contain;display:block;}
 .logo-text{line-height:1}
-.logo-text .d1{font-size:18px;font-weight:900;color:var(--gold-bright);letter-spacing:.5px}
-.logo-text .d2{font-size:11px;color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase}
+.logo-text .d1{font-size:14px;font-weight:900;color:var(--gold-bright);letter-spacing:.5px}
+.logo-text .d2{font-size:9px;color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase}
 
 .flag-strip{height:4px;background:linear-gradient(to left, var(--red) 0%, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green-mid) 66%);}
 
 .hero{
   background:linear-gradient(150deg,var(--green) 0%,var(--green-mid) 55%,var(--green-light) 100%);
-  padding:48px 20px 36px;text-align:center;color:var(--white);
+  padding:20px 16px 18px;text-align:center;color:var(--white);
   position:relative;overflow:hidden;
 }
-.hero::before{content:'دارنا';position:absolute;font-size:200px;font-weight:900;color:rgba(255,255,255,.04);top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none;}
-.hero-crescent{font-size:32px;margin-bottom:8px}
-.hero-title{font-size:clamp(26px,6vw,42px);font-weight:900;line-height:1.25;margin-bottom:6px}
+.hero::before{content:'دارنا';position:absolute;font-size:120px;font-weight:900;color:rgba(255,255,255,.04);top:-10px;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none;}
+.hero-crescent{font-size:20px;margin-bottom:4px}
+.hero-title{font-size:clamp(18px,5vw,32px);font-weight:900;line-height:1.2;margin-bottom:4px}
 .hero-title span{color:var(--gold-bright)}
-.hero-sub{font-size:15px;opacity:.8;margin-bottom:28px}
+.hero-sub{font-size:13px;opacity:.8;margin-bottom:14px}
 
-.tag-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:26px}
-.tag{padding:5px 14px;border-radius:50px;font-size:12px;font-weight:700;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);}
+.tag-row{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tag{padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);}
 
-.search-wrap{max-width:660px;margin:0 auto;display:flex;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3)}
-.search-wrap input{flex:1;border:none;outline:none;font-family:'Cairo',sans-serif;font-size:15px;padding:15px 18px;color:var(--text);}
-.search-wrap button{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border:none;padding:0 26px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;color:var(--green);cursor:pointer;transition:.2s;}
+.search-wrap{max-width:660px;margin:0 auto;display:flex;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.search-wrap input{flex:1;border:none;outline:none;font-family:'Cairo',sans-serif;font-size:14px;padding:11px 14px;color:var(--text);}
+.search-wrap button{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border:none;padding:0 20px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;color:var(--green);cursor:pointer;transition:.2s;}
 .search-wrap button:hover{filter:brightness(1.08)}
 
 .stats{display:flex;justify-content:center;gap:0;background:var(--white);border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.stat{flex:1;min-width:120px;text-align:center;padding:14px 10px;border-left:1px solid var(--border);}
+.stat{flex:1;min-width:80px;text-align:center;padding:8px 6px;border-left:1px solid var(--border);}
 .stat:last-child{border-left:none}
-.stat-n{font-size:24px;font-weight:900;color:var(--green-mid)}
-.stat-l{font-size:12px;color:var(--text-sub)}
+.stat-n{font-size:18px;font-weight:900;color:var(--green-mid)}
+.stat-l{font-size:11px;color:var(--text-sub)}
 
-.main{display:flex;gap:22px;max-width:1300px;margin:0 auto;padding:26px 18px}
+.main{display:flex;gap:22px;max-width:1080px;margin:0 auto;padding:26px 18px}
+.stats{max-width:1080px;margin:0 auto;width:100%}
+.stats-wrap{background:var(--white);border-bottom:1px solid var(--border)}
 @media(max-width:860px){.sidebar{display:none!important}}
+
+/* ── Mobile filter button ── */
+.mob-filter-btn{display:none;align-items:center;gap:8px;padding:10px 18px;background:var(--green);color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:14px;width:100%}
+@media(max-width:860px){.mob-filter-btn{display:flex;justify-content:center}}
+
+/* ── Filter drawer overlay ── */
+.filter-drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
+.filter-drawer-overlay.open{display:block}
+.filter-drawer{position:fixed;top:0;right:-100%;width:min(320px,88vw);height:100%;background:var(--bg);z-index:301;overflow-y:auto;padding:16px;transition:right .3s ease;box-shadow:-6px 0 24px rgba(0,0,0,.2)}
+.filter-drawer.open{right:0}
+.filter-drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--border)}
+.filter-drawer-head h3{font-size:16px;font-weight:900;color:var(--green)}
+.filter-drawer-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);line-height:1}
 
 .sidebar{width:310px;flex-shrink:0}
 .fcard{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
@@ -99,19 +121,24 @@ header{
 @media(max-width:860px){.mob-strip{display:flex}}
 .mob-strip .chip{white-space:nowrap;flex-shrink:0}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(max-width:400px){.grid{grid-template-columns:1fr;gap:12px}}
 
 .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:.2s;position:relative;}
 .card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
-.cimg{position:relative;height:188px;overflow:hidden}
-.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:56px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
-.bt{position:absolute;top:10px;right:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700;color:#fff}
-.bo{position:absolute;top:10px;left:10px;padding:4px 11px;border-radius:50px;font-size:11px;font-weight:700}
-.fav{position:absolute;bottom:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.cimg{position:relative;height:110px;overflow:hidden}
+@media(min-width:900px){.cimg{height:175px}}
+.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
+.bt{position:absolute;top:6px;right:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700;color:#fff}
+.bo{position:absolute;top:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.fav{position:absolute;bottom:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;}
 .fav:hover{transform:scale(1.15)}
-.status-badge{position:absolute;bottom:10px;left:10px;padding:4px 10px;border-radius:50px;font-size:10px;font-weight:700;color:white}
-.cbody{padding:14px}
-.ctitle{font-size:14px;font-weight:700;margin-bottom:4px}
+.status-badge{position:absolute;bottom:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:9px;font-weight:700;color:white}
+.cbody{padding:10px}
+@media(min-width:900px){.cbody{padding:14px}}
+.ctitle{font-size:13px;font-weight:700;margin-bottom:4px}
+@media(min-width:900px){.ctitle{font-size:14px}}
 .cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:11px}
 .cspecs{display:flex;gap:12px;font-size:12px;color:var(--text-sub);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:9px 0;margin-bottom:11px;flex-wrap:wrap;}
 .cfoot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -120,7 +147,7 @@ header{
 .btn-call{padding:7px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;}
 .btn-call:hover{background:var(--green-mid)}
 
-.fab{position:fixed;bottom:24px;left:24px;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:26px;box-shadow:0 6px 24px rgba(201,168,76,.55);cursor:pointer;z-index:90;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:0 28px;height:62px;border-radius:50px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:17px;font-weight:900;font-family:'Cairo',sans-serif;box-shadow:0 8px 32px rgba(201,168,76,.6);cursor:pointer;z-index:90;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;letter-spacing:.3px;animation:fabPulse 2.2s ease-in-out infinite}.fab:hover{filter:brightness(1.1);transform:translateX(-50%) scale(1.04);box-shadow:0 12px 40px rgba(201,168,76,.75)}.fab-icon{font-size:26px;font-weight:900;line-height:1}@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.6)}50%{box-shadow:0 8px 44px rgba(201,168,76,.95),0 0 0 10px rgba(201,168,76,.15)}}@media(max-width:500px){.fab{left:16px;right:16px;transform:none;width:calc(100% - 32px)}.fab:hover{transform:scale(1.02)}}
 
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:14px;}
 .overlay.open{display:flex}
@@ -216,37 +243,56 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
 <body>
 <div class="flag-strip"></div>
 <header>
-  <a class="logo" href="#">
-    <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
-    <div class="logo-text"><div class="d1">DARNA IMMOBILIER</div><div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div></div>
-  </a>
   <div style="display:flex;gap:8px;align-items:center">
+    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span>نشرإعلان</span></button>
     <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
-    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span>نشر إعلان</span></button>
   </div>
+  <a class="logo" href="#">
+    <div class="logo-text" style="text-align:left"><div class="d1">DARNA IMMOBILIER</div><div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div></div>
+    <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
+  </a>
 </header>
 <section class="hero">
-  <div class="hero-crescent">🌙⭐</div>
+  <div class="hero-crescent">🇩🇿</div>
   <h1 class="hero-title" id="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
   <p class="hero-sub" id="heroSub">جميع إعلانات العقارات في الجزائر العاصمة</p>
   <div class="tag-row">
-    <span class="tag">🏠 AADL</span>
-    <span class="tag">🏘️ Social</span>
-    <span class="tag">🏢 LPP</span>
-    <span class="tag" id="tagVilla">🏡 فيلا · منزل</span>
-    <span class="tag" id="tagLocal">🛍️ محل · ريزيدنس</span>
+    <span class="tag">🏪 LPP</span>
+    <span class="tag">🏢Social</span>
+    <span class="tag">🏛️فيلا</span>
+    <span class="tag">🏡 منزل</span>
+    <span class="tag">🛍️ محل</span>
+    <span class="tag">🏢 AADL</span>
+    <span class="tag">🏫ريزيدونس</span>
   </div>
   <div class="search-wrap">
-    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية..." onkeyup="if(event.key==='Enter')doSearch()"/>
     <button id="searchBtn" onclick="doSearch()">🔍 بحث</button>
+    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية..." onkeyup="if(event.key==='Enter')doSearch()"/>
   </div>
 </section>
-<div class="stats">
+<div class="stats-wrap"><div class="stats">
   <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l" id="statL0">إعلان نشط</div></div>
   <div class="stat"><div class="stat-n">31</div><div class="stat-l" id="statL1">بلدية</div></div>
-  <div class="stat"><div class="stat-n">12</div><div class="stat-l" id="statL2">حي AADL</div></div>
+  <div class="stat"><div class="stat-n">35</div><div class="stat-l" id="statL2">حي LPP</div></div>
   <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l" id="statL3">الجزائر العاصمة</div></div>
+</div></div>
+
+<!-- Filter Drawer (mobile) -->
+<div class="filter-drawer-overlay" id="filterOverlay" onclick="closeFilterDrawer()"></div>
+<div class="filter-drawer" id="filterDrawer">
+  <div class="filter-drawer-head">
+    <h3>🔍 فلاتر البحث</h3>
+    <button class="filter-drawer-close" onclick="closeFilterDrawer()">✕</button>
+  </div>
+  <div class="fcard"><div class="ftitle">🏷️ نوع العقار</div><div class="chips" id="typeChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle">🤝 نوع المعاملة</div><div class="chips" id="opChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle">🛏️ عدد الغرف</div><div class="chips" id="roomChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle">🔧 حالة العقار</div><div class="chips" id="conditionChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle">📢 حالة الإعلان</div><div class="chips" id="statusChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle">📍 البلدية</div><select class="fsel" id="fcmMob" onchange="syncMobFilter('commune',this.value)"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
+  <div class="fcard"><div class="ftitle">💰 نطاق السعر (دج)</div><div class="prange"><input id="pminMob" type="number" placeholder="من"/><span>–</span><input id="pmaxMob" type="number" placeholder="إلى"/></div><button class="btn-apply" onclick="applyMobFilters()">✅ تطبيق الفلاتر</button></div>
 </div>
+
 <div class="main">
   <aside class="sidebar">
     <div class="fcard"><div class="ftitle">🏷️ نوع العقار</div><div class="chips" id="typeChips"></div></div>
@@ -258,12 +304,13 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
     <div class="fcard"><div class="ftitle">💰 نطاق السعر (دج)</div><div class="prange"><input id="pmin" type="number" placeholder="من"/><span>–</span><input id="pmax" type="number" placeholder="إلى"/></div><button class="btn-apply" onclick="af()">✅ تطبيق الفلاتر</button></div>
   </aside>
   <div class="content">
+    <button class="mob-filter-btn" onclick="openFilterDrawer()">🔍 فلاتر البحث</button>
     <div class="mob-strip" id="mobStrip"></div>
     <div class="topbar"><div class="rcount"><span id="showingLabel">عرض</span> <strong id="rn">0</strong> <span id="adWordLabel">إعلان</span></div><select class="sortsel" id="srt" onchange="sl()"><option value="new">الأحدث أولاً</option><option value="pa">الأرخص أولاً</option><option value="pd">الأغلى أولاً</option></select></div>
     <div class="grid" id="grid"></div>
   </div>
 </div>
-<button class="fab" onclick="openPost()">＋</button>
+<button class="fab" onclick="openPost()"><span class="fab-icon">＋</span> <span id="fabLabel">أضف إعلانك مجاناً</span></button>
 
 <!-- Detail Modal -->
 <div class="overlay" id="dm" onclick="cov(event,'dm')">
@@ -888,7 +935,62 @@ function initFilters() {
     btn.innerText = t;
     mobStrip.appendChild(btn);
   });
+
+  // Mirror chips into mobile drawer
+  function mirrorChips(srcId, destId, onClickFn) {
+    const src = document.getElementById(srcId);
+    const dest = document.getElementById(destId);
+    if (!src || !dest) return;
+    src.querySelectorAll('.chip').forEach(chip => {
+      const clone = chip.cloneNode(true);
+      clone.onclick = () => {
+        chip.click(); // trigger original logic
+        // sync visual state
+        dest.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+        // find matching and activate
+        dest.querySelectorAll('.chip').forEach(c => {
+          if (c.dataset.val === chip.dataset.val || (c.dataset.all && chip.dataset.all)) c.classList.add('on');
+        });
+      };
+      dest.appendChild(clone);
+    });
+  }
+
+  // Use MutationObserver to mirror after chips are built
+  setTimeout(() => {
+    mirrorChips('typeChips','typeChipsMob');
+    mirrorChips('opChips','opChipsMob');
+    mirrorChips('roomChips','roomChipsMob');
+    mirrorChips('conditionChips','conditionChipsMob');
+    mirrorChips('statusChips','statusChipsMob');
+  }, 100);
 }
+
+window.openFilterDrawer = function() {
+  document.getElementById('filterDrawer').classList.add('open');
+  document.getElementById('filterOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+window.closeFilterDrawer = function() {
+  document.getElementById('filterDrawer').classList.remove('open');
+  document.getElementById('filterOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+};
+window.syncMobFilter = function(type, val) {
+  if (type === 'commune') {
+    fCommune = val;
+    const mainSel = document.getElementById('fcm');
+    if (mainSel) mainSel.value = val;
+    applyFilters();
+  }
+};
+window.applyMobFilters = function() {
+  fCommune = document.getElementById('fcmMob').value;
+  priceMin = parseFloat(document.getElementById('pminMob').value) || 0;
+  priceMax = parseFloat(document.getElementById('pmaxMob').value) || Infinity;
+  applyFilters();
+  closeFilterDrawer();
+};
 
 // Populate select options
 function initSelects() {
@@ -1231,6 +1333,10 @@ function applyTranslation(lang) {
 
   // ── Lang button ──
   document.getElementById('langBtn').textContent = lang === 'ar' ? 'FR' : 'عربي';
+
+  // ── FAB label ──
+  const fabLabel = document.getElementById('fabLabel');
+  if (fabLabel) fabLabel.textContent = lang === 'ar' ? 'أضف إعلانك مجاناً' : 'Publier une annonce';
 }
 
 window.toggleLang = function() {
@@ -1255,6 +1361,15 @@ window.closePage = function() { document.getElementById('pageModal').classList.r
 initSelects();
 initFilters();
 startFirebaseListener();
+
+// ── PWA Service Worker ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW error:', err));
+  });
+}
 </script>
 </body>
 </html>
