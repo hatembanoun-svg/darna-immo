@@ -9,13 +9,6 @@
 <meta name="keywords" content="AADL, LPP, كراء شقة, بيع شقة, شراء عقار, تبادل عقار, فيلا للبيع, منزل, ريزيدنس, محل تجاري, عقار الجزائر"/>
 <meta name="robots" content="index, follow"/>
 <link rel="icon" type="image/png" href="assets/logo.png"/>
-<link rel="apple-touch-icon" href="assets/logo.png"/>
-<link rel="manifest" href="manifest.json"/>
-<meta name="theme-color" content="#0D3B2E"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="دارنا إيمو"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -257,13 +250,13 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
   <h1 class="hero-title" id="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
   <p class="hero-sub" id="heroSub">جميع إعلانات العقارات في الجزائر العاصمة</p>
   <div class="tag-row">
-    <span class="tag">🏪 LPP</span>
-    <span class="tag">🏢Social</span>
-    <span class="tag">🏛️فيلا</span>
-    <span class="tag">🏡 منزل</span>
-    <span class="tag">🛍️ محل</span>
-    <span class="tag">🏢 AADL</span>
-    <span class="tag">🏫ريزيدونس</span>
+    <span class="tag" id="tagLPP">🏪 LPP</span>
+    <span class="tag" id="tagSocial">🏢 Social</span>
+    <span class="tag" id="tagVilla2">🏛️ فيلا</span>
+    <span class="tag" id="tagMaison">🏡 منزل</span>
+    <span class="tag" id="tagLocal2">🛍️ محل</span>
+    <span class="tag" id="tagAADL">🏢 AADL</span>
+    <span class="tag" id="tagResidence">🏫 ريزيدونس</span>
   </div>
   <div class="search-wrap">
     <button id="searchBtn" onclick="doSearch()">🔍 بحث</button>
@@ -281,32 +274,32 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
 <div class="filter-drawer-overlay" id="filterOverlay" onclick="closeFilterDrawer()"></div>
 <div class="filter-drawer" id="filterDrawer">
   <div class="filter-drawer-head">
-    <h3>🔍 فلاتر البحث</h3>
+    <h3 id="drawerTitle">🔍 فلاتر البحث</h3>
     <button class="filter-drawer-close" onclick="closeFilterDrawer()">✕</button>
   </div>
-  <div class="fcard"><div class="ftitle">🏷️ نوع العقار</div><div class="chips" id="typeChipsMob"></div></div>
-  <div class="fcard"><div class="ftitle">🤝 نوع المعاملة</div><div class="chips" id="opChipsMob"></div></div>
-  <div class="fcard"><div class="ftitle">🛏️ عدد الغرف</div><div class="chips" id="roomChipsMob"></div></div>
-  <div class="fcard"><div class="ftitle">🔧 حالة العقار</div><div class="chips" id="conditionChipsMob"></div></div>
-  <div class="fcard"><div class="ftitle">📢 حالة الإعلان</div><div class="chips" id="statusChipsMob"></div></div>
-  <div class="fcard"><div class="ftitle">📍 البلدية</div><select class="fsel" id="fcmMob" onchange="syncMobFilter('commune',this.value)"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
-  <div class="fcard"><div class="ftitle">💰 نطاق السعر (دج)</div><div class="prange"><input id="pminMob" type="number" placeholder="من"/><span>–</span><input id="pmaxMob" type="number" placeholder="إلى"/></div><button class="btn-apply" onclick="applyMobFilters()">✅ تطبيق الفلاتر</button></div>
+  <div class="fcard"><div class="ftitle" id="drawerFType">🏷️ نوع العقار</div><div class="chips" id="typeChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFOp">🤝 نوع المعاملة</div><div class="chips" id="opChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFRooms">🛏️ عدد الغرف</div><div class="chips" id="roomChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFCond">🔧 حالة العقار</div><div class="chips" id="conditionChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFStatus">📢 حالة الإعلان</div><div class="chips" id="statusChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFComm">📍 البلدية</div><select class="fsel" id="fcmMob" onchange="syncMobFilter('commune',this.value)"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
+  <div class="fcard"><div class="ftitle" id="drawerFPrice">💰 نطاق السعر (دج)</div><div class="prange"><input id="pminMob" type="number" placeholder="من"/><span>–</span><input id="pmaxMob" type="number" placeholder="إلى"/></div><button class="btn-apply" id="drawerApplyBtn" onclick="applyMobFilters()">✅ تطبيق الفلاتر</button></div>
 </div>
 
 <div class="main">
   <aside class="sidebar">
-    <div class="fcard"><div class="ftitle">🏷️ نوع العقار</div><div class="chips" id="typeChips"></div></div>
-    <div class="fcard"><div class="ftitle">🤝 نوع المعاملة</div><div class="chips" id="opChips"></div></div>
-    <div class="fcard"><div class="ftitle">🛏️ عدد الغرف</div><div class="chips" id="roomChips"></div></div>
-    <div class="fcard"><div class="ftitle">🔧 حالة العقار</div><div class="chips" id="conditionChips"></div></div>
-    <div class="fcard"><div class="ftitle">📢 حالة الإعلان</div><div class="chips" id="statusChips"></div></div>
-    <div class="fcard"><div class="ftitle">📍 البلدية</div><select class="fsel" id="fcm" onchange="af()"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
-    <div class="fcard"><div class="ftitle">💰 نطاق السعر (دج)</div><div class="prange"><input id="pmin" type="number" placeholder="من"/><span>–</span><input id="pmax" type="number" placeholder="إلى"/></div><button class="btn-apply" onclick="af()">✅ تطبيق الفلاتر</button></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFType">🏷️ نوع العقار</div><div class="chips" id="typeChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFOp">🤝 نوع المعاملة</div><div class="chips" id="opChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFRooms">🛏️ عدد الغرف</div><div class="chips" id="roomChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFCond">🔧 حالة العقار</div><div class="chips" id="conditionChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFStatus">📢 حالة الإعلان</div><div class="chips" id="statusChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFComm">📍 البلدية</div><select class="fsel" id="fcm" onchange="af()"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFPrice">💰 نطاق السعر (دج)</div><div class="prange"><input id="pmin" type="number" placeholder="من"/><span>–</span><input id="pmax" type="number" placeholder="إلى"/></div><button class="btn-apply" id="sidebarApplyBtn" onclick="af()">✅ تطبيق الفلاتر</button></div>
   </aside>
   <div class="content">
-    <button class="mob-filter-btn" onclick="openFilterDrawer()">🔍 فلاتر البحث</button>
+    <button class="mob-filter-btn" id="mobFilterBtn" onclick="openFilterDrawer()">🔍 فلاتر البحث</button>
     <div class="mob-strip" id="mobStrip"></div>
-    <div class="topbar"><div class="rcount"><span id="showingLabel">عرض</span> <strong id="rn">0</strong> <span id="adWordLabel">إعلان</span></div><select class="sortsel" id="srt" onchange="sl()"><option value="new">الأحدث أولاً</option><option value="pa">الأرخص أولاً</option><option value="pd">الأغلى أولاً</option></select></div>
+    <div class="topbar"><div class="rcount"><span id="showingLabel">عرض</span> <strong id="rn">0</strong> <span id="adWordLabel">إعلان</span></div><select class="sortsel" id="srt" onchange="sl()"><option value="new" id="sortOptNew">الأحدث أولاً</option><option value="pa" id="sortOptCheap">الأرخص أولاً</option><option value="pd" id="sortOptExp">الأغلى أولاً</option></select></div>
     <div class="grid" id="grid"></div>
   </div>
 </div>
@@ -412,8 +405,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const adsCol = collection(db, "clients");
 
-// Language state – must be defined early before any function uses it
-let currentLang = 'ar';
+// Language state – French is default
+let currentLang = 'fr';
 
 // Data mappings – Arabic (default)
 const PT = { aadl:"AADL", social:"Social", lpp:"LPP", villa:"فيلا", maison:"منزل", appart:"شقة", residence:"ريزيدنس", local:"محل" };
@@ -853,7 +846,7 @@ function initFilters() {
     const btn = document.createElement('button');
     btn.className = 'chip on';
     btn.dataset.all = '1';
-    btn.innerText = label;
+    btn.innerText = LANG[currentLang].all || label;
     btn.onclick = () => {
       container.querySelectorAll('.chip').forEach(b => b.classList.remove('on'));
       btn.classList.add('on');
@@ -1032,9 +1025,13 @@ const LANG = {
     heroSub: 'جميع إعلانات العقارات في الجزائر العاصمة',
     searchPlaceholder: 'ابحث بالحي أو البلدية...',
     searchBtn: '🔍 بحث',
-    statAds: 'إعلان نشط', statComm: 'بلدية', statAadl: 'حي AADL', statAlger: 'الجزائر العاصمة',
+    statAds: 'إعلان نشط', statComm: 'بلدية', statAadl: 'حي LPP', statAlger: 'الجزائر العاصمة',
+    tagVillaHero: '🏛️ فيلا', tagMaisonHero: '🏡 منزل', tagLocalHero: '🛍️ محل', tagResidenceHero: '🏫 ريزيدونس',
     tagVilla: '🏡 فيلا · منزل', tagLocal: '🛍️ محل · ريزيدنس',
+    fabLabel: 'أضف إعلانك مجاناً',
     postBtnLabel: 'نشر إعلان', all: 'الكل',
+    mobFilterBtn: '🔍 فلاتر البحث',
+    drawerTitle: '🔍 فلاتر البحث',
     filterType: '🏷️ نوع العقار', filterOp: '🤝 نوع المعاملة',
     filterRooms: '🛏️ عدد الغرف', filterCond: '🔧 حالة العقار',
     filterStatus: '📢 حالة الإعلان', filterComm: '📍 البلدية',
@@ -1044,6 +1041,12 @@ const LANG = {
     sortNew: 'الأحدث أولاً', sortCheap: 'الأرخص أولاً', sortExp: 'الأغلى أولاً',
     showing: 'عرض', adWord: 'إعلان',
     callBtn: '📞 اتصل الآن', waBtn: 'WhatsApp',
+    shareLinkLabel: 'نسخ رابط الإعلان',
+    ratingTitle: 'التقييمات', ratingCountLabel: 'تقييم',
+    reviewStarsLabel: 'اختر تقييمك', reviewTextPh: 'أضف تعليقاً (اختياري)...',
+    submitReviewBtn: 'إرسال التقييم',
+    commentsTitle: 'التعليقات',
+    commentNamePh: 'اسمك (اختياري)', commentTextPh: 'أضف تعليقاً...', commentBtn: 'إرسال',
     postTitle: '📣 نشر إعلان جديد', postSub: 'مجاني – بدون تسجيل – فوري',
     fldType: 'نوع العقار', fldOp: 'المعاملة', fldRooms: 'الغرف',
     fldArea: 'المساحة (م²)', fldAreaPh: 'مثال: 85',
@@ -1116,18 +1119,28 @@ const LANG = {
     heroSub: 'Toutes les annonces immobilières d\'Alger',
     searchPlaceholder: 'Rechercher par quartier ou commune...',
     searchBtn: '🔍 Chercher',
-    statAds: 'annonce active', statComm: 'commune', statAadl: 'quartier AADL', statAlger: 'Alger',
+    statAds: 'annonce active', statComm: 'commune', statAadl: 'quartier LPP', statAlger: 'Alger',
+    tagVillaHero: '🏛️ Villa', tagMaisonHero: '🏡 Maison', tagLocalHero: '🛍️ Local', tagResidenceHero: '🏫 Résidence',
     tagVilla: '🏡 Villa · Maison', tagLocal: '🛍️ Local · Résidence',
+    fabLabel: 'Publier une annonce',
     postBtnLabel: 'Publier', all: 'Tous',
+    mobFilterBtn: '🔍 Filtres de recherche',
+    drawerTitle: '🔍 Filtres de recherche',
     filterType: '🏷️ Type de bien', filterOp: '🤝 Type d\'opération',
     filterRooms: '🛏️ Nb. de pièces', filterCond: '🔧 État du bien',
-    filterStatus: '📢 Statut', filterComm: '📍 Commune',
+    filterStatus: '📢 Statut annonce', filterComm: '📍 Commune',
     filterPrice: '💰 Fourchette de prix (DA)',
     allComm: 'Toutes les communes', priceFrom: 'De', priceTo: 'À',
-    applyBtn: '✅ Appliquer',
+    applyBtn: '✅ Appliquer les filtres',
     sortNew: 'Plus récents', sortCheap: 'Moins chers', sortExp: 'Plus chers',
     showing: 'Affichage de', adWord: 'annonce(s)',
-    callBtn: '📞 Appeler', waBtn: 'WhatsApp',
+    callBtn: '📞 Appeler maintenant', waBtn: 'WhatsApp',
+    shareLinkLabel: 'Copier le lien',
+    ratingTitle: 'Avis', ratingCountLabel: 'avis',
+    reviewStarsLabel: 'Votre note', reviewTextPh: 'Ajouter un commentaire (optionnel)...',
+    submitReviewBtn: "Envoyer l'avis",
+    commentsTitle: 'Commentaires',
+    commentNamePh: 'Votre nom (optionnel)', commentTextPh: 'Ajouter un commentaire...', commentBtn: 'Envoyer',
     postTitle: '📣 Publier une annonce', postSub: 'Gratuit – Sans inscription – Immédiat',
     fldType: 'Type de bien', fldOp: 'Opération', fldRooms: 'Pièces',
     fldArea: 'Surface (m²)', fldAreaPh: 'Ex: 85',
@@ -1207,8 +1220,13 @@ function applyTranslation(lang) {
   document.getElementById('searchBtn').textContent = T.searchBtn;
 
   // ── Hero tags ──
-  document.getElementById('tagVilla').textContent = T.tagVilla;
-  document.getElementById('tagLocal').textContent = T.tagLocal;
+  document.getElementById('tagLPP').textContent       = '🏪 LPP';
+  document.getElementById('tagSocial').textContent    = '🏘️ Social';
+  document.getElementById('tagVilla2').textContent    = T.tagVillaHero;
+  document.getElementById('tagMaison').textContent    = T.tagMaisonHero;
+  document.getElementById('tagLocal2').textContent    = T.tagLocalHero;
+  document.getElementById('tagAADL').textContent      = '🏢 AADL';
+  document.getElementById('tagResidence').textContent = T.tagResidenceHero;
 
   // ── Stats ──
   document.getElementById('statL0').textContent = T.statAds;
@@ -1216,41 +1234,57 @@ function applyTranslation(lang) {
   document.getElementById('statL2').textContent = T.statAadl;
   document.getElementById('statL3').textContent = T.statAlger;
 
-  // ── Topbar ──
-  document.getElementById('showingLabel').textContent = T.showing;
-  document.getElementById('adWordLabel').textContent = T.adWord;
-
   // ── Header post button ──
   document.querySelector('#postBtn span').textContent = T.postBtnLabel;
 
+  // ── Lang button ──
+  document.getElementById('langBtn').textContent = lang === 'ar' ? 'FR' : 'عربي';
+
+  // ── FAB ──
+  const fabLabel = document.getElementById('fabLabel');
+  if (fabLabel) fabLabel.textContent = T.fabLabel;
+
+  // ── Mobile filter button ──
+  const mobFilterBtn = document.getElementById('mobFilterBtn');
+  if (mobFilterBtn) mobFilterBtn.textContent = T.mobFilterBtn;
+
   // ── Sidebar filter titles ──
-  const ftitles = document.querySelectorAll('.ftitle');
-  const ftMap = [T.filterType, T.filterOp, T.filterRooms, T.filterCond, T.filterStatus, T.filterComm, T.filterPrice];
-  ftitles.forEach((el, i) => { if (ftMap[i] !== undefined) el.innerHTML = ftMap[i]; });
-
-  // ── Type chips (PT) ──
-  document.querySelectorAll('#typeChips .chip[data-val]').forEach(b => {
-    b.textContent = lPT(b.dataset.val);
+  const sidebarMap = {
+    sidebarFType: T.filterType, sidebarFOp: T.filterOp,
+    sidebarFRooms: T.filterRooms, sidebarFCond: T.filterCond,
+    sidebarFStatus: T.filterStatus, sidebarFComm: T.filterComm,
+    sidebarFPrice: T.filterPrice
+  };
+  Object.entries(sidebarMap).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = text;
   });
 
-  // ── Op chips (OP) ──
-  document.querySelectorAll('#opChips .chip[data-val]').forEach(b => {
-    b.textContent = lOP(b.dataset.val);
+  // ── Filter drawer title & section titles ──
+  const drawerTitle = document.getElementById('drawerTitle');
+  if (drawerTitle) drawerTitle.textContent = T.drawerTitle;
+  const drawerMap = {
+    drawerFType: T.filterType, drawerFOp: T.filterOp,
+    drawerFRooms: T.filterRooms, drawerFCond: T.filterCond,
+    drawerFStatus: T.filterStatus, drawerFComm: T.filterComm,
+    drawerFPrice: T.filterPrice
+  };
+  Object.entries(drawerMap).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = text;
   });
 
-  // ── "الكل" chips ──
-  document.querySelectorAll('#opChips .chip').forEach(b => { if (b.dataset.all) b.textContent = T.all; });
-  document.querySelectorAll('#roomChips .chip').forEach(b => { if (b.dataset.all) b.textContent = T.all; });
-  document.querySelectorAll('#conditionChips .chip').forEach(b => { if (b.dataset.all) b.textContent = T.all; });
-  document.querySelectorAll('#statusChips .chip').forEach(b => { if (b.dataset.all) b.textContent = T.all; });
-
-  // ── Condition chips text ──
+  // ── Sidebar chips ──
+  document.querySelectorAll('#typeChips .chip[data-val]').forEach(b => { b.textContent = lPT(b.dataset.val); });
+  document.querySelectorAll('#opChips .chip[data-val]').forEach(b => { b.textContent = lOP(b.dataset.val); });
+  document.querySelectorAll('#opChips .chip[data-all]').forEach(b => { b.textContent = T.all; });
+  document.querySelectorAll('#roomChips .chip[data-all]').forEach(b => { b.textContent = T.all; });
+  document.querySelectorAll('#conditionChips .chip[data-all]').forEach(b => { b.textContent = T.all; });
+  document.querySelectorAll('#statusChips .chip[data-all]').forEach(b => { b.textContent = T.all; });
   document.querySelectorAll('#conditionChips .chip[data-val]').forEach(b => {
     if (b.dataset.val === 'neuf') b.textContent = T.condNeuf;
     if (b.dataset.val === 'utilise') b.textContent = T.condUsed;
   });
-
-  // ── Status chips text ──
   document.querySelectorAll('#statusChips .chip[data-val]').forEach(b => {
     if (b.dataset.val === 'dispo') b.textContent = T.statDispo;
     if (b.dataset.val === 'reserved') b.textContent = T.statReserved;
@@ -1258,53 +1292,61 @@ function applyTranslation(lang) {
     if (b.dataset.val === 'rented') b.textContent = T.statRented;
   });
 
-  // ── Commune select ──
+  // ── Sidebar commune + price ──
   const fcm = document.getElementById('fcm');
   if (fcm && fcm.options[0]) fcm.options[0].text = T.allComm;
+  const pmin = document.getElementById('pmin'); if (pmin) pmin.placeholder = T.priceFrom;
+  const pmax = document.getElementById('pmax'); if (pmax) pmax.placeholder = T.priceTo;
+  const sidebarApplyBtn = document.getElementById('sidebarApplyBtn');
+  if (sidebarApplyBtn) sidebarApplyBtn.textContent = T.applyBtn;
 
-  // ── Price range ──
-  const pmin = document.getElementById('pmin');
-  const pmax = document.getElementById('pmax');
-  if (pmin) pmin.placeholder = T.priceFrom;
-  if (pmax) pmax.placeholder = T.priceTo;
-  document.querySelector('.btn-apply').textContent = T.applyBtn;
+  // ── Drawer chips ──
+  document.querySelectorAll('#typeChipsMob .chip[data-val]').forEach(b => { b.textContent = lPT(b.dataset.val); });
+  document.querySelectorAll('#opChipsMob .chip[data-val]').forEach(b => { b.textContent = lOP(b.dataset.val); });
+  ['opChipsMob','roomChipsMob','conditionChipsMob','statusChipsMob','typeChipsMob'].forEach(id => {
+    document.querySelectorAll(`#${id} .chip[data-all]`).forEach(b => { b.textContent = T.all; });
+  });
+  document.querySelectorAll('#conditionChipsMob .chip[data-val]').forEach(b => {
+    if (b.dataset.val === 'neuf') b.textContent = T.condNeuf;
+    if (b.dataset.val === 'utilise') b.textContent = T.condUsed;
+  });
+  document.querySelectorAll('#statusChipsMob .chip[data-val]').forEach(b => {
+    if (b.dataset.val === 'dispo') b.textContent = T.statDispo;
+    if (b.dataset.val === 'reserved') b.textContent = T.statReserved;
+    if (b.dataset.val === 'sold') b.textContent = T.statSold;
+    if (b.dataset.val === 'rented') b.textContent = T.statRented;
+  });
 
-  // ── Sort ──
-  const srt = document.getElementById('srt');
-  if (srt && srt.options.length >= 3) {
-    srt.options[0].text = T.sortNew;
-    srt.options[1].text = T.sortCheap;
-    srt.options[2].text = T.sortExp;
-  }
+  // ── Drawer commune + price ──
+  const fcmMob = document.getElementById('fcmMob');
+  if (fcmMob && fcmMob.options[0]) fcmMob.options[0].text = T.allComm;
+  const pminMob = document.getElementById('pminMob'); if (pminMob) pminMob.placeholder = T.priceFrom;
+  const pmaxMob = document.getElementById('pmaxMob'); if (pmaxMob) pmaxMob.placeholder = T.priceTo;
+  const drawerApplyBtn = document.getElementById('drawerApplyBtn');
+  if (drawerApplyBtn) drawerApplyBtn.textContent = T.applyBtn;
 
-  // ── Post modal header ──
+  // ── Topbar ──
+  document.getElementById('showingLabel').textContent = T.showing;
+  document.getElementById('adWordLabel').textContent  = T.adWord;
+  const sortOptNew   = document.getElementById('sortOptNew');
+  const sortOptCheap = document.getElementById('sortOptCheap');
+  const sortOptExp   = document.getElementById('sortOptExp');
+  if (sortOptNew)   sortOptNew.textContent   = T.sortNew;
+  if (sortOptCheap) sortOptCheap.textContent = T.sortCheap;
+  if (sortOptExp)   sortOptExp.textContent   = T.sortExp;
+
+  // ── Post modal ──
   document.querySelector('.pmhead-title').textContent = T.postTitle;
-  document.querySelector('.pmhead-sub').textContent = T.postSub;
-
-  // ── Post form labels ──
+  document.querySelector('.pmhead-sub').textContent   = T.postSub;
   const labels = document.querySelectorAll('.pmbody .fg label');
   const labelMap = [T.fldType, T.fldOp, T.fldRooms, T.fldArea, T.fldCond, T.fldStatus, T.fldLoc, T.fldPrice, T.fldPhone, T.fldDesc];
   labels.forEach((el, i) => { if (labelMap[i]) el.textContent = labelMap[i]; });
-
-  // ── Post form type/op select options ──
   document.querySelectorAll('#pt option').forEach(o => { o.text = lPT(o.value); });
   document.querySelectorAll('#po option').forEach(o => { o.text = lOP(o.value); });
-
-  // ── Post form select options (pcond, pstat) ──
   const pcond = document.getElementById('pcond');
-  if (pcond) {
-    if (pcond.options[0]) pcond.options[0].text = T.condNeuf;
-    if (pcond.options[1]) pcond.options[1].text = T.condUsed;
-  }
+  if (pcond) { pcond.options[0].text = T.condNeuf; pcond.options[1].text = T.condUsed; }
   const pstat = document.getElementById('pstat');
-  if (pstat) {
-    if (pstat.options[0]) pstat.options[0].text = T.statDispo;
-    if (pstat.options[1]) pstat.options[1].text = T.statReserved;
-    if (pstat.options[2]) pstat.options[2].text = T.statSold;
-    if (pstat.options[3]) pstat.options[3].text = T.statRented;
-  }
-
-  // ── Post form placeholders ──
+  if (pstat) { pstat.options[0].text = T.statDispo; pstat.options[1].text = T.statReserved; pstat.options[2].text = T.statSold; pstat.options[3].text = T.statRented; }
   const pa = document.getElementById('pa'); if (pa) pa.placeholder = T.fldAreaPh;
   const pl = document.getElementById('pl'); if (pl) pl.placeholder = T.fldLocPh;
   const pp = document.getElementById('pp'); if (pp) pp.placeholder = T.fldPricePh;
@@ -1313,14 +1355,32 @@ function applyTranslation(lang) {
   const submitBtn = document.querySelector('.btn-submit');
   if (submitBtn && !submitBtn.disabled) submitBtn.textContent = T.submitBtn;
 
-  // ── Detail modal call button ──
+  // ── Detail modal static elements ──
   const mcall = document.getElementById('mcall');
   if (mcall) mcall.textContent = T.callBtn;
+  const shareLinkLabel = document.getElementById('shareLinkLabel');
+  if (shareLinkLabel) shareLinkLabel.textContent = T.shareLinkLabel;
+  const ratingTitle = document.getElementById('ratingTitle');
+  if (ratingTitle) ratingTitle.textContent = T.ratingTitle;
+  const ratingCountLabel = document.getElementById('ratingCountLabel');
+  if (ratingCountLabel) ratingCountLabel.textContent = T.ratingCountLabel;
+  const reviewStarsLabel = document.getElementById('reviewStarsLabel');
+  if (reviewStarsLabel) reviewStarsLabel.textContent = T.reviewStarsLabel;
+  const reviewText = document.getElementById('reviewText');
+  if (reviewText) reviewText.placeholder = T.reviewTextPh;
+  const submitReviewBtn = document.getElementById('submitReviewBtn');
+  if (submitReviewBtn) submitReviewBtn.textContent = T.submitReviewBtn;
+  const commentsTitle = document.getElementById('commentsTitle');
+  if (commentsTitle) commentsTitle.textContent = T.commentsTitle;
+  const commentName = document.getElementById('commentName');
+  if (commentName) commentName.placeholder = T.commentNamePh;
+  const commentText = document.getElementById('commentText');
+  if (commentText) commentText.placeholder = T.commentTextPh;
+  const commentBtn = document.getElementById('commentBtn');
+  if (commentBtn) commentBtn.textContent = T.commentBtn;
 
-  // ── Footer text ──
+  // ── Footer ──
   document.getElementById('footerText').textContent = T.footerText;
-
-  // ── Footer links ──
   const footLinks = document.querySelectorAll('footer a');
   const linkKeys = ['privacy','terms','contact','about'];
   const emojis = ['🔒','📋','📬','ℹ️'];
@@ -1330,13 +1390,6 @@ function applyTranslation(lang) {
 
   // ── Re-render ads ──
   sortAndRender();
-
-  // ── Lang button ──
-  document.getElementById('langBtn').textContent = lang === 'ar' ? 'FR' : 'عربي';
-
-  // ── FAB label ──
-  const fabLabel = document.getElementById('fabLabel');
-  if (fabLabel) fabLabel.textContent = lang === 'ar' ? 'أضف إعلانك مجاناً' : 'Publier une annonce';
 }
 
 window.toggleLang = function() {
@@ -1362,14 +1415,8 @@ initSelects();
 initFilters();
 startFirebaseListener();
 
-// ── PWA Service Worker ──
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.log('SW error:', err));
-  });
-}
+// Apply French as default language after DOM is ready
+setTimeout(() => applyTranslation('fr'), 150);
 </script>
 </body>
 </html>
