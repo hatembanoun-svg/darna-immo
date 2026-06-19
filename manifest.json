@@ -1,0 +1,30 @@
+{
+  "name": "دارنا إيمو - Darna Immo",
+  "short_name": "دارنا إيمو",
+  "description": "منصة عقارية جزائرية - AADL، LPP، فيلا، شقة، محل",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "/index.html",
+  "display": "standalone",
+  "background_color": "#0D3B2E",
+  "theme_color": "#0D3B2E",
+  "orientation": "portrait-primary",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["real estate", "business"],
+  "screenshots": []
+}
