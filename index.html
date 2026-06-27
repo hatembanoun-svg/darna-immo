@@ -1,0 +1,1473 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<title>Darna Immo – دارنا إيمو | إعلانات عقارية شاملة</title>
+<meta name="description" content="دارنا إيمو – منصة عقارية جزائرية متخصصة في إعلانات AADL، LPP، السكن الاجتماعي، الفيلات، المنازل، المحلات"/>
+<meta name="keywords" content="AADL, LPP, كراء شقة, بيع شقة, شراء عقار, تبادل عقار, فيلا للبيع, منزل, ريزيدنس, محل تجاري, عقار الجزائر"/>
+<meta name="robots" content="index, follow"/>
+<link rel="manifest" href="manifest.json"/>
+<meta name="theme-color" content="#0D3B2E"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="دارنا إيمو"/>
+<link rel="apple-touch-icon" href="assets/logo.png"/>
+<link rel="icon" type="image/png" href="assets/logo.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#0D3B2E;
+  --green-mid:#1A5C45;
+  --green-light:#2E8B6A;
+  --gold:#C9A84C;
+  --gold-bright:#F0C855;
+  --red:#CE1126;
+  --white:#FFFFFF;
+  --bg:#F6FAF8;
+  --text:#1A1A1A;
+  --text-sub:#556;
+  --border:#D8EAE1;
+  --radius:14px;
+  --shadow:0 2px 16px rgba(0,0,0,.09);
+}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+header{
+  background:var(--green);
+  height:52px;padding:0 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 14px rgba(0,0,0,.3);
+}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-badge{
+  width:42px;height:42px;border-radius:10px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;flex-shrink:0;
+}
+.logo-badge img{width:100%;height:100%;object-fit:contain;display:block;}
+.logo-text{line-height:1}
+.logo-text .d1{font-size:14px;font-weight:900;color:var(--gold-bright);letter-spacing:.5px}
+.logo-text .d2{font-size:9px;color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase}
+
+.flag-strip{height:4px;background:linear-gradient(to left, var(--red) 0%, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green-mid) 66%);}
+
+.hero{
+  background:linear-gradient(150deg,var(--green) 0%,var(--green-mid) 55%,var(--green-light) 100%);
+  padding:20px 16px 18px;text-align:center;color:var(--white);
+  position:relative;overflow:hidden;
+}
+.hero::before{content:'دارنا';position:absolute;font-size:120px;font-weight:900;color:rgba(255,255,255,.04);top:-10px;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none;}
+.hero-crescent{font-size:20px;margin-bottom:4px}
+.hero-title{font-size:clamp(18px,5vw,32px);font-weight:900;line-height:1.2;margin-bottom:4px}
+.hero-title span{color:var(--gold-bright)}
+.hero-sub{font-size:13px;opacity:.8;margin-bottom:14px}
+
+.tag-row{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tag{padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);}
+
+.search-wrap{max-width:660px;margin:0 auto;display:flex;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.search-wrap input{flex:1;border:none;outline:none;font-family:'Cairo',sans-serif;font-size:14px;padding:11px 14px;color:var(--text);}
+.search-wrap button{background:linear-gradient(135deg,var(--gold-bright),var(--gold));border:none;padding:0 20px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;color:var(--green);cursor:pointer;transition:.2s;}
+.search-wrap button:hover{filter:brightness(1.08)}
+
+.stats{display:flex;justify-content:center;gap:0;background:var(--white);border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.stat{flex:1;min-width:80px;text-align:center;padding:8px 6px;border-left:1px solid var(--border);}
+.stat:last-child{border-left:none}
+.stat-n{font-size:18px;font-weight:900;color:var(--green-mid)}
+.stat-l{font-size:11px;color:var(--text-sub)}
+
+.main{display:flex;gap:22px;max-width:1080px;margin:0 auto;padding:26px 18px}
+.stats{max-width:1080px;margin:0 auto;width:100%}
+.stats-wrap{background:var(--white);border-bottom:1px solid var(--border)}
+@media(max-width:860px){.sidebar{display:none!important}}
+
+/* ── Mobile filter button ── */
+.mob-filter-btn{display:none;align-items:center;gap:8px;padding:10px 18px;background:var(--green);color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:14px;width:100%}
+@media(max-width:860px){.mob-filter-btn{display:flex;justify-content:center}}
+
+/* ── Filter drawer overlay ── */
+.filter-drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
+.filter-drawer-overlay.open{display:block}
+.filter-drawer{position:fixed;top:0;right:-100%;width:min(320px,88vw);height:100%;background:var(--bg);z-index:301;overflow-y:auto;padding:16px;transition:right .3s ease;box-shadow:-6px 0 24px rgba(0,0,0,.2)}
+.filter-drawer.open{right:0}
+.filter-drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--border)}
+.filter-drawer-head h3{font-size:16px;font-weight:900;color:var(--green)}
+.filter-drawer-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);line-height:1}
+
+.sidebar{width:310px;flex-shrink:0}
+.fcard{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:14px}
+.ftitle{font-size:13px;font-weight:700;color:var(--green);border-bottom:2px solid #E8F5EE;padding-bottom:9px;margin-bottom:13px;display:flex;align-items:center;gap:6px;}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:6px 13px;border-radius:50px;border:1.5px solid var(--border);font-family:'Cairo',sans-serif;font-size:12px;font-weight:600;cursor:pointer;background:var(--white);color:var(--text);transition:.18s;}
+.chip:hover{background:var(--green);border-color:var(--green);color:var(--white)}
+.chip.on{background:var(--green);border-color:var(--green);color:var(--white)}
+
+.fsel{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);background:var(--white);outline:none;cursor:pointer;margin-bottom:9px;}
+.prange{display:flex;gap:7px;align-items:center;margin-bottom:10px}
+.prange input{flex:1;padding:9px 11px;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;outline:none;}
+.btn-apply{width:100%;padding:12px;background:var(--green);color:var(--white);border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:.2s;}
+
+.content{flex:1;min-width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.rcount{font-size:13px;color:var(--text-sub)}
+.sortsel{padding:8px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;outline:none;background:var(--white);}
+
+.mob-strip{display:none;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px;-webkit-overflow-scrolling:touch}
+@media(max-width:860px){.mob-strip{display:flex}}
+.mob-strip .chip{white-space:nowrap;flex-shrink:0}
+
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media(max-width:400px){.grid{grid-template-columns:1fr;gap:12px}}
+
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:.2s;position:relative;}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
+.cimg{position:relative;height:110px;overflow:hidden}
+@media(min-width:900px){.cimg{height:175px}}
+.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
+.bt{position:absolute;top:6px;right:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700;color:#fff}
+.bo{position:absolute;top:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.fav{position:absolute;bottom:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.fav:hover{transform:scale(1.15)}
+.status-badge{position:absolute;bottom:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:9px;font-weight:700;color:white}
+.cbody{padding:10px}
+@media(min-width:900px){.cbody{padding:14px}}
+.ctitle{font-size:13px;font-weight:700;margin-bottom:4px}
+@media(min-width:900px){.ctitle{font-size:14px}}
+.cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:11px}
+.cspecs{display:flex;gap:12px;font-size:12px;color:var(--text-sub);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:9px 0;margin-bottom:11px;flex-wrap:wrap;}
+.cfoot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.price{font-size:16px;font-weight:900;color:var(--green)}
+.price small{font-size:11px;font-weight:600;color:var(--text-sub)}
+.btn-call{padding:7px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;}
+.btn-call:hover{background:var(--green-mid)}
+
+.fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:0 28px;height:62px;border-radius:50px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:17px;font-weight:900;font-family:'Cairo',sans-serif;box-shadow:0 8px 32px rgba(201,168,76,.6);cursor:pointer;z-index:90;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;letter-spacing:.3px;animation:fabPulse 2.2s ease-in-out infinite}.fab:hover{filter:brightness(1.1);transform:translateX(-50%) scale(1.04);box-shadow:0 12px 40px rgba(201,168,76,.75)}.fab-icon{font-size:26px;font-weight:900;line-height:1}@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.6)}50%{box-shadow:0 8px 44px rgba(201,168,76,.95),0 0 0 10px rgba(201,168,76,.15)}}@media(max-width:500px){.fab{left:16px;right:16px;transform:none;width:calc(100% - 32px)}.fab:hover{transform:scale(1.02)}}
+
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:14px;}
+.overlay.open{display:flex}
+.modal{background:var(--white);border-radius:18px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,.35);}
+.modal-top{position:relative}
+.mimg{height:220px;overflow:hidden}
+.mimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
+.mclose{position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;border:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.mbody{padding:22px}
+.mtitle{font-size:20px;font-weight:900;margin-bottom:10px}
+.mbadges{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.mdesc{font-size:14px;color:var(--text-sub);line-height:1.85;margin-bottom:18px}
+.mspecs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.mspec{background:#F0FAF4;border-radius:10px;padding:10px 13px;font-size:13px}
+.mspec strong{display:block;font-size:15px;color:var(--green)}
+.social-buttons{display:flex;gap:12px;justify-content:center;margin:15px 0;flex-wrap:wrap}
+.social-icon{padding:8px 18px;border-radius:50px;display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;transition:0.2s;border:none;font-family:'Cairo',sans-serif;}
+.social-icon.fb{background:#1877F2;color:white}
+.social-icon.messenger{background:#0084FF;color:white}
+.social-icon.whatsapp{background:#25D366;color:white}
+.macts{display:flex;gap:10px;margin-top:12px}
+.mact{flex:1;padding:13px;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:.2s;}
+.mact.green{background:var(--green);color:#fff}
+.mact.gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green)}
+
+.pmodal{max-width:510px}
+.pmhead{background:linear-gradient(135deg,var(--green),var(--green-mid));padding:22px 22px 18px;border-radius:18px 18px 0 0;color:#fff;position:relative}
+.pmhead-title{font-size:19px;font-weight:900;margin-bottom:2px}
+.pmhead-sub{font-size:13px;opacity:.75}
+.pmclose{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.pmbody{padding:20px}
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);outline:none;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{width:100%;padding:13px;background:linear-gradient(135deg,var(--green-mid),var(--green));color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:16px;font-weight:700;cursor:pointer;margin-top:6px;transition:.2s;}
+
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--green);color:#fff;padding:11px 24px;border-radius:50px;font-size:14px;font-weight:600;z-index:999;transition:transform .35s;box-shadow:0 6px 24px rgba(0,0,0,.25);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.empty{text-align:center;padding:60px 20px;color:var(--text-sub);}
+
+.lang-btn{padding:7px 14px;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;}
+
+/* ── Views counter on card ── */
+.cviews{font-size:11px;color:var(--text-sub);display:flex;align-items:center;gap:3px}
+
+/* ── Stars rating ── */
+.stars-row{display:flex;gap:3px;font-size:22px;cursor:pointer;justify-content:center;margin:6px 0}
+.star{color:#ddd;transition:.15s;user-select:none}
+.star.on{color:var(--gold-bright)}
+.stars-row:hover .star{color:var(--gold)}
+.stars-row .star:hover ~ .star{color:#ddd}
+.avg-stars{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--gold)}
+.avg-stars span{color:var(--text-sub);font-size:11px}
+
+/* ── Rating section in modal ── */
+.rating-section{background:#FFF9EE;border-radius:12px;padding:16px;margin:14px 0;border:1.5px solid #F0E0A0}
+.rating-title{font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px}
+.rating-summary{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #F0E0A0}
+.rating-avg-num{font-size:38px;font-weight:900;color:var(--gold);line-height:1}
+.rating-avg-info{flex:1}
+.rating-bar{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.rating-bar-fill{flex:1;height:6px;background:#eee;border-radius:3px;overflow:hidden}
+.rating-bar-fill-inner{height:100%;background:linear-gradient(to left,var(--gold-bright),var(--gold));border-radius:3px;transition:.4s}
+.rating-bar small{font-size:10px;color:var(--text-sub);width:8px}
+.write-review{margin-top:10px}
+.review-stars-label{font-size:13px;color:var(--text-sub);margin-bottom:4px;text-align:center}
+.review-input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;margin-top:8px;outline:none;resize:none}
+.btn-review{margin-top:8px;width:100%;padding:10px;background:var(--gold);color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+
+/* ── Comments section ── */
+.comments-section{margin:14px 0}
+.comments-title{font-size:14px;font-weight:700;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.comment-item{background:#F6FAF8;border-radius:10px;padding:11px 13px;margin-bottom:8px;border:1px solid var(--border)}
+.comment-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.comment-author{font-size:12px;font-weight:700;color:var(--green-mid)}
+.comment-date{font-size:10px;color:var(--text-sub)}
+.comment-text{font-size:13px;line-height:1.7;color:var(--text)}
+.comment-form{display:flex;gap:8px;margin-top:10px}
+.comment-form input{flex:1;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;outline:none}
+.comment-form button{padding:10px 16px;background:var(--green);color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+.no-comments{text-align:center;color:var(--text-sub);font-size:13px;padding:14px}
+
+/* ── Share button ── */
+.share-link-btn{display:flex;align-items:center;gap:8px;padding:9px 16px;background:#E8F5EE;color:var(--green);border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;white-space:nowrap}
+.share-link-btn:hover{background:var(--green);color:#fff}
+
+.footer-flag{width:40px;height:4px;border-radius:4px;margin:8px auto 0;background:linear-gradient(to left,var(--red) 33%,#fff 33%,#fff 66%,var(--green-mid) 66%);}
+
+footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font-size:13px;padding:18px;margin-top:36px;}
+</style>
+</head>
+<body>
+<div class="flag-strip"></div>
+<header>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span>نشرإعلان</span></button>
+    <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
+  </div>
+  <a class="logo" href="#">
+    <div class="logo-text" style="text-align:left"><div class="d1">DARNA IMMOBILIER</div><div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div></div>
+    <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
+  </a>
+</header>
+<section class="hero">
+  <div class="hero-crescent">🇩🇿</div>
+  <h1 class="hero-title" id="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
+  <p class="hero-sub" id="heroSub">جميع إعلانات العقارات في الجزائر العاصمة</p>
+  <div class="tag-row">
+    <span class="tag" id="tagLPP">🏪 LPP</span>
+    <span class="tag" id="tagSocial">🏢 Social</span>
+    <span class="tag" id="tagVilla2">🏛️ فيلا</span>
+    <span class="tag" id="tagMaison">🏡 منزل</span>
+    <span class="tag" id="tagLocal2">🛍️ محل</span>
+    <span class="tag" id="tagAADL">🏢 AADL</span>
+    <span class="tag" id="tagResidence">🏫 ريزيدونس</span>
+  </div>
+  <div class="search-wrap">
+    <button id="searchBtn" onclick="doSearch()">🔍 بحث</button>
+    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية..." onkeyup="if(event.key==='Enter')doSearch()"/>
+  </div>
+</section>
+<div class="stats-wrap"><div class="stats">
+  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l" id="statL0">إعلان نشط</div></div>
+  <div class="stat"><div class="stat-n">31</div><div class="stat-l" id="statL1">بلدية</div></div>
+  <div class="stat"><div class="stat-n">35</div><div class="stat-l" id="statL2">حي LPP</div></div>
+  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l" id="statL3">الجزائر العاصمة</div></div>
+</div></div>
+
+<!-- Filter Drawer (mobile) -->
+<div class="filter-drawer-overlay" id="filterOverlay" onclick="closeFilterDrawer()"></div>
+<div class="filter-drawer" id="filterDrawer">
+  <div class="filter-drawer-head">
+    <h3 id="drawerTitle">🔍 فلاتر البحث</h3>
+    <button class="filter-drawer-close" onclick="closeFilterDrawer()">✕</button>
+  </div>
+  <div class="fcard"><div class="ftitle" id="drawerFType">🏷️ نوع العقار</div><div class="chips" id="typeChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFOp">🤝 نوع المعاملة</div><div class="chips" id="opChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFRooms">🛏️ عدد الغرف</div><div class="chips" id="roomChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFCond">🔧 حالة العقار</div><div class="chips" id="conditionChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFStatus">📢 حالة الإعلان</div><div class="chips" id="statusChipsMob"></div></div>
+  <div class="fcard"><div class="ftitle" id="drawerFComm">📍 البلدية</div><select class="fsel" id="fcmMob" onchange="syncMobFilter('commune',this.value)"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
+  <div class="fcard"><div class="ftitle" id="drawerFPrice">💰 نطاق السعر (دج)</div><div class="prange"><input id="pminMob" type="number" placeholder="من"/><span>–</span><input id="pmaxMob" type="number" placeholder="إلى"/></div><button class="btn-apply" id="drawerApplyBtn" onclick="applyMobFilters()">✅ تطبيق الفلاتر</button></div>
+</div>
+
+<div class="main">
+  <aside class="sidebar">
+    <div class="fcard"><div class="ftitle" id="sidebarFType">🏷️ نوع العقار</div><div class="chips" id="typeChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFOp">🤝 نوع المعاملة</div><div class="chips" id="opChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFRooms">🛏️ عدد الغرف</div><div class="chips" id="roomChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFCond">🔧 حالة العقار</div><div class="chips" id="conditionChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFStatus">📢 حالة الإعلان</div><div class="chips" id="statusChips"></div></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFComm">📍 البلدية</div><select class="fsel" id="fcm" onchange="af()"><option value="">كل البلديات</option><option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option><option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option><option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option><option>الحراش</option><option>بوزريعة</option><option>شراقة</option><option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option></select></div>
+    <div class="fcard"><div class="ftitle" id="sidebarFPrice">💰 نطاق السعر (دج)</div><div class="prange"><input id="pmin" type="number" placeholder="من"/><span>–</span><input id="pmax" type="number" placeholder="إلى"/></div><button class="btn-apply" id="sidebarApplyBtn" onclick="af()">✅ تطبيق الفلاتر</button></div>
+  </aside>
+  <div class="content">
+    <button class="mob-filter-btn" id="mobFilterBtn" onclick="openFilterDrawer()">🔍 فلاتر البحث</button>
+    <div class="mob-strip" id="mobStrip"></div>
+    <div class="topbar"><div class="rcount"><span id="showingLabel">عرض</span> <strong id="rn">0</strong> <span id="adWordLabel">إعلان</span></div><select class="sortsel" id="srt" onchange="sl()"><option value="new" id="sortOptNew">الأحدث أولاً</option><option value="pa" id="sortOptCheap">الأرخص أولاً</option><option value="pd" id="sortOptExp">الأغلى أولاً</option></select></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+<button class="fab" onclick="openPost()"><span class="fab-icon">＋</span> <span id="fabLabel">أضف إعلانك مجاناً</span></button>
+
+<!-- Detail Modal -->
+<div class="overlay" id="dm" onclick="cov(event,'dm')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="mimg" id="mimg"></div>
+      <button class="mclose" onclick="cm('dm')">✕</button>
+      <div id="mviewsBadge" style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,.5);color:#fff;border-radius:50px;padding:4px 10px;font-size:12px;display:flex;align-items:center;gap:4px">👁️ <span id="mviewsNum">0</span></div>
+    </div>
+    <div class="mbody">
+      <div class="mtitle" id="mtt"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <div class="mbadges" id="mbg"></div>
+        <div class="avg-stars" id="mavgStars">⭐ — <span id="mavgCount"></span></div>
+      </div>
+      <p class="mdesc" id="mds"></p>
+      <div class="mspecs" id="msp"></div>
+
+      <!-- Share link button -->
+      <div style="margin-bottom:14px">
+        <button class="share-link-btn" id="shareLinkBtn" onclick="copyAdLink()">🔗 <span id="shareLinkLabel">نسخ رابط الإعلان</span></button>
+      </div>
+
+      <div class="social-buttons" id="socialBtns"></div>
+
+      <div class="macts">
+        <button class="mact green" id="mcall">📞 اتصل الآن</button>
+        <button class="mact gold" id="mwa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          WhatsApp
+        </button>
+      </div>
+
+      <!-- Rating section -->
+      <div class="rating-section">
+        <div class="rating-title">⭐ <span id="ratingTitle">التقييمات</span></div>
+        <div class="rating-summary">
+          <div>
+            <div class="rating-avg-num" id="ratingAvgNum">—</div>
+            <div class="avg-stars" id="ratingAvgStars" style="font-size:16px;margin-top:4px">☆☆☆☆☆</div>
+            <div style="font-size:11px;color:var(--text-sub);margin-top:3px"><span id="ratingCount">0</span> <span id="ratingCountLabel">تقييم</span></div>
+          </div>
+          <div style="flex:1">
+            <div id="ratingBars"></div>
+          </div>
+        </div>
+        <div class="write-review">
+          <div class="review-stars-label" id="reviewStarsLabel">اختر تقييمك</div>
+          <div class="stars-row" id="reviewStars">
+            <span class="star" data-v="5">★</span>
+            <span class="star" data-v="4">★</span>
+            <span class="star" data-v="3">★</span>
+            <span class="star" data-v="2">★</span>
+            <span class="star" data-v="1">★</span>
+          </div>
+          <textarea class="review-input" id="reviewText" rows="2" placeholder="أضف تعليقاً (اختياري)..."></textarea>
+          <button class="btn-review" id="submitReviewBtn" onclick="submitReview()">إرسال التقييم</button>
+        </div>
+      </div>
+
+      <!-- Comments section -->
+      <div class="comments-section">
+        <div class="comments-title">💬 <span id="commentsTitle">التعليقات</span></div>
+        <div id="commentsList"></div>
+        <div class="comment-form">
+          <input id="commentName" type="text" placeholder="اسمك (اختياري)"/>
+          <input id="commentText" type="text" placeholder="أضف تعليقاً..."/>
+          <button onclick="submitComment()" id="commentBtn">إرسال</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Post Modal -->
+<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea></div><button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button></div></div></div>
+
+<div class="toast" id="tst"></div>
+<footer><strong>DARNA IMMO</strong> · <span id="footerText">منصة الجزائر العاصمة للعقارات والسكن الاجتماعي</span><div style="margin-top:10px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap"><a href="#" onclick="openPage('privacy')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">🔒 سياسة الخصوصية</a><a href="#" onclick="openPage('terms')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">📋 شروط الاستخدام</a><a href="#" onclick="openPage('contact')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">📬 اتصل بنا</a><a href="#" onclick="openPage('about')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">ℹ️ حول الموقع</a></div><div class="footer-flag"></div></footer>
+
+<!-- Page Modal -->
+<div class="overlay" id="pageModal" onclick="if(event.target===this)closePage()" style="align-items:flex-start;padding:14px;overflow-y:auto"><div style="background:#fff;border-radius:18px;max-width:620px;width:100%;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.3)"><div style="background:linear-gradient(135deg,var(--green),var(--green-mid));padding:20px 22px;border-radius:18px 18px 0 0;display:flex;justify-content:space-between;align-items:center"><div id="pageTitle" style="font-size:17px;font-weight:900;color:#fff"></div><button onclick="closePage()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:17px;cursor:pointer">✕</button></div><div id="pageContent" style="padding:24px;line-height:2;font-size:14px;color:#333"></div></div></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, updateDoc, getDoc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDgoARkUtqmeg4JDpLLpr1mzS8f0VDMFE0",
+  authDomain: "blimmo.firebaseapp.com",
+  projectId: "blimmo",
+  storageBucket: "blimmo.firebasestorage.app",
+  messagingSenderId: "566587628949",
+  appId: "1:566587628949:web:78c8e8c154f903f159aa9c"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const adsCol = collection(db, "clients");
+
+// Language state – French is default
+let currentLang = 'fr';
+
+// Data mappings – Arabic (default)
+const PT = { aadl:"AADL", social:"Social", lpp:"LPP", villa:"فيلا", maison:"منزل", appart:"شقة", residence:"ريزيدنس", local:"محل" };
+const OP = { kira:"كراء", bay3:"بيع", achat:"شراء", tbadol:"تبادل" };
+const ROOMS = { f1:"F1", f2:"F2", f3:"F3", f4:"F4", f5:"F5", f6:"F6+" };
+const COND = { neuf:"جديد", utilise:"مستعمل" };
+const STATUS = { dispo:"متوفر", reserved:"محجوز", sold:"تم البيع", rented:"تم الكراء" };
+
+// Data mappings – French
+const PT_FR = { aadl:"AADL", social:"Social", lpp:"LPP", villa:"Villa", maison:"Maison", appart:"Appartement", residence:"Résidence", local:"Local commercial" };
+const OP_FR = { kira:"Location", bay3:"Vente", achat:"Achat", tbadol:"Échange" };
+const COND_FR = { neuf:"Neuf", utilise:"Occasion" };
+const STATUS_FR = { dispo:"Disponible", reserved:"Réservé", sold:"Vendu", rented:"Loué" };
+
+// Helpers to get label in current language
+function lPT(k)  { return (currentLang==='fr' ? PT_FR[k]  : PT[k])  || k; }
+function lOP(k)  { return (currentLang==='fr' ? OP_FR[k]  : OP[k])  || k; }
+function lCOND(k){ return (currentLang==='fr' ? COND_FR[k]: COND[k]) || k; }
+function lSTATUS(k){ return (currentLang==='fr' ? STATUS_FR[k]: STATUS[k]) || k; }
+const STATUS_COLORS = { dispo:"#15803D", reserved:"#B45309", sold:"#B91C1C", rented:"#9E6D3E" };
+const TYPE_COLORS = { aadl:"#1C5FAD", social:"#6B21A8", lpp:"#C2410C", villa:"#8B5A2B", maison:"#2F6B47", appart:"#1C5FAD", residence:"#6A1B9A", local:"#C2410C" };
+const OP_COLORS = { kira:"#C9A84C", bay3:"#CE1126", achat:"#0E6B56", tbadol:"#374151" };
+
+// State
+let DATA = [];
+let fTypes = new Set(['aadl','social','lpp','villa','maison','appart','residence','local']);
+let fOp = 'all';
+let fRooms = 'all';
+let fCondition = 'all';
+let fStatus = 'all';
+let fSearch = '';
+let fCommune = '';
+let priceMin = 0;
+let priceMax = Infinity;
+let displayList = [];
+
+// Helper functions
+function getTypeColor(type) { return TYPE_COLORS[type] || '#0D3B2E'; }
+function getOpColor(op) { return OP_COLORS[op] || '#0D3B2E'; }
+function getStatusColor(status) { return STATUS_COLORS[status] || '#555'; }
+
+function applyFilters() {
+  const searchLower = fSearch.trim().toLowerCase();
+  displayList = DATA.filter(ad => {
+    if (!fTypes.has(ad.type)) return false;
+    if (fOp !== 'all' && ad.op !== fOp) return false;
+    if (fRooms !== 'all' && ad.rooms !== fRooms) return false;
+    if (fCondition !== 'all' && ad.condition !== fCondition) return false;
+    if (fStatus !== 'all' && ad.status !== fStatus) return false;
+    if (fCommune && !(ad.commune || '').toLowerCase().includes(fCommune.toLowerCase())) return false;
+    const price = Number(ad.price) || 0;
+    if (price < priceMin || price > priceMax) return false;
+    if (searchLower && !((ad.title || '').toLowerCase().includes(searchLower) || (ad.commune || '').toLowerCase().includes(searchLower))) return false;
+    return true;
+  });
+  sortAndRender();
+}
+
+function sortAndRender() {
+  const sortVal = document.getElementById('srt')?.value || 'new';
+  if (sortVal === 'pa') displayList.sort((a, b) => (a.price || 0) - (b.price || 0));
+  else if (sortVal === 'pd') displayList.sort((a, b) => (b.price || 0) - (a.price || 0));
+  else displayList.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+  renderAds(displayList);
+}
+
+function renderAds(list) {
+  const grid = document.getElementById('grid');
+  const rnSpan = document.getElementById('rn');
+  if (!grid) return;
+  const T = LANG[currentLang];
+  rnSpan.innerText = list.length;
+  document.getElementById('liveAdCount').innerText = DATA.length;
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div style="font-size:48px;margin-bottom:12px">🔍</div><h3>${T.noAds}</h3><p>${T.noAdsSub}</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(ad => `
+    <div class="card" onclick="openD('${ad.id}')">
+      <div class="cimg">
+        <div class="cimg-ph">${ad.type === 'villa' ? '🏡' : ad.type === 'maison' ? '🏠' : ad.type === 'local' ? '🛍️' : ad.type === 'residence' ? '🏢' : '🏘️'}</div>
+        <span class="bt" style="background:${getTypeColor(ad.type)}">${lPT(ad.type)}</span>
+        <span class="bo" style="background:${getOpColor(ad.op)};color:#fff">${lOP(ad.op)}</span>
+        <button class="fav" id="fv${ad.id}" onclick="tfav(event,'${ad.id}')">🤍</button>
+        <div class="status-badge" style="background:${getStatusColor(ad.status)}">${lSTATUS(ad.status)}</div>
+      </div>
+      <div class="cbody">
+        <div class="ctitle">${ad.title || `${lPT(ad.type)} - ${lOP(ad.op)}`}</div>
+        <div class="cloc">📍 ${ad.commune || (currentLang==='fr'?'Alger':'الجزائر')}</div>
+        <div class="cspecs">
+          <span>🛏️ ${ROOMS[ad.rooms] || ad.rooms || '?'}</span>
+          <span>📐 ${ad.area || '?'} m²</span>
+          <span>📅 ${ad.date ? ad.date.slice(5,10) : '—'}</span>
+          <span>🔧 ${lCOND(ad.condition)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;font-size:12px;color:var(--text-sub)">
+          <span>👁️ ${ad.views || 0}</span>
+          <span>${ad.avgRating ? '⭐ ' + Number(ad.avgRating).toFixed(1) + ' <small>(' + (ad.ratingCount||0) + ')</small>' : ''}</span>
+        </div>
+        <div class="cfoot">
+          <div class="price">${Number(ad.price).toLocaleString('fr-DZ')} <small>DA</small></div>
+          <div style="display:flex;gap:6px">
+            <button class="btn-call" style="background:#25D366;padding:7px 11px" onclick="event.stopPropagation();openWA('${(ad.phone||'').replace(/'/g,'')}','${(ad.title||'').replace(/'/g,'').replace(/"/g,'')}')">💚</button>
+            <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone||''}')">📞</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Global functions for HTML calls
+let currentAdId = null;
+let selectedRating = 0;
+
+window.openD = function(id) {
+  const ad = DATA.find(x => x.id === id);
+  if (!ad) return;
+  const T = LANG[currentLang];
+  currentAdId = id;
+  selectedRating = 0;
+
+  document.getElementById('mtt').innerHTML = ad.title || `${lPT(ad.type)} - ${lOP(ad.op)}`;
+  document.getElementById('mimg').innerHTML = `<div class="mimg-ph">${ad.type==='villa'?'🏡':ad.type==='maison'?'🏠':ad.type==='local'?'🛍️':ad.type==='residence'?'🏢':'🏘️'}</div>`;
+  document.getElementById('mbg').innerHTML = `
+    <span class="bt" style="background:${getTypeColor(ad.type)};position:static">${lPT(ad.type)}</span>
+    <span class="bo" style="background:${getOpColor(ad.op)};position:static;color:#fff">${lOP(ad.op)}</span>
+    <span style="background:${getStatusColor(ad.status)};color:white;padding:5px 13px;border-radius:50px">${lSTATUS(ad.status)}</span>
+  `;
+  document.getElementById('mds').innerHTML = ad.desc || (currentLang==='fr'?'Aucune description.':'لا يوجد وصف إضافي.');
+  document.getElementById('msp').innerHTML = `
+    <div class="mspec"><strong>📍 ${ad.commune||'—'}</strong>${T.specComm}</div>
+    <div class="mspec"><strong>🛏️ ${ROOMS[ad.rooms]||ad.rooms||'?'}</strong>${T.specRooms}</div>
+    <div class="mspec"><strong>📐 ${ad.area||'?'} m²</strong>${T.specArea}</div>
+    <div class="mspec"><strong>💰 ${Number(ad.price).toLocaleString('fr-DZ')} DA</strong>${T.specPrice}</div>
+    <div class="mspec"><strong>🔧 ${lCOND(ad.condition)}</strong>${T.specCond}</div>
+    <div class="mspec"><strong>📅 ${ad.date||'—'}</strong>${T.specDate}</div>
+  `;
+
+  // Views
+  document.getElementById('mviewsNum').textContent = ad.views || 0;
+
+  // Avg rating badge
+  const avgEl = document.getElementById('mavgStars');
+  avgEl.innerHTML = ad.avgRating ? `⭐ ${Number(ad.avgRating).toFixed(1)} <span>(${ad.ratingCount||0})</span>` : '';
+
+  // i18n labels
+  document.getElementById('shareLinkLabel').textContent = currentLang==='fr'?'Copier le lien':'نسخ رابط الإعلان';
+  document.getElementById('commentsTitle').textContent  = currentLang==='fr'?'Commentaires':'التعليقات';
+  document.getElementById('ratingTitle').textContent    = currentLang==='fr'?'Avis':'التقييمات';
+  document.getElementById('ratingCountLabel').textContent = currentLang==='fr'?'avis':'تقييم';
+  document.getElementById('reviewStarsLabel').textContent = currentLang==='fr'?'Votre note':'اختر تقييمك';
+  document.getElementById('reviewText').placeholder     = currentLang==='fr'?'Ajouter un commentaire (optionnel)...':'أضف تعليقاً (اختياري)...';
+  document.getElementById('submitReviewBtn').textContent= currentLang==='fr'?"Envoyer l'avis":'إرسال التقييم';
+  document.getElementById('commentName').placeholder    = currentLang==='fr'?'Votre nom (optionnel)':'اسمك (اختياري)';
+  document.getElementById('commentText').placeholder    = currentLang==='fr'?'Ajouter un commentaire...':'أضف تعليقاً...';
+  document.getElementById('commentBtn').textContent     = currentLang==='fr'?'Envoyer':'إرسال';
+  document.getElementById('mcall').textContent          = T.callBtn;
+
+  // Reset stars UI
+  document.querySelectorAll('#reviewStars .star').forEach(s=>s.classList.remove('on'));
+  document.getElementById('reviewText').value = '';
+
+  // Social
+  const safePhone = (ad.phone||'').replace(/'/g,'');
+  const safeTitle = (ad.title||'').replace(/'/g,'').replace(/"/g,'');
+  document.getElementById('socialBtns').innerHTML = `
+    <button class="social-icon fb" onclick="openFB()">📘 Facebook</button>
+    <button class="social-icon messenger" onclick="openMessenger()">💬 Messenger</button>
+    <button class="social-icon whatsapp" onclick="openWA('${safePhone}','${safeTitle}')">💚 WhatsApp</button>
+  `;
+  document.getElementById('mcall').onclick = () => dial(ad.phone);
+  document.getElementById('mwa').onclick   = () => openWA(ad.phone||'', ad.title||'');
+
+  // Increment views
+  updateDoc(doc(db,'clients',id),{views:(ad.views||0)+1}).catch(()=>{});
+
+  loadRatings(id);
+  loadComments(id);
+  document.getElementById('dm').classList.add('open');
+};
+
+// ── Stars hover interaction ──
+document.getElementById('reviewStars').addEventListener('mouseover', e => {
+  const v = e.target.dataset.v;
+  if (!v) return;
+  document.querySelectorAll('#reviewStars .star').forEach(s => {
+    s.classList.toggle('on', Number(s.dataset.v) >= Number(v));
+  });
+});
+document.getElementById('reviewStars').addEventListener('mouseleave', () => {
+  document.querySelectorAll('#reviewStars .star').forEach(s => {
+    s.classList.toggle('on', Number(s.dataset.v) >= selectedRating);
+  });
+});
+document.getElementById('reviewStars').addEventListener('click', e => {
+  const v = e.target.dataset.v;
+  if (!v) return;
+  selectedRating = Number(v);
+  document.querySelectorAll('#reviewStars .star').forEach(s => {
+    s.classList.toggle('on', Number(s.dataset.v) >= selectedRating);
+  });
+});
+
+// ── Load ratings from Firestore ──
+async function loadRatings(adId) {
+  try {
+    const snap = await getDoc(doc(db,'ratings',adId));
+    const data  = snap.exists() ? snap.data() : {};
+    const reviews = data.reviews || [];
+    const count = reviews.length;
+    const avg   = count ? (reviews.reduce((s,r)=>s+r.rating,0)/count) : 0;
+
+    document.getElementById('ratingAvgNum').textContent = count ? avg.toFixed(1) : '—';
+    document.getElementById('ratingCount').textContent  = count;
+    const stars = '★'.repeat(Math.round(avg)) + '☆'.repeat(5-Math.round(avg));
+    document.getElementById('ratingAvgStars').textContent = count ? stars : '☆☆☆☆☆';
+
+    // Bars 5→1
+    const bars = [5,4,3,2,1].map(n => {
+      const cnt = reviews.filter(r=>r.rating===n).length;
+      const pct = count ? Math.round(cnt/count*100) : 0;
+      return `<div class="rating-bar">
+        <small>${n}</small>
+        <div class="rating-bar-fill"><div class="rating-bar-fill-inner" style="width:${pct}%"></div></div>
+        <small>${cnt}</small>
+      </div>`;
+    }).join('');
+    document.getElementById('ratingBars').innerHTML = bars;
+  } catch(e) { console.error(e); }
+}
+
+// ── Submit review ──
+window.submitReview = async function() {
+  if (!currentAdId || !selectedRating) {
+    toast(currentLang==='fr'?'⚠️ Choisissez une note':'⚠️ اختر تقييماً أولاً','red');
+    return;
+  }
+  const text = document.getElementById('reviewText').value.trim();
+  const review = { rating: selectedRating, text, date: new Date().toLocaleDateString('fr-DZ') };
+  try {
+    const ref  = doc(db,'ratings',currentAdId);
+    const snap = await getDoc(ref);
+    const existing = snap.exists() ? (snap.data().reviews||[]) : [];
+    const updated  = [...existing, review];
+    const avg = updated.reduce((s,r)=>s+r.rating,0)/updated.length;
+    await setDoc(ref,{reviews:updated},{merge:true});
+    await updateDoc(doc(db,'clients',currentAdId),{avgRating:avg,ratingCount:updated.length});
+    selectedRating = 0;
+    document.querySelectorAll('#reviewStars .star').forEach(s=>s.classList.remove('on'));
+    document.getElementById('reviewText').value = '';
+    loadRatings(currentAdId);
+    toast(currentLang==='fr'?'✅ Avis envoyé!':'✅ تم إرسال تقييمك!');
+  } catch(e) { toast('❌ Error','red'); }
+};
+
+// ── Load comments ──
+async function loadComments(adId) {
+  const list = document.getElementById('commentsList');
+  list.innerHTML = `<div class="no-comments">${currentLang==='fr'?'Chargement...':'جارٍ التحميل...'}</div>`;
+  try {
+    const snap = await getDoc(doc(db,'comments',adId));
+    const comments = snap.exists() ? (snap.data().items||[]) : [];
+    if (!comments.length) {
+      list.innerHTML = `<div class="no-comments">${currentLang==='fr'?'Aucun commentaire encore.':'لا توجد تعليقات بعد.'}</div>`;
+      return;
+    }
+    list.innerHTML = [...comments].reverse().map(c=>`
+      <div class="comment-item">
+        <div class="comment-meta">
+          <span class="comment-author">👤 ${c.name||'مجهول'}</span>
+          <span class="comment-date">${c.date||''}</span>
+        </div>
+        <div class="comment-text">${c.text}</div>
+      </div>
+    `).join('');
+  } catch(e) { list.innerHTML = ''; }
+}
+
+// ── Submit comment ──
+window.submitComment = async function() {
+  if (!currentAdId) return;
+  const name = document.getElementById('commentName').value.trim() || (currentLang==='fr'?'Anonyme':'مجهول');
+  const text = document.getElementById('commentText').value.trim();
+  if (!text) { toast(currentLang==='fr'?'⚠️ Écrivez un commentaire':'⚠️ اكتب تعليقاً أولاً','red'); return; }
+  const item = { name, text, date: new Date().toLocaleDateString('fr-DZ') };
+  try {
+    const ref  = doc(db,'comments',currentAdId);
+    const snap = await getDoc(ref);
+    const items = snap.exists() ? (snap.data().items||[]) : [];
+    await setDoc(ref,{items:[...items,item]},{merge:true});
+    document.getElementById('commentText').value = '';
+    loadComments(currentAdId);
+    toast(currentLang==='fr'?'✅ Commentaire ajouté!':'✅ تم إضافة تعليقك!');
+  } catch(e) { toast('❌ Error','red'); }
+};
+
+// ── Copy ad link ──
+window.copyAdLink = function() {
+  const T = LANG[currentLang];
+  const link = `${location.origin}${location.pathname}#ad-${currentAdId}`;
+  navigator.clipboard.writeText(link).then(()=>toast(T.toastCopied)).catch(()=>{
+    const ad = DATA.find(x=>x.id===currentAdId);
+    const text = ad?`${lPT(ad.type)} - ${ad.commune} - ${Number(ad.price).toLocaleString()} DA`:'Darna Immo';
+    if(navigator.share) navigator.share({title:'Darna Immo',text,url:link});
+    else toast(T.toastCopied);
+  });
+};
+
+window.openFB = () => window.open('https://www.facebook.com/100090394402814/', '_blank');
+window.openMessenger = () => window.open('https://m.me/100090394402814', '_blank');
+window.openWA = function(phone, title) {
+  let clean = phone.replace(/\D/g, '');
+  if (clean.startsWith('0')) clean = '213' + clean.slice(1);
+  const msg = encodeURIComponent(`السلام عليكم، أنا مهتم بإعلانك "${title}" على دارنا إيمو.`);
+  window.open(`https://wa.me/${clean}?text=${msg}`, '_blank');
+};
+window.shareAd = function(id) {
+  const T = LANG[currentLang];
+  const ad = DATA.find(x => x.id === id);
+  const text = ad ? `${lPT(ad.type)} - ${ad.commune} - ${Number(ad.price).toLocaleString()} DA` : 'Darna Immo';
+  if (navigator.share) navigator.share({ title: 'Darna Immo', text });
+  else navigator.clipboard.writeText(text).then(() => toast(T.toastCopied));
+};
+window.dial = function(num) {
+  const T = LANG[currentLang];
+  toast(`${T.toastCalling}${num}`);
+  setTimeout(() => window.location.href = `tel:${num}`, 800);
+};
+window.tfav = function(e, id) {
+  e.stopPropagation();
+  const T = LANG[currentLang];
+  const btn = document.getElementById(`fv${id}`);
+  if (btn) {
+    const isNowFav = btn.innerText === '🤍';
+    btn.innerText = isNowFav ? '❤️' : '🤍';
+    toast(isNowFav ? T.toastFavAdd : T.toastFavRem);
+  }
+};
+window.af = function() {
+  fCommune = document.getElementById('fcm').value;
+  priceMin = parseFloat(document.getElementById('pmin').value) || 0;
+  priceMax = parseFloat(document.getElementById('pmax').value) || Infinity;
+  applyFilters();
+};
+window.sl = function() { sortAndRender(); };
+window.doSearch = function() {
+  fSearch = document.getElementById('searchQ').value;
+  applyFilters();
+};
+window.cm = function(id) { document.getElementById(id).classList.remove('open'); };
+window.cov = function(e, id) { if (e.target.id === id) window.cm(id); };
+window.toast = function(msg, cls) {
+  const tst = document.getElementById('tst');
+  tst.textContent = msg;
+  tst.className = 'toast' + (cls ? ' ' + cls : '');
+  tst.classList.add('show');
+  setTimeout(() => tst.classList.remove('show'), 2800);
+};
+window.openPost = function() { document.getElementById('pm').classList.add('open'); };
+window.sub = async function() {
+  const T = LANG[currentLang];
+  const loc = document.getElementById('pl').value.trim();
+  const phone = document.getElementById('ph').value.trim();
+  const priceRaw = document.getElementById('pp').value.trim();
+  if (!loc || !phone || !priceRaw) {
+    toast(T.toastFillAll, 'red');
+    return;
+  }
+  const cleanPhone = phone.replace(/\D/g, '');
+  if (cleanPhone.length < 9 || cleanPhone.length > 13) {
+    toast(T.toastBadPhone, 'red');
+    return;
+  }
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.textContent = T.toastPosting;
+  try {
+    await addDoc(adsCol, {
+      type: document.getElementById('pt').value,
+      op: document.getElementById('po').value,
+      rooms: document.getElementById('pr').value,
+      condition: document.getElementById('pcond').value,
+      status: document.getElementById('pstat').value,
+      title: `${PT[document.getElementById('pt').value]} - ${loc}`,
+      commune: loc.split(/[-–]/)[0].trim(),
+      area: parseInt(document.getElementById('pa').value) || 0,
+      price: parseInt(priceRaw) || 0,
+      desc: document.getElementById('pd').value || '',
+      phone: phone,
+      date: new Date().toISOString().slice(0, 10),
+      createdAt: Date.now(),
+      views: 0
+    });
+    window.cm('pm');
+    document.getElementById('pl').value = '';
+    document.getElementById('ph').value = '';
+    document.getElementById('pp').value = '';
+    document.getElementById('pa').value = '';
+    document.getElementById('pd').value = '';
+    toast(T.toastPosted);
+  } catch (e) {
+    toast(T.toastFailed, 'red');
+  }
+  btn.disabled = false;
+  btn.textContent = T.submitBtn;
+};
+
+// ══════════════════════════════════════════════════════
+// FILTER SYSTEM – نظام فلاتر موحد بدون أخطاء
+// ══════════════════════════════════════════════════════
+//
+// مبدأ التصميم:
+//   • State واحد مركزي (fTypes, fOp, fRooms …)
+//   • دالة واحدة syncChipUI() تُحدّث مظهر كل الأزرار (Sidebar + Drawer + Strip)
+//   • كل زر عند الضغط: يُعدّل State ثم يستدعي syncChipUI() + applyFilters()
+//   • لا cloneNode، لا chip.click()، لا تعارض
+//
+// ──────────────────────────────────────────────────────
+
+// ── تحديث مظهر كل الأزرار بناءً على State الحالي ──
+function syncChipUI() {
+  // نوع العقار – متعدد الاختيار (toggle)
+  document.querySelectorAll('[data-group="type"]').forEach(btn => {
+    btn.classList.toggle('on', fTypes.has(btn.dataset.val));
+  });
+  // "الكل" لنوع العقار: مضاء إذا كل الأنواع مختارة
+  const allTypesSelected = Object.keys(PT).every(k => fTypes.has(k));
+  document.querySelectorAll('[data-group="type-all"]').forEach(btn => {
+    btn.classList.toggle('on', allTypesSelected);
+  });
+
+  // نوع العملية – اختيار واحد
+  document.querySelectorAll('[data-group="op"]').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.val === fOp);
+  });
+  document.querySelectorAll('[data-group="op-all"]').forEach(btn => {
+    btn.classList.toggle('on', fOp === 'all');
+  });
+
+  // الغرف – اختيار واحد
+  document.querySelectorAll('[data-group="rooms"]').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.val === fRooms);
+  });
+  document.querySelectorAll('[data-group="rooms-all"]').forEach(btn => {
+    btn.classList.toggle('on', fRooms === 'all');
+  });
+
+  // الحالة – اختيار واحد
+  document.querySelectorAll('[data-group="cond"]').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.val === fCondition);
+  });
+  document.querySelectorAll('[data-group="cond-all"]').forEach(btn => {
+    btn.classList.toggle('on', fCondition === 'all');
+  });
+
+  // حالة الإعلان – اختيار واحد
+  document.querySelectorAll('[data-group="status"]').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.val === fStatus);
+  });
+  document.querySelectorAll('[data-group="status-all"]').forEach(btn => {
+    btn.classList.toggle('on', fStatus === 'all');
+  });
+
+  // شريط الموبايل
+  document.querySelectorAll('[data-group="strip"]').forEach(btn => {
+    const v = btn.dataset.val;
+    if (!v) { // زر "الكل"
+      btn.classList.toggle('on', allTypesSelected);
+    } else {
+      btn.classList.toggle('on', fTypes.has(v) && fTypes.size === 1 && [...fTypes][0] === v);
+    }
+  });
+}
+
+// ── صانع زر عام ──
+function makeChip(text, groupAttr, valAttr, onClickFn, extraClass='') {
+  const btn = document.createElement('button');
+  btn.className = 'chip' + (extraClass ? ' ' + extraClass : '');
+  btn.dataset.group = groupAttr;
+  if (valAttr !== null) btn.dataset.val = valAttr;
+  btn.innerText = text;
+  btn.addEventListener('click', () => { onClickFn(); syncChipUI(); applyFilters(); });
+  return btn;
+}
+
+// ── بناء الفلاتر في Sidebar والـ Drawer (نفس الأزرار، نفس الـ group) ──
+function buildFilterSection(typeDiv, opDiv, roomDiv, condDiv, statusDiv) {
+  if (!typeDiv) return;
+
+  // ── نوع العقار ──
+  // "الكل" لنوع العقار: يُعيد تحديد كل الأنواع
+  const typeAllBtn = makeChip('الكل', 'type-all', null, () => {
+    Object.keys(PT).forEach(k => fTypes.add(k));
+  });
+  typeDiv.appendChild(typeAllBtn);
+
+  Object.keys(PT).forEach(t => {
+    const btn = makeChip(PT[t], 'type', t, () => {
+      if (fTypes.has(t) && fTypes.size > 1) fTypes.delete(t);
+      else if (!fTypes.has(t)) fTypes.add(t);
+      // إذا أصبح لا شيء محدداً، أعد اختيار هذا النوع
+      if (fTypes.size === 0) fTypes.add(t);
+    });
+    typeDiv.appendChild(btn);
+  });
+
+  // ── نوع العملية ──
+  if (opDiv) {
+    opDiv.appendChild(makeChip('الكل', 'op-all', null, () => { fOp = 'all'; }));
+    Object.keys(OP).forEach(o => {
+      opDiv.appendChild(makeChip(OP[o], 'op', o, () => { fOp = fOp === o ? 'all' : o; }));
+    });
+  }
+
+  // ── الغرف ──
+  if (roomDiv) {
+    roomDiv.appendChild(makeChip('الكل', 'rooms-all', null, () => { fRooms = 'all'; }));
+    Object.keys(ROOMS).forEach(r => {
+      roomDiv.appendChild(makeChip(ROOMS[r], 'rooms', r, () => { fRooms = fRooms === r ? 'all' : r; }));
+    });
+  }
+
+  // ── حالة العقار ──
+  if (condDiv) {
+    condDiv.appendChild(makeChip('الكل', 'cond-all', null, () => { fCondition = 'all'; }));
+    Object.keys(COND).forEach(c => {
+      condDiv.appendChild(makeChip(COND[c], 'cond', c, () => { fCondition = fCondition === c ? 'all' : c; }));
+    });
+  }
+
+  // ── حالة الإعلان ──
+  if (statusDiv) {
+    statusDiv.appendChild(makeChip('الكل', 'status-all', null, () => { fStatus = 'all'; }));
+    Object.keys(STATUS).forEach(s => {
+      statusDiv.appendChild(makeChip(STATUS[s], 'status', s, () => { fStatus = fStatus === s ? 'all' : s; }));
+    });
+  }
+}
+
+function initFilters() {
+  // ── Sidebar ──
+  buildFilterSection(
+    document.getElementById('typeChips'),
+    document.getElementById('opChips'),
+    document.getElementById('roomChips'),
+    document.getElementById('conditionChips'),
+    document.getElementById('statusChips')
+  );
+
+  // ── Mobile Drawer (نفس المنطق، نفس الـ data-group ← نفس syncChipUI) ──
+  buildFilterSection(
+    document.getElementById('typeChipsMob'),
+    document.getElementById('opChipsMob'),
+    document.getElementById('roomChipsMob'),
+    document.getElementById('conditionChipsMob'),
+    document.getElementById('statusChipsMob')
+  );
+
+  // ── Mobile Strip (شريط سريع فوق الشبكة) ──
+  const mobStrip = document.getElementById('mobStrip');
+  if (mobStrip) {
+    const stripAll = makeChip('الكل', 'strip', null, () => {
+      Object.keys(PT).forEach(k => fTypes.add(k));
+    });
+    mobStrip.appendChild(stripAll);
+
+    ['aadl','social','lpp','villa','maison','appart','local'].forEach(t => {
+      const btn = makeChip(PT[t], 'strip', t, () => {
+        fTypes = new Set([t]);
+      });
+      btn.style.whiteSpace = 'nowrap';
+      btn.style.flexShrink = '0';
+      mobStrip.appendChild(btn);
+    });
+  }
+
+  // ── تحديث لغة الأزرار عند تغيير اللغة ──
+  // (يتم عبر applyTranslation الذي يستدعي syncFilterLabels)
+
+  // حالة البداية: كل شيء مفعّل
+  syncChipUI();
+}
+
+// ── تحديث نصوص الأزرار عند تغيير اللغة ──
+function syncFilterLabels() {
+  const T = LANG[currentLang];
+  const allLabel = T.all;
+
+  document.querySelectorAll('[data-group="type-all"]').forEach(b => { b.innerText = allLabel; });
+  document.querySelectorAll('[data-group="type"]').forEach(b => { b.innerText = lPT(b.dataset.val); });
+  document.querySelectorAll('[data-group="op-all"]').forEach(b => { b.innerText = allLabel; });
+  document.querySelectorAll('[data-group="op"]').forEach(b => { b.innerText = lOP(b.dataset.val); });
+  document.querySelectorAll('[data-group="rooms-all"]').forEach(b => { b.innerText = allLabel; });
+  document.querySelectorAll('[data-group="cond-all"]').forEach(b => { b.innerText = allLabel; });
+  document.querySelectorAll('[data-group="cond"]').forEach(b => {
+    b.innerText = b.dataset.val === 'neuf' ? T.condNeuf : T.condUsed;
+  });
+  document.querySelectorAll('[data-group="status-all"]').forEach(b => { b.innerText = allLabel; });
+  document.querySelectorAll('[data-group="status"]').forEach(b => {
+    if (b.dataset.val === 'dispo')    b.innerText = T.statDispo;
+    if (b.dataset.val === 'reserved') b.innerText = T.statReserved;
+    if (b.dataset.val === 'sold')     b.innerText = T.statSold;
+    if (b.dataset.val === 'rented')   b.innerText = T.statRented;
+  });
+  document.querySelectorAll('[data-group="strip"]').forEach(b => {
+    if (!b.dataset.val) b.innerText = allLabel;
+    else b.innerText = lPT(b.dataset.val);
+  });
+}
+
+window.openFilterDrawer = function() {
+  document.getElementById('filterDrawer').classList.add('open');
+  document.getElementById('filterOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+window.closeFilterDrawer = function() {
+  document.getElementById('filterDrawer').classList.remove('open');
+  document.getElementById('filterOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+};
+window.syncMobFilter = function(type, val) {
+  if (type === 'commune') {
+    fCommune = val;
+    const mainSel = document.getElementById('fcm');
+    if (mainSel) mainSel.value = val;
+    applyFilters();
+  }
+};
+window.applyMobFilters = function() {
+  fCommune = document.getElementById('fcmMob').value;
+  priceMin = parseFloat(document.getElementById('pminMob').value) || 0;
+  priceMax = parseFloat(document.getElementById('pmaxMob').value) || Infinity;
+  // مزامنة Sidebar
+  const mainSel = document.getElementById('fcm');
+  if (mainSel) mainSel.value = fCommune;
+  const pminEl = document.getElementById('pmin');
+  const pmaxEl = document.getElementById('pmax');
+  if (pminEl) pminEl.value = document.getElementById('pminMob').value;
+  if (pmaxEl) pmaxEl.value = document.getElementById('pmaxMob').value;
+  applyFilters();
+  closeFilterDrawer();
+};
+
+// Populate select options
+function initSelects() {
+  const ptSelect = document.getElementById('pt');
+  const poSelect = document.getElementById('po');
+  Object.keys(PT).forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t;
+    opt.dataset.val = t;
+    opt.innerText = PT[t];
+    ptSelect.appendChild(opt);
+  });
+  Object.keys(OP).forEach(o => {
+    const opt = document.createElement('option');
+    opt.value = o;
+    opt.dataset.val = o;
+    opt.innerText = OP[o];
+    poSelect.appendChild(opt);
+  });
+}
+
+// Firebase listener
+function startFirebaseListener() {
+  const q = query(adsCol, orderBy("createdAt", "desc"));
+  onSnapshot(q, (snapshot) => {
+    DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    applyFilters();
+  }, (error) => {
+    console.error("Firebase error:", error);
+    toast(LANG[currentLang].toastDbErr, "red");
+  });
+}
+
+// ── Bilingual translations ──────────────────────────────────────────────────
+const LANG = {
+  ar: {
+    dir: 'rtl', htmlLang: 'ar',
+    heroTitle: 'ابحث عن <span>دارك</span> هنا',
+    heroSub: 'جميع إعلانات العقارات في الجزائر العاصمة',
+    searchPlaceholder: 'ابحث بالحي أو البلدية...',
+    searchBtn: '🔍 بحث',
+    statAds: 'إعلان نشط', statComm: 'بلدية', statAadl: 'حي LPP', statAlger: 'الجزائر العاصمة',
+    tagVillaHero: '🏛️ فيلا', tagMaisonHero: '🏡 منزل', tagLocalHero: '🛍️ محل', tagResidenceHero: '🏫 ريزيدونس',
+    tagVilla: '🏡 فيلا · منزل', tagLocal: '🛍️ محل · ريزيدنس',
+    fabLabel: 'أضف إعلانك مجاناً',
+    postBtnLabel: 'نشر إعلان', all: 'الكل',
+    mobFilterBtn: '🔍 فلاتر البحث',
+    drawerTitle: '🔍 فلاتر البحث',
+    filterType: '🏷️ نوع العقار', filterOp: '🤝 نوع المعاملة',
+    filterRooms: '🛏️ عدد الغرف', filterCond: '🔧 حالة العقار',
+    filterStatus: '📢 حالة الإعلان', filterComm: '📍 البلدية',
+    filterPrice: '💰 نطاق السعر (دج)',
+    allComm: 'كل البلديات', priceFrom: 'من', priceTo: 'إلى',
+    applyBtn: '✅ تطبيق الفلاتر',
+    sortNew: 'الأحدث أولاً', sortCheap: 'الأرخص أولاً', sortExp: 'الأغلى أولاً',
+    showing: 'عرض', adWord: 'إعلان',
+    callBtn: '📞 اتصل الآن', waBtn: 'WhatsApp',
+    shareLinkLabel: 'نسخ رابط الإعلان',
+    ratingTitle: 'التقييمات', ratingCountLabel: 'تقييم',
+    reviewStarsLabel: 'اختر تقييمك', reviewTextPh: 'أضف تعليقاً (اختياري)...',
+    submitReviewBtn: 'إرسال التقييم',
+    commentsTitle: 'التعليقات',
+    commentNamePh: 'اسمك (اختياري)', commentTextPh: 'أضف تعليقاً...', commentBtn: 'إرسال',
+    postTitle: '📣 نشر إعلان جديد', postSub: 'مجاني – بدون تسجيل – فوري',
+    fldType: 'نوع العقار', fldOp: 'المعاملة', fldRooms: 'الغرف',
+    fldArea: 'المساحة (م²)', fldAreaPh: 'مثال: 85',
+    fldCond: 'حالة العقار', fldStatus: 'حالة الإعلان',
+    fldLoc: 'البلدية والحي', fldLocPh: 'مثال: سيدي عبد الله – حي 3000 مسكن',
+    fldPrice: 'السعر (دج)', fldPricePh: 'مثال: 40000',
+    fldPhone: 'رقم الهاتف', fldPhonePh: '07XX XX XX XX',
+    fldDesc: 'وصف العقار', fldDescPh: 'الطابق، التوجيه، المرافق، ملاحظات...',
+    submitBtn: '🚀 نشر الإعلان مجاناً',
+    toastPosted: '✅ تم نشر إعلانك بنجاح!',
+    toastFavAdd: '❤️ أضيفت للمفضلة', toastFavRem: 'تمت الإزالة',
+    toastCopied: '📋 تم النسخ!', toastCalling: '📞 جارٍ الاتصال بـ ',
+    toastFillAll: '⚠️ يرجى ملء الحقول الضرورية',
+    toastBadPhone: '⚠️ رقم الهاتف غير صحيح',
+    toastPosting: '⏳ جارٍ النشر...',
+    toastFailed: '❌ فشل النشر',
+    toastDbErr: '⚠️ مشكلة في الاتصال بقاعدة البيانات',
+    specComm: 'البلدية', specRooms: 'الغرف', specArea: 'المساحة',
+    specPrice: 'السعر', specCond: 'الحالة', specDate: 'تاريخ النشر',
+    noAds: 'لا توجد إعلانات', noAdsSub: 'جرّب تغيير معايير البحث',
+    condNeuf: 'جديد', condUsed: 'مستعمل',
+    statDispo: 'متوفر', statReserved: 'محجوز', statSold: 'تم البيع', statRented: 'تم الكراء',
+    footerText: 'منصة الجزائر العاصمة للعقارات والسكن الاجتماعي',
+    privacy: 'سياسة الخصوصية', terms: 'شروط الاستخدام',
+    contact: 'اتصل بنا', about: 'حول الموقع',
+    pages: {
+      privacy: {
+        title: '🔒 سياسة الخصوصية',
+        content: `<h3 style="margin-bottom:10px">جمع البيانات</h3>
+          <p>نجمع فقط المعلومات التي تقدمها طوعياً عند نشر إعلان (رقم الهاتف، الموقع، وصف العقار). لا نجمع أي بيانات شخصية أخرى دون موافقتك.</p>
+          <h3 style="margin:14px 0 8px">استخدام البيانات</h3>
+          <p>تُستخدم البيانات حصرياً لعرض إعلانك على المنصة والتواصل بين البائعين والمشترين. لا نبيع أي بيانات لأطراف ثالثة.</p>
+          <h3 style="margin:14px 0 8px">الكوكيز</h3>
+          <p>نستخدم Firebase لإدارة قاعدة البيانات. قد تُخزَّن بعض البيانات محلياً لتحسين تجربة المستخدم.</p>
+          <h3 style="margin:14px 0 8px">حذف البيانات</h3>
+          <p>يمكنك طلب حذف إعلانك في أي وقت عبر التواصل معنا على: <strong>contact@darnaimmo.dz</strong></p>`
+      },
+      terms: {
+        title: '📋 شروط الاستخدام',
+        content: `<h3 style="margin-bottom:10px">شروط النشر</h3>
+          <p>يُسمح فقط بنشر إعلانات عقارية حقيقية تخص الجزائر العاصمة. يُمنع نشر محتوى مضلل أو احتيالي.</p>
+          <h3 style="margin:14px 0 8px">المسؤولية</h3>
+          <p>دارنا إيمو منصة وسيطة فقط ولا تتحمل أي مسؤولية عن صحة المعلومات المنشورة من طرف المستخدمين.</p>
+          <h3 style="margin:14px 0 8px">الإعلانات المحظورة</h3>
+          <p>يُحظر نشر: إعلانات وهمية، أرقام هواتف خاطئة، أسعار مضللة، أو أي محتوى مخالف للقانون الجزائري.</p>
+          <h3 style="margin:14px 0 8px">الحقوق</h3>
+          <p>نحتفظ بحق إزالة أي إعلان يخالف هذه الشروط دون إشعار مسبق.</p>`
+      },
+      contact: {
+        title: '📬 اتصل بنا',
+        content: `<p style="margin-bottom:12px">نحن هنا للمساعدة! تواصل معنا عبر:</p>
+          <p>📧 البريد الإلكتروني: <strong>contact@darnaimmo.dz</strong></p>
+          <p style="margin-top:10px">📘 فيسبوك: <a href="https://www.facebook.com/100090394402814/" target="_blank" style="color:#1877F2">صفحة دارنا إيمو</a></p>
+          <p style="margin-top:10px">⏰ أوقات الرد: الأحد – الخميس، 9:00 – 17:00</p>
+          <p style="margin-top:16px;color:#888;font-size:13px">للإبلاغ عن إعلان مشبوه أو طلب حذف إعلانك، أرسل لنا رسالة مع رابط الإعلان.</p>`
+      },
+      about: {
+        title: 'ℹ️ حول الموقع',
+        content: `<p style="margin-bottom:12px"><strong>دارنا إيمو</strong> منصة عقارية جزائرية مجانية متخصصة في الجزائر العاصمة.</p>
+          <p>تتيح للمواطنين نشر وتصفح إعلانات السكن الاجتماعي (AADL، Social، LPP)، الشقق، الفيلات، المنازل، والمحلات التجارية.</p>
+          <h3 style="margin:14px 0 8px">مميزاتنا</h3>
+          <p>✅ نشر مجاني بدون تسجيل<br>✅ تحديث فوري للإعلانات<br>✅ تواصل مباشر عبر WhatsApp والهاتف<br>✅ فلاتر متقدمة للبحث</p>
+          <p style="margin-top:14px;color:#888;font-size:13px">الإصدار 6.0 · © ${new Date().getFullYear()} Darna Immo · جميع الحقوق محفوظة</p>`
+      }
+    }
+  },
+  fr: {
+    dir: 'rtl', htmlLang: 'ar',
+    heroTitle: 'Trouvez votre <span>bien</span> ici',
+    heroSub: 'Toutes les annonces immobilières d\'Alger',
+    searchPlaceholder: 'Rechercher par quartier ou commune...',
+    searchBtn: '🔍 Chercher',
+    statAds: 'annonce active', statComm: 'commune', statAadl: 'quartier LPP', statAlger: 'Alger',
+    tagVillaHero: '🏛️ Villa', tagMaisonHero: '🏡 Maison', tagLocalHero: '🛍️ Local', tagResidenceHero: '🏫 Résidence',
+    tagVilla: '🏡 Villa · Maison', tagLocal: '🛍️ Local · Résidence',
+    fabLabel: 'Publier une annonce',
+    postBtnLabel: 'Publier', all: 'Tous',
+    mobFilterBtn: '🔍 Filtres de recherche',
+    drawerTitle: '🔍 Filtres de recherche',
+    filterType: '🏷️ Type de bien', filterOp: '🤝 Type d\'opération',
+    filterRooms: '🛏️ Nb. de pièces', filterCond: '🔧 État du bien',
+    filterStatus: '📢 Statut annonce', filterComm: '📍 Commune',
+    filterPrice: '💰 Fourchette de prix (DA)',
+    allComm: 'Toutes les communes', priceFrom: 'De', priceTo: 'À',
+    applyBtn: '✅ Appliquer les filtres',
+    sortNew: 'Plus récents', sortCheap: 'Moins chers', sortExp: 'Plus chers',
+    showing: 'Affichage de', adWord: 'annonce(s)',
+    callBtn: '📞 Appeler maintenant', waBtn: 'WhatsApp',
+    shareLinkLabel: 'Copier le lien',
+    ratingTitle: 'Avis', ratingCountLabel: 'avis',
+    reviewStarsLabel: 'Votre note', reviewTextPh: 'Ajouter un commentaire (optionnel)...',
+    submitReviewBtn: "Envoyer l'avis",
+    commentsTitle: 'Commentaires',
+    commentNamePh: 'Votre nom (optionnel)', commentTextPh: 'Ajouter un commentaire...', commentBtn: 'Envoyer',
+    postTitle: '📣 Publier une annonce', postSub: 'Gratuit – Sans inscription – Immédiat',
+    fldType: 'Type de bien', fldOp: 'Opération', fldRooms: 'Pièces',
+    fldArea: 'Surface (m²)', fldAreaPh: 'Ex: 85',
+    fldCond: 'État', fldStatus: 'Statut',
+    fldLoc: 'Commune et quartier', fldLocPh: 'Ex: Sidi Abdallah – Cité 3000 logements',
+    fldPrice: 'Prix (DA)', fldPricePh: 'Ex: 40000',
+    fldPhone: 'Téléphone', fldPhonePh: '07XX XX XX XX',
+    fldDesc: 'Description du bien', fldDescPh: 'Étage, orientation, équipements, remarques...',
+    submitBtn: '🚀 Publier gratuitement',
+    toastPosted: '✅ Annonce publiée avec succès!',
+    toastFavAdd: '❤️ Ajouté aux favoris', toastFavRem: 'Retiré des favoris',
+    toastCopied: '📋 Copié!', toastCalling: '📞 Appel en cours vers ',
+    toastFillAll: '⚠️ Veuillez remplir les champs obligatoires',
+    toastBadPhone: '⚠️ Numéro de téléphone invalide',
+    toastPosting: '⏳ Publication en cours...',
+    toastFailed: '❌ Échec de la publication',
+    toastDbErr: '⚠️ Problème de connexion à la base de données',
+    specComm: 'Commune', specRooms: 'Pièces', specArea: 'Surface',
+    specPrice: 'Prix', specCond: 'État', specDate: 'Date de publication',
+    noAds: 'Aucune annonce', noAdsSub: 'Essayez de modifier vos critères de recherche',
+    condNeuf: 'Neuf', condUsed: 'Occasion',
+    statDispo: 'Disponible', statReserved: 'Réservé', statSold: 'Vendu', statRented: 'Loué',
+    footerText: 'La plateforme immobilière d\'Alger',
+    privacy: 'Politique de confidentialité', terms: 'Conditions d\'utilisation',
+    contact: 'Nous contacter', about: 'À propos',
+    pages: {
+      privacy: {
+        title: '🔒 Politique de confidentialité',
+        content: `<h3 style="margin-bottom:10px">Collecte des données</h3>
+          <p>Nous collectons uniquement les informations que vous fournissez volontairement lors de la publication d'une annonce (numéro de téléphone, localisation, description). Aucune autre donnée personnelle n'est collectée sans votre consentement.</p>
+          <h3 style="margin:14px 0 8px">Utilisation des données</h3>
+          <p>Les données sont utilisées exclusivement pour afficher votre annonce et faciliter le contact entre vendeurs et acheteurs. Nous ne vendons aucune donnée à des tiers.</p>
+          <h3 style="margin:14px 0 8px">Cookies</h3>
+          <p>Nous utilisons Firebase pour gérer la base de données. Certaines données peuvent être stockées localement pour améliorer l'expérience utilisateur.</p>
+          <h3 style="margin:14px 0 8px">Suppression des données</h3>
+          <p>Vous pouvez demander la suppression de votre annonce à tout moment en nous contactant: <strong>contact@darnaimmo.dz</strong></p>`
+      },
+      terms: {
+        title: '📋 Conditions d\'utilisation',
+        content: `<h3 style="margin-bottom:10px">Conditions de publication</h3>
+          <p>Seules les annonces immobilières réelles concernant la wilaya d'Alger sont autorisées. Tout contenu trompeur ou frauduleux est strictement interdit.</p>
+          <h3 style="margin:14px 0 8px">Responsabilité</h3>
+          <p>Darna Immo est une plateforme intermédiaire et n'est pas responsable de l'exactitude des informations publiées par les utilisateurs.</p>
+          <h3 style="margin:14px 0 8px">Annonces interdites</h3>
+          <p>Il est interdit de publier: des annonces fictives, de faux numéros de téléphone, des prix trompeurs, ou tout contenu contraire à la législation algérienne.</p>
+          <h3 style="margin:14px 0 8px">Droits</h3>
+          <p>Nous nous réservons le droit de supprimer toute annonce ne respectant pas ces conditions sans préavis.</p>`
+      },
+      contact: {
+        title: '📬 Nous contacter',
+        content: `<p style="margin-bottom:12px">Nous sommes là pour vous aider ! Contactez-nous via:</p>
+          <p>📧 Email: <strong>contact@darnaimmo.dz</strong></p>
+          <p style="margin-top:10px">📘 Facebook: <a href="https://www.facebook.com/100090394402814/" target="_blank" style="color:#1877F2">Page Darna Immo</a></p>
+          <p style="margin-top:10px">⏰ Heures de réponse: Dimanche – Jeudi, 9h00 – 17h00</p>
+          <p style="margin-top:16px;color:#888;font-size:13px">Pour signaler une annonce suspecte ou demander la suppression de la vôtre, envoyez-nous un message avec le lien de l'annonce.</p>`
+      },
+      about: {
+        title: 'ℹ️ À propos',
+        content: `<p style="margin-bottom:12px"><strong>Darna Immo</strong> est une plateforme immobilière algérienne gratuite, spécialisée dans la wilaya d'Alger.</p>
+          <p>Elle permet aux citoyens de publier et consulter des annonces pour le logement social (AADL, Social, LPP), appartements, villas, maisons et locaux commerciaux.</p>
+          <h3 style="margin:14px 0 8px">Nos atouts</h3>
+          <p>✅ Publication gratuite sans inscription<br>✅ Mise à jour instantanée<br>✅ Contact direct via WhatsApp et téléphone<br>✅ Filtres de recherche avancés</p>
+          <p style="margin-top:14px;color:#888;font-size:13px">Version 6.0 · © ${new Date().getFullYear()} Darna Immo · Tous droits réservés</p>`
+      }
+    }
+  }
+};
+
+function applyTranslation(lang) {
+  const T = LANG[lang];
+  currentLang = lang;
+
+  // ── Hero ──
+  document.getElementById('heroTitle').innerHTML = T.heroTitle;
+  document.getElementById('heroSub').textContent = T.heroSub;
+  document.getElementById('searchQ').placeholder = T.searchPlaceholder;
+  document.getElementById('searchBtn').textContent = T.searchBtn;
+
+  // ── Hero tags ──
+  document.getElementById('tagLPP').textContent       = '🏪 LPP';
+  document.getElementById('tagSocial').textContent    = '🏘️ Social';
+  document.getElementById('tagVilla2').textContent    = T.tagVillaHero;
+  document.getElementById('tagMaison').textContent    = T.tagMaisonHero;
+  document.getElementById('tagLocal2').textContent    = T.tagLocalHero;
+  document.getElementById('tagAADL').textContent      = '🏢 AADL';
+  document.getElementById('tagResidence').textContent = T.tagResidenceHero;
+
+  // ── Stats ──
+  document.getElementById('statL0').textContent = T.statAds;
+  document.getElementById('statL1').textContent = T.statComm;
+  document.getElementById('statL2').textContent = T.statAadl;
+  document.getElementById('statL3').textContent = T.statAlger;
+
+  // ── Header post button ──
+  document.querySelector('#postBtn span').textContent = T.postBtnLabel;
+
+  // ── Lang button ──
+  document.getElementById('langBtn').textContent = lang === 'ar' ? 'FR' : 'عربي';
+
+  // ── FAB ──
+  const fabLabel = document.getElementById('fabLabel');
+  if (fabLabel) fabLabel.textContent = T.fabLabel;
+
+  // ── Mobile filter button ──
+  const mobFilterBtn = document.getElementById('mobFilterBtn');
+  if (mobFilterBtn) mobFilterBtn.textContent = T.mobFilterBtn;
+
+  // ── Sidebar filter titles ──
+  const sidebarMap = {
+    sidebarFType: T.filterType, sidebarFOp: T.filterOp,
+    sidebarFRooms: T.filterRooms, sidebarFCond: T.filterCond,
+    sidebarFStatus: T.filterStatus, sidebarFComm: T.filterComm,
+    sidebarFPrice: T.filterPrice
+  };
+  Object.entries(sidebarMap).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = text;
+  });
+
+  // ── Filter drawer title & section titles ──
+  const drawerTitle = document.getElementById('drawerTitle');
+  if (drawerTitle) drawerTitle.textContent = T.drawerTitle;
+  const drawerMap = {
+    drawerFType: T.filterType, drawerFOp: T.filterOp,
+    drawerFRooms: T.filterRooms, drawerFCond: T.filterCond,
+    drawerFStatus: T.filterStatus, drawerFComm: T.filterComm,
+    drawerFPrice: T.filterPrice
+  };
+  Object.entries(drawerMap).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = text;
+  });
+
+  // ── كل نصوص الـ chips (Sidebar + Drawer + Strip) بدالة واحدة ──
+  syncFilterLabels();
+
+  // ── Sidebar commune + price ──
+  const fcm = document.getElementById('fcm');
+  if (fcm && fcm.options[0]) fcm.options[0].text = T.allComm;
+  const pmin = document.getElementById('pmin'); if (pmin) pmin.placeholder = T.priceFrom;
+  const pmax = document.getElementById('pmax'); if (pmax) pmax.placeholder = T.priceTo;
+  const sidebarApplyBtn = document.getElementById('sidebarApplyBtn');
+  if (sidebarApplyBtn) sidebarApplyBtn.textContent = T.applyBtn;
+
+  // ── Drawer commune + price ──
+  const fcmMob = document.getElementById('fcmMob');
+  if (fcmMob && fcmMob.options[0]) fcmMob.options[0].text = T.allComm;
+  const pminMob = document.getElementById('pminMob'); if (pminMob) pminMob.placeholder = T.priceFrom;
+  const pmaxMob = document.getElementById('pmaxMob'); if (pmaxMob) pmaxMob.placeholder = T.priceTo;
+  const drawerApplyBtn = document.getElementById('drawerApplyBtn');
+  if (drawerApplyBtn) drawerApplyBtn.textContent = T.applyBtn;
+
+  // ── Topbar ──
+  document.getElementById('showingLabel').textContent = T.showing;
+  document.getElementById('adWordLabel').textContent  = T.adWord;
+  const sortOptNew   = document.getElementById('sortOptNew');
+  const sortOptCheap = document.getElementById('sortOptCheap');
+  const sortOptExp   = document.getElementById('sortOptExp');
+  if (sortOptNew)   sortOptNew.textContent   = T.sortNew;
+  if (sortOptCheap) sortOptCheap.textContent = T.sortCheap;
+  if (sortOptExp)   sortOptExp.textContent   = T.sortExp;
+
+  // ── Post modal ──
+  document.querySelector('.pmhead-title').textContent = T.postTitle;
+  document.querySelector('.pmhead-sub').textContent   = T.postSub;
+  const labels = document.querySelectorAll('.pmbody .fg label');
+  const labelMap = [T.fldType, T.fldOp, T.fldRooms, T.fldArea, T.fldCond, T.fldStatus, T.fldLoc, T.fldPrice, T.fldPhone, T.fldDesc];
+  labels.forEach((el, i) => { if (labelMap[i]) el.textContent = labelMap[i]; });
+  document.querySelectorAll('#pt option').forEach(o => { o.text = lPT(o.value); });
+  document.querySelectorAll('#po option').forEach(o => { o.text = lOP(o.value); });
+  const pcond = document.getElementById('pcond');
+  if (pcond) { pcond.options[0].text = T.condNeuf; pcond.options[1].text = T.condUsed; }
+  const pstat = document.getElementById('pstat');
+  if (pstat) { pstat.options[0].text = T.statDispo; pstat.options[1].text = T.statReserved; pstat.options[2].text = T.statSold; pstat.options[3].text = T.statRented; }
+  const pa = document.getElementById('pa'); if (pa) pa.placeholder = T.fldAreaPh;
+  const pl = document.getElementById('pl'); if (pl) pl.placeholder = T.fldLocPh;
+  const pp = document.getElementById('pp'); if (pp) pp.placeholder = T.fldPricePh;
+  const ph = document.getElementById('ph'); if (ph) ph.placeholder = T.fldPhonePh;
+  const pd = document.getElementById('pd'); if (pd) pd.placeholder = T.fldDescPh;
+  const submitBtn = document.querySelector('.btn-submit');
+  if (submitBtn && !submitBtn.disabled) submitBtn.textContent = T.submitBtn;
+
+  // ── Detail modal static elements ──
+  const mcall = document.getElementById('mcall');
+  if (mcall) mcall.textContent = T.callBtn;
+  const shareLinkLabel = document.getElementById('shareLinkLabel');
+  if (shareLinkLabel) shareLinkLabel.textContent = T.shareLinkLabel;
+  const ratingTitle = document.getElementById('ratingTitle');
+  if (ratingTitle) ratingTitle.textContent = T.ratingTitle;
+  const ratingCountLabel = document.getElementById('ratingCountLabel');
+  if (ratingCountLabel) ratingCountLabel.textContent = T.ratingCountLabel;
+  const reviewStarsLabel = document.getElementById('reviewStarsLabel');
+  if (reviewStarsLabel) reviewStarsLabel.textContent = T.reviewStarsLabel;
+  const reviewText = document.getElementById('reviewText');
+  if (reviewText) reviewText.placeholder = T.reviewTextPh;
+  const submitReviewBtn = document.getElementById('submitReviewBtn');
+  if (submitReviewBtn) submitReviewBtn.textContent = T.submitReviewBtn;
+  const commentsTitle = document.getElementById('commentsTitle');
+  if (commentsTitle) commentsTitle.textContent = T.commentsTitle;
+  const commentName = document.getElementById('commentName');
+  if (commentName) commentName.placeholder = T.commentNamePh;
+  const commentText = document.getElementById('commentText');
+  if (commentText) commentText.placeholder = T.commentTextPh;
+  const commentBtn = document.getElementById('commentBtn');
+  if (commentBtn) commentBtn.textContent = T.commentBtn;
+
+  // ── Footer ──
+  document.getElementById('footerText').textContent = T.footerText;
+  const footLinks = document.querySelectorAll('footer a');
+  const linkKeys = ['privacy','terms','contact','about'];
+  const emojis = ['🔒','📋','📬','ℹ️'];
+  footLinks.forEach((el, i) => {
+    if (linkKeys[i] && T[linkKeys[i]]) el.textContent = `${emojis[i]} ${T[linkKeys[i]]}`;
+  });
+
+  // ── Re-render ads ──
+  sortAndRender();
+}
+
+window.toggleLang = function() {
+  const newLang = currentLang === 'ar' ? 'fr' : 'ar';
+  applyTranslation(newLang);
+};
+
+// Page modals
+window.openPage = function(page) {
+  const T = LANG[currentLang];
+  const p = T.pages[page];
+  if (p) {
+    document.getElementById('pageTitle').innerHTML = p.title;
+    document.getElementById('pageContent').innerHTML = p.content;
+    document.getElementById('pageModal').classList.add('open');
+  }
+};
+
+window.closePage = function() { document.getElementById('pageModal').classList.remove('open'); };
+
+// Initialize everything
+initSelects();
+initFilters();
+startFirebaseListener();
+
+// Apply French as default language after DOM is ready
+setTimeout(() => applyTranslation('fr'), 150);
+
+// ── PWA: تسجيل Service Worker ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registered:', reg.scope))
+      .catch(err => console.error('Service Worker registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>
