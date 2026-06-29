@@ -1,0 +1,37 @@
+name: Claude Code Review
+on:
+  push:
+    branches: [main]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      
+      - name: Get diff
+        id: diff
+        run: echo "DIFF<<EOF" >> $GITHUB_ENV && git diff HEAD~1 >> $GITHUB_ENV && echo "EOF" >> $GITHUB_ENV
+
+      - name: Claude Review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REVIEW=$(curl -s https://api.anthropic.com/v1/messages \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d "{
+              \"model\": \"claude-sonnet-4-6\",
+              \"max_tokens\": 1024,
+              \"messages\": [{
+                \"role\": \"user\",
+                \"content\": \"راجع هذا الكود وأخبرني بالأخطاء والتحسينات باللغة العربية:\n${DIFF}\"
+              }]
+            }" | jq -r '.content[0].text')
+          
+          echo "### 🤖 مراجعة Claude" >> $GITHUB_STEP_SUMMARY
+          echo "$REVIEW" >> $GITHUB_STEP_SUMMARY
