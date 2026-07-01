@@ -126,25 +126,29 @@ header{
 
 .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:.2s;position:relative;}
 .card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
-.cimg{position:relative;height:110px;overflow:hidden}
-@media(min-width:900px){.cimg{height:175px}}
-.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9);}
+.cimg{position:relative;height:150px;overflow:hidden}
+@media(min-width:900px){.cimg{height:190px}}
+.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;}
 .bt{position:absolute;top:6px;right:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700;color:#fff}
 .bo{position:absolute;top:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700}
-.fav{position:absolute;bottom:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;}
-.fav:hover{transform:scale(1.15)}
-.status-badge{position:absolute;bottom:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:9px;font-weight:700;color:white}
-.cbody{padding:10px}
-@media(min-width:900px){.cbody{padding:14px}}
-.ctitle{font-size:13px;font-weight:700;margin-bottom:4px}
+.fav{position:absolute;top:8px;left:8px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);border:none;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.fav:hover{transform:scale(1.2)}
+.status-badge{position:absolute;bottom:8px;left:8px;padding:3px 10px;border-radius:50px;font-size:10px;font-weight:700;color:white;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.cbody{padding:12px}
+@media(min-width:900px){.cbody{padding:15px}}
+.ctitle{font-size:13px;font-weight:800;margin-bottom:5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media(min-width:900px){.ctitle{font-size:14px}}
-.cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:11px}
-.cspecs{display:flex;gap:12px;font-size:12px;color:var(--text-sub);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:9px 0;margin-bottom:11px;flex-wrap:wrap;}
-.cfoot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-.price{font-size:16px;font-weight:900;color:var(--green)}
+.cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:9px}
+.cspecs{display:flex;gap:8px;font-size:11px;color:var(--text-sub);border-top:1px solid var(--border);padding:8px 0;margin-bottom:10px;flex-wrap:wrap;}
+.cspecs span{background:var(--green-pale);padding:3px 8px;border-radius:20px;font-weight:600}
+.cfoot{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.price{font-size:15px;font-weight:900;color:var(--green)}
+@media(min-width:900px){.price{font-size:17px}}
 .price small{font-size:11px;font-weight:600;color:var(--text-sub)}
-.btn-call{padding:7px 16px;background:var(--green);color:#fff;border:none;border-radius:8px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;}
-.btn-call:hover{background:var(--green-mid)}
+.btn-call{padding:8px 14px;background:var(--green);color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;white-space:nowrap;}
+.btn-call:hover{filter:brightness(1.1)}
+.btn-wa{padding:8px 12px;background:#25D366;color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;white-space:nowrap;}
+.btn-wa:hover{filter:brightness(1.1)}
 
 .fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:0 28px;height:62px;border-radius:50px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:17px;font-weight:900;font-family:'Cairo',sans-serif;box-shadow:0 8px 32px rgba(201,168,76,.6);cursor:pointer;z-index:90;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;letter-spacing:.3px;animation:fabPulse 2.2s ease-in-out infinite}.fab:hover{filter:brightness(1.1);transform:translateX(-50%) scale(1.04);box-shadow:0 12px 40px rgba(201,168,76,.75)}.fab-icon{font-size:26px;font-weight:900;line-height:1}@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.6)}50%{box-shadow:0 8px 44px rgba(201,168,76,.95),0 0 0 10px rgba(201,168,76,.15)}}@media(max-width:500px){.fab{left:16px;right:16px;transform:none;width:calc(100% - 32px)}.fab:hover{transform:scale(1.02)}}
 
@@ -415,14 +419,14 @@ const adsCol = collection(db, "clients");
 let currentLang = 'fr';
 
 // Data mappings – Arabic (default)
-const PT = { aadl:"AADL", social:"Social", lpp:"LPP", villa:"فيلا", maison:"منزل", appart:"شقة", residence:"ريزيدنس", local:"محل" };
+const PT = { aadl:"AADL", social:"Social", lpp:"LPP", lsp:"LSP", villa:"فيلا", maison:"منزل", appart:"شقة", residence:"ريزيدنس", local:"محل" };
 const OP = { kira:"كراء", bay3:"بيع", achat:"شراء", tbadol:"تبادل" };
 const ROOMS = { f1:"F1", f2:"F2", f3:"F3", f4:"F4", f5:"F5", f6:"F6+" };
 const COND = { neuf:"جديد", utilise:"مستعمل" };
 const STATUS = { dispo:"متوفر", reserved:"محجوز", sold:"تم البيع", rented:"تم الكراء" };
 
 // Data mappings – French
-const PT_FR = { aadl:"AADL", social:"Social", lpp:"LPP", villa:"Villa", maison:"Maison", appart:"Appartement", residence:"Résidence", local:"Local commercial" };
+const PT_FR = { aadl:"AADL", social:"Social", lpp:"LPP", lsp:"LSP", villa:"Villa", maison:"Maison", appart:"Appartement", residence:"Résidence", local:"Local commercial" };
 const OP_FR = { kira:"Location", bay3:"Vente", achat:"Achat", tbadol:"Échange" };
 const COND_FR = { neuf:"Neuf", utilise:"Occasion" };
 const STATUS_FR = { dispo:"Disponible", reserved:"Réservé", sold:"Vendu", rented:"Loué" };
@@ -433,12 +437,266 @@ function lOP(k)  { return (currentLang==='fr' ? OP_FR[k]  : OP[k])  || k; }
 function lCOND(k){ return (currentLang==='fr' ? COND_FR[k]: COND[k]) || k; }
 function lSTATUS(k){ return (currentLang==='fr' ? STATUS_FR[k]: STATUS[k]) || k; }
 const STATUS_COLORS = { dispo:"#15803D", reserved:"#B45309", sold:"#B91C1C", rented:"#9E6D3E" };
-const TYPE_COLORS = { aadl:"#1C5FAD", social:"#6B21A8", lpp:"#C2410C", villa:"#8B5A2B", maison:"#2F6B47", appart:"#1C5FAD", residence:"#6A1B9A", local:"#C2410C" };
+const TYPE_COLORS = { aadl:"#1C5FAD", social:"#6B21A8", lpp:"#C2410C", lsp:"#059669", villa:"#8B5A2B", maison:"#2F6B47", appart:"#1C5FAD", residence:"#6A1B9A", local:"#C2410C" };
 const OP_COLORS = { kira:"#C9A84C", bay3:"#CE1126", achat:"#0E6B56", tbadol:"#374151" };
+
+// ══════════════════════════════════════════════════════
+// SMART SEARCH ENGINE v2 – بحث ذكي عام (عربي ⇄ فرنسي/لاتيني)
+// ══════════════════════════════════════════════════════
+//
+// المشكلة مع النسخة السابقة: قاموس مرادفات يدوي محدود — أي اسم مكان غير مُدرَج
+// (مثل "عميروش" أو "سيدي بنور") لا يُطابق إطلاقاً.
+//
+// الحل الجديد: محرك تحويل صوتي عام (Transliteration) يُحوّل أي كلمة عربية
+// إلى "بصمة صوتية لاتينية" وأي كلمة فرنسية/لاتينية إلى نفس البصمة، ثم يقارن
+// البصمتين. هذا يعمل مع أي اسم — مُدرَج بالقاموس أو لا — لأنه يعتمد على
+// الأصوات الفعلية للحروف، وليس على حفظ كل اسم يدوياً.
+// القاموس اليدوي يبقى موجوداً كطبقة دقة إضافية فوق هذا المحرك العام.
+
+// ── خريطة تحويل: حرف عربي → الصوت اللاتيني المقابل (كما يُكتب بالفرنسية في الجزائر) ──
+const ARABIC_TO_LATIN_SOUND = {
+  'ا':'a', 'أ':'a', 'إ':'a', 'آ':'a', 'ء':'',
+  'ب':'b', 'ت':'t', 'ث':'t',
+  'ج':'j', 'ح':'h', 'خ':'q',   // خ → q (يطابق kh → q في اللاتيني)
+  'د':'d', 'ذ':'d', 'ر':'r', 'ز':'z',
+  'س':'s', 'ش':'x',             // ش → x (يطابق ch → x في اللاتيني)
+  'ص':'s', 'ض':'d',
+  'ط':'t', 'ظ':'d', 'ع':'', 'غ':'g',
+  'ف':'f', 'ق':'k', 'ك':'k', 'ل':'l',
+  'م':'m', 'ن':'n', 'ه':'h', 'ة':'a',
+  'و':'u', 'ي':'i', 'ى':'a', 'ئ':'i', 'ؤ':'u',  // و → u يطابق ou → u
+  ' ':' ',
+};
+
+// تحويل كلمة عربية إلى بصمة صوتية لاتينية مبسّطة (للمقارنة الصوتية)
+function arabicToPhonetic(str) {
+  let out = '';
+  for (const ch of str) {
+    out += ARABIC_TO_LATIN_SOUND[ch] !== undefined ? ARABIC_TO_LATIN_SOUND[ch] : ch;
+  }
+  return out;
+}
+
+// تبسيط كلمة لاتينية/فرنسية إلى نفس "مستوى" البصمة الصوتية
+// (إزالة أحرف العلة المزدوجة، توحيد أصوات متشابهة في الفرنسية الجزائرية)
+function latinToPhonetic(str) {
+  return str
+    .toLowerCase()
+    .replace(/ou/g, 'u')       // ou الفرنسية → u (Ouled → uld، تطابق "أولاد" → uld)
+    .replace(/ch/g, 'x')       // ch → x (حرف خاص نتجنب به التعارض مع 'c' و'h' منفردين)
+    .replace(/kh/g, 'q')       // kh → q
+    .replace(/gh/g, 'g')
+    .replace(/qu/g, 'k')
+    .replace(/c(?!h)/g, 'k')
+    .replace(/ph/g, 'f')
+    .replace(/[éèêë]/g, 'e')
+    .replace(/[àâ]/g, 'a')
+    .replace(/[îï]/g, 'i')
+    .replace(/[ô]/g, 'o')
+    .replace(/[ûù]/g, 'u')
+    .replace(/y/g, 'i')
+    .replace(/[aeiou]{2,}/g, m => m[0])
+    .replace(/(.)\1+/g, '$1')
+    .replace(/[^a-z ]/g, '');
+}
+
+// تبسيط البصمة العربية أيضاً (إزالة التكرار وأحرف العلة الزائدة) لمطابقة أعمّ
+function simplifyPhonetic(str) {
+  return str
+    .replace(/[aeiou]{2,}/g, m => m[0])
+    .replace(/(.)\1+/g, '$1')
+    .replace(/[^a-z]/g, c => c === ' ' ? ' ' : '');
+}
+
+// ── البصمة الصوتية الموحّدة لأي نص (عربي أو فرنسي) ──
+function phoneticFingerprint(str) {
+  if (!str) return '';
+  const hasArabic = /[\u0600-\u06FF]/.test(str);
+  const raw = hasArabic ? arabicToPhonetic(str) : latinToPhonetic(str);
+  return simplifyPhonetic(raw.toLowerCase()).replace(/\s+/g, ' ').trim();
+}
+
+// ── قاموس دقيق لأهم البلديات والولايات (طبقة دقة إضافية فوق المحرك الصوتي العام) ──
+const COMMUNE_SYNONYMS = [
+  ['سيدي عبد الله', 'Sidi Abdellah'],
+  ['الرغاية', 'Reghaia'],
+  ['أولاد فايت', 'Ouled Fayet'],
+  ['الدار البيضاء', 'Dar El Beida'],
+  ['حسين داي', 'Hussein Dey'],
+  ['باب الزوار', 'Bab Ezzouar'],
+  ['برج البحري', 'Bordj El Bahri'],
+  ['القبة', 'El Kouba', 'Kouba'],
+  ['بئر مراد رايس', 'Bir Mourad Rais'],
+  ['الحراش', 'El Harrach'],
+  ['بوزريعة', 'Bouzareah'],
+  ['شراقة', 'Cheraga'],
+  ['الأبيار', 'El Biar'],
+  ['بن عكنون', 'Ben Aknoun'],
+  ['زرالدة', 'Zeralda'],
+  ['الجزائر الوسطى', 'Alger Centre'],
+  ['باب الوادي', 'Bab El Oued'],
+  ['المرادية', 'El Mouradia'],
+  ['درارية', 'Draria'],
+  ['الرويبة', 'Rouiba'],
+  ['وادي السمار', 'Oued Smar'],
+  ['دالي إبراهيم', 'Dely Ibrahim'],
+  ['حيدرة', 'Hydra'],
+  ['عين بنيان', 'Ain Benian'],
+  ['سطاوالي', 'Staoueli'],
+  ['برج الكيفان', 'Bordj El Kiffan'],
+  ['المحمدية', 'El Mohammadia'],
+  ['عين طاية', 'Ain Taya'],
+  ['الأربعاء', 'Larbaa'],
+  ['الكاليتوس', 'Les Eucalyptus'],
+  ['بئر خادم', 'Birkhadem'],
+  ['الشراقة', 'Cheraga'],
+  ['سيدي بنور', 'Sidi Bennour'],
+  ['عميروش', 'Amirouche'],
+  ['عين الدفلى', 'Ain Defla'],
+  ['البليدة', 'Blida'],
+  ['بومرداس', 'Boumerdes'],
+  ['تيبازة', 'Tipaza'],
+  ['الشلف', 'Chlef'],
+  ['وهران', 'Oran'],
+  ['قسنطينة', 'Constantine'],
+  ['عنابة', 'Annaba'],
+  ['سطيف', 'Setif'],
+  ['باتنة', 'Batna'],
+  ['تيزي وزو', 'Tizi Ouzou'],
+  ['بجاية', 'Bejaia'],
+  ['مستغانم', 'Mostaganem'],
+];
+
+// ── قاموس مرادفات عامة لمصطلحات عقارية شائعة ──
+const GENERAL_SYNONYMS = [
+  ['شقة', 'appartement', 'appart'],
+  ['فيلا', 'villa'],
+  ['منزل', 'maison', 'بيت'],
+  ['محل', 'local', 'magasin'],
+  ['ريزيدنس', 'residence'],
+  ['كراء', 'location', 'louer'],
+  ['بيع', 'vente', 'vendre'],
+  ['شراء', 'achat', 'acheter'],
+  ['تبادل', 'echange'],
+  ['جديد', 'neuf', 'nouveau'],
+  ['مستعمل', 'occasion'],
+  ['متوفر', 'disponible', 'dispo'],
+];
+
+const ALL_SYNONYM_GROUPS = [...COMMUNE_SYNONYMS, ...GENERAL_SYNONYMS];
+
+// ── تطبيع نصي بسيط (للمقارنة الحرفية المباشرة قبل اللجوء للصوتيات) ──
+function normalizeText(str) {
+  if (!str) return '';
+  return str
+    .toString()
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[أإآا]/g, 'ا')
+    .replace(/[ىي]/g, 'ي')
+    .replace(/ة/g, 'ه')
+    .replace(/ؤ/g, 'و')
+    .replace(/ئ/g, 'ي')
+    .replace(/[ًٌٍَُِّْ]/g, '')
+    .replace(/[-_,،.]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// ── خريطة مرادفات مبنية من القاموس اليدوي (للمطابقة الدقيقة السريعة) ──
+const SYNONYM_EXPANSION_MAP = (() => {
+  const map = {};
+  ALL_SYNONYM_GROUPS.forEach(group => {
+    const normalizedGroup = group.map(normalizeText);
+    normalizedGroup.forEach(word => {
+      if (!map[word]) map[word] = new Set();
+      normalizedGroup.forEach(w => map[word].add(w));
+    });
+  });
+  return map;
+})();
+
+function expandSearchTerm(term) {
+  const norm = normalizeText(term);
+  if (SYNONYM_EXPANSION_MAP[norm]) return [...SYNONYM_EXPANSION_MAP[norm]];
+  for (const key in SYNONYM_EXPANSION_MAP) {
+    if (key.includes(norm) || norm.includes(key)) return [...SYNONYM_EXPANSION_MAP[key]];
+  }
+  return [norm];
+}
+
+// ── مسافة Levenshtein لالتقاط الأخطاء الإملائية ──
+function levenshteinDistance(a, b) {
+  if (a === b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+  const matrix = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+  for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      matrix[i][j] = a[i-1] === b[j-1]
+        ? matrix[i-1][j-1]
+        : 1 + Math.min(matrix[i-1][j-1], matrix[i-1][j], matrix[i][j-1]);
+    }
+  }
+  return matrix[a.length][b.length];
+}
+
+// ── مطابقة كلمة بحث ضد نص هدف، بـ3 طبقات متدرجة: حرفي → مرادفات → صوتي ──
+function termMatchesHaystack(term, haystackNorm, haystackPhonetic) {
+  const normTerm = normalizeText(term);
+  if (!normTerm) return false;
+
+  // الطبقة 1: مطابقة حرفية مباشرة (الأسرع)
+  if (haystackNorm.includes(normTerm)) return true;
+
+  // الطبقة 2: مرادفات من القاموس اليدوي (دقة عالية للأسماء الشائعة)
+  const expanded = expandSearchTerm(term);
+  for (const exp of expanded) {
+    if (exp && haystackNorm.includes(exp)) return true;
+  }
+
+  // الطبقة 3: مطابقة صوتية عامة — تعمل مع أي اسم غير مُدرَج بالقاموس
+  // شرط: البصمة الصوتية ≥ 4 أحرف لتجنب التطابقات الوهمية مع الكلمات القصيرة
+  if (normTerm.length >= 4) {
+    const termPhonetic = phoneticFingerprint(term);
+    if (termPhonetic.length >= 4 && haystackPhonetic.includes(termPhonetic)) return true;
+
+    // تسامح إملائي إضافي على المستوى الصوتي
+    if (termPhonetic.length >= 4) {
+      const phoneticWords = haystackPhonetic.split(' ').filter(w => w.length >= 3);
+      for (const w of phoneticWords) {
+        const threshold = termPhonetic.length <= 5 ? 1 : 2;
+        if (levenshteinDistance(w, termPhonetic) <= threshold) return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+// ── الدالة الرئيسية: هل إعلان معيّن يطابق نص البحث؟ ──
+function adMatchesSearch(ad, searchRaw) {
+  const search = (searchRaw || '').trim();
+  if (!search) return true;
+
+  const words = search.split(/\s+/).filter(Boolean);
+
+  const haystackFields = [
+    ad.title || '', ad.commune || '', ad.desc || '',
+    lPT(ad.type) || '', PT[ad.type] || '', PT_FR[ad.type] || '',
+    lOP(ad.op) || '', OP[ad.op] || '', OP_FR[ad.op] || '',
+  ];
+  const haystackRaw = haystackFields.join(' ');
+  const haystackNorm = normalizeText(haystackRaw);
+  const haystackPhonetic = phoneticFingerprint(haystackRaw);
+
+  return words.every(word => termMatchesHaystack(word, haystackNorm, haystackPhonetic));
+}
 
 // State
 let DATA = [];
-let fTypes = new Set(['aadl','social','lpp','villa','maison','appart','residence','local']);
+let fTypes = new Set(['aadl','social','lpp','lsp','villa','maison','appart','residence','local']);
 let fOp = 'all';
 let fRooms = 'all';
 let fCondition = 'all';
@@ -448,6 +706,7 @@ let fCommune = '';
 let priceMin = 0;
 let priceMax = Infinity;
 let displayList = [];
+const favs = new Set(); // مجموعة IDs المفضلة
 
 // Helper functions
 function getTypeColor(type) { return TYPE_COLORS[type] || '#0D3B2E'; }
@@ -455,17 +714,16 @@ function getOpColor(op) { return OP_COLORS[op] || '#0D3B2E'; }
 function getStatusColor(status) { return STATUS_COLORS[status] || '#555'; }
 
 function applyFilters() {
-  const searchLower = fSearch.trim().toLowerCase();
   displayList = DATA.filter(ad => {
     if (!fTypes.has(ad.type)) return false;
     if (fOp !== 'all' && ad.op !== fOp) return false;
     if (fRooms !== 'all' && ad.rooms !== fRooms) return false;
     if (fCondition !== 'all' && ad.condition !== fCondition) return false;
     if (fStatus !== 'all' && ad.status !== fStatus) return false;
-    if (fCommune && !(ad.commune || '').toLowerCase().includes(fCommune.toLowerCase())) return false;
+    if (fCommune && !adMatchesSearch(ad, fCommune)) return false;
     const price = Number(ad.price) || 0;
     if (price < priceMin || price > priceMax) return false;
-    if (searchLower && !((ad.title || '').toLowerCase().includes(searchLower) || (ad.commune || '').toLowerCase().includes(searchLower))) return false;
+    if (fSearch && !adMatchesSearch(ad, fSearch)) return false;
     return true;
   });
   sortAndRender();
@@ -492,14 +750,38 @@ function renderAds(list) {
     return;
   }
 
-  grid.innerHTML = list.map(ad => `
+  const TYPE_BG = {
+    aadl:'linear-gradient(135deg,#DBEAFE,#BFDBFE)',
+    social:'linear-gradient(135deg,#EDE9FE,#DDD6FE)',
+    lpp:'linear-gradient(135deg,#FEE2E2,#FECACA)',
+    lsp:'linear-gradient(135deg,#D1FAE5,#A7F3D0)',
+    villa:'linear-gradient(135deg,#FEF3C7,#FDE68A)',
+    maison:'linear-gradient(135deg,#DCFCE7,#BBF7D0)',
+    appart:'linear-gradient(135deg,#E0F2FE,#BAE6FD)',
+    residence:'linear-gradient(135deg,#F3E8FF,#E9D5FF)',
+    local:'linear-gradient(135deg,#FFE4E6,#FECDD3)',
+  };
+  const TYPE_ICON = {
+    aadl:'🏗️', social:'🏠', lpp:'🏢', lsp:'🌿',
+    villa:'🏡', maison:'🏠', appart:'🏢', residence:'🏙️', local:'🛍️',
+  };
+
+  grid.innerHTML = list.map(ad => {
+    const bg = TYPE_BG[ad.type] || 'linear-gradient(135deg,#E8F5EE,#C8E6D9)';
+    const icon = TYPE_ICON[ad.type] || '🏘️';
+    const safePhone = (ad.phone||'').replace(/'/g,"&#39;");
+    const safeTitle = (ad.title||'').replace(/'/g,"&#39;").replace(/"/g,'&quot;');
+    const imgHtml = ad.imgBase64
+      ? `<img src="${ad.imgBase64}" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"/>`
+      : `<div class="cimg-ph" style="background:${bg}">${icon}</div>`;
+    return `
     <div class="card" onclick="openD('${ad.id}')">
       <div class="cimg">
-        <div class="cimg-ph">${ad.type === 'villa' ? '🏡' : ad.type === 'maison' ? '🏠' : ad.type === 'local' ? '🛍️' : ad.type === 'residence' ? '🏢' : '🏘️'}</div>
+        ${imgHtml}
         <span class="bt" style="background:${getTypeColor(ad.type)}">${lPT(ad.type)}</span>
         <span class="bo" style="background:${getOpColor(ad.op)};color:#fff">${lOP(ad.op)}</span>
-        <button class="fav" id="fv${ad.id}" onclick="tfav(event,'${ad.id}')">🤍</button>
         <div class="status-badge" style="background:${getStatusColor(ad.status)}">${lSTATUS(ad.status)}</div>
+        ${ad.feat ? '<div style="position:absolute;top:8px;right:8px;background:linear-gradient(135deg,#F0C855,#C9A84C);color:#0D3B2E;font-size:10px;font-weight:700;padding:3px 9px;border-radius:50px">⭐ مميز</div>' : ''}
       </div>
       <div class="cbody">
         <div class="ctitle">${ad.title || `${lPT(ad.type)} - ${lOP(ad.op)}`}</div>
@@ -507,23 +789,20 @@ function renderAds(list) {
         <div class="cspecs">
           <span>🛏️ ${ROOMS[ad.rooms] || ad.rooms || '?'}</span>
           <span>📐 ${ad.area || '?'} m²</span>
-          <span>📅 ${ad.date ? ad.date.slice(5,10) : '—'}</span>
-          <span>🔧 ${lCOND(ad.condition)}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:11px;font-size:12px;color:var(--text-sub)">
-          <span>👁️ ${ad.views || 0}</span>
-          <span>${ad.avgRating ? '⭐ ' + Number(ad.avgRating).toFixed(1) + ' <small>(' + (ad.ratingCount||0) + ')</small>' : ''}</span>
+          ${ad.avgRating ? `<span>⭐ ${Number(ad.avgRating).toFixed(1)}</span>` : ''}
         </div>
         <div class="cfoot">
           <div class="price">${Number(ad.price).toLocaleString('fr-DZ')} <small>DA</small></div>
-          <div style="display:flex;gap:6px">
-            <button class="btn-call" style="background:#25D366;padding:7px 11px" onclick="event.stopPropagation();openWA('${(ad.phone||'').replace(/'/g,'')}','${(ad.title||'').replace(/'/g,'').replace(/"/g,'')}')">💚</button>
-            <button class="btn-call" onclick="event.stopPropagation();dial('${ad.phone||''}')">📞</button>
-          </div>
         </div>
+        <button class="btn-wa" style="width:100%;justify-content:center;margin-top:10px" onclick="event.stopPropagation();openWA('${safePhone}','${safeTitle}')">
+          📩 راسلني الآن واتساب
+        </button>
+        <button class="btn-call" style="width:100%;justify-content:center;margin-top:6px" onclick="event.stopPropagation();dial('${ad.phone||''}')">
+          📞 اتصل بي الآن
+        </button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 // Global functions for HTML calls
@@ -748,10 +1027,14 @@ window.tfav = function(e, id) {
   e.stopPropagation();
   const T = LANG[currentLang];
   const btn = document.getElementById(`fv${id}`);
-  if (btn) {
-    const isNowFav = btn.innerText === '🤍';
-    btn.innerText = isNowFav ? '❤️' : '🤍';
-    toast(isNowFav ? T.toastFavAdd : T.toastFavRem);
+  if (favs.has(id)) {
+    favs.delete(id);
+    if (btn) btn.innerText = '🤍';
+    toast(T.toastFavRem);
+  } else {
+    favs.add(id);
+    if (btn) btn.innerText = '❤️';
+    toast(T.toastFavAdd);
   }
 };
 window.af = function() {
@@ -982,12 +1265,34 @@ function initFilters() {
     });
     mobStrip.appendChild(stripAll);
 
-    ['aadl','social','lpp','villa','maison','appart','local'].forEach(t => {
+    ['aadl','social','lpp','lsp','villa','maison','appart','local'].forEach(t => {
       const btn = makeChip(PT[t], 'strip', t, () => {
         fTypes = new Set([t]);
       });
       btn.style.whiteSpace = 'nowrap';
       btn.style.flexShrink = '0';
+      mobStrip.appendChild(btn);
+    });
+
+    // ── فاصل مرئي ──
+    const sep = document.createElement('div');
+    sep.style.cssText = 'width:1px;background:var(--border);flex-shrink:0;align-self:stretch;margin:4px 0';
+    mobStrip.appendChild(sep);
+
+    // ── بيع / كراء كفلتر عملية سريع ──
+    const opBtns = [];
+    [{v:'all',ar:'🔄 الكل'},{v:'bay3',ar:'🏷️ بيع'},{v:'kira',ar:'🔑 كراء'}].forEach(({v,ar}) => {
+      const btn = document.createElement('button');
+      btn.className = 'chip' + (v === 'all' ? ' on' : '');
+      btn.style.cssText = 'white-space:nowrap;flex-shrink:0';
+      btn.innerText = ar;
+      btn.dataset.opval = v;
+      btn.addEventListener('click', () => {
+        fOp = v;
+        opBtns.forEach(b => b.classList.toggle('on', b.dataset.opval === v));
+        applyFilters();
+      });
+      opBtns.push(btn);
       mobStrip.appendChild(btn);
     });
   }
