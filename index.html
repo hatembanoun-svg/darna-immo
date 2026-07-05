@@ -1003,6 +1003,17 @@ window.openD = function(id) {
   currentAdId = id;
   selectedRating = 0;
 
+  // ── Meta Pixel: ViewContent ──
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', {
+      content_name: ad.title || `${lPT(ad.type)} - ${lOP(ad.op)}`,
+      content_category: lPT(ad.type),
+      content_ids: [id],
+      value: Number(ad.price) || 0,
+      currency: 'DZD'
+    });
+  }
+
   document.getElementById('mtt').innerHTML = ad.title || `${lPT(ad.type)} - ${lOP(ad.op)}`;
   document.getElementById('mimg').innerHTML = `<div class="mimg-ph">${ad.type==='villa'?'🏡':ad.type==='maison'?'🏠':ad.type==='local'?'🛍️':ad.type==='residence'?'🏢':'🏘️'}</div>`;
   document.getElementById('mbg').innerHTML = `
@@ -1233,6 +1244,10 @@ window.af = function() {
 window.sl = function() { sortAndRender(); };
 window.doSearch = function() {
   fSearch = document.getElementById('searchQ').value;
+  // ── Meta Pixel: Search ──
+  if (typeof fbq !== 'undefined' && fSearch.trim()) {
+    fbq('track', 'Search', { search_string: fSearch.trim() });
+  }
   applyFilters();
 };
 window.cm = function(id) { document.getElementById(id).classList.remove('open'); };
