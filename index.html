@@ -2,6 +2,23 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1562914335571664');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>Darna Immo – دارنا إيمو | إعلانات عقارية شاملة</title>
@@ -244,13 +261,183 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
 </style>
 </head>
 <body>
+
+<!-- ══ شاشة الترحيب ══ -->
+<div id="welcomeScreen">
+  <div class="wlc-bg"></div>
+  <div class="wlc-inner">
+    <div class="wlc-logo">
+      <img src="assets/logo.png" alt="Darna Immobilier" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="wlc-logo-fallback">D</div>
+    </div>
+    <h1 class="wlc-title">DARNA <span>IMMOBILIER</span></h1>
+    <p class="wlc-sub">🇩🇿 منصتك العقارية في الجزائر العاصمة</p>
+    <p class="wlc-q">ماذا تبحث عن ؟</p>
+    <div class="wlc-cards">
+      <button class="wlc-card" onclick="chooseOp('kira')">
+        <div class="wlc-card-icon">🔑</div>
+        <div class="wlc-card-label">كـراء</div>
+        <div class="wlc-card-sub">Location</div>
+        <div class="wlc-card-arrow">←</div>
+      </button>
+      <button class="wlc-card" onclick="chooseOp('bay3')">
+        <div class="wlc-card-icon">🏷️</div>
+        <div class="wlc-card-label">بـيع</div>
+        <div class="wlc-card-sub">Vente</div>
+        <div class="wlc-card-arrow">←</div>
+      </button>
+    </div>
+    <button class="wlc-all" onclick="chooseOp('all')">
+      عرض كل الإعلانات &nbsp;←
+    </button>
+  </div>
+</div>
+
+<style>
+/* ══ WELCOME SCREEN ══ */
+#welcomeScreen{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  overflow:hidden;
+}
+.wlc-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(150deg,#0D3B2E 0%,#1A5C45 55%,#2E8B6A 100%);
+}
+.wlc-bg::before{
+  content:'DARNA';
+  position:absolute;
+  font-family:'Cairo',sans-serif;
+  font-size:clamp(80px,25vw,220px);
+  font-weight:900;
+  color:rgba(255,255,255,.04);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  white-space:nowrap;pointer-events:none;
+  letter-spacing:8px;
+}
+.wlc-bg::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;height:5px;
+  background:linear-gradient(to left,#CE1126 33%,#fff 33%,#fff 66%,#1A5C45 66%);
+}
+.wlc-inner{
+  position:relative;z-index:1;
+  text-align:center;width:100%;max-width:480px;
+}
+.wlc-logo{
+  width:90px;height:90px;border-radius:22px;
+  margin:0 auto 16px;
+  background:linear-gradient(145deg,#F0C855,#C9A84C);
+  box-shadow:0 8px 32px rgba(201,168,76,.45);
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  border:3px solid rgba(255,255,255,.2);
+}
+.wlc-logo img{width:100%;height:100%;object-fit:cover}
+.wlc-logo-fallback{
+  display:none;font-family:'Cairo',sans-serif;
+  font-size:42px;font-weight:900;color:#0D3B2E;
+}
+.wlc-title{
+  font-family:'Cairo',sans-serif;
+  font-size:clamp(22px,6vw,34px);
+  font-weight:900;color:#fff;
+  letter-spacing:1px;margin-bottom:6px;
+}
+.wlc-title span{color:#F0C855}
+.wlc-sub{
+  font-family:'Cairo',sans-serif;
+  font-size:14px;color:rgba(255,255,255,.7);
+  margin-bottom:32px;
+}
+.wlc-q{
+  font-family:'Cairo',sans-serif;
+  font-size:clamp(18px,4vw,24px);
+  font-weight:700;color:#fff;
+  margin-bottom:18px;
+}
+.wlc-cards{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:14px;margin-bottom:16px;
+}
+.wlc-card{
+  background:#fff;
+  border:2px solid rgba(255,255,255,.3);
+  border-radius:20px;
+  padding:28px 16px;
+  cursor:pointer;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  position:relative;overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,.18);
+}
+.wlc-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);
+  border-radius:18px;
+}
+.wlc-card:hover,.wlc-card:active{
+  transform:translateY(-6px) scale(1.04);
+  box-shadow:0 20px 48px rgba(0,0,0,.25);
+}
+.wlc-card:nth-child(1):hover{ background:#FFF8E7; border-color:#F0C855; }
+.wlc-card:nth-child(2):hover{ background:#FFF0F2; border-color:#CE1126; }
+.wlc-card-icon{font-size:clamp(36px,8vw,52px)}
+.wlc-card-label{
+  font-family:'Cairo',sans-serif;
+  font-size:clamp(22px,5vw,30px);
+  font-weight:900;color:#0D3B2E;
+}
+.wlc-card-sub{
+  font-size:13px;color:#888;
+  font-family:'Cairo',sans-serif;letter-spacing:1px;
+}
+.wlc-card-arrow{
+  font-size:18px;color:#ccc;
+  transition:.2s;
+}
+.wlc-card:hover .wlc-card-arrow{color:#0D3B2E;transform:translateX(-4px)}
+.wlc-all{
+  width:100%;padding:14px;
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.25);
+  border-radius:12px;
+  font-family:'Cairo',sans-serif;
+  font-size:14px;font-weight:600;
+  color:rgba(255,255,255,.65);
+  cursor:pointer;transition:.2s;
+  letter-spacing:.5px;
+}
+.wlc-all:hover{
+  background:rgba(255,255,255,.1);
+  color:#fff;border-color:rgba(255,255,255,.5);
+}
+
+/* ── animation d'entrée ── */
+.wlc-inner{animation:wlcFadeIn .6s ease both}
+@keyframes wlcFadeIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.wlc-card{animation:wlcCardIn .5s ease both}
+.wlc-card:nth-child(1){animation-delay:.15s}
+.wlc-card:nth-child(2){animation-delay:.25s}
+@keyframes wlcCardIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
+/* ── sortie ── */
+#welcomeScreen.hide{
+  animation:wlcOut .4s ease forwards;
+  pointer-events:none;
+}
+@keyframes wlcOut{
+  to{opacity:0;transform:scale(1.04)}
+}
+</style>
 <div class="flag-strip"></div>
 <header>
   <div style="display:flex;gap:8px;align-items:center">
     <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span>نشرإعلان</span></button>
     <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
   </div>
-  <a class="logo" href="#">
+  <a class="logo" href="#" onclick="showWelcome()">
     <div class="logo-text" style="text-align:left"><div class="d1">DARNA IMMOBILIER</div><div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div></div>
     <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
   </a>
@@ -1331,6 +1518,34 @@ function syncFilterLabels() {
   });
 }
 
+// ── شاشة الترحيب ──
+window.showWelcome = function() {
+  const ws = document.getElementById('welcomeScreen');
+  ws.style.display = 'flex';
+  ws.classList.remove('hide');
+  // إعادة تشغيل الأنيميشن
+  ws.style.animation = 'none';
+  ws.offsetHeight; // reflow
+  ws.style.animation = '';
+};
+
+window.chooseOp = function(op) {
+  // تطبيق الفلتر المختار
+  if (op !== 'all') {
+    fOp = op;
+    // مزامنة أزرار العملية في الفلاتر
+    document.querySelectorAll('[data-group="op"]').forEach(b => {
+      b.classList.toggle('on', b.dataset.val === op);
+    });
+    document.querySelectorAll('[data-group="op-all"]').forEach(b => b.classList.remove('on'));
+  }
+  // إخفاء الشاشة بأنيميشن
+  const ws = document.getElementById('welcomeScreen');
+  ws.classList.add('hide');
+  setTimeout(() => { ws.style.display = 'none'; }, 400);
+  // تطبيق الفلاتر
+  applyFilters();
+};
 window.openFilterDrawer = function() {
   document.getElementById('filterDrawer').classList.add('open');
   document.getElementById('filterOverlay').classList.add('open');
