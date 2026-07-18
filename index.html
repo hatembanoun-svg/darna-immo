@@ -112,7 +112,7 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
   --radius:14px;
   --shadow:0 2px 16px rgba(0,0,0,.09);
 }
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:90px}
 
 header{
   background:var(--green);
@@ -226,37 +226,60 @@ header{
 @media(max-width:860px){.mob-strip{display:flex}}
 .mob-strip .chip{white-space:nowrap;flex-shrink:0}
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}}
-@media(max-width:400px){.grid{grid-template-columns:1fr;gap:12px}}
+/* ── GRID عمودي ── */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,1fr);gap:10px}}
+@media(max-width:380px){.grid{grid-template-columns:repeat(2,1fr);gap:6px}}
+
+/* CSS لرفع الصورة في نموذج الإعلان */
+.img-upload-area{
+  border:2px dashed var(--border);border-radius:12px;
+  padding:20px;text-align:center;cursor:pointer;
+  background:#FAFFF8;transition:.2s;position:relative;overflow:hidden;
+}
+.img-upload-area:hover{border-color:var(--green-light);background:#F0FAF4}
+.img-upload-area input[type=file]{display:none}
+.img-upload-area .img-preview{
+  width:100%;height:160px;object-fit:cover;
+  border-radius:8px;display:none;
+}
+.img-upload-icon{font-size:32px;margin-bottom:6px}
+.img-upload-label{font-family:'Cairo',sans-serif;font-size:13px;color:var(--text-sub)}
+.img-upload-hint{font-family:'Cairo',sans-serif;font-size:11px;color:#aaa;margin-top:4px}
+.img-remove-btn{
+  position:absolute;top:8px;left:8px;
+  background:rgba(206,17,38,.85);color:#fff;border:none;
+  border-radius:50%;width:28px;height:28px;font-size:15px;
+  cursor:pointer;display:none;align-items:center;justify-content:center;
+}
 
 .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:.2s;position:relative;}
 .card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.14)}
-.cimg{position:relative;height:150px;overflow:hidden}
-@media(min-width:900px){.cimg{height:190px}}
-.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;}
-.bt{position:absolute;top:6px;right:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700;color:#fff}
-.bo{position:absolute;top:6px;left:6px;padding:3px 8px;border-radius:50px;font-size:10px;font-weight:700}
+.cimg{position:relative;height:100px;overflow:hidden}
+@media(min-width:900px){.cimg{height:120px}}
+.cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;}
+.bt{position:absolute;top:4px;right:4px;padding:2px 6px;border-radius:50px;font-size:9px;font-weight:700;color:#fff}
+.bo{position:absolute;top:4px;left:4px;padding:2px 6px;border-radius:50px;font-size:9px;font-weight:700}
 .fav{position:absolute;top:8px;left:8px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);border:none;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.15);}
 .fav:hover{transform:scale(1.2)}
-.status-badge{position:absolute;bottom:8px;left:8px;padding:3px 10px;border-radius:50px;font-size:10px;font-weight:700;color:white;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.cbody{padding:12px}
-@media(min-width:900px){.cbody{padding:15px}}
-.ctitle{font-size:13px;font-weight:800;margin-bottom:5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-@media(min-width:900px){.ctitle{font-size:14px}}
-.cloc{font-size:12px;color:var(--text-sub);display:flex;align-items:center;gap:3px;margin-bottom:9px}
-.cspecs{display:flex;gap:8px;font-size:11px;color:var(--text-sub);border-top:1px solid var(--border);padding:8px 0;margin-bottom:10px;flex-wrap:wrap;}
-.cspecs span{background:var(--green-pale);padding:3px 8px;border-radius:20px;font-weight:600}
-.cfoot{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.price{font-size:15px;font-weight:900;color:var(--green)}
-@media(min-width:900px){.price{font-size:17px}}
-.price small{font-size:11px;font-weight:600;color:var(--text-sub)}
-.btn-call{padding:8px 14px;background:var(--green);color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;white-space:nowrap;}
+.status-badge{position:absolute;bottom:4px;left:4px;padding:2px 7px;border-radius:50px;font-size:9px;font-weight:700;color:white;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.cbody{padding:8px}
+@media(min-width:900px){.cbody{padding:10px}}
+.ctitle{font-size:11px;font-weight:800;margin-bottom:3px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media(min-width:900px){.ctitle{font-size:12px}}
+.cloc{font-size:10px;color:var(--text-sub);display:flex;align-items:center;gap:2px;margin-bottom:5px}
+.cspecs{display:flex;gap:4px;font-size:10px;color:var(--text-sub);border-top:1px solid var(--border);padding:5px 0;margin-bottom:6px;flex-wrap:wrap;}
+.cspecs span{background:var(--green-pale);padding:2px 5px;border-radius:20px;font-weight:600}
+.cfoot{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.price{font-size:12px;font-weight:900;color:var(--green)}
+@media(min-width:900px){.price{font-size:13px}}
+.price small{font-size:10px;font-weight:600;color:var(--text-sub)}
+.btn-call{padding:9px 10px;background:var(--green);color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;white-space:nowrap;}
 .btn-call:hover{filter:brightness(1.1)}
-.btn-wa{padding:8px 12px;background:#25D366;color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;white-space:nowrap;}
+.btn-wa{padding:9px 10px;background:#25D366;color:#fff;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;transition:.2s;white-space:nowrap;}
 .btn-wa:hover{filter:brightness(1.1)}
 
-.fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:0 28px;height:62px;border-radius:50px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:17px;font-weight:900;font-family:'Cairo',sans-serif;box-shadow:0 8px 32px rgba(201,168,76,.6);cursor:pointer;z-index:90;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;letter-spacing:.3px;animation:fabPulse 2.2s ease-in-out infinite}.fab:hover{filter:brightness(1.1);transform:translateX(-50%) scale(1.04);box-shadow:0 12px 40px rgba(201,168,76,.75)}.fab-icon{font-size:26px;font-weight:900;line-height:1}@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.6)}50%{box-shadow:0 8px 44px rgba(201,168,76,.95),0 0 0 10px rgba(201,168,76,.15)}}@media(max-width:500px){.fab{left:16px;right:16px;transform:none;width:calc(100% - 32px)}.fab:hover{transform:scale(1.02)}}
+.fab{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:0 28px;height:62px;border-radius:50px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;font-size:17px;font-weight:900;font-family:'Cairo',sans-serif;box-shadow:0 8px 32px rgba(201,168,76,.6);cursor:pointer;z-index:9990;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;letter-spacing:.3px;animation:fabPulse 2.2s ease-in-out infinite}.fab:hover{filter:brightness(1.1);transform:translateX(-50%) scale(1.04);box-shadow:0 12px 40px rgba(201,168,76,.75)}.fab-icon{font-size:26px;font-weight:900;line-height:1}@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(201,168,76,.6)}50%{box-shadow:0 8px 44px rgba(201,168,76,.95),0 0 0 10px rgba(201,168,76,.15)}}@media(max-width:500px){.fab{left:16px;right:16px;transform:none;width:calc(100% - 32px)}.fab:hover{transform:scale(1.02)}}
 
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center;padding:14px;}
 .overlay.open{display:flex}
@@ -674,7 +697,26 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
 </div>
 
 <!-- Post Modal -->
-<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea></div><button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button></div></div></div>
+<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" rows="4" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
+<button type="button" id="aiDescBtn" onclick="generateSmartDesc()" style="margin-top:8px;width:100%;padding:11px;background:linear-gradient(135deg,#5E35B1,#7B1FA2);color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s">
+  <span id="aiDescIcon">✨</span> <span id="aiDescLabel">ولّد وصفاً ذكياً بالذكاء الاصطناعي</span>
+</button>
+<div id="aiDescStatus" style="display:none;font-family:'Cairo',sans-serif;font-size:12px;text-align:center;padding:6px;border-radius:8px;margin-top:6px"></div>
+</div>
+<div class="fg">
+  <label>📷 صورة العقار (اختياري — صورة واحدة)</label>
+  <div class="img-upload-area" id="imgUploadArea" onclick="document.getElementById('imgFileInput').click()">
+    <img class="img-preview" id="imgPreviewPost" src="" alt=""/>
+    <button class="img-remove-btn" id="imgRemoveBtn" onclick="removeImg(event)">✕</button>
+    <div id="imgUploadPlaceholder">
+      <div class="img-upload-icon">📷</div>
+      <div class="img-upload-label">اضغط لاختيار صورة</div>
+      <div class="img-upload-hint">JPG / PNG – الحجم الأقصى 2MB</div>
+    </div>
+  </div>
+  <input type="file" id="imgFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleImgUpload(this)"/>
+</div>
+<button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button></div></div></div>
 
 <div class="toast" id="tst"></div>
 
@@ -901,6 +943,194 @@ footer{background:var(--green);color:rgba(255,255,255,.6);text-align:center;font
     <p style="font-family:'Cairo',sans-serif;font-size:12px;color:#aaa;text-align:center;margin-top:8px">
       * الأسعار تقريبية مبنية على إعلانات منصة دارنا إيمو خلال 2025-2026 ولا تمثل سعراً رسمياً. آخر تحديث: يناير 2026.
     </p>
+
+    <!-- ── فاصل ── -->
+    <div style="border-top:2px dashed #D8EAE1;margin:36px 0"></div>
+
+    <!-- ── جدول برج الكيفان الرسمي ── -->
+    <div style="text-align:center;margin-bottom:28px">
+      <div style="display:inline-block;background:linear-gradient(135deg,#0D3B2E,#1A5C45);color:#F0C855;font-size:13px;font-weight:700;padding:7px 20px;border-radius:50px;margin-bottom:12px;font-family:'Cairo',sans-serif">
+        📋 وثيقة رسمية – مديرية الضرائب الجزائرية
+      </div>
+      <h3 style="font-family:'Cairo',sans-serif;font-size:clamp(17px,3.5vw,24px);font-weight:900;color:#0D3B2E;margin-bottom:8px">
+        الجدول الضريبي الرسمي لأسعار العقارات<br/>
+        بلدية برج الكيفان — 2026 (دج/م²)
+      </h3>
+      <p style="font-family:'Cairo',sans-serif;font-size:13px;color:#667;max-width:600px;margin:0 auto;line-height:1.7">
+        أسعار مرجعية لحساب رسوم التسجيل والضرائب العقارية. تُستخدم كـ<strong>تقييم إداري أدنى</strong> وليست أسعار السوق الحرة.
+      </p>
+    </div>
+
+    <!-- تنبيه -->
+    <div style="background:#FFF8E7;border:1.5px solid #F0D890;border-radius:11px;padding:13px 17px;margin-bottom:24px;font-family:'Cairo',sans-serif;font-size:13px;color:#92650A;display:flex;gap:10px">
+      <span style="flex-shrink:0;font-size:18px">💡</span>
+      <span>هذه الأسعار يعتمدها موثق العقود ومديرية الضرائب عند البيع. أسعار السوق الفعلية تكون عادةً أعلى من هذه الأرقام. رسوم التسجيل = <strong>5%</strong> من قيمة البيع.</span>
+    </div>
+
+    <!-- جدول الشقق -->
+    <div style="margin-bottom:20px;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.09)">
+      <div style="background:#1C5FAD;color:#fff;padding:13px 17px;font-family:'Cairo',sans-serif;font-weight:700;font-size:14px">
+        🏢 الشقق (Collectifs) — دج/م²
+      </div>
+      <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;background:#F8FAFF;min-width:480px">
+        <thead>
+          <tr style="background:#EEF4FF">
+            <th style="padding:10px 13px;text-align:right;font-family:'Cairo',sans-serif;font-size:12px;color:#1C5FAD;border-bottom:2px solid #D9E8FF;white-space:nowrap">النوع</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#1C5FAD;border-bottom:2px solid #D9E8FF;white-space:nowrap">🏡 سكنية</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#1C5FAD;border-bottom:2px solid #D9E8FF;white-space:nowrap">🏙️ وسط المدينة</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#1C5FAD;border-bottom:2px solid #D9E8FF;white-space:nowrap">🔵 محيطية</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#1C5FAD;border-bottom:2px solid #D9E8FF;white-space:nowrap">🟤 بعيدة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #E0EAFF">
+            <td style="padding:10px 13px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;white-space:nowrap">⭐ فاخرة (Standing)</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#1C5FAD">120,000–144,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">110,000–132,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">100,000–120,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">90,000–108,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid #E0EAFF;background:#F3F7FF">
+            <td style="padding:10px 13px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;white-space:nowrap">✨ محسنة (Amélioré)</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#1C5FAD">110,000–132,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">100,000–120,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">90,000–108,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">80,000–96,000</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 13px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;white-space:nowrap">💼 اقتصادية (Economique)</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#1C5FAD">100,000–120,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">90,000–108,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">80,000–96,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">70,000–84,000</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div style="padding:8px 13px;background:#EEF4FF;font-family:'Cairo',sans-serif;font-size:11px;color:#557">
+        💡 مثال: شقة اقتصادية 80م² في المنطقة السكنية = 80 × 100,000 = <strong>8,000,000 دج</strong> تقييم إداري أدنى
+      </div>
+    </div>
+
+    <!-- جدول الفيلات -->
+    <div style="margin-bottom:20px;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.09)">
+      <div style="background:#2F6B47;color:#fff;padding:13px 17px;font-family:'Cairo',sans-serif;font-weight:700;font-size:14px">
+        🏡 الفيلات والمنازل المستقلة (Individuels) — دج/م²
+      </div>
+      <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;background:#F6FBF8;min-width:480px">
+        <thead>
+          <tr style="background:#EAF5EF">
+            <th style="padding:10px 13px;text-align:right;font-family:'Cairo',sans-serif;font-size:12px;color:#2F6B47;border-bottom:2px solid #C8E6D4;white-space:nowrap">النوع</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#2F6B47;border-bottom:2px solid #C8E6D4;white-space:nowrap">🏡 سكنية</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#2F6B47;border-bottom:2px solid #C8E6D4;white-space:nowrap">🏙️ وسط المدينة</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#2F6B47;border-bottom:2px solid #C8E6D4;white-space:nowrap">🔵 محيطية</th>
+            <th style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;color:#2F6B47;border-bottom:2px solid #C8E6D4;white-space:nowrap">🟤 بعيدة</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #D8EDDF">
+            <td style="padding:10px 13px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;white-space:nowrap">⭐ فاخرة</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#2F6B47">145,000–174,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">135,000–162,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">125,000–150,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">115,000–138,000</td>
+          </tr>
+          <tr style="border-bottom:1px solid #D8EDDF;background:#F0FAF4">
+            <td style="padding:10px 13px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;white-space:nowrap">✨ محسنة</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#2F6B47">135,000–162,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">125,000–150,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">115,000–138,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">105,000–126,000</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 13px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;white-space:nowrap">💼 اقتصادية</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#2F6B47">125,000–150,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">115,000–138,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">105,000–126,000</td>
+            <td style="padding:10px 13px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">95,000–114,000</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <!-- الأراضي + المحلات -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:28px">
+
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <div style="background:#92650A;color:#FFF8E7;padding:12px 15px;font-family:'Cairo',sans-serif;font-weight:700;font-size:13px">
+          🌍 الأراضي العارية (Terrains Nus) — دج/م²
+        </div>
+        <table style="width:100%;border-collapse:collapse;background:#FFFDF5">
+          <tr style="background:#FFF8E7">
+            <th style="padding:9px 12px;text-align:right;font-family:'Cairo',sans-serif;font-size:11px;color:#92650A;border-bottom:1px solid #F0D890">الواجهة</th>
+            <th style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:11px;color:#92650A;border-bottom:1px solid #F0D890">سكنية</th>
+            <th style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:11px;color:#92650A;border-bottom:1px solid #F0D890">وسط المدينة</th>
+          </tr>
+          <tr style="border-bottom:1px solid #F5EDD0">
+            <td style="padding:9px 12px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700">بواجهتين (02 Façades)</td>
+            <td style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#92650A">140,000–168,000</td>
+            <td style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">120,000–144,000</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700">واجهة واحدة (01 Façade)</td>
+            <td style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;color:#92650A">135,000–162,000</td>
+            <td style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:12px">115,000–138,000</td>
+          </tr>
+        </table>
+      </div>
+
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)">
+        <div style="background:#D81B60;color:#fff;padding:12px 15px;font-family:'Cairo',sans-serif;font-weight:700;font-size:13px">
+          🛍️ المحلات التجارية (Locaux Commerciaux) — دج/م²
+        </div>
+        <table style="width:100%;border-collapse:collapse;background:#FFF5F8">
+          <tr style="background:#FFE8F0">
+            <th style="padding:9px 12px;text-align:right;font-family:'Cairo',sans-serif;font-size:11px;color:#D81B60;border-bottom:1px solid #FFB3CF">الموقع</th>
+            <th style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:11px;color:#D81B60;border-bottom:1px solid #FFB3CF">السعر</th>
+          </tr>
+          <tr style="border-bottom:1px solid #FFD6E7">
+            <td style="padding:9px 12px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700">شريان تجاري هام جداً<br/><span style="font-size:10px;color:#aaa;font-weight:400">وسط المدينة</span></td>
+            <td style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:13px;font-weight:800;color:#D81B60">185,000–222,000</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700">المنطقة السكنية</td>
+            <td style="padding:9px 12px;text-align:center;font-family:'Cairo',sans-serif;font-size:13px;font-weight:800;color:#D81B60">165,000–198,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- الحاسبة -->
+    <div style="background:#0D3B2E;border-radius:16px;padding:24px">
+      <div style="font-family:'Cairo',sans-serif;font-size:16px;font-weight:800;color:#F0C855;margin-bottom:6px">
+        🧮 احسب التقييم الإداري لعقارك في برج الكيفان
+      </div>
+      <div style="font-family:'Cairo',sans-serif;font-size:13px;color:rgba(255,255,255,.65);margin-bottom:18px">
+        اختر السعر من الجداول أعلاه، ثم أدخل مساحة عقارك
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
+        <div style="flex:1;min-width:130px">
+          <label style="font-family:'Cairo',sans-serif;font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:5px">المساحة (م²)</label>
+          <input id="calcArea" type="number" placeholder="مثال: 85" style="width:100%;padding:11px 13px;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;outline:none;color:#0D3B2E"/>
+        </div>
+        <div style="flex:1;min-width:150px">
+          <label style="font-family:'Cairo',sans-serif;font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:5px">السعر للمتر (دج/م²)</label>
+          <input id="calcPriceM" type="number" placeholder="مثال: 100000" style="width:100%;padding:11px 13px;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;outline:none;color:#0D3B2E"/>
+        </div>
+        <button onclick="calcEstimate()" style="padding:11px 24px;background:linear-gradient(135deg,#F0C855,#C9A84C);color:#0D3B2E;border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;align-self:flex-end">
+          احسب ←
+        </button>
+      </div>
+      <div id="calcResult" style="display:none;margin-top:16px;background:rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;font-family:'Cairo',sans-serif"></div>
+    </div>
+
+    <p style="font-family:'Cairo',sans-serif;font-size:11px;color:#aaa;text-align:center;margin-top:14px">
+      📋 المصدر: الجدول الرسمي لمديرية الضرائب الجزائرية، بلدية برج الكيفان — 2026. هذه أسعار إدارية وليست أسعار السوق الحرة.
+    </p>
+
   </div>
 </section>
 </div>
@@ -1392,6 +1622,8 @@ function renderAds(list) {
       </div>
     </div>`;
   }).join('');
+  // تحديث عداد الكاروسيل بعد رسم البطاقات
+  requestAnimationFrame(() => updateCarouselCount());
 }
 
 // Global functions for HTML calls
@@ -1405,6 +1637,9 @@ window.openD = function(id) {
   currentAdId = id;
   selectedRating = 0;
 
+  // ── Schema ديناميكي SEO ──
+  injectAdSchema(ad);
+
   // ── Meta Pixel: ViewContent ──
   if (typeof fbq !== 'undefined') {
     fbq('track', 'ViewContent', {
@@ -1417,7 +1652,31 @@ window.openD = function(id) {
   }
 
   document.getElementById('mtt').innerHTML = ad.title || `${lPT(ad.type)} - ${lOP(ad.op)}`;
-  document.getElementById('mimg').innerHTML = `<div class="mimg-ph">${ad.type==='villa'?'🏡':ad.type==='maison'?'🏠':ad.type==='local'?'🛍️':ad.type==='residence'?'🏢':'🏘️'}</div>`;
+  const TYPE_ICON_MODAL = {
+    aadl:'🏗️', social:'🏠', lpp:'🏢', lsp:'🌿',
+    villa:'🏡', maison:'🏠', appart:'🏢', residence:'🏙️', local:'🛍️'
+  };
+  const modalIcon = TYPE_ICON_MODAL[ad.type] || '🏘️';
+  const TYPE_BG_MODAL = {
+    aadl:'linear-gradient(135deg,#DBEAFE,#BFDBFE)',
+    social:'linear-gradient(135deg,#EDE9FE,#DDD6FE)',
+    lpp:'linear-gradient(135deg,#FEE2E2,#FECACA)',
+    lsp:'linear-gradient(135deg,#D1FAE5,#A7F3D0)',
+    villa:'linear-gradient(135deg,#FEF3C7,#FDE68A)',
+    maison:'linear-gradient(135deg,#DCFCE7,#BBF7D0)',
+    appart:'linear-gradient(135deg,#E0F2FE,#BAE6FD)',
+    residence:'linear-gradient(135deg,#F3E8FF,#E9D5FF)',
+    local:'linear-gradient(135deg,#FFE4E6,#FECDD3)',
+  };
+  if (ad.imgBase64) {
+    document.getElementById('mimg').innerHTML =
+      `<img src="${ad.imgBase64}" alt="${ad.title||''}" style="width:100%;height:100%;object-fit:cover"/>`;
+    document.getElementById('mimg').style.background = '';
+  } else {
+    document.getElementById('mimg').style.background = TYPE_BG_MODAL[ad.type] || 'linear-gradient(135deg,#E8F5EE,#C8E6D9)';
+    document.getElementById('mimg').innerHTML =
+      `<div class="mimg-ph" style="background:transparent">${modalIcon}</div>`;
+  }
   document.getElementById('mbg').innerHTML = `
     <span class="bt" style="background:${getTypeColor(ad.type)};position:static">${lPT(ad.type)}</span>
     <span class="bo" style="background:${getOpColor(ad.op)};position:static;color:#fff">${lOP(ad.op)}</span>
@@ -1692,28 +1951,31 @@ window.sub = async function() {
   btn.disabled = true;
   btn.textContent = T.toastPosting;
   try {
-    await addDoc(adsCol, {
-      type: document.getElementById('pt').value,
-      op: document.getElementById('po').value,
-      rooms: document.getElementById('pr').value,
-      condition: document.getElementById('pcond').value,
-      status: document.getElementById('pstat').value,
-      title: `${PT[document.getElementById('pt').value]} - ${loc}`,
-      commune: loc.split(/[-–]/)[0].trim(),
-      area: parseInt(document.getElementById('pa').value) || 0,
-      price: parseInt(priceRaw) || 0,
-      desc: document.getElementById('pd').value || '',
-      phone: phone,
-      date: new Date().toISOString().slice(0, 10),
-      createdAt: Date.now(),
-      views: 0
-    });
+      const docData = {
+        type: document.getElementById('pt').value,
+        op: document.getElementById('po').value,
+        rooms: document.getElementById('pr').value,
+        condition: document.getElementById('pcond').value,
+        status: document.getElementById('pstat').value,
+        title: `${PT[document.getElementById('pt').value]} - ${loc}`,
+        commune: loc.split(/[-–]/)[0].trim(),
+        area: parseInt(document.getElementById('pa').value) || 0,
+        price: parseInt(priceRaw) || 0,
+        desc: document.getElementById('pd').value || '',
+        phone: phone,
+        date: new Date().toISOString().slice(0, 10),
+        createdAt: Date.now(),
+        views: 0
+      };
+      if (uploadedImgBase64) docData.imgBase64 = uploadedImgBase64;
+      await addDoc(adsCol, docData);
     window.cm('pm');
     document.getElementById('pl').value = '';
     document.getElementById('ph').value = '';
     document.getElementById('pp').value = '';
     document.getElementById('pa').value = '';
     document.getElementById('pd').value = '';
+    resetImgUpload();
     toast(T.toastPosted);
   } catch (e) {
     toast(T.toastFailed, 'red');
@@ -2354,6 +2616,12 @@ function applyTranslation(lang) {
   const submitBtn = document.querySelector('.btn-submit');
   if (submitBtn && !submitBtn.disabled) submitBtn.textContent = T.submitBtn;
 
+  // ── حقل الصورة ──
+  const imgUploadLabel = document.querySelector('#imgUploadArea .img-upload-label');
+  const imgUploadHint  = document.querySelector('#imgUploadArea .img-upload-hint');
+  if (imgUploadLabel) imgUploadLabel.textContent = lang === 'fr' ? 'Appuyez pour choisir une photo' : 'اضغط لاختيار صورة';
+  if (imgUploadHint)  imgUploadHint.textContent  = lang === 'fr' ? 'JPG / PNG – Max 2MB' : 'JPG / PNG – الحجم الأقصى 2MB';
+
   // ── Detail modal static elements ──
   const mcall = document.getElementById('mcall');
   if (mcall) mcall.textContent = T.callBtn;
@@ -2430,6 +2698,249 @@ startFirebaseListener();
 
 // Apply French as default language after DOM is ready
 setTimeout(() => applyTranslation('fr'), 150);
+
+// ── رفع الصورة ──
+let uploadedImgBase64 = null;
+
+window.handleImgUpload = function(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) {
+    toast('⚠️ حجم الصورة يتجاوز 2MB', 'red'); return;
+  }
+  const reader = new FileReader();
+  reader.onload = e => {
+    uploadedImgBase64 = e.target.result;
+    const preview = document.getElementById('imgPreviewPost');
+    const placeholder = document.getElementById('imgUploadPlaceholder');
+    const removeBtn = document.getElementById('imgRemoveBtn');
+    preview.src = uploadedImgBase64;
+    preview.style.display = 'block';
+    placeholder.style.display = 'none';
+    removeBtn.style.display = 'flex';
+  };
+  reader.readAsDataURL(file);
+};
+
+window.removeImg = function(e) {
+  e.stopPropagation();
+  uploadedImgBase64 = null;
+  document.getElementById('imgFileInput').value = '';
+  document.getElementById('imgPreviewPost').style.display = 'none';
+  document.getElementById('imgUploadPlaceholder').style.display = 'block';
+  document.getElementById('imgRemoveBtn').style.display = 'none';
+};
+
+function resetImgUpload() {
+  uploadedImgBase64 = null;
+  const input = document.getElementById('imgFileInput');
+  if (input) input.value = '';
+  const preview = document.getElementById('imgPreviewPost');
+  if (preview) preview.style.display = 'none';
+  const placeholder = document.getElementById('imgUploadPlaceholder');
+  if (placeholder) placeholder.style.display = 'block';
+  const removeBtn = document.getElementById('imgRemoveBtn');
+  if (removeBtn) removeBtn.style.display = 'none';
+}
+
+// ── مولّد الوصف الذكي بالذكاء الاصطناعي (Claude API) ──
+window.generateSmartDesc = async function() {
+  const btn   = document.getElementById('aiDescBtn');
+  const icon  = document.getElementById('aiDescIcon');
+  const label = document.getElementById('aiDescLabel');
+  const status = document.getElementById('aiDescStatus');
+
+  // جمع بيانات النموذج
+  const ptVal   = document.getElementById('pt').value;
+  const poVal   = document.getElementById('po').value;
+  const prVal   = document.getElementById('pr').value;
+  const paVal   = document.getElementById('pa').value;
+  const plVal   = document.getElementById('pl').value.trim();
+  const ppVal   = document.getElementById('pp').value;
+  const condVal = document.getElementById('pcond').value;
+
+  if (!plVal || !ppVal) {
+    status.textContent = '⚠️ أدخل البلدية والسعر أولاً';
+    status.style.display = 'block';
+    status.style.background = '#FFF0F2';
+    status.style.color = '#CE1126';
+    setTimeout(() => status.style.display = 'none', 3000);
+    return;
+  }
+
+  // تحويل القيم لنص مقروء
+  const typeLabels = { aadl:'AADL', social:'السكن الاجتماعي', lpp:'LPP', lsp:'LSP',
+    villa:'فيلا', maison:'منزل', appart:'شقة', residence:'ريزيدنس', local:'محل تجاري' };
+  const opLabels   = { kira:'للكراء', bay3:'للبيع', achat:'للشراء', tbadol:'للتبادل' };
+  const roomLabels = { f1:'F1', f2:'F2', f3:'F3', f4:'F4', f5:'F5', f6:'F6+' };
+  const condLabels = { neuf:'جديد', utilise:'مستعمل' };
+
+  const propType = typeLabels[ptVal] || ptVal;
+  const opType   = opLabels[poVal]   || poVal;
+  const rooms    = roomLabels[prVal] || prVal;
+  const area     = paVal ? `${paVal} م²` : 'غير محدد';
+  const price    = ppVal ? `${Number(ppVal).toLocaleString('fr-DZ')} دج` : 'غير محدد';
+  const cond     = condLabels[condVal] || condVal;
+
+  const prompt = `أنت خبير في التسويق العقاري الجزائري. اكتب وصفاً إعلانياً احترافياً وجذاباً لعقار بالمواصفات التالية:
+
+نوع العقار: ${propType} ${rooms}
+العملية: ${opType}
+الموقع: ${plVal}
+المساحة: ${area}
+السعر: ${price}
+الحالة: ${cond}
+
+القواعد:
+- الأسلوب: عربي فصيح مع بعض العبارات الجزائرية الشائعة
+- الطول: 3-4 جمل مركّزة فقط (لا إطالة)
+- اذكر الموقع وميزة الحي بإيجاز
+- اختم بعبارة تحث على الاتصال
+- لا تذكر السعر (موجود في حقل مستقل)
+- لا تضف عنواناً أو رقم هاتف
+
+أعطني فقط نص الوصف بدون أي تعليق أو تمهيد.`;
+
+  // تحديث حالة الزر
+  btn.disabled = true;
+  icon.textContent = '⏳';
+  label.textContent = 'جارٍ التوليد...';
+  status.style.display = 'none';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 300,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const text = data.content?.map(b => b.text || '').join('').trim();
+
+    if (text) {
+      document.getElementById('pd').value = text;
+      // أنيميشن نجاح
+      icon.textContent = '✅';
+      label.textContent = 'تم التوليد! يمكنك التعديل';
+      btn.style.background = 'linear-gradient(135deg,#15803D,#166534)';
+      status.textContent = '✨ تم إنشاء الوصف — راجعه وعدّل حسب الحاجة';
+      status.style.background = '#EAF5EF';
+      status.style.color = '#0D3B2E';
+      status.style.display = 'block';
+      setTimeout(() => {
+        icon.textContent = '✨';
+        label.textContent = 'ولّد وصفاً ذكياً بالذكاء الاصطناعي';
+        btn.style.background = 'linear-gradient(135deg,#5E35B1,#7B1FA2)';
+      }, 3000);
+    } else {
+      throw new Error('empty response');
+    }
+  } catch (err) {
+    console.error('AI desc error:', err);
+    icon.textContent = '❌';
+    label.textContent = 'فشل التوليد — حاول مرة أخرى';
+    status.textContent = '❌ تعذّر الاتصال بالذكاء الاصطناعي. اكتب الوصف يدوياً.';
+    status.style.background = '#FFF0F2';
+    status.style.color = '#CE1126';
+    status.style.display = 'block';
+    setTimeout(() => {
+      icon.textContent = '✨';
+      label.textContent = 'ولّد وصفاً ذكياً بالذكاء الاصطناعي';
+      btn.style.background = 'linear-gradient(135deg,#5E35B1,#7B1FA2)';
+      status.style.display = 'none';
+    }, 4000);
+  } finally {
+    btn.disabled = false;
+  }
+};
+
+// ── Schema ديناميكي لكل إعلان (SEO) ──
+function injectAdSchema(ad) {
+  const old = document.getElementById('dynamic-ad-schema');
+  if (old) old.remove();
+
+  const roomsNum = ad.rooms ? parseInt(ad.rooms.replace('f','')) || null : null;
+
+  const schemaObj = {
+    "@context": "https://schema.org",
+    "@type": "Accommodation",
+    "name": ad.title || `${lPT(ad.type)} ${ad.rooms?.toUpperCase()||''} - ${ad.commune||'الجزائر'}`,
+    "description": ad.desc || `${lPT(ad.type)} ${lOP(ad.op)} في ${ad.commune||'الجزائر العاصمة'}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": ad.commune || "Alger",
+      "addressRegion": "Alger",
+      "addressCountry": "DZ"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": String(ad.price || 0),
+      "priceCurrency": "DZD",
+      "availability": ad.status === 'dispo'
+        ? "https://schema.org/InStock"
+        : "https://schema.org/SoldOut"
+    }
+  };
+
+  if (ad.area) schemaObj.floorSize = { "@type":"QuantitativeValue", "value":String(ad.area), "unitCode":"MTK" };
+  if (roomsNum) schemaObj.numberOfRooms = roomsNum;
+
+  if (ad.op === 'kira') {
+    schemaObj.offers.priceSpecification = {
+      "@type":"UnitPriceSpecification",
+      "price": String(ad.price||0),
+      "priceCurrency":"DZD",
+      "referenceQuantity": { "@type":"QuantitativeValue","value":"1","unitCode":"MON" }
+    };
+  }
+
+  const script = document.createElement('script');
+  script.id = 'dynamic-ad-schema';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schemaObj);
+  document.head.appendChild(script);
+}
+
+window.calcEstimate = function() {
+  const area  = parseFloat(document.getElementById('calcArea').value);
+  const price = parseFloat(document.getElementById('calcPriceM').value);
+  const res   = document.getElementById('calcResult');
+  if (!area || !price) {
+    res.innerHTML = '<span style="color:#F0C855">⚠️ أدخل المساحة والسعر للمتر المربع</span>';
+    res.style.display = 'block'; return;
+  }
+  const total   = area * price;
+  const taxFees = total * 0.05;
+  const totalSantime = total * 100;
+  res.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:3px">📐 المساحة</div>
+        <div style="font-size:15px;font-weight:700;color:#fff">${area.toLocaleString('fr-DZ')} م²</div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);margin-bottom:3px">💰 السعر/م²</div>
+        <div style="font-size:15px;font-weight:700;color:#fff">${price.toLocaleString('fr-DZ')} دج</div>
+      </div>
+      <div style="grid-column:1/-1;background:rgba(240,200,85,.15);border-radius:8px;padding:12px">
+        <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:4px">📋 التقييم الإداري الإجمالي</div>
+        <div style="font-size:20px;font-weight:900;color:#F0C855">${total.toLocaleString('fr-DZ')} دج</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:2px">${(totalSantime/1e6).toFixed(0)} مليون سنتيم</div>
+      </div>
+      <div style="grid-column:1/-1;background:rgba(206,17,38,.15);border-radius:8px;padding:12px">
+        <div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:4px">📑 رسوم التسجيل التقريبية (5%)</div>
+        <div style="font-size:18px;font-weight:900;color:#FF8A8A">${taxFees.toLocaleString('fr-DZ')} دج</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:10px">⚠️ هذا تقدير إداري أدنى — أسعار السوق الفعلية قد تكون أعلى</div>
+  `;
+  res.style.display = 'block';
+};
 
 // ── PWA: تسجيل Service Worker ──
 if ('serviceWorker' in navigator) {
