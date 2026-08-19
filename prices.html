@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<!-- Meta Pixel Code -->
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -18,6 +18,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 /></noscript>
+<!-- Schema Markup – SEO Structured Data -->
 <!-- Schema Markup – SEO Structured Data -->
 <script type="application/ld+json">
 {
@@ -83,8 +84,8 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <!-- End Schema Markup -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
-<title>Darna Immo – دارنا إيمو | إعلانات عقارية شاملة</title>
-<meta name="description" content="دارنا إيمو – منصة عقارية جزائرية متخصصة في إعلانات AADL، LPP، السكن الاجتماعي، الفيلات، المنازل، المحلات"/>
+<title>دليل أسعار العقارات في الجزائر العاصمة 2026 | Darna Immo</title>
+<meta name="description" content="دليل شامل ومحدّث لأسعار شقق AADL وLPP والفيلات والمحلات التجارية في الجزائر العاصمة لعام 2026، مع حاسبة تقييم تفاعلية."/>
 <meta name="keywords" content="AADL, LPP, كراء شقة, بيع شقة, شراء عقار, تبادل عقار, فيلا للبيع, منزل, ريزيدنس, محل تجاري, عقار الجزائر, أسعار العقارات بالسنتيم"/>
 <meta name="robots" content="index, follow"/>
 <link rel="manifest" href="manifest.json"/>
@@ -95,40 +96,9 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <link rel="apple-touch-icon" href="assets/logo.png"/>
 <link rel="icon" type="image/png" href="assets/logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="assets/styles.css"/>
 </head>
-<body data-mode="home">
-
-<!-- ══ شاشة الترحيب ══ -->
-<div id="welcomeScreen">
-  <div class="wlc-bg"></div>
-  <div class="wlc-inner">
-    <div class="wlc-logo">
-      <img src="assets/logo.png" alt="Darna Immobilier" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div class="wlc-logo-fallback">D</div>
-    </div>
-    <h1 class="wlc-title">DARNA <span>IMMOBILIER</span></h1>
-    <p class="wlc-sub">🇩🇿 منصتك العقارية في الجزائر العاصمة</p>
-    <p class="wlc-q">ماذا تبحث عن ؟</p>
-    <div class="wlc-cards">
-      <button class="wlc-card" onclick="chooseOp('kira')">
-        <div class="wlc-card-icon">🔑</div>
-        <div class="wlc-card-label">كـراء</div>
-        <div class="wlc-card-sub">Location</div>
-        <div class="wlc-card-arrow">←</div>
-      </button>
-      <button class="wlc-card" onclick="chooseOp('bay3')">
-        <div class="wlc-card-icon">🏷️</div>
-        <div class="wlc-card-label">بـيع</div>
-        <div class="wlc-card-sub">Vente</div>
-        <div class="wlc-card-arrow">←</div>
-      </button>
-    </div>
-    <button class="wlc-all" onclick="chooseOp('all')">
-      عرض كل الإعلانات &nbsp;←
-    </button>
-  </div>
-</div>
+<body>
 
 <div class="flag-strip"></div>
 <header>
@@ -136,310 +106,19 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
     <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span>نشرإعلان</span></button>
     <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
   </div>
-  <a class="logo" href="#" onclick="showWelcome()">
+  <a class="logo" href="index.html">
     <div class="logo-text" style="text-align:left"><div class="d1">DARNA IMMOBILIER</div><div class="d2">VOTRE PLATEFORME IMMOBILIÈRE ALGÉRIENNE</div></div>
     <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
   </a>
 </header>
+
 <nav class="tabbar" id="tabbar">
-  <button class="tabbtn active" id="tabbtn-ads" onclick="switchTab('ads')">🏠 <span id="tabLabelAds">الإعلانات</span></button>
-  <button class="tabbtn" id="tabbtn-prices" onclick="switchTab('prices')">📊 <span id="tabLabelPrices">الأسعار</span></button>
-  <button class="tabbtn" id="tabbtn-articles" onclick="switchTab('articles')">📚 <span id="tabLabelArticles">المقالات</span></button>
-  <button class="tabbtn" id="tabbtn-legal" onclick="switchTab('legal')">⚖️ <span id="tabLabelLegal">النصائح القانونية</span></button>
+  <a class="tabbtn" href="index.html">🏠 <span id="tabLabelAds">الإعلانات</span></a>
+  <a class="tabbtn active" href="prices.html">📊 <span id="tabLabelPrices">الأسعار</span></a>
+  <a class="tabbtn" href="articles.html">📚 <span id="tabLabelArticles">المقالات</span></a>
+  <a class="tabbtn" href="legal.html">⚖️ <span id="tabLabelLegal">النصائح القانونية</span></a>
 </nav>
-<div class="tab-panel active" id="tabPanel-ads">
-<section class="hero">
-  <div class="hero-crescent">🇩🇿</div>
-  <h1 class="hero-title" id="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
-  <p class="hero-sub" id="heroSub">جميع إعلانات العقارات في الجزائر العاصمة</p>
-  <div class="tag-row">
-    <span class="tag" id="tagLPP">🏪 LPP</span>
-    <span class="tag" id="tagSocial">🏢 Social</span>
-    <span class="tag" id="tagVilla2">🏛️ فيلا</span>
-    <span class="tag" id="tagMaison">🏡 منزل</span>
-    <span class="tag" id="tagLocal2">🛍️ محل</span>
-    <span class="tag" id="tagAADL">🏢 AADL</span>
-    <span class="tag" id="tagResidence">🏫 ريزيدونس</span>
-  </div>
-  <div class="search-wrap">
-    <button id="searchBtn" onclick="doSearch()">🔍 بحث</button>
-    <input id="searchQ" type="text" placeholder="ابحث بالحي أو البلدية..." onkeyup="if(event.key==='Enter')doSearch()"/>
-  </div>
-</section>
-<div class="stats-wrap"><div class="stats">
-  <div class="stat"><div class="stat-n" id="liveAdCount">0</div><div class="stat-l" id="statL0">إعلان نشط</div></div>
-  <div class="stat"><div class="stat-n">31</div><div class="stat-l" id="statL1">بلدية</div></div>
-  <div class="stat"><div class="stat-n">35</div><div class="stat-l" id="statL2">حي LPP</div></div>
-  <div class="stat"><div class="stat-n">🇩🇿</div><div class="stat-l" id="statL3">الجزائر العاصمة</div></div>
-</div></div>
 
-<!-- رابط تجاوز الإعلانات — ينقل للأسعار والنصائح -->
-<div class="skip-ads-wrap">
-  <a href="#tabbar" class="skip-ads-link" id="skipAdsLink" onclick="event.preventDefault();skipToGuides()">تجاوز الإعلانات واكتشف الأسعار والنصائح ↓</a>
-</div>
-
-<!-- ══ معاينة أحدث العقارات (6 فقط) ══ -->
-<div class="home-section-head">
-  <h2 class="home-section-title" id="homeSectionTitle">أحدث العقارات <span class="cnt">— 0 إعلان</span></h2>
-</div>
-<div class="home-search-note" id="homeSearchNote" style="display:none"></div>
-
-<div class="home-carousel-wrap">
-  <button class="home-arrow prev" id="homeArrowPrev" onclick="homeScroll(1)" aria-label="السابق">‹</button>
-  <div class="home-grid" id="homeGrid"></div>
-  <button class="home-arrow next" id="homeArrowNext" onclick="homeScroll(-1)" aria-label="التالي">›</button>
-</div>
-<div class="home-drag-hint" id="homeDragHint">اسحب لمشاهدة المزيد ←</div>
-
-<div class="home-viewall-wrap">
-  <a class="btn-viewall" id="homeViewAllBtn" href="listings.html">عرض جميع العقارات ←</a>
-</div>
-</div>
-<!-- ═══ /نهاية تبويب الإعلانات ═══ -->
-
-<!-- Detail Modal -->
-<div class="overlay" id="dm" onclick="cov(event,'dm')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="mimg" id="mimg"></div>
-      <button class="mclose" onclick="cm('dm')">✕</button>
-      <div id="mviewsBadge" style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,.5);color:#fff;border-radius:50px;padding:4px 10px;font-size:12px;display:flex;align-items:center;gap:4px">👁️ <span id="mviewsNum">0</span></div>
-    </div>
-    <div class="mbody">
-      <div class="mtitle" id="mtt"></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-        <div class="mbadges" id="mbg"></div>
-        <div class="avg-stars" id="mavgStars">⭐ — <span id="mavgCount"></span></div>
-      </div>
-      <p class="mdesc" id="mds"></p>
-      <div class="mspecs" id="msp"></div>
-
-      <!-- Share link button -->
-      <div style="margin-bottom:14px">
-        <button class="share-link-btn" id="shareLinkBtn" onclick="copyAdLink()">🔗 <span id="shareLinkLabel">نسخ رابط الإعلان</span></button>
-      </div>
-
-      <div class="social-buttons" id="socialBtns"></div>
-
-      <div class="macts">
-        <button class="mact green" id="mcall">📞 اتصل الآن</button>
-        <button class="mact gold" id="mwa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.532 5.858L.054 23.447a.75.75 0 00.922.922l5.589-1.478A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-          WhatsApp
-        </button>
-      </div>
-
-      <!-- Rating section -->
-      <div class="rating-section">
-        <div class="rating-title">⭐ <span id="ratingTitle">التقييمات</span></div>
-        <div class="rating-summary">
-          <div>
-            <div class="rating-avg-num" id="ratingAvgNum">—</div>
-            <div class="avg-stars" id="ratingAvgStars" style="font-size:16px;margin-top:4px">☆☆☆☆☆</div>
-            <div style="font-size:11px;color:var(--text-sub);margin-top:3px"><span id="ratingCount">0</span> <span id="ratingCountLabel">تقييم</span></div>
-          </div>
-          <div style="flex:1">
-            <div id="ratingBars"></div>
-          </div>
-        </div>
-        <div class="write-review">
-          <div class="review-stars-label" id="reviewStarsLabel">اختر تقييمك</div>
-          <div class="stars-row" id="reviewStars">
-            <span class="star" data-v="5">★</span>
-            <span class="star" data-v="4">★</span>
-            <span class="star" data-v="3">★</span>
-            <span class="star" data-v="2">★</span>
-            <span class="star" data-v="1">★</span>
-          </div>
-          <textarea class="review-input" id="reviewText" rows="2" placeholder="أضف تعليقاً (اختياري)..."></textarea>
-          <button class="btn-review" id="submitReviewBtn" onclick="submitReview()">إرسال التقييم</button>
-        </div>
-      </div>
-
-      <!-- Comments section -->
-      <div class="comments-section">
-        <div class="comments-title">💬 <span id="commentsTitle">التعليقات</span></div>
-        <div id="commentsList"></div>
-        <div class="comment-form">
-          <input id="commentName" type="text" placeholder="اسمك (اختياري)"/>
-          <input id="commentText" type="text" placeholder="أضف تعليقاً..."/>
-          <button onclick="submitComment()" id="commentBtn">إرسال</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Post Modal -->
-<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" rows="4" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
-<button type="button" id="aiDescBtn" onclick="generateSmartDesc()" style="margin-top:8px;width:100%;padding:11px;background:linear-gradient(135deg,#5E35B1,#7B1FA2);color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s">
-  <span id="aiDescIcon">✨</span> <span id="aiDescLabel">ولّد وصفاً ذكياً بالذكاء الاصطناعي</span>
-</button>
-<div id="aiDescStatus" style="display:none;font-family:'Cairo',sans-serif;font-size:12px;text-align:center;padding:6px;border-radius:8px;margin-top:6px"></div>
-</div>
-<div class="fg">
-  <label>📷 صورة العقار (اختياري — صورة واحدة)</label>
-  <div class="img-upload-area" id="imgUploadArea" onclick="document.getElementById('imgFileInput').click()">
-    <img class="img-preview" id="imgPreviewPost" src="" alt=""/>
-    <button class="img-remove-btn" id="imgRemoveBtn" onclick="removeImg(event)">✕</button>
-    <div id="imgUploadPlaceholder">
-      <div class="img-upload-icon">📷</div>
-      <div class="img-upload-label">اضغط لاختيار صورة</div>
-      <div class="img-upload-hint">JPG / PNG – الحجم الأقصى 2MB</div>
-    </div>
-  </div>
-  <input type="file" id="imgFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleImgUpload(this)"/>
-</div>
-<button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button></div></div></div>
-
-<div class="toast" id="tst"></div>
-
-<!-- ══════════ تبويب: النصائح القانونية ══════════ -->
-<div class="tab-panel" id="tabPanel-legal">
-<section id="housingNews" style="background:#F6FAF8;padding:48px 20px;border-top:3px solid #EAF5EF">
-  <div style="max-width:1100px;margin:0 auto">
-
-    <!-- العنوان -->
-    <div style="text-align:center;margin-bottom:32px">
-      <div style="display:inline-block;background:#CE1126;color:#fff;font-size:13px;font-weight:700;padding:6px 18px;border-radius:50px;margin-bottom:12px;font-family:'Cairo',sans-serif">
-        🔴 تنبيه مهم – يجب أن تعرفه
-      </div>
-      <h2 style="font-family:'Cairo',sans-serif;font-size:clamp(18px,4vw,28px);font-weight:900;color:#0D3B2E;margin-bottom:8px">
-        النصائح القانونية قبل شراء أو كراء عقار
-      </h2>
-      <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#667;max-width:580px;margin:0 auto;line-height:1.8">
-        معلومات قانونية وعملية تحميك من الوقوع في أخطاء مكلفة عند شراء أو استئجار عقار.
-      </p>
-    </div>
-
-    <!-- البطاقة الرئيسية -->
-    <div style="background:#fff;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.1);overflow:hidden;max-width:780px;margin:0 auto">
-
-      <!-- رأس البطاقة -->
-      <div style="background:linear-gradient(135deg,#CE1126,#8B0000);padding:22px 24px;position:relative;overflow:hidden">
-        <div style="position:absolute;top:-20px;left:-20px;font-size:120px;opacity:.07;font-weight:900;font-family:'Cairo',sans-serif">⚠️</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:1px;margin-bottom:8px">🚨 تحذير عقاري</div>
-        <h3 style="font-family:'Cairo',sans-serif;font-size:clamp(16px,3vw,22px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:0">
-          خطأ قد يكلفك ملايين...<br/>لا تشترِ أي عقار قبل قراءة هذا!
-        </h3>
-      </div>
-
-      <!-- جسم البطاقة -->
-      <div style="padding:24px">
-
-        <!-- المشكلة -->
-        <div style="background:#FFF0F2;border-radius:12px;padding:16px 18px;margin-bottom:18px;border-right:4px solid #CE1126">
-          <div style="font-family:'Cairo',sans-serif;font-size:14px;font-weight:800;color:#CE1126;margin-bottom:10px">❌ المشكلة</div>
-          <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#444;line-height:1.9;margin-bottom:10px">
-            كثير من الجزائريين يشترون منزلاً أو قطعة أرض بعد رؤية عقد الملكية فقط، ويعتقدون أن ذلك يكفي.
-          </p>
-          <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#444;line-height:1.9;margin-bottom:0">
-            لكنهم يكتشفون بعد الشراء أن العقار:
-          </p>
-          <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px">
-            <div style="font-family:'Cairo',sans-serif;font-size:13px;color:#CE1126;font-weight:600">⛔ مرهون لدى البنك</div>
-            <div style="font-family:'Cairo',sans-serif;font-size:13px;color:#CE1126;font-weight:600">⛔ محل نزاع قضائي</div>
-            <div style="font-family:'Cairo',sans-serif;font-size:13px;color:#CE1126;font-weight:600">⛔ عليه حقوق لفائدة الغير</div>
-          </div>
-          <p style="font-family:'Cairo',sans-serif;font-size:13px;color:#888;line-height:1.8;margin-top:10px;margin-bottom:0">
-            فيصبح المشتري أمام مشاكل قانونية قد تستمر <strong style="color:#CE1126">سنوات</strong>.
-          </p>
-        </div>
-
-        <!-- الحل -->
-        <div style="background:#EAF5EF;border-radius:12px;padding:16px 18px;margin-bottom:18px;border-right:4px solid #0D3B2E">
-          <div style="font-family:'Cairo',sans-serif;font-size:14px;font-weight:800;color:#0D3B2E;margin-bottom:12px">✅ كيف تحمي نفسك؟</div>
-          <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#444;line-height:1.8;margin-bottom:14px">
-            قبل توقيع أي عقد أو دفع أي عربون، اطلب من البائع الوثائق التالية:
-          </p>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="background:#fff;border-radius:9px;padding:11px 14px;display:flex;align-items:flex-start;gap:10px;box-shadow:0 1px 6px rgba(0,0,0,.06)">
-              <span style="font-size:20px;flex-shrink:0">📄</span>
-              <div>
-                <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E">عقد الملكية</div>
-                <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#888">Acte de propriété</div>
-              </div>
-            </div>
-            <div style="background:#fff;border-radius:9px;padding:11px 14px;display:flex;align-items:flex-start;gap:10px;box-shadow:0 1px 6px rgba(0,0,0,.06)">
-              <span style="font-size:20px;flex-shrink:0">📘</span>
-              <div>
-                <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E">الدفتر العقاري</div>
-                <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#888">Livret foncier</div>
-              </div>
-            </div>
-            <div style="background:#fff;border-radius:9px;padding:11px 14px;display:flex;align-items:flex-start;gap:10px;box-shadow:0 1px 6px rgba(0,0,0,.06)">
-              <span style="font-size:20px;flex-shrink:0">📑</span>
-              <div>
-                <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E">شهادة الحالة الرهنية</div>
-                <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#888">État hypothécaire</div>
-              </div>
-            </div>
-            <div style="background:#fff;border-radius:9px;padding:11px 14px;display:flex;align-items:flex-start;gap:10px;box-shadow:0 1px 6px rgba(0,0,0,.06)">
-              <span style="font-size:20px;flex-shrink:0">🏗️</span>
-              <div>
-                <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E">شهادة المطابقة</div>
-                <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#888">Certificat de conformité — للعقارات المبنية</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- نصيحة الخبير -->
-        <div style="background:#FFF8E7;border-radius:12px;padding:16px 18px;border-right:4px solid #C9A84C">
-          <div style="font-family:'Cairo',sans-serif;font-size:14px;font-weight:800;color:#92650A;margin-bottom:10px">💡 نصيحة الخبير</div>
-          <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#555;line-height:1.9;margin-bottom:8px">
-            لا تعتمد على كلام البائع مهما كانت درجة الثقة.
-          </p>
-          <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#555;line-height:1.9;margin-bottom:0">
-            اطلب دائماً من <strong style="color:#0D3B2E">الموثق</strong> التأكد من الوضعية القانونية للعقار قبل إتمام البيع — فالموثق يستطيع التحقق من كثير من الجوانب القانونية التي قد لا ينتبه إليها المشتري.
-          </p>
-        </div>
-
-        <!-- زر المشاركة -->
-        <div style="margin-top:18px;text-align:center">
-          <button onclick="shareNews()" style="background:linear-gradient(135deg,#1877F2,#0d5dbf);color:#fff;border:none;border-radius:10px;padding:12px 28px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.2s" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
-            📢 شارك هذه المعلومة مع أصدقائك
-          </button>
-          <p style="font-family:'Cairo',sans-serif;font-size:12px;color:#aaa;margin-top:10px">
-            ساعد في نشر الوعي العقاري في الجزائر 🇩🇿
-          </p>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- نصائح قانونية إضافية -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;max-width:780px;margin:32px auto 0">
-      <div style="background:#EAF5EF;border-radius:12px;padding:18px">
-        <div style="font-size:24px;margin-bottom:8px">✅</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#0D3B2E;margin-bottom:6px">تحقق من الوثائق</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#556;line-height:1.7">تأكد من وجود دفتر عقاري أو سند ملكية قبل أي عملية بيع أو تنازل عن سكن AADL أو LPP.</div>
-      </div>
-      <div style="background:#EEF4FF;border-radius:12px;padding:18px">
-        <div style="font-size:24px;margin-bottom:8px">📋</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#1C5FAD;margin-bottom:6px">عقد إيجار موثّق</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#556;line-height:1.7">احرص دائماً على توثيق عقد الإيجار لدى موثق أو الجماعة المحلية لضمان حقوقك القانونية.</div>
-      </div>
-      <div style="background:#FFF0F2;border-radius:12px;padding:18px">
-        <div style="font-size:24px;margin-bottom:8px">⚠️</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#CE1126;margin-bottom:6px">احذر من النصب</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#556;line-height:1.7">لا تدفع أي مبلغ قبل معاينة العقار شخصياً والتحقق من هوية البائع ووثائق الملكية.</div>
-      </div>
-      <div style="background:#F3EFFF;border-radius:12px;padding:18px">
-        <div style="font-size:24px;margin-bottom:8px">🏢</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#5B3FA8;margin-bottom:6px">تنازل AADL/LPP</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#556;line-height:1.7">لا يمكن التنازل عن سكن AADL أو LPP قانونياً إلا بعد تسديد كامل الأقساط والحصول على الدفتر العقاري.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-</div>
-<!-- ═══ /نهاية تبويب النصائح القانونية ═══ -->
-
-<!-- ══════════ تبويب: الأسعار ══════════ -->
-<div class="tab-panel" id="tabPanel-prices">
 <section id="priceGuide" style="background:#fff;padding:48px 20px;border-top:3px solid #EAF5EF">
   <div style="max-width:1100px;margin:0 auto">
 
@@ -708,70 +387,28 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 
   </div>
 </section>
+
+
+<!-- Post Modal -->
+<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" rows="4" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
 </div>
-<!-- ═══ /نهاية تبويب الأسعار ═══ -->
-
-<!-- ══════════ تبويب: المقالات ══════════ -->
-<div class="tab-panel" id="tabPanel-articles">
-<section id="articlesSection" style="background:#F6FAF8;padding:48px 20px;border-top:3px solid #EAF5EF">
-  <div style="max-width:1100px;margin:0 auto">
-
-    <div style="text-align:center;margin-bottom:32px">
-      <div style="display:inline-block;background:#EAF5EF;color:#0D3B2E;font-size:13px;font-weight:700;padding:6px 18px;border-radius:50px;margin-bottom:12px">
-        📚 مقالات ودلائل عقارية
-      </div>
-      <h2 style="font-family:'Cairo',sans-serif;font-size:clamp(18px,4vw,28px);font-weight:900;color:#0D3B2E;margin-bottom:8px">
-        دليل مناطق وصيغ السكن في الجزائر العاصمة
-      </h2>
+<div class="fg">
+  <label>📷 صورة العقار (اختياري — صورة واحدة)</label>
+  <div class="img-upload-area" id="imgUploadArea" onclick="document.getElementById('imgFileInput').click()">
+    <img class="img-preview" id="imgPreviewPost" src="" alt=""/>
+    <button class="img-remove-btn" id="imgRemoveBtn" onclick="removeImg(event)">✕</button>
+    <div id="imgUploadPlaceholder">
+      <div class="img-upload-icon">📷</div>
+      <div class="img-upload-label">اضغط لاختيار صورة</div>
+      <div class="img-upload-hint">JPG / PNG – الحجم الأقصى 2MB</div>
     </div>
-
-    <!-- نص SEO غني بالكلمات المفتاحية -->
-    <div style="background:#fff;border-radius:16px;padding:28px;border-right:4px solid #0D3B2E;margin-bottom:24px;box-shadow:0 2px 16px rgba(0,0,0,.06)">
-      <h3 style="font-family:'Cairo',sans-serif;font-size:17px;font-weight:800;color:#0D3B2E;margin-bottom:14px">
-        📍 أشهر الأقطاب الحضرية والمجمعات السكنية في الجزائر العاصمة
-      </h3>
-      <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#445;line-height:2;margin-bottom:14px">
-        تتركز معظم مشاريع السكن بمختلف صيغها (<strong>AADL</strong>، <strong>LPP</strong>، و<strong>LSP</strong> سابقاً) في ولاية الجزائر عبر أقطاب حضرية كبرى وبلديات رئيسية؛ أبرزها <strong>المدينة الجديدة سيدي عبد الله</strong> التي تعد من أكبر المشاريع العمرانية الحديثة وتضم عشرات الآلاف من الوحدات السكنية، من بينها حي 3000 مسكن وأحياء عدل الكبرى. 
-        إضافة إلى بلدية <strong>أولاد فايت</strong> ذات الطابع السكني الهادئ والمتنامي في غرب العاصمة، 
-        وبلديتي <strong>الدار البيضاء</strong> و<strong>باب الزوار</strong> في الشرق اللتين تحظيان بموقع استراتيجي هائل لقربهما من مطار هواري بومدين الدولي والمراكز التجارية الكبرى.
-      </p>
-      <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#445;line-height:2">
-        كما تشهد بلديات مثل <strong>برج الكيفان</strong>، <strong>الحراش</strong>، <strong>بئر مراد رايس</strong>، <strong>حسين داي</strong>، <strong>شراقة</strong>، و<strong>زرالدة</strong> طلباً متزايداً على الشقق للكراء والبيع. 
-        وتتفاوت أسعار العقارات في العاصمة تفاوتاً كبيراً بين البلديات بناءً على الموقع والقرب من شبكة النقل (المترو والترامواي)، إذ قد يصل فارق السعر بين شقتين من نفس النوع في بلديتين مختلفتين إلى أكثر من <strong>5 ملايين دينار جزائري (500 مليون سنتيم)</strong>.
-      </p>
-    </div>
-
-    <!-- مقال: الفرق بين الصيغ السكنية -->
-    <div style="background:#fff;border-radius:16px;padding:28px;border-right:4px solid #C2410C;margin-bottom:24px;box-shadow:0 2px 16px rgba(0,0,0,.06)">
-      <h3 style="font-family:'Cairo',sans-serif;font-size:17px;font-weight:800;color:#0D3B2E;margin-bottom:14px">
-        🏷️ ما الفرق بين AADL وLPP والسكن الاجتماعي؟
-      </h3>
-      <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#445;line-height:2;margin-bottom:10px">
-        كثيراً ما يُخلط بين صيغ السكن المدعوم في الجزائر. سكنات <strong>عدل (AADL)</strong> هي صيغة "بيع بالإيجار"، وسكنات <strong>LPP</strong> هي "ترقوي عمومي" موجه للطبقة المتوسطة العليا؛ أما <strong>السكن الاجتماعي</strong> الحقيقي (السكن العمومي الإيجاري) فهو موجه حصرياً للفئات ذات الدخل المحدود ويُمنح بإيجار رمزي، وليس مطروحاً للبيع أو التنازل في السوق الموازي.
-      </p>
-      <p style="font-family:'Cairo',sans-serif;font-size:14px;color:#445;line-height:2">
-        بعبارة أخرى، AADL وLPP صيغتان مدعومتان لكنهما تختلفان قانونياً عن "السكن الاجتماعي" بالمعنى الدقيق للكلمة، ولكل صيغة شروط أهلية وإجراءات تنازل مختلفة.
-      </p>
-    </div>
-
-    <!-- نصيحة مقارنة الأسعار -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px">
-      <div style="background:#FFF8E7;border-radius:12px;padding:18px">
-        <div style="font-size:24px;margin-bottom:8px">💰</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#92650A;margin-bottom:6px">قارن الأسعار</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#556;line-height:1.7">استخدم فلاتر دارنا إيمو للمقارنة بين إعلانات نفس البلدية قبل اتخاذ قرارك النهائي.</div>
-      </div>
-      <div style="background:#EEF4FF;border-radius:12px;padding:18px">
-        <div style="font-size:24px;margin-bottom:8px">🚇</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;color:#1C5FAD;margin-bottom:6px">القرب من النقل</div>
-        <div style="font-family:'Cairo',sans-serif;font-size:12px;color:#556;line-height:1.7">القرب من محطات المترو والترامواي يرفع قيمة العقار إيجاراً وبيعاً بشكل ملحوظ في معظم البلديات.</div>
-      </div>
-    </div>
-
   </div>
-</section>
+  <input type="file" id="imgFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleImgUpload(this)"/>
 </div>
-<!-- ═══ /نهاية تبويب المقالات ═══ -->
+<button class="btn-submit" onclick="sub()">🚀 نشر الإعلان مجاناً</button></div></div></div>
+
+<div class="toast" id="tst"></div>
+
 
 <footer><strong>DARNA IMMO</strong> · <span id="footerText">منصة الجزائر العاصمة للعقارات والسكن الاجتماعي</span>
 
@@ -786,12 +423,16 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 
 <div style="margin-top:14px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap"><a href="#" onclick="openPage('privacy')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">🔒 سياسة الخصوصية</a><a href="#" onclick="openPage('terms')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">📋 شروط الاستخدام</a><a href="#" onclick="openPage('contact')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">📬 اتصل بنا</a><a href="#" onclick="openPage('about')" style="color:rgba(255,255,255,.6);font-size:12px;text-decoration:none">ℹ️ حول الموقع</a></div><div class="footer-flag"></div></footer>
 
+
 <!-- Page Modal -->
 <div class="overlay" id="pageModal" onclick="if(event.target===this)closePage()" style="align-items:flex-start;padding:14px;overflow-y:auto"><div style="background:#fff;border-radius:18px;max-width:620px;width:100%;margin:auto;box-shadow:0 24px 64px rgba(0,0,0,.3)"><div style="background:linear-gradient(135deg,var(--green),var(--green-mid));padding:20px 22px;border-radius:18px 18px 0 0;display:flex;justify-content:space-between;align-items:center"><div id="pageTitle" style="font-size:17px;font-weight:900;color:#fff"></div><button onclick="closePage()" style="background:rgba(255,255,255,.2);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:17px;cursor:pointer">✕</button></div><div id="pageContent" style="padding:24px;line-height:2;font-size:14px;color:#333"></div></div></div>
 
-<!-- زر "أضف شقتك مجاناً" العائم - خارج التبويبات ليبقى ظاهراً دائماً في كل الصفحات -->
+
+<!-- زر "أضف شقتك مجاناً" العائم - يبقى ظاهراً في كل الصفحات -->
 <button class="fab" onclick="openPost()"><span class="fab-icon">＋</span> <span id="fabLabel">أضف إعلانك مجاناً</span></button>
 
-<script type="module" src="app.js"></script>
+
+<script type="module" src="assets/app.js"></script>
+
 </body>
 </html>
