@@ -1,7 +1,7 @@
 {
-  "name": "دارنا إيمو - Darna Immo",
-  "short_name": "دارنا إيمو",
-  "description": "منصة عقارية جزائرية - AADL، LPP، فيلا، شقة، محل",
+  "name": "Darna Immo — Spécialiste LPP à Alger",
+  "short_name": "Darna Immo",
+  "description": "Spécialiste des appartements LPP à Alger — achat, vente et location. AADL, social, villa, local également disponibles.",
   "start_url": "./index.html",
   "scope": "./",
   "id": "/index.html",
@@ -9,7 +9,7 @@
   "background_color": "#0D3B2E",
   "theme_color": "#0D3B2E",
   "orientation": "portrait-primary",
-  "lang": "ar",
+  "lang": "fr-DZ",
   "dir": "rtl",
   "icons": [
     {

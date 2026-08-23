@@ -505,7 +505,61 @@ html{scroll-behavior:smooth}
 /* منع أي سكرول أفقي على مستوى الصفحة */
 body{overflow-x:hidden}
 
-/* ══════ صفحة جميع العقارات (listings.html) ══════ */
+/* ══════════════════════════════════════════════════════════════════
+   تبسيط الهيدر على الهاتف — قائمة ☰ منسدلة بدل الـ Tabbar الثابت
+   ══════════════════════════════════════════════════════════════════ */
+.hamburger-btn{display:none;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;align-items:center;justify-content:center}
+.hamburger-btn:hover{background:rgba(255,255,255,.18)}
+
+.mobile-menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.mobile-menu-overlay.open{display:block}
+.mobile-menu{position:fixed;top:0;right:-260px;width:250px;height:100%;background:var(--white);z-index:151;box-shadow:-6px 0 24px rgba(0,0,0,.2);transition:right .25s ease;padding:70px 0 20px;display:flex;flex-direction:column;gap:2px}
+.mobile-menu.open{right:0}
+.mobile-menu-item{display:flex;align-items:center;gap:10px;padding:14px 20px;background:none;border:none;font-family:'Cairo',sans-serif;font-size:14.5px;font-weight:700;color:var(--text);cursor:pointer;text-align:right;width:100%}
+.mobile-menu-item:hover,.mobile-menu-item.active{background:var(--bg);color:var(--green)}
+
+@media(max-width:767px){
+  /* تخفيف الازدحام: الـ Tabbar الدائم يختفي على الهاتف، القائمة ☰ تحل محله */
+  .tabbar{display:none}
+  .hamburger-btn{display:flex}
+  #postBtnMobileLabel{display:none}
+  #postBtn{padding:9px 12px}
+}
+@media(min-width:768px){
+  .mobile-menu-overlay, .mobile-menu{display:none!important}
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   LPP-FIRST HOMEPAGE — أزرار الهيرو + الفلاتر السريعة + قسم الملاك
+   ══════════════════════════════════════════════════════════════════ */
+.hero-cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px auto 6px;max-width:520px}
+.btn-hero-cta{display:inline-flex;align-items:center;gap:7px;padding:12px 20px;border-radius:50px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:800;cursor:pointer;border:none;transition:.2s;white-space:nowrap}
+.btn-hero-cta.primary{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green)}
+.btn-hero-cta.secondary{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-hero-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+@media(max-width:480px){.hero-cta-row{flex-direction:column;align-items:stretch}.btn-hero-cta{justify-content:center}}
+
+/* فلاتر LPP السريعة */
+.quick-filters-wrap{max-width:1080px;margin:22px auto;padding:16px 18px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow)}
+.qf-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.qf-row:last-child{margin-bottom:0}
+.qf-label{font-size:13px;font-weight:800;color:var(--green);min-width:78px}
+.qf-chip{padding:6px 14px;border-radius:50px;border:1.5px solid var(--border);background:#fff;font-family:'Cairo',sans-serif;font-size:12.5px;font-weight:700;color:#444;cursor:pointer;transition:.2s}
+.qf-chip.active,.qf-chip:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.qf-select{flex:1;min-width:140px;padding:8px 10px;border-radius:10px;border:1.5px solid var(--border);font-family:'Cairo',sans-serif;font-size:13px;color:#333;background:#fff}
+
+/* قسم الملاك */
+.owner-section{max-width:1080px;margin:22px auto;padding:28px 20px;text-align:center;background:linear-gradient(135deg,var(--green),var(--green-mid));border-radius:var(--radius);color:#fff}
+.owner-icon{font-size:34px;margin-bottom:8px}
+.owner-title{font-size:19px;font-weight:900;margin-bottom:8px}
+.owner-desc{font-size:13.5px;line-height:1.8;color:rgba(255,255,255,.9);max-width:520px;margin:0 auto 16px}
+.btn-owner-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:50px;font-family:'Cairo',sans-serif;font-size:14.5px;font-weight:800;cursor:pointer;transition:.2s}
+.btn-owner-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+
+/* أنواع أخرى من العقارات */
+.other-props-wrap{max-width:1080px;margin:6px auto 26px;padding:14px 18px;text-align:center;font-size:13px;color:var(--text-sub);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
+.other-props-link{color:var(--green-mid);font-weight:800;text-decoration:none}
+.other-props-link:hover{color:var(--gold);text-decoration:underline}
 .listings-topbar-page{max-width:1080px;margin:0 auto;padding:18px 18px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .listings-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--green-mid);text-decoration:none}
 .listings-back:hover{color:var(--gold)}

@@ -301,6 +301,9 @@ let dataLoadError = false;
 // State
 let DATA = [];
 let fTypes = new Set(['aadl','social','lpp','lsp','villa','maison','appart','residence','local']);
+// الصفحة الرئيسية أصبحت متخصصة في LPP افتراضياً — listings.html تبقى Marketplace عام (فتحها بدون فلاتر URL تُبقي كل الأنواع)
+if (PAGE_MODE === 'home') fTypes = new Set(['lpp']);
+let homeShowAll = false; // يصبح true عند اختيار "عرض كل أنواع العقارات" من شاشة الترحيب
 let fOp = 'all';
 let fRooms = 'all';
 let fCondition = 'all';
@@ -433,13 +436,16 @@ function skeletonCardsHTML(n) {
 }
 
 function homeSearchIsActive() {
-  return !!(fSearch && fSearch.trim()) || fOp !== 'all';
+  return !!(fSearch && fSearch.trim());
 }
 
 function buildListingsUrl() {
   const params = new URLSearchParams();
   if (fSearch && fSearch.trim()) params.set('search', fSearch.trim());
   if (fOp !== 'all') params.set('transaction', fOp === 'bay3' ? 'sale' : (fOp === 'kira' ? 'rent' : fOp));
+  if (fCommune) params.set('commune', fCommune);
+  if (fRooms !== 'all') params.set('rooms', fRooms);
+  if (!homeShowAll) params.set('type', 'lpp');
   return 'listings.html' + (params.toString() ? ('?' + params.toString()) : '');
 }
 
@@ -481,7 +487,7 @@ function renderHomePreview() {
   if (!dataLoaded) { renderHomeLoading(); return; }
 
   const searchActive = homeSearchIsActive();
-  const totalCount = searchActive ? displayList.length : DATA.length;
+  const totalCount = displayList.length;
   const items = displayList.slice(0, HOME_PREVIEW_COUNT);
 
   // ── عنوان القسم + العداد ──
@@ -489,9 +495,13 @@ function renderHomePreview() {
   const noteEl  = document.getElementById('homeSearchNote');
   const viewAllBtn = document.getElementById('homeViewAllBtn');
   if (titleEl) {
-    titleEl.innerHTML = searchActive
-      ? (fr ? `Résultats <span class="cnt">${totalCount}</span>` : `نتائج البحث <span class="cnt">${totalCount}</span>`)
-      : (fr ? `Dernières annonces <span class="cnt">${totalCount}</span>` : `أحدث العقارات <span class="cnt">— ${totalCount} ${totalCount>1?'إعلانات':'إعلان'}</span>`);
+    if (searchActive) {
+      titleEl.innerHTML = fr ? `Résultats <span class="cnt">${totalCount}</span>` : `نتائج البحث <span class="cnt">${totalCount}</span>`;
+    } else if (homeShowAll) {
+      titleEl.innerHTML = fr ? `Dernières annonces <span class="cnt">${totalCount}</span>` : `أحدث العقارات <span class="cnt">— ${totalCount} ${totalCount>1?'إعلانات':'إعلان'}</span>`;
+    } else {
+      titleEl.innerHTML = fr ? `Derniers appartements LPP <span class="cnt">${totalCount}</span>` : `أحدث شقق LPP <span class="cnt">— ${totalCount} ${totalCount>1?'إعلانات':'إعلان'}</span>`;
+    }
   }
   if (noteEl) {
     noteEl.style.display = searchActive ? 'block' : 'none';
@@ -503,7 +513,9 @@ function renderHomePreview() {
     viewAllBtn.href = buildListingsUrl();
     viewAllBtn.innerHTML = searchActive
       ? (fr ? 'Voir tous les résultats →' : 'عرض جميع النتائج ←')
-      : (fr ? 'Voir toutes les annonces →' : 'عرض جميع العقارات ←');
+      : (homeShowAll
+          ? (fr ? 'Voir toutes les annonces →' : 'عرض جميع العقارات ←')
+          : (fr ? 'Voir tous les LPP →' : 'عرض جميع شقق LPP ←'));
   }
 
   if (items.length === 0) {
@@ -1135,25 +1147,65 @@ window.showWelcome = function() {
   ws.style.animation = '';
 };
 
+// ── شاشة الترحيب: أبحث عن LPP / أملك LPP / عرض كل الأنواع ──
 window.chooseOp = function(op) {
-  // تطبيق الفلتر المختار
-  if (op !== 'all') {
-    fOp = op;
-    // مزامنة أزرار العملية في الفلاتر
-    document.querySelectorAll('[data-group="op"]').forEach(b => {
-      b.classList.toggle('on', b.dataset.val === op);
-    });
-    document.querySelectorAll('[data-group="op-all"]').forEach(b => b.classList.remove('on'));
-  }
-  // إخفاء الشاشة بأنيميشن
   const ws = document.getElementById('welcomeScreen');
-  if (ws) {
+  const closeWelcome = () => {
+    if (!ws) return;
     ws.classList.add('hide');
     setTimeout(() => { ws.style.display = 'none'; }, 400);
+  };
+
+  if (op === 'all') {
+    homeShowAll = true;
+    fTypes = new Set(['aadl','social','lpp','lsp','villa','maison','appart','residence','local']);
+    closeWelcome();
+    applyFilters();
+  } else if (op === 'owner') {
+    closeWelcome();
+    setTimeout(() => openOwnerPost(), 420);
+  } else {
+    // op === 'search' → تصفح شقق LPP (الوضع الافتراضي أصلاً على الصفحة الرئيسية)
+    closeWelcome();
+    applyFilters();
   }
-  // تطبيق الفلاتر
+};
+
+// ── فتح نموذج نشر إعلان مع تعبئة النوع تلقائياً بـ LPP ──
+window.openOwnerPost = function() {
+  openPost();
+  presetPostType('lpp');
+};
+
+function presetPostType(type) {
+  const ptSelect = document.getElementById('pt');
+  if (ptSelect) ptSelect.value = type;
+}
+
+// ── تمرير سلس نحو شبكة "أحدث شقق LPP" ──
+window.scrollToHomeGrid = function() {
+  const grid = document.getElementById('homeGrid');
+  if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+// ── فلاتر سريعة (الغرف / المعاملة) في الصفحة الرئيسية ──
+window.qfSet = function(kind, val, btnEl) {
+  if (kind === 'rooms') fRooms = val;
+  if (kind === 'op') fOp = val;
+  // مزامنة شكل الأزرار (active) داخل نفس المجموعة فقط
+  if (btnEl) {
+    const group = btnEl.closest('.qf-row');
+    if (group) group.querySelectorAll('.qf-chip').forEach(b => b.classList.remove('active'));
+    btnEl.classList.add('active');
+  }
   applyFilters();
 };
+
+window.qfSetCommune = function(val) {
+  fCommune = val;
+  applyFilters();
+};
+
 window.openFilterDrawer = function() {
   document.getElementById('filterDrawer').classList.add('open');
   document.getElementById('filterOverlay').classList.add('open');
@@ -1215,6 +1267,8 @@ function startFirebaseListener() {
     DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     dataLoaded = true;
     dataLoadError = false;
+    const liveCountEl = document.getElementById('liveAdCount');
+    if (liveCountEl) liveCountEl.innerText = DATA.length;
     applyFilters();
   }, (error) => {
     console.error("Firebase error:", error);
@@ -1228,8 +1282,18 @@ function startFirebaseListener() {
 const LANG = {
   ar: {
     dir: 'rtl', htmlLang: 'ar',
-    heroTitle: 'ابحث عن <span>دارك</span> هنا',
-    heroSub: 'جميع إعلانات العقارات في الجزائر العاصمة',
+    heroTitle: 'متخصصون في شقق <span>LPP</span> بالجزائر العاصمة',
+    heroSub: 'ابحث عن شقتك LPP، أو بِعها، أو أكرِها ببساطة',
+    ctaSeeLpp: '🔍 عرض شقق LPP', ctaOwnLpp: '🔑 أملك شقة LPP',
+    wlcQ: 'هل تبحث عن LPP أم تملك واحدة؟',
+    wlcSearchLabel: 'أبحث عن LPP', wlcOwnerLabel: 'أملك LPP', wlcAllBtn: 'عرض كل أنواع العقارات ←',
+    qfRoomsLabel: '🛏️ الغرف:', qfOpLabel: '🤝 المعاملة:', qfCommuneLabel: '📍 البلدية:',
+    qfVente: 'بيع', qfLocation: 'كراء',
+    ownerTitle: 'هل تملك شقة LPP؟',
+    ownerDesc: 'دارنا تساعدك على تصوير عقارك، نشره، والترويج له للوصول إلى مشترين أو مستأجرين جادين — مجاناً وبدون تسجيل.',
+    ownerCta: '＋ انشر عقارك الآن',
+    otherPropsText: '🏘️ تبحث عن نوع آخر؟ AADL، فيلا، منزل، محل تجاري، ريزيدونس...',
+    otherPropsLink: 'تصفح كل الأنواع ←',
     searchPlaceholder: 'ابحث بالحي أو البلدية...',
     searchBtn: '🔍 بحث',
     tabAds: 'الإعلانات', tabPrices: 'الأسعار', tabArticles: 'المقالات', tabLegal: 'النصائح القانونية',
@@ -1322,9 +1386,19 @@ const LANG = {
     }
   },
   fr: {
-    dir: 'rtl', htmlLang: 'ar',
-    heroTitle: 'Trouvez votre <span>bien</span> ici',
-    heroSub: 'Toutes les annonces immobilières d\'Alger',
+    dir: 'rtl', htmlLang: 'fr-DZ',
+    heroTitle: 'Spécialiste des appartements <span>LPP</span> à Alger',
+    heroSub: 'Trouvez, vendez ou louez votre appartement LPP simplement',
+    ctaSeeLpp: '🔍 Voir les LPP', ctaOwnLpp: '🔑 J\'ai un LPP',
+    wlcQ: 'Vous cherchez un LPP ou vous en possédez un ?',
+    wlcSearchLabel: 'Je cherche un LPP', wlcOwnerLabel: 'Je possède un LPP', wlcAllBtn: 'Voir tous les types de biens →',
+    qfRoomsLabel: '🛏️ Pièces :', qfOpLabel: '🤝 Transaction :', qfCommuneLabel: '📍 Commune :',
+    qfVente: 'Vente', qfLocation: 'Location',
+    ownerTitle: 'Vous êtes propriétaire d\'un LPP ?',
+    ownerDesc: 'Darna vous aide à photographier, publier et promouvoir votre bien pour toucher des acheteurs ou locataires sérieux — gratuitement, sans inscription.',
+    ownerCta: '＋ Publier mon bien',
+    otherPropsText: '🏘️ Vous cherchez autre chose ? AADL, villa, maison, local, résidence...',
+    otherPropsLink: 'Voir tous les types →',
     searchPlaceholder: 'Rechercher par quartier ou commune...',
     searchBtn: '🔍 Chercher',
     tabAds: 'Annonces', tabPrices: 'Prix', tabArticles: 'Articles', tabLegal: 'Conseils juridiques',
@@ -1421,12 +1495,35 @@ const LANG = {
 function applyTranslation(lang) {
   const T = LANG[lang];
   currentLang = lang;
+  document.documentElement.lang = T.htmlLang || lang; // توحيد lang الفعلي مع اللغة المعروضة فعلياً
 
   // ── Hero (قد لا يكون موجوداً في listings.html) ──
   const heroTitleEl = document.getElementById('heroTitle'); if (heroTitleEl) heroTitleEl.innerHTML = T.heroTitle;
   const heroSubEl = document.getElementById('heroSub'); if (heroSubEl) heroSubEl.textContent = T.heroSub;
   const searchQEl = document.getElementById('searchQ'); if (searchQEl) searchQEl.placeholder = T.searchPlaceholder;
   const searchBtnEl = document.getElementById('searchBtn'); if (searchBtnEl) searchBtnEl.textContent = T.searchBtn;
+
+  // ── أزرار CTA الرئيسية في الهيرو (LPP) ──
+  const ctaSeeLppEl = document.getElementById('ctaSeeLpp'); if (ctaSeeLppEl && T.ctaSeeLpp) ctaSeeLppEl.querySelector('span').textContent = T.ctaSeeLpp.replace(/^[^\s]+\s/, '');
+  const ctaOwnLppEl = document.getElementById('ctaOwnLpp'); if (ctaOwnLppEl && T.ctaOwnLpp) ctaOwnLppEl.querySelector('span').textContent = T.ctaOwnLpp.replace(/^[^\s]+\s/, '');
+
+  // ── شاشة الترحيب ──
+  const wlcQEl = document.getElementById('wlcQ'); if (wlcQEl && T.wlcQ) wlcQEl.textContent = T.wlcQ;
+  const wlcSearchLabelEl = document.getElementById('wlcSearchLabel'); if (wlcSearchLabelEl && T.wlcSearchLabel) wlcSearchLabelEl.textContent = T.wlcSearchLabel;
+  const wlcOwnerLabelEl = document.getElementById('wlcOwnerLabel'); if (wlcOwnerLabelEl && T.wlcOwnerLabel) wlcOwnerLabelEl.textContent = T.wlcOwnerLabel;
+  const wlcAllBtnEl = document.getElementById('wlcAllBtn'); if (wlcAllBtnEl && T.wlcAllBtn) wlcAllBtnEl.textContent = T.wlcAllBtn;
+
+  // ── فلاتر LPP السريعة + قسم الملاك + أنواع أخرى ──
+  const qfRoomsLabelEl = document.getElementById('qfRoomsLabel'); if (qfRoomsLabelEl && T.qfRoomsLabel) qfRoomsLabelEl.textContent = T.qfRoomsLabel;
+  const qfOpLabelEl = document.getElementById('qfOpLabel'); if (qfOpLabelEl && T.qfOpLabel) qfOpLabelEl.textContent = T.qfOpLabel;
+  const qfCommuneLabelEl = document.getElementById('qfCommuneLabel'); if (qfCommuneLabelEl && T.qfCommuneLabel) qfCommuneLabelEl.textContent = T.qfCommuneLabel;
+  const qfVenteEl = document.getElementById('qfVente'); if (qfVenteEl && T.qfVente) qfVenteEl.textContent = T.qfVente;
+  const qfLocationEl = document.getElementById('qfLocation'); if (qfLocationEl && T.qfLocation) qfLocationEl.textContent = T.qfLocation;
+  const ownerTitleEl = document.getElementById('ownerTitle'); if (ownerTitleEl && T.ownerTitle) ownerTitleEl.textContent = T.ownerTitle;
+  const ownerDescEl = document.getElementById('ownerDesc'); if (ownerDescEl && T.ownerDesc) ownerDescEl.textContent = T.ownerDesc;
+  const ownerCtaBtnEl = document.getElementById('ownerCtaBtn'); if (ownerCtaBtnEl && T.ownerCta) ownerCtaBtnEl.querySelector('span').textContent = T.ownerCta.replace(/^[^\s]+\s/, '');
+  const otherPropsTextEl = document.getElementById('otherPropsText'); if (otherPropsTextEl && T.otherPropsText) otherPropsTextEl.textContent = T.otherPropsText;
+  const otherPropsLinkEl = document.getElementById('otherPropsLink'); if (otherPropsLinkEl && T.otherPropsLink) otherPropsLinkEl.textContent = T.otherPropsLink;
 
   // ── Hero tags ──
   const tagLPPEl = document.getElementById('tagLPP'); if (tagLPPEl) tagLPPEl.textContent = '🏪 LPP';
@@ -1442,6 +1539,12 @@ function applyTranslation(lang) {
   const tabPricesEl = document.getElementById('tabLabelPrices'); if (tabPricesEl) tabPricesEl.textContent = T.tabPrices;
   const tabArticlesEl = document.getElementById('tabLabelArticles'); if (tabArticlesEl) tabArticlesEl.textContent = T.tabArticles;
   const tabLegalEl = document.getElementById('tabLabelLegal'); if (tabLegalEl) tabLegalEl.textContent = T.tabLegal;
+  // ── نفس العناوين داخل القائمة المنسدلة للهاتف ──
+  const mmAdsEl = document.getElementById('mmLabelAds'); if (mmAdsEl) mmAdsEl.textContent = T.tabAds;
+  const mmPricesEl = document.getElementById('mmLabelPrices'); if (mmPricesEl) mmPricesEl.textContent = T.tabPrices;
+  const mmArticlesEl = document.getElementById('mmLabelArticles'); if (mmArticlesEl) mmArticlesEl.textContent = T.tabArticles;
+  const mmLegalEl = document.getElementById('mmLabelLegal'); if (mmLegalEl) mmLegalEl.textContent = T.tabLegal;
+  const postBtnMobileLabelEl = document.getElementById('postBtnMobileLabel'); if (postBtnMobileLabelEl) postBtnMobileLabelEl.textContent = T.postBtnLabel;
 
   // ── Stats ──
   const statL0El = document.getElementById('statL0'); if (statL0El) statL0El.textContent = T.statAds;
@@ -1618,12 +1721,31 @@ window.switchTab = function(name) {
   panels.forEach(p => {
     const panel = document.getElementById('tabPanel-' + p);
     const btn = document.getElementById('tabbtn-' + p);
-    if (!panel || !btn) return;
-    if (p === name) { panel.classList.add('active'); btn.classList.add('active'); }
-    else { panel.classList.remove('active'); btn.classList.remove('active'); }
+    if (panel) panel.classList.toggle('active', p === name);
+    if (btn) btn.classList.toggle('active', p === name);
   });
-  const tabbar = document.getElementById('tabbar');
-  if (tabbar) tabbar.scrollIntoView({behavior:'smooth', block:'start'});
+  // مزامنة القائمة المنسدلة في الهاتف مع التبويب النشط
+  const mmItems = document.querySelectorAll('.mobile-menu-item');
+  mmItems.forEach((el, i) => el.classList.toggle('active', panels[i] === name));
+
+  const activePanel = document.getElementById('tabPanel-' + name);
+  if (activePanel) activePanel.scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+// ── قائمة الهاتف المنسدلة (تحل محل الـ Tabbar الثابت لتقليل الازدحام) ──
+window.toggleMobileMenu = function() {
+  const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('mobileMenuOverlay');
+  if (!menu || !overlay) return;
+  const isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+};
+window.closeMobileMenu = function() {
+  const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('mobileMenuOverlay');
+  if (menu) menu.classList.remove('open');
+  if (overlay) overlay.classList.remove('open');
 };
 
 // ── (صفحة listings.html فقط) قراءة معايير البحث من رابط URL وتطبيقها ──
@@ -1634,9 +1756,13 @@ function applyUrlParamsToFilters() {
   const transaction = params.get('transaction');
   const commune = params.get('commune');
   const search = params.get('search');
+  const rooms = params.get('rooms');
 
   if (type && PT[type]) {
     fTypes = new Set([type]);
+  }
+  if (rooms && /^f[1-6]$/.test(rooms)) {
+    fRooms = rooms;
   }
   if (transaction) {
     if (transaction === 'sale') fOp = 'bay3';
@@ -1661,8 +1787,9 @@ initFilters();
 applyUrlParamsToFilters();
 startFirebaseListener();
 
-// Apply French as default language after DOM is ready
-setTimeout(() => applyTranslation('fr'), 150);
+// الفرنسية (fr-DZ) هي اللغة الافتراضية للموقع — تُطبَّق فوراً دون أي تأخير
+// لتفادي وميض المحتوى بالعربية قبل التبديل (كان يحدث سابقاً بسبب setTimeout)
+applyTranslation('fr');
 
 // ── رفع الصورة ──
 let uploadedImgBase64 = null;

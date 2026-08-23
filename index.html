@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr-DZ" dir="rtl">
 <head>
 <!-- Meta Pixel Code -->
 <script>
@@ -23,8 +23,8 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
-  "name": "Darna Immobilier – دارنا إيمو",
-  "description": "منصة عقارية جزائرية متخصصة في إعلانات AADL وLPP والسكن الاجتماعي والفيلات والمحلات التجارية في الجزائر العاصمة.",
+  "name": "Darna Immo — Spécialiste LPP à Alger",
+  "description": "Darna Immo est une plateforme immobilière spécialisée dans les appartements LPP à Alger, avec vente, location et publication de biens, tout en gardant l'accès aux autres catégories immobilières (AADL, social, villa, maison, local, résidence).",
   "url": "https://darna-immo.netlify.app",
   "logo": "https://darna-immo.netlify.app/assets/logo.png",
   "areaServed": {
@@ -83,9 +83,9 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <!-- End Schema Markup -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
-<title>Darna Immo – دارنا إيمو | إعلانات عقارية شاملة</title>
-<meta name="description" content="دارنا إيمو – منصة عقارية جزائرية متخصصة في إعلانات AADL، LPP، السكن الاجتماعي، الفيلات، المنازل، المحلات"/>
-<meta name="keywords" content="AADL, LPP, كراء شقة, بيع شقة, شراء عقار, تبادل عقار, فيلا للبيع, منزل, ريزيدنس, محل تجاري, عقار الجزائر, أسعار العقارات بالسنتيم"/>
+<title>Darna Immo | Appartements LPP à vendre et à louer à Alger</title>
+<meta name="description" content="Darna Immo, spécialiste des appartements LPP à Alger. Découvrez des LPP à vendre et à louer, ou publiez votre appartement pour toucher des acheteurs et locataires ciblés."/>
+<meta name="keywords" content="LPP Alger, appartement LPP Alger, LPP à vendre Alger, LPP à louer Alger, F3 LPP, F4 LPP, F5 LPP, AADL, immobilier Alger, Darna Immo"/>
 <meta name="robots" content="index, follow"/>
 <link rel="manifest" href="manifest.json"/>
 <meta name="theme-color" content="#0D3B2E"/>
@@ -109,23 +109,23 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
     </div>
     <h1 class="wlc-title">DARNA <span>IMMOBILIER</span></h1>
     <p class="wlc-sub">🇩🇿 منصتك العقارية في الجزائر العاصمة</p>
-    <p class="wlc-q">ماذا تبحث عن ؟</p>
+    <p class="wlc-q" id="wlcQ">هل تبحث عن LPP أم تملك واحدة؟</p>
     <div class="wlc-cards">
-      <button class="wlc-card" onclick="chooseOp('kira')">
-        <div class="wlc-card-icon">🔑</div>
-        <div class="wlc-card-label">كـراء</div>
-        <div class="wlc-card-sub">Location</div>
+      <button class="wlc-card" onclick="chooseOp('search')">
+        <div class="wlc-card-icon">🔍</div>
+        <div class="wlc-card-label" id="wlcSearchLabel">أبحث عن LPP</div>
+        <div class="wlc-card-sub">Je cherche un LPP</div>
         <div class="wlc-card-arrow">←</div>
       </button>
-      <button class="wlc-card" onclick="chooseOp('bay3')">
-        <div class="wlc-card-icon">🏷️</div>
-        <div class="wlc-card-label">بـيع</div>
-        <div class="wlc-card-sub">Vente</div>
+      <button class="wlc-card" onclick="chooseOp('owner')">
+        <div class="wlc-card-icon">🔑</div>
+        <div class="wlc-card-label" id="wlcOwnerLabel">أملك LPP</div>
+        <div class="wlc-card-sub">Je suis propriétaire</div>
         <div class="wlc-card-arrow">←</div>
       </button>
     </div>
-    <button class="wlc-all" onclick="chooseOp('all')">
-      عرض كل الإعلانات &nbsp;←
+    <button class="wlc-all" onclick="chooseOp('all')" id="wlcAllBtn">
+      عرض كل أنواع العقارات &nbsp;←
     </button>
   </div>
 </div>
@@ -133,7 +133,8 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <div class="flag-strip"></div>
 <header>
   <div style="display:flex;gap:8px;align-items:center">
-    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span>نشرإعلان</span></button>
+    <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileMenu()" aria-label="القائمة">☰</button>
+    <button id="postBtn" onclick="openPost()" style="padding:9px 18px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);border:none;border-radius:9px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:5px">＋ <span id="postBtnMobileLabel">نشرإعلان</span></button>
     <button id="langBtn" class="lang-btn" onclick="toggleLang()">FR</button>
   </div>
   <a class="logo" href="#" onclick="showWelcome()">
@@ -141,6 +142,16 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
     <div class="logo-badge"><img src="assets/logo.png" alt="Darna Immobilier"></div>
   </a>
 </header>
+
+<!-- قائمة الهاتف المنسدلة: تحل محل الـ tabbar الدائم لتقليل الازدحام -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-item active" onclick="switchTab('ads');closeMobileMenu()">🏠 <span id="mmLabelAds">الإعلانات</span></button>
+  <button class="mobile-menu-item" onclick="switchTab('prices');closeMobileMenu()">📊 <span id="mmLabelPrices">الأسعار</span></button>
+  <button class="mobile-menu-item" onclick="switchTab('articles');closeMobileMenu()">📚 <span id="mmLabelArticles">المقالات</span></button>
+  <button class="mobile-menu-item" onclick="switchTab('legal');closeMobileMenu()">⚖️ <span id="mmLabelLegal">النصائح القانونية</span></button>
+</div>
+
 <nav class="tabbar" id="tabbar">
   <button class="tabbtn active" id="tabbtn-ads" onclick="switchTab('ads')">🏠 <span id="tabLabelAds">الإعلانات</span></button>
   <button class="tabbtn" id="tabbtn-prices" onclick="switchTab('prices')">📊 <span id="tabLabelPrices">الأسعار</span></button>
@@ -148,10 +159,15 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
   <button class="tabbtn" id="tabbtn-legal" onclick="switchTab('legal')">⚖️ <span id="tabLabelLegal">النصائح القانونية</span></button>
 </nav>
 <div class="tab-panel active" id="tabPanel-ads">
+
 <section class="hero">
   <div class="hero-crescent">🇩🇿</div>
-  <h1 class="hero-title" id="heroTitle">ابحث عن <span>دارك</span> هنا</h1>
-  <p class="hero-sub" id="heroSub">جميع إعلانات العقارات في الجزائر العاصمة</p>
+  <h1 class="hero-title" id="heroTitle">متخصصون في شقق <span>LPP</span> بالجزائر العاصمة</h1>
+  <p class="hero-sub" id="heroSub">ابحث عن شقتك LPP، أو بِعها، أو أكرِها ببساطة</p>
+  <div class="hero-cta-row">
+    <button class="btn-hero-cta primary" id="ctaSeeLpp" onclick="scrollToHomeGrid()">🔍 <span>عرض شقق LPP</span></button>
+    <button class="btn-hero-cta secondary" id="ctaOwnLpp" onclick="openOwnerPost()">🔑 <span>أملك شقة LPP</span></button>
+  </div>
   <div class="tag-row">
     <span class="tag" id="tagLPP">🏪 LPP</span>
     <span class="tag" id="tagSocial">🏢 Social</span>
@@ -180,7 +196,7 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 
 <!-- ══ معاينة أحدث العقارات (6 فقط) ══ -->
 <div class="home-section-head">
-  <h2 class="home-section-title" id="homeSectionTitle">أحدث العقارات <span class="cnt">— 0 إعلان</span></h2>
+  <h2 class="home-section-title" id="homeSectionTitle">أحدث شقق LPP <span class="cnt">— 0 إعلان</span></h2>
 </div>
 <div class="home-search-note" id="homeSearchNote" style="display:none"></div>
 
@@ -192,8 +208,51 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <div class="home-drag-hint" id="homeDragHint">اسحب لمشاهدة المزيد ←</div>
 
 <div class="home-viewall-wrap">
-  <a class="btn-viewall" id="homeViewAllBtn" href="listings.html">عرض جميع العقارات ←</a>
+  <a class="btn-viewall" id="homeViewAllBtn" href="listings.html?type=lpp">عرض جميع شقق LPP ←</a>
 </div>
+
+<!-- فلاتر سريعة LPP: الغرف + المعاملة + البلدية -->
+<div class="quick-filters-wrap">
+  <div class="qf-row">
+    <span class="qf-label" id="qfRoomsLabel">🛏️ الغرف:</span>
+    <button class="qf-chip active" data-qf="rooms" data-val="all" onclick="qfSet('rooms','all',this)" id="qfRoomsAll">الكل</button>
+    <button class="qf-chip" data-qf="rooms" data-val="f3" onclick="qfSet('rooms','f3',this)">F3</button>
+    <button class="qf-chip" data-qf="rooms" data-val="f4" onclick="qfSet('rooms','f4',this)">F4</button>
+    <button class="qf-chip" data-qf="rooms" data-val="f5" onclick="qfSet('rooms','f5',this)">F5</button>
+  </div>
+  <div class="qf-row">
+    <span class="qf-label" id="qfOpLabel">🤝 المعاملة:</span>
+    <button class="qf-chip active" data-qf="op" data-val="all" onclick="qfSet('op','all',this)">الكل</button>
+    <button class="qf-chip" data-qf="op" data-val="bay3" onclick="qfSet('op','bay3',this)" id="qfVente">بيع</button>
+    <button class="qf-chip" data-qf="op" data-val="kira" onclick="qfSet('op','kira',this)" id="qfLocation">كراء</button>
+  </div>
+  <div class="qf-row">
+    <span class="qf-label" id="qfCommuneLabel">📍 البلدية:</span>
+    <select class="qf-select" id="qfCommune" onchange="qfSetCommune(this.value)">
+      <option value="">كل البلديات</option>
+      <option>سيدي عبد الله</option><option>الرغاية</option><option>أولاد فايت</option>
+      <option>الدار البيضاء</option><option>حسين داي</option><option>باب الزوار</option>
+      <option>برج البحري</option><option>القبة</option><option>بئر مراد رايس</option>
+      <option>الحراش</option><option>بوزريعة</option><option>شراقة</option>
+      <option>الأبيار</option><option>بن عكنون</option><option>زرالدة</option>
+    </select>
+  </div>
+</div>
+
+<!-- قسم الملاك -->
+<div class="owner-section">
+  <div class="owner-icon">🔑</div>
+  <h3 class="owner-title" id="ownerTitle">هل تملك شقة LPP؟</h3>
+  <p class="owner-desc" id="ownerDesc">دارنا تساعدك على تصوير عقارك، نشره، والترويج له للوصول إلى مشترين أو مستأجرين جادين — مجاناً وبدون تسجيل.</p>
+  <button class="btn-owner-cta" id="ownerCtaBtn" onclick="openOwnerPost()">＋ <span>انشر عقارك الآن</span></button>
+</div>
+
+<!-- أنواع أخرى من العقارات -->
+<div class="other-props-wrap">
+  <span id="otherPropsText">🏘️ تبحث عن نوع آخر؟ AADL، فيلا، منزل، محل تجاري، ريزيدونس...</span>
+  <a href="listings.html" class="other-props-link" id="otherPropsLink">تصفح كل الأنواع ←</a>
+</div>
+
 </div>
 <!-- ═══ /نهاية تبويب الإعلانات ═══ -->
 
