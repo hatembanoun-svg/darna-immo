@@ -1,0 +1,30 @@
+{
+  "name": "Darna Immo — Spécialiste LPP à Alger",
+  "short_name": "Darna Immo",
+  "description": "Spécialiste des appartements LPP à Alger — achat, vente et location. AADL, social, villa, local également disponibles.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "/index.html",
+  "display": "standalone",
+  "background_color": "#0D3B2E",
+  "theme_color": "#0D3B2E",
+  "orientation": "portrait-primary",
+  "lang": "fr-DZ",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["real estate", "business"],
+  "screenshots": []
+}
