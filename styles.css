@@ -564,3 +564,125 @@ body{overflow-x:hidden}
 .listings-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--green-mid);text-decoration:none}
 .listings-back:hover{color:var(--gold)}
 .listings-title{font-size:19px;font-weight:900;color:var(--green);margin:10px auto 4px;max-width:1080px;padding:0 18px}
+
+/* ═══════════════════════════════════════════════════════════
+   v2 — الواجهة الأولى = خريطة LPP + بطاقات 3D + هوكات بصرية
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── مسرح الخريطة ── */
+.mapstage{position:relative;background:var(--green);padding-bottom:0}
+.ms-top{padding:12px 16px 10px;text-align:center;background:
+  radial-gradient(120% 140% at 50% -20%,rgba(240,200,85,.22),transparent 55%),
+  linear-gradient(180deg,#0D3B2E,#115240)}
+.ms-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 12px;border-radius:50px;background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:var(--green);font-weight:900;font-size:12px;letter-spacing:.4px;margin-bottom:6px}
+.ms-title{font-size:clamp(19px,4.6vw,30px);font-weight:900;color:#fff;line-height:1.35;margin:0}
+.ms-title span{color:var(--gold-bright)}
+.ms-sub{font-size:12.5px;color:rgba(255,255,255,.78);margin:3px 0 10px}
+.ms-top .search-wrap{margin:0 auto}
+.ms-filters{display:flex;gap:16px;align-items:center;overflow-x:auto;padding:9px 14px;background:#fff;border-bottom:1px solid var(--border);scrollbar-width:none}
+.ms-filters::-webkit-scrollbar{display:none}
+.ms-filters .qf-row{flex:none;margin:0;flex-wrap:nowrap}
+.ms-filters .qf-label{white-space:nowrap}
+.ms-filters .qf-select{min-height:34px}
+.ms-mapwrap{position:relative}
+#homeMap{height:clamp(380px,60svh,640px);width:100%;background:#dfe9e2;z-index:1}
+.dm-fallback{padding:40px 16px;text-align:center;color:var(--text-sub)}
+.dm-overlay{position:absolute;inset:0;z-index:600;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(246,250,248,.82);backdrop-filter:blur(2px);font-weight:700;color:var(--green);text-align:center;padding:20px}
+.dm-overlay.show{display:flex}
+.dm-spin{width:34px;height:34px;border-radius:50%;border:4px solid var(--border);border-top-color:var(--green-light);animation:dmspin 0.9s linear infinite}
+@keyframes dmspin{to{transform:rotate(360deg)}}
+.dm-empty{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:500;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:var(--shadow);font-weight:700;color:var(--green);text-align:center;max-width:80%}
+.dm-live{position:absolute;top:10px;right:10px;z-index:550;display:inline-flex;align-items:center;gap:7px;background:rgba(13,59,46,.92);color:#fff;border-radius:50px;padding:6px 13px;font-size:12.5px;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.25);max-width:calc(100% - 70px)}
+.dm-live b{color:var(--gold-bright);font-size:15px}
+.dm-live em{font-style:normal;color:#9ef0c6}
+.dm-live i{width:9px;height:9px;border-radius:50%;background:#37d67a;box-shadow:0 0 0 0 rgba(55,214,122,.7);animation:dmlive 1.8s infinite}
+@keyframes dmlive{70%{box-shadow:0 0 0 9px rgba(55,214,122,0)}100%{box-shadow:0 0 0 0 rgba(55,214,122,0)}}
+.dm-tools{position:absolute;bottom:22px;right:10px;z-index:550;display:flex;flex-direction:column;gap:8px}
+.dm-tool{min-height:44px;padding:0 14px;border:0;border-radius:50px;background:#fff;color:var(--green);font:700 13px 'Cairo',sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.28);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.dm-tool.busy{opacity:.6}
+.dm-tool:focus-visible,.dm-btn:focus-visible,.dm-more:focus-visible,.tk-item:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* ── دبابيس الأسعار ── */
+.dm-pin{overflow:visible}
+.dm-pin-label{position:absolute;transform:translate(-50%,-100%);margin-top:-8px;padding:5px 10px;border-radius:9px;font:800 13px 'Cairo',sans-serif;color:#fff;white-space:nowrap;background:var(--green-mid);border:2px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.35);transition:transform .15s,background .15s}
+.dm-pin-label.rent{background:#8a6d1d}
+.dm-pin-label.feat{box-shadow:0 0 0 3px var(--gold),0 3px 8px rgba(0,0,0,.35)}
+.dm-pin-label::after{content:'';position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);border:6px solid transparent;border-top-color:#fff;border-bottom:0}
+.dm-pin-label.fresh::before{content:'';position:absolute;inset:-7px;border-radius:14px;border:2px solid #37d67a;animation:dmring 1.8s ease-out infinite}
+@keyframes dmring{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.25);opacity:0}}
+.dm-pin.dm-pin-active,.leaflet-marker-icon.dm-pin:hover{z-index:9999!important}
+.dm-pin.dm-pin-active .dm-pin-label,.dm-pin:hover .dm-pin-label{transform:translate(-50%,-100%) scale(1.18);background:var(--green)}
+.dm-cluster{display:flex;align-items:center;justify-content:center;border-radius:50%;background:radial-gradient(circle at 30% 25%,#2E8B6A,#0D3B2E);color:#fff;font:800 15px 'Cairo',sans-serif;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.35)}
+
+/* ── نافذة الدبوس ── */
+.dm-popwrap .leaflet-popup-content-wrapper,.leaflet-popup-content-wrapper{border-radius:14px;padding:0;overflow:hidden}
+.leaflet-popup-content{margin:0!important;width:250px!important;font-family:'Cairo',sans-serif}
+.dm-pop-img{width:100%;height:118px;object-fit:cover;display:block}
+.dm-pop-ph{display:flex;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(135deg,#E8F5EE,#C8E6D9)}
+.dm-pop-body{padding:11px 12px 8px;direction:rtl;text-align:right}
+.dm-pop-title{font-weight:800;font-size:14.5px;color:var(--green);line-height:1.4}
+.dm-pop-price{font-weight:800;font-size:14px;color:#9a1c1c;margin-top:3px}
+.dm-pop-meta{font-size:12.5px;color:var(--text-sub);margin-top:3px}
+.dm-pop-actions{display:flex;gap:7px;margin-top:9px}
+.dm-btn{flex:1;min-height:42px;border:0;border-radius:10px;font:800 13.5px 'Cairo',sans-serif;cursor:pointer;color:#fff}
+.dm-wa{background:#25D366;color:#063d1b}
+.dm-call{background:var(--green)}
+.dm-more{width:100%;background:none;border:0;padding:8px;color:var(--green-mid);font:700 13px 'Cairo',sans-serif;cursor:pointer}
+
+/* ── شريط آخر العقارات ── */
+.ms-ticker{background:var(--green);color:#fff;overflow:hidden;border-top:3px solid var(--gold)}
+.ms-ticker[hidden]{display:none}
+.tk-track{position:relative;height:46px}
+.tk-item{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:nowrap;white-space:nowrap;padding:0 14px;background:none;border:0;color:#fff;font:600 13.5px 'Cairo',sans-serif;cursor:pointer;opacity:0;transform:translateY(100%);transition:opacity .45s,transform .45s;pointer-events:none;overflow:hidden;text-overflow:ellipsis}
+.tk-item.on{opacity:1;transform:none;pointer-events:auto}
+.tk-item strong{color:var(--gold-bright)}
+.tk-item small{opacity:.7;font-size:11.5px}
+.tk-new{background:#37d67a;color:#05341d;border-radius:50px;padding:1px 9px;font-size:11px;font-weight:800}
+
+/* ── بطاقات 3D ── */
+.home-grid{padding-bottom:30px}
+.card{overflow:visible;border-radius:16px;transform-style:preserve-3d;
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .22s ease-out,box-shadow .25s;will-change:transform;
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 6px 0 -2px #dbe9e1,0 12px 0 -4px #c9ddd2,0 22px 28px -10px rgba(13,59,46,.38)}
+.card:hover{transform:perspective(900px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 8px 0 -2px #d3e4da,0 16px 0 -4px #c1d7ca,0 32px 36px -10px rgba(13,59,46,.48)}
+.card.tilting{transition:transform .06s linear,box-shadow .25s}
+.card::after{content:'';position:absolute;inset:0;border-radius:16px;pointer-events:none;opacity:0;transition:opacity .2s;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.38),transparent 55%)}
+.card.tilting::after{opacity:1}
+.card .cimg{border-radius:16px 16px 0 0}
+.card .cbody{border-radius:0 0 16px 16px}
+.card .price{display:inline-block;transform:translateZ(26px)}
+.card .bt,.card .bo{transform:translateZ(22px)}
+.c-onmap{position:absolute;left:8px;bottom:8px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.95);font-size:17px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.3);transform:translateZ(30px)}
+.c-onmap:focus-visible{outline:3px solid var(--gold)}
+@keyframes cardIn{from{opacity:0;transform:perspective(900px) translateY(26px) rotateX(12deg)}}
+.home-grid .card{animation:cardIn .55s cubic-bezier(.2,.7,.2,1) backwards}
+.home-grid .card:nth-child(2){animation-delay:.07s}.home-grid .card:nth-child(3){animation-delay:.14s}
+.home-grid .card:nth-child(4){animation-delay:.21s}.home-grid .card:nth-child(5){animation-delay:.28s}.home-grid .card:nth-child(6){animation-delay:.35s}
+@media (hover:none){.card:active{transform:perspective(900px) scale(.985)}}
+
+/* ── بطاقة الدليل القانوني ── */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:9995;display:flex;justify-content:center;padding:0 12px 92px;pointer-events:none;transform:translateY(120%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.sheet[hidden]{display:none}
+.sheet.show{transform:none}
+.sheet-card{pointer-events:auto;position:relative;max-width:460px;width:100%;background:#fff;border-radius:18px;padding:16px 16px 14px;box-shadow:0 18px 50px rgba(0,0,0,.35);border-top:4px solid var(--gold);direction:rtl;text-align:right}
+.sheet-title{font-weight:900;font-size:16px;color:var(--green);margin:0 0 4px;padding-left:28px}
+.sheet-text{font-size:13.5px;color:var(--text-sub);line-height:1.7;margin:0 0 12px}
+.sheet-actions{display:flex;gap:8px}
+.sheet-actions .dm-btn{min-height:46px}
+.sheet-close{position:absolute;top:8px;left:8px;width:36px;height:36px;border:0;border-radius:50%;background:#eef3f0;color:#555;font-size:16px;cursor:pointer}
+.sheet-later{background:#eef3f0;color:#445}
+
+/* ── تحسينات عامة ── */
+@media (prefers-reduced-motion:reduce){
+  .home-grid .card,.dm-pin-label.fresh::before,.dm-live i,.tk-item{animation:none!important;transition:none!important}
+}
+@media (min-width:900px){#homeMap{height:clamp(440px,64vh,700px)}.ms-top{padding:16px 24px 12px}}
+
+/* اتجاه النص: العربية RTL والفرنسية LTR داخل عناصر الخريطة حتى لا تنعكس الأرقام */
+.ms-badge,.dm-live,.dm-tool,.tk-item,.dm-empty,.dm-overlay,.sheet-title,.sheet-text,.dm-pop-body,.dm-pop-price,.dm-pop-meta,.dm-btn,.dm-more,.dm-pin-label{unicode-bidi:plaintext}
+.c-onmap{left:auto;right:8px}
+@media (min-width:900px){.ms-top{padding:10px 24px 8px}.ms-title{font-size:26px}.ms-sub{margin-bottom:8px}}
+.dm-empty[hidden],.dm-live[hidden],.ms-ticker[hidden],.sheet[hidden]{display:none!important}
