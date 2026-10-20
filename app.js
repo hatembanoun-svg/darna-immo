@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, doc, updateDoc, getDoc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager, collection, addDoc, onSnapshot, query, orderBy, limit, doc, updateDoc, getDoc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDgoARkUtqmeg4JDpLLpr1mzS8f0VDMFE0",
@@ -11,7 +11,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// كاش دائم في المتصفح: الزيارة الثانية تعرض الإعلانات فوراً من الذاكرة المحلية ثم تتحدث من الخادم
+let db;
+try {
+  db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) });
+} catch (e) {
+  db = getFirestore(app);
+}
 const adsCol = collection(db, "clients");
 
 // Language state – French is default
@@ -343,6 +349,7 @@ function sortAndRender() {
   else displayList.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
   if (PAGE_MODE === 'home') {
     renderHomePreview();
+    if (window.DarnaMap && dataLoaded) window.DarnaMap.render(displayList);
   } else {
     renderAds(displayList);
   }
@@ -364,7 +371,7 @@ function renderAds(list) {
 
   grid.innerHTML = list.map(ad => buildCardHTML(ad)).join('');
   // تحديث عداد الكاروسيل بعد رسم البطاقات
-  requestAnimationFrame(() => updateCarouselCount());
+  requestAnimationFrame(() => { if (typeof updateCarouselCount === "function") updateCarouselCount(); });
 }
 
 // ── قالب بطاقة عقار مشترك (تستخدمه الشبكة الكاملة ومعاينة الرئيسية) ──
@@ -393,10 +400,11 @@ function buildCardHTML(ad) {
     ? `<img src="${ad.imgBase64}" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"/>`
     : `<div class="cimg-ph" style="background:${bg}">${icon}</div>`;
   return `
-  <div class="card" onclick="openD('${ad.id}')">
+  <div class="card" data-id="${ad.id}" onclick="openD('${ad.id}')">
     <div class="cimg">
       ${imgHtml}
       <span class="bt" style="background:${getTypeColor(ad.type)}">${lPT(ad.type)}</span>
+      ${document.getElementById('homeMap') ? `<button type="button" class="c-onmap" aria-label="${currentLang==='fr'?'Voir sur la carte':'عرض على الخريطة'}" onclick="event.stopPropagation();DarnaMap&&DarnaMap.focus('${ad.id}')">📍</button>` : ''}
       <span class="bo" style="background:${getOpColor(ad.op)};color:#fff">${lOP(ad.op)}</span>
       <div class="status-badge" style="background:${getStatusColor(ad.status)}">${lSTATUS(ad.status)}</div>
       ${ad.feat ? '<div style="position:absolute;top:8px;right:8px;background:linear-gradient(135deg,#F0C855,#C9A84C);color:#0D3B2E;font-size:10px;font-weight:700;padding:3px 9px;border-radius:50px">⭐ مميز</div>' : ''}
@@ -454,6 +462,7 @@ function renderHomeLoading() {
   if (!grid) return;
   grid.classList.remove('home-error-mode');
   grid.innerHTML = skeletonCardsHTML(HOME_PREVIEW_COUNT);
+  if (window.DarnaMap) window.DarnaMap.setState('loading');
   const titleEl = document.getElementById('homeSectionTitle');
   if (titleEl) {
     const fr = currentLang === 'fr';
@@ -469,6 +478,7 @@ window.retryLoadAds = function() {
 
 function renderHomeError() {
   const grid = document.getElementById('homeGrid');
+  if (window.DarnaMap) window.DarnaMap.setState('error');
   if (!grid) return;
   const fr = currentLang === 'fr';
   grid.innerHTML = `<div class="home-status-box">
@@ -1262,7 +1272,7 @@ function initSelects() {
 // Firebase listener
 function startFirebaseListener() {
   if (PAGE_MODE === 'home') renderHomeLoading();
-  const q = query(adsCol, orderBy("createdAt", "desc"));
+  const q = PAGE_MODE === 'home' ? query(adsCol, orderBy("createdAt", "desc"), limit(150)) : query(adsCol, orderBy("createdAt", "desc"));
   onSnapshot(q, (snapshot) => {
     DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     dataLoaded = true;
@@ -1282,8 +1292,8 @@ function startFirebaseListener() {
 const LANG = {
   ar: {
     dir: 'rtl', htmlLang: 'ar',
-    heroTitle: 'متخصصون في شقق <span>LPP</span> بالجزائر العاصمة',
-    heroSub: 'ابحث عن شقتك LPP، أو بِعها، أو أكرِها ببساطة',
+    heroTitle: 'خريطة شقق <span>LPP</span> بالجزائر العاصمة',
+    heroSub: 'موقع مخصص لسكنات LPP فقط — بيع وكراء',
     ctaSeeLpp: '🔍 عرض شقق LPP', ctaOwnLpp: '🔑 أملك شقة LPP',
     wlcQ: 'هل تبحث عن LPP أم تملك واحدة؟',
     wlcSearchLabel: 'أبحث عن LPP', wlcOwnerLabel: 'أملك LPP', wlcAllBtn: 'عرض كل أنواع العقارات ←',
@@ -1341,7 +1351,7 @@ const LANG = {
     noAds: 'لا توجد إعلانات', noAdsSub: 'جرّب تغيير معايير البحث',
     condNeuf: 'جديد', condUsed: 'مستعمل',
     statDispo: 'متوفر', statReserved: 'محجوز', statSold: 'تم البيع', statRented: 'تم الكراء',
-    footerText: 'منصة الجزائر العاصمة للعقارات والسكن الاجتماعي',
+    footerText: 'منصة متخصصة حصرياً في شقق LPP بالجزائر العاصمة',
     privacy: 'سياسة الخصوصية', terms: 'شروط الاستخدام',
     contact: 'اتصل بنا', about: 'حول الموقع',
     pages: {
@@ -1387,8 +1397,8 @@ const LANG = {
   },
   fr: {
     dir: 'rtl', htmlLang: 'fr-DZ',
-    heroTitle: 'Spécialiste des appartements <span>LPP</span> à Alger',
-    heroSub: 'Trouvez, vendez ou louez votre appartement LPP simplement',
+    heroTitle: 'La carte des appartements <span>LPP</span> à Alger',
+    heroSub: 'Un site dédié uniquement aux logements LPP — vente et location',
     ctaSeeLpp: '🔍 Voir les LPP', ctaOwnLpp: '🔑 J\'ai un LPP',
     wlcQ: 'Vous cherchez un LPP ou vous en possédez un ?',
     wlcSearchLabel: 'Je cherche un LPP', wlcOwnerLabel: 'Je possède un LPP', wlcAllBtn: 'Voir tous les types de biens →',
@@ -1446,7 +1456,7 @@ const LANG = {
     noAds: 'Aucune annonce', noAdsSub: 'Essayez de modifier vos critères de recherche',
     condNeuf: 'Neuf', condUsed: 'Occasion',
     statDispo: 'Disponible', statReserved: 'Réservé', statSold: 'Vendu', statRented: 'Loué',
-    footerText: 'La plateforme immobilière d\'Alger',
+    footerText: 'La plateforme dédiée exclusivement aux appartements LPP à Alger',
     privacy: 'Politique de confidentialité', terms: 'Conditions d\'utilisation',
     contact: 'Nous contacter', about: 'À propos',
     pages: {
@@ -1496,6 +1506,8 @@ function applyTranslation(lang) {
   const T = LANG[lang];
   currentLang = lang;
   document.documentElement.lang = T.htmlLang || lang; // توحيد lang الفعلي مع اللغة المعروضة فعلياً
+  if (window.DarnaI18n) window.DarnaI18n.apply();
+  if (window.DarnaMap) window.DarnaMap.relabel();
 
   // ── Hero (قد لا يكون موجوداً في listings.html) ──
   const heroTitleEl = document.getElementById('heroTitle'); if (heroTitleEl) heroTitleEl.innerHTML = T.heroTitle;
