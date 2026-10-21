@@ -6,62 +6,23 @@
   var isFr = function () { return !String(document.documentElement.lang || '').toLowerCase().startsWith('ar'); };
   var t = function (ar, fr) { return isFr() ? fr : ar; };
 
-  // ───────── إحداثيات تقريبية لمراكز البلديات (±1–2 كم) ─────────
-  // الإعلانات لا تحمل إحداثيات، لذلك يُحدَّد الموقع من اسم البلدية. إن أضفت لاحقاً lat/lng للإعلان فسيُستعمل مباشرة.
-  var PLACES = [
-    [['سيدي عبد الله', 'sidi abdellah', 'sidi abdallah'], 36.6800, 2.8570],
-    [['الرغاية', 'reghaia'], 36.7390, 3.3430],
-    [['أولاد فايت', 'ouled fayet'], 36.7260, 2.9490],
-    [['الدار البيضاء', 'dar el beida'], 36.7140, 3.2120],
-    [['حسين داي', 'hussein dey'], 36.7400, 3.1010],
-    [['باب الزوار', 'bab ezzouar'], 36.7240, 3.1830],
-    [['برج البحري', 'bordj el bahri'], 36.7890, 3.2540],
-    [['القبة', 'el kouba', 'kouba'], 36.7270, 3.0780],
-    [['بئر مراد رايس', 'bir mourad rais'], 36.7340, 3.0420],
-    [['الحراش', 'el harrach', 'harrach'], 36.7170, 3.1370],
-    [['بوزريعة', 'bouzareah'], 36.7870, 3.0120],
-    [['شراقة', 'الشراقة', 'cheraga'], 36.7640, 2.9640],
-    [['الأبيار', 'el biar'], 36.7650, 3.0300],
-    [['بن عكنون', 'ben aknoun'], 36.7600, 3.0120],
-    [['زرالدة', 'zeralda'], 36.7110, 2.8420],
-    [['الجزائر الوسطى', 'alger centre', 'sidi mhamed'], 36.7700, 3.0560],
-    [['باب الوادي', 'bab el oued'], 36.7900, 3.0500],
-    [['المرادية', 'el mouradia'], 36.7470, 3.0510],
-    [['درارية', 'draria'], 36.7150, 2.9830],
-    [['الرويبة', 'rouiba'], 36.7380, 3.2810],
-    [['وادي السمار', 'oued smar'], 36.7080, 3.1650],
-    [['دالي إبراهيم', 'dely ibrahim'], 36.7550, 2.9870],
-    [['حيدرة', 'hydra'], 36.7440, 3.0300],
-    [['عين بنيان', 'ain benian'], 36.7920, 2.9120],
-    [['سطاوالي', 'staoueli'], 36.7570, 2.8890],
-    [['برج الكيفان', 'bordj el kiffan'], 36.7490, 3.1920],
-    [['المحمدية', 'el mohammadia', 'mohammadia'], 36.7350, 3.1300],
-    [['عين طاية', 'ain taya'], 36.7930, 3.2900],
-    [['الكاليتوس', 'les eucalyptus', 'eucalyptus'], 36.7060, 3.1530],
-    [['بئر خادم', 'birkhadem'], 36.7150, 3.0530],
-    [['الأربعاء', 'larbaa'], 36.5650, 3.1600],
-    [['البليدة', 'blida'], 36.4700, 2.8300],
-    [['بومرداس', 'boumerdes'], 36.7660, 3.4770],
-    [['تيبازة', 'tipaza'], 36.5890, 2.4470],
-    [['الشلف', 'chlef'], 36.1650, 1.3340],
-    [['عين الدفلى', 'ain defla'], 36.2640, 1.9680],
-    [['وهران', 'oran'], 35.6970, -0.6310],
-    [['قسنطينة', 'constantine'], 36.3650, 6.6147],
-    [['عنابة', 'annaba'], 36.9000, 7.7670],
-    [['سطيف', 'setif'], 36.1900, 5.4100],
-    [['باتنة', 'batna'], 35.5550, 6.1740],
-    [['تيزي وزو', 'tizi ouzou'], 36.7118, 4.0459],
-    [['بجاية', 'bejaia'], 36.7510, 5.0560],
-    [['مستغانم', 'mostaganem'], 35.9310, 0.0890]
-  ];
-
+  // ───────── مطابقة البلدية → إحداثيات (البيانات في communes.js) ─────────
+  // الإعلانات لا تحمل إحداثيات، فيُحدَّد الموقع من نص البلدية. إن أضفت لاحقاً lat/lng للإعلان فسيُستعمل مباشرة.
   function norm(s) {
     return String(s || '').toLowerCase()
       .normalize('NFD').replace(/[\u0300-\u036f\u064B-\u0652\u0640]/g, '')
-      .replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
-      .replace(/[-_–—.,()/]/g, ' ').replace(/\s+/g, ' ').trim();
+      .replace(/['’`]/g, '')
+      .replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/ئ/g, 'ي').replace(/ؤ/g, 'و').replace(/[ڨڤ]/g, 'ق').replace(/گ/g, 'ك').replace(/([a-z])\1+/g, '$1')
+      .replace(/[-_–—.,()/:;|]/g, ' ').replace(/\s+/g, ' ').trim();
   }
-  var INDEX = PLACES.map(function (p) { return { aliases: p[0].map(norm), lat: p[1], lng: p[2] }; });
+  var INDEX = [];
+  (window.DZ_PLACES || []).forEach(function (p) {
+    var names = [p.ar, p.fr].concat(p.aliases || []);
+    if (p.ar.indexOf('ال') === 0 && p.ar.length > 6) names.push(p.ar.slice(2));
+    var seen = {};
+    var aliases = names.map(norm).filter(function (a) { if (!a || a.length < 4 || seen[a]) return false; seen[a] = 1; return true; });
+    INDEX.push({ name: p.ar, aliases: aliases, lat: p.lat, lng: p.lng, rank: p.rank || 0 });
+  });
 
   function hash(str) {
     var h = 2166136261;
@@ -69,22 +30,126 @@
     return h >>> 0;
   }
 
-  // يرجع {lat,lng} أو null — بإزاحة ثابتة صغيرة حتى لا تتطابق دبابيس نفس البلدية
-  function geoFor(ad) {
-    var lat = parseFloat(ad.lat), lng = parseFloat(ad.lng);
-    if (isFinite(lat) && isFinite(lng)) return { lat: lat, lng: lng };
-    var hay = ' ' + norm([ad.commune, ad.title, ad.desc].join(' | ')) + ' ';
+  // أطول اسم مطابق داخل النص
+  function bestMatch(text) {
+    var hay = ' ' + norm(text) + ' ';
+    if (hay.trim() === '') return null;
     var best = null, bestLen = 0;
     INDEX.forEach(function (p) {
       p.aliases.forEach(function (a) {
-        if (a.length > bestLen && hay.indexOf(a) !== -1) { best = p; bestLen = a.length; }
+        var eff = a.length - p.rank;
+        if (eff > bestLen && hay.indexOf(a) !== -1) { best = p; bestLen = eff; }
       });
     });
-    if (!best) return null;
+    return best;
+  }
+
+  // ───────── مطابقة تقريبية: تتسامح مع اختلاف حرف أو حرفين في الاسم ─────────
+  function lev(a, b, max) {
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    var prev = [], cur = [], i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) {
+      cur = [i];
+      var rowMin = i;
+      for (j = 1; j <= b.length; j++) {
+        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1));
+        if (cur[j] < rowMin) rowMin = cur[j];
+      }
+      if (rowMin > max) return max + 1;
+      prev = cur;
+    }
+    return prev[b.length];
+  }
+  function tolerance(len) { return len <= 4 ? 0 : (len <= 7 ? 1 : 2); }
+
+  function fuzzyMatch(text) {
+    var words = norm(text).split(' ').filter(Boolean);
+    if (!words.length) return null;
+    var best = null, bestScore = 1e9;
+    for (var i = 0; i < words.length; i++) {
+      var gram = '';
+      for (var n = 0; n < 4 && i + n < words.length; n++) {
+        gram += words[i + n];                     // بدون مسافات: "برج كيفان" = "برجكيفان"
+        if (gram.length < 4) continue;
+        INDEX.forEach(function (p) {
+          p.aliases.forEach(function (a) {
+            var al = a.replace(/ /g, '');
+            var tol = tolerance(al.length);
+            if (Math.abs(al.length - gram.length) > tol) return;
+            var d = tol === 0 ? (al === gram ? 0 : 9) : lev(gram, al, tol);
+            if (d <= tol) {
+              var score = d * 10 - al.length + p.rank * 3; // الأقل مسافة ثم الأطول اسماً (والمدينة الكبرى أقل أولوية)
+              if (score < bestScore) { bestScore = score; best = p; }
+            }
+          });
+        });
+      }
+    }
+    return best;
+  }
+
+  // أحياء مرقّمة مثل Q12 وQ24 وQ35: تقع في منطقة المحالمة وسيدي عبد الله
+  var SIDI_ABDELLAH = { name: 'سيدي عبد الله', lat: 36.6760, lng: 2.8800 };
+  // مواضع الأحياء من لقطة خرائط Google (دقة تقريبية ±400 م). الحي غير المذكور هنا يوضع وسط المنطقة.
+  var QUARTERS = { '12': [36.6757, 2.8872], '35': [36.6817, 2.8695], '24': [36.6319, 2.8708], '19': [36.6496, 2.8937] };
+  function quarterPlace(n) {
+    var c = QUARTERS[String(parseInt(n, 10))];
+    return { name: SIDI_ABDELLAH.name, lat: c ? c[0] : SIDI_ABDELLAH.lat, lng: c ? c[1] : SIDI_ABDELLAH.lng, quarter: String(n), tight: !!c };
+  }
+  function quarterMatch(text) {
+    var m = /(?:^|[^a-z0-9])q\s*\.?\s*(\d{1,3})(?![0-9])/i.exec(String(text || '').toLowerCase());
+    return m ? quarterPlace(m[1]) : null;
+  }
+
+  // برامج LPP المعروفة بعدد مساكنها عندما يُكتب الرقم وحده
+  function siteMatch(text) {
+    var t = String(text || '');
+    if (/(^|\D)(2058|1200)(\D|$)/.test(t)) return quarterPlace('12');
+    if (/(^|\D)514(\D|$)/.test(t)) return { name: 'المحالمة', lat: 36.6651, lng: 2.8821, tight: true };
+    return null;
+  }
+
+  // إن ذُكرت ولاية (تيبازة/البليدة/بومرداس) مع بلدية قريبة الاسم، فالبلدية هي الأدق
+  function matchText(text) {
+    var e = bestMatch(text);
+    if (e && e.rank > 0) { var f = fuzzyMatch(text); if (f && f.rank === 0) return f; }
+    return e || fuzzyMatch(text);
+  }
+
+  // اسم البلدية أو رقم البرنامج: عند المحالمة/سيدي عبد الله يُفضَّل رقم البرنامج لأنه أدق (مثل 514)
+  function resolve(text) {
+    var m = matchText(text), sm = siteMatch(text);
+    if (sm && (!m || m.name === 'المحالمة' || m.name === 'سيدي عبد الله')) return sm;
+    return m || sm;
+  }
+
+  var unmatched = {};
+  var CENTER = { lat: 36.745, lng: 3.085 };
+
+  // يرجع {lat,lng,approx}: الأولوية لحقل البلدية، ثم العنوان، ثم الوصف
+  function geoFor(ad) {
+    var lat = parseFloat(ad.lat), lng = parseFloat(ad.lng);
+    if (isFinite(lat) && isFinite(lng)) return { lat: lat, lng: lng, approx: false };
     var h = hash(String(ad.id));
-    var dx = ((h & 0xffff) / 0xffff - 0.5) * 0.011;
-    var dy = (((h >>> 16) & 0xffff) / 0xffff - 0.5) * 0.009;
-    return { lat: best.lat + dy, lng: best.lng + dx };
+    var p = quarterMatch(ad.commune) || resolve(ad.commune) || quarterMatch(ad.title) || resolve(ad.title) || bestMatch(ad.desc);
+    if (p) {
+      var spread = p.tight ? 0.0028 : 0.010;
+      var dx = ((h & 0xffff) / 0xffff - 0.5) * spread;
+      var dy = (((h >>> 16) & 0xffff) / 0xffff - 0.5) * spread * 0.8;
+      if (p.quarter && !p.tight) { // حي Q بلا موضع مقاس: يُوزَّع حول وسط المنطقة بموضع ثابت لكل رقم
+        var hq = hash('Q' + p.quarter);
+        dx += ((hq & 0xffff) / 0xffff - 0.5) * 0.012;
+        dy += (((hq >>> 16) & 0xffff) / 0xffff - 0.5) * 0.010;
+      }
+      return { lat: p.lat + dy, lng: p.lng + dx, approx: false, place: p.name };
+    }
+    // بلدية غير معروفة: يظهر الإعلان بموقع تقريبي في العاصمة بدل أن يختفي
+    var key = String(ad.commune || '').trim() || '—';
+    unmatched[key] = (unmatched[key] || 0) + 1;
+    var ux = ((h & 0xffff) / 0xffff - 0.5) * 0.16;
+    var uy = (((h >>> 16) & 0xffff) / 0xffff - 0.5) * 0.10;
+    return { lat: CENTER.lat + uy, lng: CENTER.lng + ux, approx: true };
   }
 
   // ───────── تنسيق ─────────
@@ -162,6 +227,7 @@
       '<div class="dm-pop-body">' +
       '<div class="dm-pop-title">' + esc(title) + '</div>' +
       '<div class="dm-pop-price">' + esc(longPrice(ad)) + '</div>' +
+      (ad.__approx ? '<div class="dm-pop-note">' + t('📍 الموقع تقريبي — العاصمة', '📍 Position approximative — Alger') + '</div>' : '') +
       '<div class="dm-pop-meta">📍 ' + esc(ad.commune || (isFr() ? 'Alger' : 'الجزائر')) + (specs.length ? ' · ' + specs.join(' · ') : '') + '</div>' +
       '<div class="dm-pop-actions">' +
       '<button type="button" class="dm-btn dm-wa" data-act="wa">WhatsApp</button>' +
@@ -174,7 +240,7 @@
   function isNew(ad) { return Date.now() - createdMs(ad) < 72 * 3600 * 1000; }
 
   function pinIcon(ad) {
-    var cls = 'dm-pin-label ' + (ad.op === 'kira' ? 'rent' : 'sale') + (ad.feat ? ' feat' : '') + (isNew(ad) ? ' fresh' : '');
+    var cls = 'dm-pin-label ' + (ad.op === 'kira' ? 'rent' : 'sale') + (ad.feat ? ' feat' : '') + (isNew(ad) ? ' fresh' : '') + (ad.__approx ? ' approx' : '');
     return L.divIcon({
       html: '<span class="' + cls + '">' + esc(shortPrice(ad) || (ROOMS[ad.rooms] || 'LPP')) + '</span>',
       className: 'dm-pin', iconSize: [0, 0], iconAnchor: [0, 0]
@@ -198,13 +264,14 @@
     }
   }
 
-  function updateChip(mapped, fresh) {
+  function updateChip(mapped, fresh, approx) {
     var chip = $('mapLive');
     if (!chip) return;
     if (!mapped) { chip.hidden = true; return; }
     chip.hidden = false;
     chip.innerHTML = '<i></i><b>' + mapped + '</b> ' + t('شقة LPP على الخريطة', 'LPP sur la carte') +
-      (fresh ? ' <em>· ' + fresh + ' ' + t('جديدة', fresh > 1 ? 'nouveaux' : 'nouveau') + '</em>' : '');
+      (fresh ? ' <em>· ' + fresh + ' ' + t('جديدة', fresh > 1 ? 'nouveaux' : 'nouveau') + '</em>' : '') +
+      (approx ? ' <small>· ' + approx + ' ' + t('بموقع تقريبي', 'position approx.') + '</small>' : '');
   }
 
   function render(list) {
@@ -214,11 +281,14 @@
     if (layer) map.removeLayer(layer);
     layer = makeLayer();
     markers = {}; byId = {};
-    var pts = [], fresh = 0;
+    var pts = [], fresh = 0, approx = 0;
+    unmatched = {};
 
     state.list.forEach(function (ad) {
       var g = geoFor(ad);
       if (!g) return;
+      ad.__approx = !!g.approx;
+      if (g.approx) approx++;
       byId[ad.id] = ad;
       var m = L.marker([g.lat, g.lng], { icon: pinIcon(ad), riseOnHover: true }).bindPopup(popupHTML(ad), { maxWidth: 280, minWidth: 240, autoPanPadding: [16, 70] });
       layer.addLayer(m);
@@ -227,7 +297,8 @@
       if (isNew(ad)) fresh++;
     });
     map.addLayer(layer);
-    updateChip(pts.length, fresh);
+    updateChip(pts.length, fresh, approx);
+    debugPanel();
 
     var empty = $('mapEmpty');
     if (empty) empty.hidden = pts.length > 0 || !state.loaded;
@@ -239,6 +310,15 @@
       else if (pts.length === 1) map.setView(pts[0], 14);
     }
     renderTicker();
+  }
+
+  // لوحة تشخيص: افتح الموقع بإضافة ?debugmap لعرض البلديات التي لم تُعرَف
+  function debugPanel() {
+    if (location.search.indexOf('debugmap') === -1) return;
+    var box = $('dmDebug');
+    if (!box) { box = document.createElement('div'); box.id = 'dmDebug'; box.className = 'dm-debug'; document.body.appendChild(box); }
+    var keys = Object.keys(unmatched).sort(function (a, b) { return unmatched[b] - unmatched[a]; });
+    box.innerHTML = '<b>' + keys.length + ' بلدية غير معروفة</b><br>' + (keys.length ? keys.map(function (k) { return esc(k) + ' (' + unmatched[k] + ')'; }).join('<br>') : '✔ كل الإعلانات عُرف موقعها');
   }
 
   // ───────── شريط آخر العقارات ─────────
@@ -357,8 +437,9 @@
       el.innerHTML = '<div class="dm-fallback">' + t('تعذّر تحميل الخريطة. الإعلانات متوفرة في الأسفل.', 'La carte est indisponible. Les annonces sont plus bas.') + '</div>';
       return;
     }
-    map = L.map(el, { zoomControl: false, minZoom: 6, maxZoom: 18, scrollWheelZoom: false, worldCopyJump: false }).setView([36.745, 3.05], 11);
+    map = L.map(el, { zoomControl: false, attributionControl: false, minZoom: 6, maxZoom: 18, scrollWheelZoom: false, worldCopyJump: false }).setView([36.745, 3.05], 11);
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
+    L.control.attribution({ position: 'topleft', prefix: false }).addTo(map);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -373,6 +454,7 @@
     render: function (list) { state.loaded = true; state.list = list || []; setState('ready'); render(list); },
     setState: setState,
     focus: focusAd,
+    probe: function (text) { var g = geoFor({ id: 'probe', commune: text }); return { place: g.place || null, approx: g.approx, lat: g.lat, lng: g.lng }; },
     relabel: function () { if (map && state.loaded) render(state.list); }
   };
 

@@ -686,3 +686,46 @@ body{overflow-x:hidden}
 .c-onmap{left:auto;right:8px}
 @media (min-width:900px){.ms-top{padding:10px 24px 8px}.ms-title{font-size:26px}.ms-sub{margin-bottom:8px}}
 .dm-empty[hidden],.dm-live[hidden],.ms-ticker[hidden],.sheet[hidden]{display:none!important}
+
+/* ═══ إصلاح: الزر العائم كان يعلو نافذة النشر ويحجب زر "نشر الإعلان" ═══ */
+.overlay{z-index:10000}
+.toast{z-index:10010}
+.fab{transition:opacity .2s,transform .25s}
+body.modal-open .fab{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(140%)}
+@media(max-width:500px){body.modal-open .fab{transform:translateY(140%)}}
+.pmodal{padding-bottom:env(safe-area-inset-bottom,0)}
+
+/* ═══ حركة السكرول: الخريطة تتراجع وتُظلَّل وصفحة البطاقات تنزلق فوقها ═══ */
+.scroll-progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:10005;transform-origin:left center;transform:scaleX(0);background:linear-gradient(90deg,var(--gold-bright),#37d67a);pointer-events:none}
+html[dir="rtl"] .scroll-progress{transform-origin:right center}
+.mapstage{overflow:hidden;background:#0D3B2E}
+.ms-mapwrap{transform-origin:50% 0;transform:translate3d(0,calc(var(--p,0)*80px),0) scale(calc(1 - var(--p,0)*.05));will-change:transform}
+.ms-mapwrap::after{content:'';position:absolute;inset:0;background:#0D3B2E;opacity:calc(var(--p,0)*.6);pointer-events:none;z-index:700}
+.leaflet-top.leaflet-left{margin-top:6px}
+.leaflet-bottom.leaflet-left{margin-bottom:38px}
+.dm-tools{bottom:50px}
+.home-sheet{position:relative;z-index:5;margin-top:-30px;background:var(--bg);border-radius:30px 30px 0 0;box-shadow:0 -16px 40px rgba(0,0,0,.28);padding-top:14px;overflow:hidden}
+.home-sheet::before{content:'';display:block;width:46px;height:5px;border-radius:5px;background:#cfdcd5;margin:0 auto 8px}
+.ms-ticker{margin:6px 16px 4px;border-radius:14px;border-top:0;max-width:1048px}
+@media(min-width:1080px){.ms-ticker{margin-left:auto;margin-right:auto}}
+.scroll-cue{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:560;display:flex;flex-direction:column;align-items:center;gap:0;padding:5px 14px 0;border-radius:50px;background:rgba(13,59,46,.88);color:#fff;font:700 12px 'Cairo',sans-serif;pointer-events:none;transition:opacity .35s;unicode-bidi:plaintext}
+.scroll-cue i{font-style:normal;font-size:20px;line-height:.9;animation:cueBob 1.4s ease-in-out infinite}
+@keyframes cueBob{50%{transform:translateY(5px)}}
+
+/* دخول البطاقات والأقسام مع السكرول (يُفعَّل فقط حين يعمل fx.js) */
+.reveal{transition:opacity .6s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
+html.js-reveal .reveal:not(.in){opacity:0;transform:translateY(34px)}
+html.js-reveal .owner-section.reveal:not(.in){transform:perspective(900px) rotateX(12deg) translateY(44px) scale(.95)}
+html.js-reveal .home-grid .card{animation:none}
+html.js-reveal .home-grid .card:not(.in){opacity:0;transform:perspective(900px) translateY(54px) rotateX(20deg) scale(.95)}
+html.js-reveal .home-grid .card.in{transition:transform .22s ease-out,box-shadow .25s,opacity .6s}
+/* ميلان البطاقة مع موضعها في الشاشة أثناء السكرول */
+.card{transform:perspective(900px) rotateX(calc(var(--rx,0deg) + var(--sx,0deg))) rotateY(var(--ry,0deg))}
+.card:hover{transform:perspective(900px) translateY(-6px) rotateX(calc(var(--rx,0deg) + var(--sx,0deg))) rotateY(var(--ry,0deg))}
+@media (prefers-reduced-motion:reduce){.ms-mapwrap{transform:none}.ms-mapwrap::after{display:none}.scroll-cue i{animation:none}.reveal{transition:none}}
+
+/* موقع تقريبي + لوحة التشخيص */
+.dm-pin-label.approx{background:#5b7a6c;border-style:dashed}
+.dm-pop-note{font-size:11.5px;color:#8a6d1d;margin-top:3px;font-weight:700}
+.dm-live small{opacity:.8;font-weight:600}
+.dm-debug{position:fixed;left:8px;bottom:90px;z-index:10020;max-width:260px;max-height:50vh;overflow:auto;background:#fff;color:#222;border:2px solid #C9A84C;border-radius:12px;padding:10px 12px;font:600 12.5px/1.7 'Cairo',sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.3);direction:rtl}

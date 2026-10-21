@@ -1,5 +1,5 @@
 // sw.js – Darna Immo Service Worker
-const CACHE_NAME = 'darna-immo-v5';
+const CACHE_NAME = 'darna-immo-v11';
 
 // الملفات التي يتم تخزينها للعمل بدون انترنت
 const STATIC_ASSETS = [
@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
   './styles.css',
   './app.js',
   './map.js',
+  './communes.js',
   './fx.js',
   './manifest.json',
   './assets/logo.png',
