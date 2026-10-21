@@ -871,7 +871,11 @@ window.toast = function(msg, cls) {
 window.openPost = function() { document.getElementById('pm').classList.add('open'); };
 window.sub = async function() {
   const T = LANG[currentLang];
-  const loc = document.getElementById('pl').value.trim();
+  const comSel = document.getElementById('pcom');
+  const chosenCom = comSel ? comSel.value : '';
+  let loc = document.getElementById('pl').value.trim();
+  if (chosenCom && !loc) loc = chosenCom;
+  else if (chosenCom && loc.indexOf(chosenCom) === -1) loc = chosenCom + ' – ' + loc;
   const phone = document.getElementById('ph').value.trim();
   const priceRaw = document.getElementById('pp').value.trim();
   if (!loc || !phone || !priceRaw) {
@@ -894,7 +898,7 @@ window.sub = async function() {
         condition: document.getElementById('pcond').value,
         status: document.getElementById('pstat').value,
         title: `${PT[document.getElementById('pt').value]} - ${loc}`,
-        commune: loc.split(/[-–]/)[0].trim(),
+        commune: chosenCom || loc.split(/[-–]/)[0].trim(),
         area: parseInt(document.getElementById('pa').value) || 0,
         price: parseInt(priceRaw) || 0,
         desc: document.getElementById('pd').value || '',
@@ -907,6 +911,7 @@ window.sub = async function() {
       await addDoc(adsCol, docData);
     window.cm('pm');
     document.getElementById('pl').value = '';
+    if (comSel) comSel.value = '';
     document.getElementById('ph').value = '';
     document.getElementById('pp').value = '';
     document.getElementById('pa').value = '';
@@ -1267,25 +1272,49 @@ function initSelects() {
     opt.innerText = OP[o];
     poSelect.appendChild(opt);
   });
+  // الموقع مخصص لـ LPP: نوع العقار الافتراضي في نموذج النشر
+  if (ptSelect.querySelector('option[value="lpp"]')) ptSelect.value = 'lpp';
 }
 
 // Firebase listener
 function startFirebaseListener() {
   if (PAGE_MODE === 'home') renderHomeLoading();
-  const q = PAGE_MODE === 'home' ? query(adsCol, orderBy("createdAt", "desc"), limit(150)) : query(adsCol, orderBy("createdAt", "desc"));
-  onSnapshot(q, (snapshot) => {
+  const fullQuery = query(adsCol, orderBy("createdAt", "desc"));
+
+  const handle = (snapshot) => {
     DATA = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     dataLoaded = true;
     dataLoadError = false;
     const liveCountEl = document.getElementById('liveAdCount');
     if (liveCountEl) liveCountEl.innerText = DATA.length;
     applyFilters();
-  }, (error) => {
+  };
+  const onError = (error) => {
     console.error("Firebase error:", error);
+    if (dataLoaded) return; // لدينا بيانات معروضة، لا نُزعج الزائر
     dataLoadError = true;
     toast(LANG[currentLang].toastDbErr, "red");
     if (PAGE_MODE === 'home') renderHomeError();
-  });
+  };
+
+  if (PAGE_MODE !== 'home') {
+    onSnapshot(fullQuery, handle, onError);
+    return;
+  }
+
+  // الصفحة الرئيسية: أحدث 30 إعلاناً أولاً لظهور سريع، ثم كل الإعلانات (الخريطة تعرضها كلها)
+  let fullLoaded = false;
+  let fullStarted = false;
+  const startFull = () => {
+    if (fullStarted) return;
+    fullStarted = true;
+    onSnapshot(fullQuery, (snap) => { fullLoaded = true; unsubFast(); handle(snap); }, onError);
+  };
+  const unsubFast = onSnapshot(
+    query(adsCol, orderBy("createdAt", "desc"), limit(30)),
+    (snap) => { if (!fullLoaded) handle(snap); startFull(); },
+    (err) => { onError(err); startFull(); }
+  );
 }
 
 // ── Bilingual translations ──────────────────────────────────────────────────
@@ -1846,122 +1875,6 @@ function resetImgUpload() {
   const removeBtn = document.getElementById('imgRemoveBtn');
   if (removeBtn) removeBtn.style.display = 'none';
 }
-
-// ── مولّد الوصف الذكي بالذكاء الاصطناعي (Claude API) ──
-window.generateSmartDesc = async function() {
-  const btn   = document.getElementById('aiDescBtn');
-  const icon  = document.getElementById('aiDescIcon');
-  const label = document.getElementById('aiDescLabel');
-  const status = document.getElementById('aiDescStatus');
-
-  // جمع بيانات النموذج
-  const ptVal   = document.getElementById('pt').value;
-  const poVal   = document.getElementById('po').value;
-  const prVal   = document.getElementById('pr').value;
-  const paVal   = document.getElementById('pa').value;
-  const plVal   = document.getElementById('pl').value.trim();
-  const ppVal   = document.getElementById('pp').value;
-  const condVal = document.getElementById('pcond').value;
-
-  if (!plVal || !ppVal) {
-    status.textContent = '⚠️ أدخل البلدية والسعر أولاً';
-    status.style.display = 'block';
-    status.style.background = '#FFF0F2';
-    status.style.color = '#CE1126';
-    setTimeout(() => status.style.display = 'none', 3000);
-    return;
-  }
-
-  // تحويل القيم لنص مقروء
-  const typeLabels = { aadl:'AADL', social:'السكن الاجتماعي', lpp:'LPP', lsp:'LSP',
-    villa:'فيلا', maison:'منزل', appart:'شقة', residence:'ريزيدنس', local:'محل تجاري' };
-  const opLabels   = { kira:'للكراء', bay3:'للبيع', achat:'للشراء', tbadol:'للتبادل' };
-  const roomLabels = { f1:'F1', f2:'F2', f3:'F3', f4:'F4', f5:'F5', f6:'F6+' };
-  const condLabels = { neuf:'جديد', utilise:'مستعمل' };
-
-  const propType = typeLabels[ptVal] || ptVal;
-  const opType   = opLabels[poVal]   || poVal;
-  const rooms    = roomLabels[prVal] || prVal;
-  const area     = paVal ? `${paVal} م²` : 'غير محدد';
-  const price    = ppVal ? `${Number(ppVal).toLocaleString('fr-DZ')} دج` : 'غير محدد';
-  const cond     = condLabels[condVal] || condVal;
-
-  const prompt = `أنت خبير في التسويق العقاري الجزائري. اكتب وصفاً إعلانياً احترافياً وجذاباً لعقار بالمواصفات التالية:
-
-نوع العقار: ${propType} ${rooms}
-العملية: ${opType}
-الموقع: ${plVal}
-المساحة: ${area}
-السعر: ${price}
-الحالة: ${cond}
-
-القواعد:
-- الأسلوب: عربي فصيح مع بعض العبارات الجزائرية الشائعة
-- الطول: 3-4 جمل مركّزة فقط (لا إطالة)
-- اذكر الموقع وميزة الحي بإيجاز
-- اختم بعبارة تحث على الاتصال
-- لا تذكر السعر (موجود في حقل مستقل)
-- لا تضف عنواناً أو رقم هاتف
-
-أعطني فقط نص الوصف بدون أي تعليق أو تمهيد.`;
-
-  // تحديث حالة الزر
-  btn.disabled = true;
-  icon.textContent = '⏳';
-  label.textContent = 'جارٍ التوليد...';
-  status.style.display = 'none';
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 300,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    const text = data.content?.map(b => b.text || '').join('').trim();
-
-    if (text) {
-      document.getElementById('pd').value = text;
-      // أنيميشن نجاح
-      icon.textContent = '✅';
-      label.textContent = 'تم التوليد! يمكنك التعديل';
-      btn.style.background = 'linear-gradient(135deg,#15803D,#166534)';
-      status.textContent = '✨ تم إنشاء الوصف — راجعه وعدّل حسب الحاجة';
-      status.style.background = '#EAF5EF';
-      status.style.color = '#0D3B2E';
-      status.style.display = 'block';
-      setTimeout(() => {
-        icon.textContent = '✨';
-        label.textContent = 'ولّد وصفاً ذكياً بالذكاء الاصطناعي';
-        btn.style.background = 'linear-gradient(135deg,#5E35B1,#7B1FA2)';
-      }, 3000);
-    } else {
-      throw new Error('empty response');
-    }
-  } catch (err) {
-    console.error('AI desc error:', err);
-    icon.textContent = '❌';
-    label.textContent = 'فشل التوليد — حاول مرة أخرى';
-    status.textContent = '❌ تعذّر الاتصال بالذكاء الاصطناعي. اكتب الوصف يدوياً.';
-    status.style.background = '#FFF0F2';
-    status.style.color = '#CE1126';
-    status.style.display = 'block';
-    setTimeout(() => {
-      icon.textContent = '✨';
-      label.textContent = 'ولّد وصفاً ذكياً بالذكاء الاصطناعي';
-      btn.style.background = 'linear-gradient(135deg,#5E35B1,#7B1FA2)';
-      status.style.display = 'none';
-    }, 4000);
-  } finally {
-    btn.disabled = false;
-  }
-};
 
 // ── Schema ديناميكي لكل إعلان (SEO) ──
 function injectAdSchema(ad) {

@@ -105,6 +105,7 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <link rel="stylesheet" href="styles.css"/>
 </head>
 <body data-mode="home">
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <div class="flag-strip"></div>
 <header>
@@ -178,14 +179,16 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 <div class="dm-overlay show" id="mapOverlay"><div class="dm-spin"></div></div>
 <div class="dm-empty" id="mapEmpty" hidden data-ar="لا توجد شقق مطابقة — جرّب فلتراً آخر" data-fr="Aucun résultat — essayez un autre filtre">لا توجد شقق مطابقة — جرّب فلتراً آخر</div>
 <div class="dm-live" id="mapLive" hidden></div>
+<div class="scroll-cue" id="scrollCue" aria-hidden="true"><span data-ar="اسحب لاكتشاف الشقق" data-fr="Faites défiler">اسحب لاكتشاف الشقق</span><i>⌄</i></div>
 <div class="dm-tools">
 <button type="button" class="dm-tool" id="mapNear" data-ar="📍 قريب مني" data-fr="📍 Près de moi">📍 قريب مني</button>
 <button type="button" class="dm-tool" id="mapReset" data-ar="🗺️ كل الشقق" data-fr="🗺️ Tout voir">🗺️ كل الشقق</button>
 </div>
 </div>
-<div class="ms-ticker" id="mapTicker" hidden><div class="tk-track"></div></div>
 </section>
 
+<div class="home-sheet" id="homeSheet">
+<div class="ms-ticker" id="mapTicker" hidden><div class="tk-track"></div></div>
 <!-- ══ معاينة أحدث العقارات (6 فقط) ══ -->
 <div class="home-section-head">
   <h2 class="home-section-title" id="homeSectionTitle">أحدث شقق LPP <span class="cnt">— 0 إعلان</span></h2>
@@ -211,6 +214,7 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
   <button class="btn-owner-cta" id="ownerCtaBtn" onclick="openOwnerPost()">＋ <span>انشر عقارك الآن</span></button>
 </div>
 
+</div>
 </div>
 <!-- ═══ /نهاية تبويب الإعلانات ═══ -->
 
@@ -289,11 +293,7 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 </div>
 
 <!-- Post Modal -->
-<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" rows="4" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
-<button type="button" id="aiDescBtn" onclick="generateSmartDesc()" style="margin-top:8px;width:100%;padding:11px;background:linear-gradient(135deg,#5E35B1,#7B1FA2);color:#fff;border:none;border-radius:10px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s">
-  <span id="aiDescIcon">✨</span> <span id="aiDescLabel">ولّد وصفاً ذكياً بالذكاء الاصطناعي</span>
-</button>
-<div id="aiDescStatus" style="display:none;font-family:'Cairo',sans-serif;font-size:12px;text-align:center;padding:6px;border-radius:8px;margin-top:6px"></div>
+<div class="overlay" id="pm" onclick="cov(event,'pm')"><div class="modal pmodal"><div class="pmhead"><div class="pmhead-title">📣 نشر إعلان جديد</div><div class="pmhead-sub">مجاني – بدون تسجيل – فوري</div><button class="pmclose" onclick="cm('pm')">✕</button></div><div class="pmbody"><div class="fg-row"><div class="fg"><label>نوع العقار</label><select id="pt"></select></div><div class="fg"><label>المعاملة</label><select id="po"></select></div></div><div class="fg-row"><div class="fg"><label>الغرف</label><select id="pr"><option value="f1">F1</option><option value="f2">F2</option><option value="f3">F3</option><option value="f4">F4</option><option value="f5">F5</option><option value="f6">F6+</option></select></div><div class="fg"><label>المساحة (م²)</label><input id="pa" type="number" placeholder="مثال: 85"/></div></div><div class="fg-row"><div class="fg"><label>حالة العقار</label><select id="pcond"><option value="neuf">جديد</option><option value="utilise">مستعمل</option></select></div><div class="fg"><label>حالة الإعلان</label><select id="pstat"><option value="dispo">متوفر</option><option value="reserved">محجوز</option><option value="sold">تم البيع</option><option value="rented">تم الكراء</option></select></div></div><div class="fg"><label>البلدية والحي</label><select id="pcom" style="margin-bottom:8px"></select><input id="pl" type="text" placeholder="مثال: سيدي عبد الله – حي 3000 مسكن"/></div><div class="fg-row"><div class="fg"><label>السعر (دج)</label><input id="pp" type="number" placeholder="مثال: 40000"/></div><div class="fg"><label>رقم الهاتف</label><input id="ph" type="tel" placeholder="07XX XX XX XX"/></div></div><div class="fg"><label>وصف العقار</label><textarea id="pd" rows="4" placeholder="الطابق، التوجيه، المرافق، ملاحظات..."></textarea>
 </div>
 <div class="fg">
   <label>📷 صورة العقار (اختياري — صورة واحدة)</label>
@@ -823,6 +823,7 @@ src="https://www.facebook.com/tr?id=1562914335571664&ev=PageView&noscript=1"
 
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script defer src="communes.js"></script>
 <script defer src="fx.js"></script>
 <script defer src="map.js"></script>
 <script type="module" src="app.js"></script>
